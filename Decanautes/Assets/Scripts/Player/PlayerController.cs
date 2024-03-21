@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Sirenix.OdinInspector;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,14 +13,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveDirection = Vector2.zero;
 
 
-    [TitleGroup("Parameters", Alignment = TitleAlignments.Centered)]
-    [Title("Movement")]
-    public float MoveSpeed;
-    public float Drag;
+    public PlayerData playerData;
 
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
         _playerInput = new PlayerInput();
         _playerInput.Enable();
@@ -38,19 +35,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        _rigidbody.AddForce(_moveDirection * MoveSpeed);
+        Vector3 dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * _moveDirection.y + Camera.main.transform.right * _moveDirection.x;
+        _rigidbody.AddForce(dir * playerData.MoveSpeed);
         Vector3 currentVelocity = _rigidbody.velocity;
-        _rigidbody.velocity = new Vector3(currentVelocity.x / Drag * Time.fixedDeltaTime, currentVelocity.y, currentVelocity.z / Drag * Time.fixedDeltaTime);
+        _rigidbody.velocity = new Vector3(currentVelocity.x / (playerData.Drag * Time.fixedDeltaTime*100), currentVelocity.y, currentVelocity.z / (playerData.Drag * Time.fixedDeltaTime * 100));
     }
 
 
     private void Move(InputAction.CallbackContext callbackContext)
     {
         _moveDirection  = callbackContext.ReadValue<Vector2>();
-        
-
-
     }
 
 }
