@@ -6,7 +6,7 @@ public class Tools
 {
 
     //Returns the index of random from weights
-    static int WeightedRandom(List<float> weights)
+    static public int WeightedRandom(List<float> weights)
     {
         float total = 0;
 

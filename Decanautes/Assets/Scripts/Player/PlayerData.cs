@@ -11,4 +11,5 @@ public class PlayerData : ScriptableObject
     public float MoveSpeed;
     [MinValue(1f)]
     public float Drag;
+    public float InteractionMaxDist;
 }

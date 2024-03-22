@@ -9,9 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0801a552aff93f54498dc3c27e162f2a, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 285e38a2ed762804197da0b4a32d8bdd, type: 3}
+  m_Name: Event2
   m_EditorClassIdentifier: 
-  MoveSpeed: 223.38
-  Drag: 1
-  InteractionMaxDist: 3
+  Name: Event2
+  Probability: 0.8
+  InteractionsToFix:
+  - {fileID: 0}
+  ToEnableOnTrigger:
+  - {fileID: 0}
+  ToDisableOnTrigger:
+  - {fileID: 0}
+  EventsToTrigger: []
+  CurrentEvent: {fileID: 0}

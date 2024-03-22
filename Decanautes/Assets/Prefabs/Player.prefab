@@ -62,7 +62,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &5026608948024696433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b210c3d67bf2ee24badab97249546cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 7588c2c3e85c1d841967976e93ee0e11, type: 2}
+  PlayerData: {fileID: 11400000, guid: 7588c2c3e85c1d841967976e93ee0e11, type: 2}
+  InteractionLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  lookingAt: {fileID: 0}
 --- !u!1 &6800377687091589629
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearColorMode: 0
-  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearColorMode: 1
+  backgroundColorHDR: {r: 0, g: 0, b: 0, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
