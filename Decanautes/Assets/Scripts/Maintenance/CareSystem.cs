@@ -67,16 +67,23 @@ public class CareSystem : MonoBehaviour
         maintain.MaintainableMeter.FillAmount = maintain.MaintainableData.CurrentState;
         if (maintain.MaintainableData.CurrentState <= maintain.MaintainableData.Threshold)
         {
-            maintain.MaintainableMeter.fillRenderer.material.SetColor("_Color", maintain.MaintainableData.warningColor);
+            maintain.MaintainableMeter.fillRenderer.material.color = maintain.MaintainableData.warningColor; //.SetColor("_Color", maintain.MaintainableData.warningColor);
         }
         else
         {
-            maintain.MaintainableMeter.fillRenderer.material.SetColor("_Color", maintain.MaintainableData.baseColor);
+            maintain.MaintainableMeter.fillRenderer.material.color = maintain.MaintainableData.baseColor; //.SetColor("_Color", maintain.MaintainableData.baseColor);
         }
     }
 
     private void FillMaintainable(Interactable interactable)
     {
+        bool needTresholdToMaintain = interactable.LinkedMaintainable.MaintainableData.NeedThresholdToMaintain;
+        float currentState = interactable.LinkedMaintainable.MaintainableData.CurrentState;
+        float threshold = interactable.LinkedMaintainable.MaintainableData.Threshold;
+        if (needTresholdToMaintain && currentState > threshold)
+        {
+            return;
+        }
         interactable.LinkedMaintainable.MaintainableData.CurrentState = 1;
     }
 }

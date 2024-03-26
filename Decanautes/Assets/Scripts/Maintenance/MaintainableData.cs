@@ -10,6 +10,7 @@ public class MaintainableData : ScriptableObject
     [PropertyRange(0, 1)]
     public float CurrentState = 1;
     public float Speed = -1;
+    public bool NeedThresholdToMaintain = true;
     [PropertyRange(0, 1)]
     public float Threshold = 1;
     public Color baseColor;
