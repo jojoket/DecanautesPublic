@@ -8,12 +8,16 @@ using System;
 using System.Data;
 using System.Runtime.CompilerServices;
 
+
 public class EventManager : MonoBehaviour
 {
     //---------Params
 
     [TitleGroup("Parameters")]
-    public EventManagerData EventManagerData;
+    [MinMaxSlider(0, 20, ShowFields = true)]
+    public Vector2 TaskAppearanceCycle;
+
+    public List<Event> eventsToTrigger = new List<Event>();
 
     //---------Events
     [TitleGroup("Events")]
@@ -23,9 +27,9 @@ public class EventManager : MonoBehaviour
     [TitleGroup("Debug")]
     [SerializeField, ReadOnly] private Event _currentEvent;
     [SerializeField, ReadOnly] private float _currentTimer;
-    [SerializeField, ReadOnly] private float _currentTaskTimer;
-    [SerializeField, ReadOnly] private int _currentTaskAmmount;
-    [SerializeField, ReadOnly] private float _currentTaskCoolDown;
+    [SerializeField, ReadOnly] private float _currentEventTimer;
+    [SerializeField, ReadOnly] private int _currentEventAmmount;
+    [SerializeField, ReadOnly] private float _currentEventCoolDown;
     [SerializeField, ReadOnly] private int _numberOfEventsOccured;
 
 
@@ -33,29 +37,80 @@ public class EventManager : MonoBehaviour
 
     void Start()
     {
-        _currentTaskCoolDown = UnityEngine.Random.Range(EventManagerData.TaskAppearanceCycle.x, EventManagerData.TaskAppearanceCycle.y);
+        _currentEventCoolDown = UnityEngine.Random.Range(TaskAppearanceCycle.x, TaskAppearanceCycle.y);
+        foreach (Event childEvent in eventsToTrigger)
+        {
+            SetupEvent(childEvent);
+        }
     }
 
     void Update()
     {
-        CheckForTaskFix();
         ManageTimer();
-        if (!_currentEvent && _currentTaskAmmount >= 1)
+        
+        if (!_currentEvent && _currentEventAmmount >= 1)
         {
-            _currentTaskAmmount--;
+            _currentEventAmmount--;
             _currentEvent = StartNewEvent();
+        }
+        if (_currentEvent && CheckForCurrentTaskEnded(_currentEvent))
+        {
+            CleanLastEvent(_currentEvent);
+            _currentEvent = null;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach (Event childEvent in eventsToTrigger)
+        {
+            CleanOnDestroyEvent(childEvent);
         }
     }
 
     private void ManageTimer()
     {
         _currentTimer += Time.deltaTime;
-        _currentTaskTimer += Time.deltaTime;
-        if (_currentTaskTimer >= _currentTaskCoolDown)
+        _currentEventTimer += Time.deltaTime;
+        if (_currentEventTimer >= _currentEventCoolDown)
         {
-            _currentTaskTimer = 0;
-            _currentTaskCoolDown = UnityEngine.Random.Range(EventManagerData.TaskAppearanceCycle.x, EventManagerData.TaskAppearanceCycle.y);
-            _currentTaskAmmount += 1;
+            _currentEventTimer = 0;
+            _currentEventCoolDown = UnityEngine.Random.Range(TaskAppearanceCycle.x, TaskAppearanceCycle.y);
+            _currentEventAmmount += 1;
+        }
+    }
+
+    private bool CheckForCurrentTaskEnded(Event parentEvent)
+    {
+        bool areChildsDone = true;
+        foreach (Event childEvent in parentEvent.EventsToTrigger)
+        {
+            if (CheckForCurrentTaskEnded(childEvent) == false)
+            {
+                areChildsDone = false;
+            }
+        }
+        if (areChildsDone)
+        {
+            if (parentEvent.InteractionsToFix.Count >= 1)
+            {
+                return !parentEvent.isActive;
+            }
+            else
+            {
+                parentEvent.isActive = false;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void SetupEvent(Event parentEvent)
+    {
+        CheckForTaskFix(parentEvent);
+        foreach (Event childEvent in parentEvent.EventsToTrigger)
+        {
+            SetupEvent(childEvent);
         }
     }
 
@@ -63,12 +118,13 @@ public class EventManager : MonoBehaviour
     private Event StartNewEvent()
     {
         List<float> eventsProba = new List<float>();
-        foreach (Event childEvent in EventManagerData.eventsToTrigger)
+        foreach (Event childEvent in eventsToTrigger)
         {
             eventsProba.Add(childEvent.Probability*100);
         }
         int choosedEventIndex = Tools.WeightedRandom(eventsProba);
-        Event choosedEvent = EventManagerData.eventsToTrigger[choosedEventIndex];
+        Event choosedEvent = eventsToTrigger[choosedEventIndex];
+        choosedEvent.isActive = true;
         choosedEvent.CurrentEvent = StartNewEvent(choosedEvent);
         EnableEventVFX(choosedEvent);
         TaskTriggeredEvent?.Invoke();
@@ -89,6 +145,7 @@ public class EventManager : MonoBehaviour
         }
         int choosedEventIndex = Tools.WeightedRandom(eventsProba);
         Event choosedEvent = parentEvent.EventsToTrigger[choosedEventIndex];
+        choosedEvent.isActive = true;
         choosedEvent.CurrentEvent = StartNewEvent(choosedEvent);
         EnableEventVFX(choosedEvent);
         return choosedEvent;
@@ -98,13 +155,29 @@ public class EventManager : MonoBehaviour
     private void CleanLastEvent(Event lastEvent)
     {
         DisableEventVFX(lastEvent);
+        lastEvent.isActive = false;
+        lastEvent.InteractionsState.Clear();
         foreach (Interactable item in lastEvent.InteractionsToFix)
         {
-            item.OnInteractStarted -= TaskInteracted;
+            lastEvent.InteractionsState.Add(false);
         }
         foreach (Event childEvent in lastEvent.EventsToTrigger)
         {
             CleanLastEvent(childEvent);
+        }
+    }
+
+    private void CleanOnDestroyEvent(Event lastEvent)
+    {
+        lastEvent.isActive = false;
+        foreach (Interactable item in lastEvent.InteractionsToFix)
+        {
+            item.OnInteractStarted -= TaskInteracted;
+        }
+
+        foreach (Event item in lastEvent.EventsToTrigger)
+        {
+            CleanOnDestroyEvent(item);
         }
     }
 
@@ -140,22 +213,28 @@ public class EventManager : MonoBehaviour
         foreach (Interactable item in eventToCheck.InteractionsToFix)
         {
             item.OnInteractStarted += TaskInteracted;
+            item.LinkedEvent = eventToCheck;
             eventToCheck.InteractionsState.Add(false);
         }
-
-        CheckForTaskFix(eventToCheck.CurrentEvent);
     }
 
-    private void TaskInteracted()
+    private void TaskInteracted(Interactable interactable)
     {
-        bool isFixed = false;
-        if (isFixed)
+        if (!interactable.LinkedEvent.isActive)
         {
-            CleanLastEvent(_currentEvent);
-            _currentEvent = null;
+            return;
+        }
+        int index = interactable.LinkedEvent.InteractionsToFix.FindIndex(x => x.gameObject == interactable.gameObject);
+        if (index==-1)
+        {
+            return;
+        }
+        interactable.LinkedEvent.InteractionsState[index] = true;
+
+        if (!interactable.LinkedEvent.InteractionsState.Contains(false))
+        {
+            CleanLastEvent(interactable.LinkedEvent);
         }
     }
-
-
 
 }

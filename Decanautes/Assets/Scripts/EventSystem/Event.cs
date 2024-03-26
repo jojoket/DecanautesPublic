@@ -3,27 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 
-[CreateAssetMenu(fileName = "Event", menuName = "ScriptableObject/Events/Event")]
-public class Event : ScriptableObject
+public class Event : MonoBehaviour
 {
     public string Name;
-    [PropertyRange(0,1)]
+    [HideInInspector]
+    public bool isActive;
+    [PropertyRange(0, 1)]
     public float Probability;
 
-    [HideInTables]
-    public bool NeedToBeDoneInOrder = false;
-    [HideInTables]
-    public List<Interactable> InteractionsToFix = new List<Interactable>();
-    [HideInInspector, HideInTables]
-    public List<bool> InteractionsState = new List<bool>();
-    [HideInTables]
-    public List<GameObject> ToEnableOnTrigger = new List<GameObject>();
-    [HideInTables]
-    public List<GameObject> ToDisableOnTrigger = new List<GameObject>();
-
-    [TableList, HideInTables]
-    public List<Event> EventsToTrigger;
+    
     [HideInInspector]
     public Event CurrentEvent;
+    public List<Event> EventsToTrigger;
+
+    public List<GameObject> ToEnableOnTrigger = new List<GameObject>();
+    public List<GameObject> ToDisableOnTrigger = new List<GameObject>();
+
+    public bool NeedToBeDoneInOrder = false;
+    public List<Interactable> InteractionsToFix = new List<Interactable>();
+    [HideInInspector]
+    public List<bool> InteractionsState = new List<bool>();
 }

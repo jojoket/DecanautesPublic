@@ -16,6 +16,8 @@ public class Interactable : MonoBehaviour
     //--------Events
     public UnityAction<Interactable> OnInteractStarted;
     public UnityAction<Interactable> OnInteractEnded;
+    public Event LinkedEvent;
+    public Maintain LinkedMaintainable;
     [ReadOnly]
     public bool isActivated;
     [ReadOnly]
