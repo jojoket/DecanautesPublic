@@ -162,8 +162,8 @@ MonoBehaviour:
   lensAttenuationMode: 0
   colorGradingSpace: 0
   m_ObsoleteDiffusionProfileSettingsList:
-  - {fileID: 11400000, guid: 48e911a1e337b44e2b85dbc65b47a594, type: 2}
-  - {fileID: 11400000, guid: 879ffae44eefa4412bb327928f1a96dd, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   specularFade: 0
   rendererListCulling: 0
   DLSSProjectId: 000000
@@ -175,15 +175,22 @@ MonoBehaviour:
   apvScenesData:
     m_ObsoleteSerializedBakingSets: []
     sceneToBakingSet:
-      m_Keys: []
-      m_Values: []
-    bakingSets: []
+      m_Keys:
+      - 9265b3a850f83944f8d1d506bf05c6b6
+      m_Values:
+      - {fileID: 11400000, guid: 7c65042d0a43b5049b257cba27c940e3, type: 2}
+    bakingSets:
+    - {fileID: 11400000, guid: 7c65042d0a43b5049b257cba27c940e3, type: 2}
     sceneBounds:
-      m_Keys: []
-      m_Values: []
+      m_Keys:
+      - 9265b3a850f83944f8d1d506bf05c6b6
+      m_Values:
+      - m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 81, y: 81, z: 81}
     hasProbeVolumes:
-      m_Keys: []
-      m_Values: 
+      m_Keys:
+      - 9265b3a850f83944f8d1d506bf05c6b6
+      m_Values: 01
   m_Version: 10
   m_ShaderStrippingSetting:
     m_Version: 0
