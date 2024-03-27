@@ -13,6 +13,8 @@ public class MaintainableData : ScriptableObject
     public bool NeedThresholdToMaintain = true;
     [PropertyRange(0, 1)]
     public float Threshold = 1;
+    [TabGroup("Visual")]
+    public float FillingTime;
     public Color baseColor;
     public Color warningColor;
 }
