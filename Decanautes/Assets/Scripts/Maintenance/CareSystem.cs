@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 [Serializable]
@@ -84,6 +85,7 @@ public class CareSystem : MonoBehaviour
         {
             return;
         }
-        interactable.LinkedMaintainable.MaintainableData.CurrentState = 1;
+        float fillTimeSec = interactable.LinkedMaintainable.MaintainableData.FillingTime;
+        DOTween.To(() => interactable.LinkedMaintainable.MaintainableData.CurrentState, x => interactable.LinkedMaintainable.MaintainableData.CurrentState = x, 1, fillTimeSec);
     }
 }

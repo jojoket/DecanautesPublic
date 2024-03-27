@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 
 [CreateAssetMenu(fileName = "Maintainable", menuName = "ScriptableObject/Maintainable")]
 public class MaintainableData : ScriptableObject
 {
+    [TitleGroup("Parameters")]
     public string Name;
     [PropertyRange(0, 1)]
     public float CurrentState = 1;
@@ -13,7 +15,8 @@ public class MaintainableData : ScriptableObject
     public bool NeedThresholdToMaintain = true;
     [PropertyRange(0, 1)]
     public float Threshold = 1;
-    [TabGroup("Visual")]
+    [TitleGroup("Visual")]
+    [Unit(Units.Second)]
     public float FillingTime;
     public Color baseColor;
     public Color warningColor;
