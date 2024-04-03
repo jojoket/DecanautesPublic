@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fa092e239d96b44a4909102f93cd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _doSave: 0
+  _doSave: 1
   Maintainables:
   - MaintainableData: {fileID: 11400000, guid: 01921c996bf732c41b4a084dfc2d15ac, type: 2}
     MaintainableMeter: {fileID: 1898486341}
@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8097da20d1bf9f24abfe42e6d76e2cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskAppearanceCycle: {x: 5.7440176, y: 5.7440176}
+  TaskAppearanceCycle: {x: 10.09901, y: 20}
   eventsToTrigger:
   - {fileID: 2026046410}
   - {fileID: 1334395194}
@@ -1052,9 +1052,9 @@ MonoBehaviour:
       m_Calls: []
   _currentEvent: {fileID: 0}
   _currentTimer: 0
-  _currentTaskTimer: 0
-  _currentTaskAmmount: 0
-  _currentTaskCoolDown: 0
+  _currentEventTimer: 0
+  _currentEventAmmount: 0
+  _currentEventCoolDown: 0
   _numberOfEventsOccured: 0
 --- !u!4 &902357320
 Transform:
@@ -3412,7 +3412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bakingSet: {fileID: 11400000, guid: 7c65042d0a43b5049b257cba27c940e3, type: 2}
-  sceneGUID: 9265b3a850f83944f8d1d506bf05c6b6
+  sceneGUID: 901203decf77308409487fec93919db8
   obsoleteAsset: {fileID: 0}
   obsoleteCellSharedDataAsset: {fileID: 0}
   obsoleteCellSupportDataAsset: {fileID: 0}
