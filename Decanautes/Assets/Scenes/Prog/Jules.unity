@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8097da20d1bf9f24abfe42e6d76e2cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskAppearanceCycle: {x: 5.7440176, y: 5.7440176}
+  TaskAppearanceCycle: {x: 6.405616, y: 11.281862}
   eventsToTrigger:
   - {fileID: 2026046410}
   - {fileID: 1334395194}
@@ -1052,9 +1052,9 @@ MonoBehaviour:
       m_Calls: []
   _currentEvent: {fileID: 0}
   _currentTimer: 0
-  _currentTaskTimer: 0
-  _currentTaskAmmount: 0
-  _currentTaskCoolDown: 0
+  _currentEventTimer: 0
+  _currentEventAmmount: 0
+  _currentEventCoolDown: 0
   _numberOfEventsOccured: 0
 --- !u!4 &902357320
 Transform:
@@ -1338,6 +1338,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: HoverMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e08a92d52f0a504aa943dff0a67e077, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1811,6 +1816,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: HoverMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e08a92d52f0a504aa943dff0a67e077, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

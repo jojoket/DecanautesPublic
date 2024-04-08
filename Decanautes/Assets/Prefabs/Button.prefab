@@ -68,9 +68,13 @@ MonoBehaviour:
   renderers:
   - {fileID: 6522636726412219463}
   BaseMaterial: {fileID: 2100000, guid: 8c01b487f4e4a1f4bb381f6e73689153, type: 2}
-  HoverMaterial: {fileID: 2100000, guid: 1a879122bd76f4a4c8e5d11196b8d26d, type: 2}
+  HoverMaterial: {fileID: 2100000, guid: 8e08a92d52f0a504aa943dff0a67e077, type: 2}
   ActiveMaterial: {fileID: 2100000, guid: e70312b012663ec4992e97ed2aebae6d, type: 2}
   LinkedEvent: {fileID: 0}
+  LinkedMaintainable:
+    MaintainableData: {fileID: 0}
+    MaintainableMeter: {fileID: 0}
+    interactableFiller: {fileID: 0}
   isActivated: 0
   isPressed: 0
   pressAnimation: {fileID: 8206139896057845679}
