@@ -15,8 +15,12 @@ public class Interactable : MonoBehaviour
 
     //--------Events
     public UnityAction<Interactable> OnInteractStarted;
+    public UnityEvent OnInteractStartedEvent;
     public UnityAction<Interactable> OnInteractEnded;
+    public UnityEvent OnInteractEndedEvent;
+    [HideInInspector]
     public Event LinkedEvent;
+    [HideInInspector]
     public Maintain LinkedMaintainable;
     [ReadOnly]
     public bool isActivated;
@@ -56,12 +60,14 @@ public class Interactable : MonoBehaviour
     public virtual void InteractionStart()
     {
         OnInteractStarted?.Invoke(this);
+        OnInteractStartedEvent?.Invoke();
         isPressed = true;
     }
 
     public virtual void InteractionEnd()
     {
         OnInteractEnded?.Invoke(this);
+        OnInteractEndedEvent?.Invoke();
         isPressed = false;
     }
 }

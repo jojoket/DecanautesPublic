@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 
@@ -11,6 +12,12 @@ public class Maintain
     public MaintainableData MaintainableData;
     public Meter MaintainableMeter;
     public Interactable interactableFiller;
+    public List<GameObject> ToEnableOnUnderThreshold;
+    public List<GameObject> ToDisableOnUnderThreshold;
+    public UnityEvent OnUnderThreshold;
+    public List<GameObject> ToEnableOnZero;
+    public List<GameObject> ToDisableOnZero;
+    public UnityEvent OnZero;
 }
 
 public class CareSystem : MonoBehaviour
@@ -18,7 +25,7 @@ public class CareSystem : MonoBehaviour
 
     [SerializeField]
     private bool _doSave;
-    [TableList]
+
     public List<Maintain> Maintainables = new List<Maintain>();
 
     private List<MaintainableData> initialState = new List<MaintainableData>();
@@ -39,11 +46,16 @@ public class CareSystem : MonoBehaviour
     {
         if (_doSave)
         {
+            for (int i = 0; i < Maintainables.Count; i++)
+            {
+                Destroy(initialState[i]);
+            }
             return;
         }
         for (int i = 0; i < Maintainables.Count; i++)
         {
             Maintainables[i].MaintainableData.CurrentState = initialState[i].CurrentState;
+            Destroy(initialState[i]);
         }
     }
 
