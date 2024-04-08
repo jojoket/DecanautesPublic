@@ -5,6 +5,20 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
 
+public class AnimatorTriggerer
+{
+    public Animator animator;
+    public enum ParameterType
+    {
+        Trigger,
+        Bool,
+        Float,
+    }
+    public ParameterType triggerType;
+    public string parameterName;
+
+}
+
 public class Interactable : MonoBehaviour
 {
     //--------Components
