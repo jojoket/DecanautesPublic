@@ -1,0 +1,112 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using TMPro;
+
+public class PostIt : MonoBehaviour
+{
+    [TitleGroup("Components")]
+    public PostItData PostItData;
+    public GameObject Model;
+    public GameObject PreviewModel;
+    public TextMeshPro Text;
+    private Rigidbody rigidbody;
+
+    [TitleGroup("Parameters")]
+    public LayerMask NotPostItLayer;
+
+    [TitleGroup("Debug")]
+    [SerializeField, ReadOnly]
+    private bool _isPosting;
+    [SerializeField, ReadOnly]
+    private bool _isPosted;
+    [SerializeField, ReadOnly]
+    private bool _isValid;
+    [SerializeField, ReadOnly]
+    private Vector3 _validPosition;
+    [SerializeField, ReadOnly]
+    private Quaternion _validRotation;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (_isPosting)
+        {
+            GetPostItSurface();
+        }
+    }
+
+    private void GetPostItSurface()
+    {
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, PostItData.DistanceMax, NotPostItLayer))
+        {
+            PreviewModel.SetActive(true);
+            PreviewModel.transform.position = hitInfo.point;
+            _validPosition = hitInfo.point;
+            PreviewModel.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
+            _validRotation = Quaternion.LookRotation(hitInfo.normal);
+            Renderer previewRenderer = PreviewModel.GetComponent<Renderer>();
+            if (PostItData.PostItSurface ==  (PostItData.PostItSurface | 1 << hitInfo.transform.gameObject.layer))
+            {
+                _isValid = true;
+                previewRenderer.material = PostItData.ValidMaterial;
+            }
+            else
+            {
+                _isValid = false;
+                previewRenderer.material = PostItData.InvalidMaterial;
+            }
+        }
+        else
+        {
+            PreviewModel.SetActive(false);
+        }
+    }
+
+    public void StartPosting()
+    {
+        PreviewModel.SetActive(true);
+        _isPosting = true;
+        _isPosted = false;
+    }
+    public void StopPosting()
+    {
+        PreviewModel.SetActive(false);
+        _isPosting = false;
+        if (_isValid)
+        {
+            _isPosted = true;
+            Post();
+        }
+    }
+
+    public void Post()
+    {
+        transform.position = _validPosition;
+        transform.rotation = _validRotation;
+    }
+
+    //TEXT
+
+    public void RenamePostIt()
+    {
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * PostItData.DistanceMax);
+
+    }
+}

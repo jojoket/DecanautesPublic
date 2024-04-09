@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     //Components
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
+    private Grabber _grabber;
 
     //Variable
     private Vector2 _moveDirection = Vector2.zero;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
+        _grabber = GetComponent<Grabber>();
         _playerInput = new PlayerInput();
         _playerInput.Enable();
 
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * _moveDirection.y + Camera.main.transform.right * _moveDirection.x;
+        Vector3 dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized * _moveDirection.y + Camera.main.transform.right * _moveDirection.x;
         _rigidbody.AddForce(dir * PlayerData.MoveSpeed);
         Vector3 currentVelocity = _rigidbody.velocity;
         _rigidbody.velocity = new Vector3(currentVelocity.x / (PlayerData.Drag * Time.fixedDeltaTime*100), currentVelocity.y, currentVelocity.z / (PlayerData.Drag * Time.fixedDeltaTime * 100));
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!lookingAt)
         {
+            _grabber.Grab();
             return;
         }
         if (callbackContext.ReadValueAsButton())
@@ -71,7 +74,10 @@ public class PlayerController : MonoBehaviour
             lookingAt.InteractionStart();
             return;
         }
-        lookingAt.InteractionEnd();
+        if (lookingAt.isPressed)
+        {
+            lookingAt.InteractionEnd();
+        }
     }
 
 
@@ -80,23 +86,23 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = Camera.main.transform.forward;
         Ray ray = new Ray(Camera.main.transform.position,dir);
         Debug.DrawRay(Camera.main.transform.position, dir * PlayerData.InteractionMaxDist);
-        if (Physics.Raycast(ray, out RaycastHit hit, PlayerData.InteractionMaxDist, InteractionLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, PlayerData.InteractionMaxDist))
         {
             if (!hit.transform.TryGetComponent<Interactable>(out Interactable component))
             {
                 if (lookingAt)
                 {
-                    lookingAt.StopHover();
-                    if (lookingAt.isPressed)
-                    {
-                        lookingAt.InteractionEnd();
-                    }
+                    StopLookAtInteractable();
                 }
                 lookingAt = null;
                 return;
             }
             if (lookingAt!= component)
             {
+                if (lookingAt)
+                {
+                    StopLookAtInteractable();
+                }
                 lookingAt = component;
                 lookingAt.Hover();
             }
@@ -105,13 +111,18 @@ public class PlayerController : MonoBehaviour
         {
             if (lookingAt)
             {
-                lookingAt.StopHover();
-                if (lookingAt.isPressed)
-                {
-                    lookingAt.InteractionEnd();
-                }
+                StopLookAtInteractable();
             }
             lookingAt = null;
+        }
+    }
+
+    private void StopLookAtInteractable()
+    {
+        lookingAt.StopHover();
+        if (lookingAt.isPressed)
+        {
+            lookingAt.InteractionEnd();
         }
     }
 
