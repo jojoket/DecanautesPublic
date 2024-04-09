@@ -11,7 +11,7 @@ public class PostIt : MonoBehaviour
     public PostItData PostItData;
     public GameObject Model;
     public GameObject PreviewModel;
-    public TextMeshPro Text;
+    public TMP_InputField Text;
     private Rigidbody rigidbody;
 
     [TitleGroup("Parameters")]
@@ -54,6 +54,8 @@ public class PostIt : MonoBehaviour
             PreviewModel.transform.position = hitInfo.point;
             _validPosition = hitInfo.point;
             PreviewModel.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
+            Quaternion toCamera = Quaternion.LookRotation(Camera.main.transform.position - PreviewModel.transform.position);
+            PreviewModel.transform.localEulerAngles = new Vector3(PreviewModel.transform.localEulerAngles.x, PreviewModel.transform.localEulerAngles.y, toCamera.eulerAngles.z);
             _validRotation = Quaternion.LookRotation(hitInfo.normal);
             Renderer previewRenderer = PreviewModel.GetComponent<Renderer>();
             if (PostItData.PostItSurface ==  (PostItData.PostItSurface | 1 << hitInfo.transform.gameObject.layer))
@@ -94,6 +96,8 @@ public class PostIt : MonoBehaviour
     {
         transform.position = _validPosition;
         transform.rotation = _validRotation;
+        Quaternion toCamera = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, toCamera.eulerAngles.z);
     }
 
     //TEXT
