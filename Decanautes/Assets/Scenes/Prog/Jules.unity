@@ -848,8 +848,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
         type: 3}
-      propertyPath: OnInteractStartedEvent.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: IsToggle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].animator
+      value: 
+      objectReference: {fileID: 2073203087}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animator
+      value: 
+      objectReference: {fileID: 2073203087}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].triggerType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].parameterName
+      value: IsOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].triggerType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].StateToApply
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].parameterName
+      value: IsOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6170066714506044004, guid: aab6f3e85ac0c4746b8efe198e302887,
         type: 3}
