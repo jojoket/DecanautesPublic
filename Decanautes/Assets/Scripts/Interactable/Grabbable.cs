@@ -145,6 +145,15 @@ public class Grabbable : Interactable
 
     public void Release()
     {
+        if (TryGetComponent<PostIt>(out PostIt post))
+        {
+            if (!post._isValid)
+            {
+                return;
+            }
+            post.StopPosting();
+        }
+        _playerController.grabbed = null;
         if (GrabbableData.isSimulated && _rigidbody.velocity.magnitude<= 0.5f)
         {
             _rigidbody.velocity = Vector3.zero;
@@ -158,9 +167,6 @@ public class Grabbable : Interactable
             _rigidbody.isKinematic = _wasKinematic;
         }
         _isGrabbed = false;
-        if (TryGetComponent<PostIt>(out PostIt post))
-        {
-            post.StopPosting();
-        }
+        
     }
 }

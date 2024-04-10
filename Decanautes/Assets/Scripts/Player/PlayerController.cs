@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Sirenix.OdinInspector.ReadOnly]
     private Interactable lookingAt;
-    [SerializeField, Sirenix.OdinInspector.ReadOnly]
-    private List<Grabbable> grabbed;
+    [Sirenix.OdinInspector.ReadOnly]
+    public Grabbable grabbed;
 
 
 
@@ -68,6 +68,22 @@ public class PlayerController : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext callbackContext)
     {
+        
+        //If there is a grabbed object
+        if (grabbed)
+        {
+            if (callbackContext.ReadValueAsButton())
+            {
+                grabbed.InteractionStart();
+            }
+            else
+            {
+                grabbed.InteractionEnd();
+            }
+            return;
+        }
+
+        //If we're looking at smthg and not grabbing
         if (!lookingAt)
         {
             return;
@@ -77,7 +93,7 @@ public class PlayerController : MonoBehaviour
             lookingAt.InteractionStart();
             if (lookingAt.GetType() == typeof(Grabbable))
             {
-                grabbed.Add(lookingAt.GetComponent<Grabbable>());
+                grabbed = lookingAt.GetComponent<Grabbable>();
             }
             return;
         }
@@ -90,9 +106,13 @@ public class PlayerController : MonoBehaviour
 
     private void InteractSec(InputAction.CallbackContext callbackContext)
     {
-        if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt))
+        if (grabbed && grabbed.TryGetComponent<PostIt>(out PostIt postIt))
         {
             postIt.SelectText();
+        }
+        if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
+        {
+            postIt1.SelectText();
         }
     }
 

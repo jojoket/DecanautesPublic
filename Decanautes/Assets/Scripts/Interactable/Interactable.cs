@@ -117,13 +117,13 @@ public class Interactable : MonoBehaviour
 
     public virtual void InteractionStart()
     {
-        isActivated = !isActivated;
         if (!IsToggle)
         {
             InvokeInteractStart();
         }
         else
         {
+            isActivated = !isActivated;
             if (isActivated)
             {
                 InvokeInteractStart();

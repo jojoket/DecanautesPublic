@@ -22,8 +22,8 @@ public class PostIt : MonoBehaviour
     private bool _isPosting;
     [SerializeField, ReadOnly]
     private bool _isPosted;
-    [SerializeField, ReadOnly]
-    private bool _isValid;
+    [ReadOnly]
+    public bool _isValid;
     [SerializeField, ReadOnly]
     private Vector3 _validPosition;
     [SerializeField, ReadOnly]
@@ -50,13 +50,9 @@ public class PostIt : MonoBehaviour
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, PostItData.DistanceMax, NotPostItLayer))
         {
-            PreviewModel.SetActive(true);
-            PreviewModel.transform.position = hitInfo.point;
-            _validPosition = hitInfo.point;
-            PreviewModel.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
-            Quaternion toCamera = Quaternion.LookRotation(Camera.main.transform.position - PreviewModel.transform.position);
-            PreviewModel.transform.localEulerAngles = new Vector3(PreviewModel.transform.localEulerAngles.x, PreviewModel.transform.localEulerAngles.y, toCamera.eulerAngles.z);
-            _validRotation = Quaternion.LookRotation(hitInfo.normal);
+            PreviewPostIt(hitInfo);
+            _validPosition = PreviewModel.transform.position;
+            _validRotation = PreviewModel.transform.rotation;
             Renderer previewRenderer = PreviewModel.GetComponent<Renderer>();
             if (PostItData.PostItSurface ==  (PostItData.PostItSurface | 1 << hitInfo.transform.gameObject.layer))
             {
@@ -72,6 +68,18 @@ public class PostIt : MonoBehaviour
         else
         {
             PreviewModel.SetActive(false);
+        }
+    }
+
+    private void PreviewPostIt(RaycastHit hitInfo)
+    {
+        PreviewModel.SetActive(true);
+        PreviewModel.transform.position = hitInfo.point;
+        PreviewModel.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
+        if (hitInfo.normal == Vector3.up)
+        {
+            Quaternion toCamera = Quaternion.LookRotation(Camera.main.transform.position - PreviewModel.transform.position);
+            PreviewModel.transform.localEulerAngles = new Vector3(PreviewModel.transform.localEulerAngles.x, PreviewModel.transform.localEulerAngles.y, toCamera.eulerAngles.z);
         }
     }
 
@@ -96,8 +104,8 @@ public class PostIt : MonoBehaviour
     {
         transform.position = _validPosition;
         transform.rotation = _validRotation;
-        Quaternion toCamera = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, toCamera.eulerAngles.z);
+        /*Quaternion toCamera = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, toCamera.eulerAngles.z);*/
     }
 
     //TEXT
