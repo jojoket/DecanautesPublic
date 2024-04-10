@@ -102,10 +102,11 @@ public class PostIt : MonoBehaviour
 
     //TEXT
 
-    public void RenamePostIt()
+    [Button("Select Text")]
+    public void SelectText()
     {
+        Text.Select();
     }
-
 
     private void OnDrawGizmosSelected()
     {

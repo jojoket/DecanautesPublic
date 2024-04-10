@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class Grabbable : MonoBehaviour
+public class Grabbable : Interactable
 {
     [TitleGroup("Components")]
     public GrabbableData GrabbableData;
     private Rigidbody _rigidbody;
+    private PlayerController _playerController;
 
     [TitleGroup("Debug")]
     [SerializeField,ReadOnly]
@@ -29,6 +30,7 @@ public class Grabbable : MonoBehaviour
             _rigidbody = rigidbody;
         }
         _originParent = transform.parent;
+        _playerController = GameObject.FindFirstObjectByType<PlayerController>();
     }
 
     private void Update()
@@ -43,6 +45,35 @@ public class Grabbable : MonoBehaviour
     void FixedUpdate()
     {
         
+    }
+
+    public override void InteractionStart()
+    {
+        base.InteractionStart();
+        if (!IsToggle)
+        {
+            GrabToTransform(_playerController.GrabPoint);
+        }
+        else
+        {
+            if (isActivated)
+            {
+                GrabToTransform(_playerController.GrabPoint);
+            }
+            else
+            {
+                Release();
+            }
+        }
+    }
+
+    public override void InteractionEnd()
+    {
+        base.InteractionEnd();
+        if (!IsToggle)
+        {
+            Release();
+        }
     }
 
     private void GrabSimulation()

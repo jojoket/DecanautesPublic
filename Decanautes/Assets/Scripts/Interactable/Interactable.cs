@@ -65,6 +65,7 @@ public class Interactable : MonoBehaviour
 
     [TitleGroup("Parameters")]
     public bool IsToggle = false;
+    public bool NeedLookToKeepInteraction = true;
 
 
     //--------Events
@@ -78,6 +79,7 @@ public class Interactable : MonoBehaviour
     public Event LinkedEvent;
     [HideInInspector]
     public Maintain LinkedMaintainable;
+    [TitleGroup("Debug")]
     [ReadOnly]
     public bool isActivated = false;
     [ReadOnly]
