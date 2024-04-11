@@ -14,7 +14,8 @@ public class EventManager : MonoBehaviour
     //---------Params
 
     [TitleGroup("Parameters")]
-    [MinMaxSlider(0, 20, ShowFields = true)]
+    public float MaxSlider;
+    [MinMaxSlider(0, "MaxSlider", ShowFields = true)]
     public Vector2 TaskAppearanceCycle;
 
     public List<Event> eventsToTrigger = new List<Event>();

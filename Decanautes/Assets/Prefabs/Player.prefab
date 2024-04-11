@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2476217162610653283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107574339451760140}
+  m_Layer: 3
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &107574339451760140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476217162610653283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00000050291413, y: -0.98521763, z: -0.17130725, w: 0.0000029206271}
+  m_LocalPosition: {x: -0, y: -0.357, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4581235665711629189}
+  m_LocalEulerAnglesHint: {x: -19.728, y: -180, z: 0}
 --- !u!1 &5464884778237742366
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +42,7 @@ GameObject:
   - component: {fileID: 2185170539282178000}
   - component: {fileID: 6155217590185667143}
   - component: {fileID: 5026608948024696433}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b210c3d67bf2ee24badab97249546cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrabPoint: {fileID: 107574339451760140}
   PlayerData: {fileID: 11400000, guid: 7588c2c3e85c1d841967976e93ee0e11, type: 2}
   InteractionLayer:
     serializedVersion: 2
@@ -92,7 +124,7 @@ GameObject:
   - component: {fileID: 1068187302892877647}
   - component: {fileID: 7801661353294989035}
   - component: {fileID: 7851060053843048987}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +234,7 @@ GameObject:
   - component: {fileID: 7891440584260631288}
   - component: {fileID: 1072869494940431267}
   - component: {fileID: 6896573885892303099}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -217,13 +249,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7428690824155065299}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 107574339451760140}
   m_Father: {fileID: 2185170539282178000}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -83.746, z: 0}
 --- !u!20 &6935268579587276832
 Camera:
   m_ObjectHideFlags: 0
@@ -461,7 +494,7 @@ GameObject:
   - component: {fileID: 6010487055516096474}
   - component: {fileID: 4362725819470607552}
   - component: {fileID: 4494551041941338698}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2175875961933017175}
   - component: {fileID: 4495261938294493002}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

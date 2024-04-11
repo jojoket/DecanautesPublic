@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     //Components
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
+    public Transform GrabPoint;
 
     //Variable
     private Vector2 _moveDirection = Vector2.zero;
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Sirenix.OdinInspector.ReadOnly]
     private Interactable lookingAt;
+    [Sirenix.OdinInspector.ReadOnly]
+    public Grabbable grabbed;
+
 
 
     void Start()
@@ -33,12 +37,14 @@ public class PlayerController : MonoBehaviour
         //Input Events
         _playerInput.InGame.Move.performed += Move;
         _playerInput.InGame.Interact.performed += Interact;
+        _playerInput.InGame.InteractSec.performed += InteractSec;
     }
 
     private void OnDestroy()
     {
         _playerInput.InGame.Move.performed -= Move;
         _playerInput.InGame.Interact.performed -= Interact;
+        _playerInput.InGame.InteractSec.performed -= InteractSec;
     }
 
     void Update()
@@ -48,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * _moveDirection.y + Camera.main.transform.right * _moveDirection.x;
+        Vector3 dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized * _moveDirection.y + Camera.main.transform.right * _moveDirection.x;
         _rigidbody.AddForce(dir * PlayerData.MoveSpeed);
         Vector3 currentVelocity = _rigidbody.velocity;
         _rigidbody.velocity = new Vector3(currentVelocity.x / (PlayerData.Drag * Time.fixedDeltaTime*100), currentVelocity.y, currentVelocity.z / (PlayerData.Drag * Time.fixedDeltaTime * 100));
@@ -62,6 +68,22 @@ public class PlayerController : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext callbackContext)
     {
+        
+        //If there is a grabbed object
+        if (grabbed)
+        {
+            if (callbackContext.ReadValueAsButton())
+            {
+                grabbed.InteractionStart();
+            }
+            else
+            {
+                grabbed.InteractionEnd();
+            }
+            return;
+        }
+
+        //If we're looking at smthg and not grabbing
         if (!lookingAt)
         {
             return;
@@ -69,9 +91,29 @@ public class PlayerController : MonoBehaviour
         if (callbackContext.ReadValueAsButton())
         {
             lookingAt.InteractionStart();
+            if (lookingAt.GetType() == typeof(Grabbable))
+            {
+                grabbed = lookingAt.GetComponent<Grabbable>();
+            }
             return;
         }
-        lookingAt.InteractionEnd();
+        if (lookingAt.isPressed)
+        {
+            lookingAt.InteractionEnd();
+            lookingAt = null;
+        }
+    }
+
+    private void InteractSec(InputAction.CallbackContext callbackContext)
+    {
+        if (grabbed && grabbed.TryGetComponent<PostIt>(out PostIt postIt))
+        {
+            postIt.SelectText();
+        }
+        if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
+        {
+            postIt1.SelectText();
+        }
     }
 
 
@@ -80,38 +122,46 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = Camera.main.transform.forward;
         Ray ray = new Ray(Camera.main.transform.position,dir);
         Debug.DrawRay(Camera.main.transform.position, dir * PlayerData.InteractionMaxDist);
-        if (Physics.Raycast(ray, out RaycastHit hit, PlayerData.InteractionMaxDist, InteractionLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, PlayerData.InteractionMaxDist))
         {
+            //if looking at something without the Interactable component
             if (!hit.transform.TryGetComponent<Interactable>(out Interactable component))
             {
                 if (lookingAt)
                 {
-                    lookingAt.StopHover();
-                    if (lookingAt.isPressed)
-                    {
-                        lookingAt.InteractionEnd();
-                    }
+                    StopLookAtInteractable();
                 }
                 lookingAt = null;
                 return;
             }
-            if (lookingAt!= component)
+            //if looking at another object
+            if (lookingAt!= component) 
             {
+                if (lookingAt)
+                {
+                    StopLookAtInteractable();
+                }
                 lookingAt = component;
                 lookingAt.Hover();
             }
         }
         else
         {
+            //if looking at nothing
             if (lookingAt)
             {
-                lookingAt.StopHover();
-                if (lookingAt.isPressed)
-                {
-                    lookingAt.InteractionEnd();
-                }
+                StopLookAtInteractable();
             }
             lookingAt = null;
+        }
+    }
+
+    private void StopLookAtInteractable()
+    {
+        lookingAt.StopHover();
+        if (lookingAt.isPressed && lookingAt.NeedLookToKeepInteraction)
+        {
+            lookingAt.InteractionEnd();
         }
     }
 
