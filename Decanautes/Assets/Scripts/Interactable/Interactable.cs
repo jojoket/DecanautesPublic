@@ -46,7 +46,6 @@ public class AnimatorTriggerer
             }
             case ParameterType.Vector3:
             {
-                animator.SetVector(parameterName, Vector3ToApply);
                 break;
             }
         }
@@ -80,7 +79,6 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public Maintain LinkedMaintainable;
     [TitleGroup("Debug")]
-    [ReadOnly]
     public bool isActivated = false;
     [ReadOnly]
     public bool isPressed;
@@ -89,6 +87,16 @@ public class Interactable : MonoBehaviour
 
     void Start()
     {
+        if (!IsToggle)
+            return;
+        if (isActivated)
+        {
+            InvokeInteractStart();
+        }
+        else
+        {
+            InvokeInteractEnded();
+        }
     }
 
     void Update()
@@ -146,7 +154,7 @@ public class Interactable : MonoBehaviour
         isPressed = false;
     }
 
-    protected void InvokeInteractStart()
+    protected virtual void InvokeInteractStart()
     {
         OnInteractStarted?.Invoke(this);
         OnInteractStartedEvent?.Invoke();
@@ -156,7 +164,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    protected void InvokeInteractEnded()
+    protected virtual void InvokeInteractEnded()
     {
         OnInteractEnded?.Invoke(this);
         OnInteractEndedEvent?.Invoke();
