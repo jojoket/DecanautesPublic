@@ -12,6 +12,7 @@ public class ObjectSave
     public Vector3 Scale;
     public string PostItText;
     public string PrefabPath;
+    public bool IsActivated;
 }
 
 public class SavedObject : MonoBehaviour

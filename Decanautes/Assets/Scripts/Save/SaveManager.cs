@@ -36,7 +36,7 @@ public class SaveManager : MonoBehaviour
         {
             string savedJson = JsonUtility.ToJson(data);
             File.WriteAllText(Path + "/" + data.name + ".json", savedJson);
-            Debug.Log("SAVED : " +  data.name + " to : " + Path + "/" + data.name + ".json");
+            //Debug.Log("SAVED : " +  data.name + " to : " + Path + "/" + data.name + ".json");
         }
     }
 
@@ -50,7 +50,7 @@ public class SaveManager : MonoBehaviour
             }
             string readJson = File.ReadAllText(Path + "/" + toSave[i].name + ".json");
             JsonUtility.FromJsonOverwrite(readJson, toSave[i]);
-            Debug.Log("READ : " + toSave[i].name + " from : " + Path + "/" + toSave[i].name + ".json");
+            //Debug.Log("READ : " + toSave[i].name + " from : " + Path + "/" + toSave[i].name + ".json");
         }
     }
 

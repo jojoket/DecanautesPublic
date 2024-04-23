@@ -34,13 +34,17 @@ public class MapManager : MonoBehaviour
     public void SaveMap()
     {
         SavedObject[] toSaveObjects= GameObject.FindObjectsByType<SavedObject>(FindObjectsSortMode.None);
-
+        List<ObjectSave> toDelete = new List<ObjectSave>();
         foreach (ObjectSave objectSave in MapData.SavedObjects)
         {
             if (Array.Find(toSaveObjects, x => x.name == objectSave.Name) == null)
             {
-                MapData.SavedObjects.Remove(objectSave);
+                toDelete.Add(objectSave);
             }
+        }
+        foreach (ObjectSave objectDeleted in toDelete)
+        {
+            MapData.SavedObjects.Remove(objectDeleted);
         }
 
         foreach (SavedObject obj in toSaveObjects)
@@ -79,18 +83,20 @@ public class MapManager : MonoBehaviour
                 found.transform.localScale = obj.Scale;
                 if (obj.PostItText != null && obj.PostItText != "")
                     found.GetComponent<PostIt>().Text.text = obj.PostItText;
+                if (found.TryGetComponent<Interactable>(out Interactable interactable))
+                    interactable.isActivated = obj.IsActivated;
             }
             else
             {
                 GameObject objSpn = Instantiate(PrefabUtility.LoadPrefabContents(obj.PrefabPath), savedFile.transform);
-                if (obj.PostItText != null && obj.PostItText != "")
-                {
-                    objSpn.GetComponent<PostIt>().Text.text = obj.PostItText;
-                }
                 objSpn.name = obj.Name;
                 objSpn.transform.position = obj.Position;
                 objSpn.transform.rotation = obj.Rotation;
                 objSpn.transform.localScale = obj.Scale;
+                if (obj.PostItText != null && obj.PostItText != "")
+                    objSpn.GetComponent<PostIt>().Text.text = obj.PostItText;
+                if (objSpn.TryGetComponent<Interactable>(out Interactable interactable))
+                    interactable.isActivated = obj.IsActivated;
             }
         }
 
