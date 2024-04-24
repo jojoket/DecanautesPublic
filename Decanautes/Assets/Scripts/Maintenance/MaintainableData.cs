@@ -18,6 +18,6 @@ public class MaintainableData : ScriptableObject
     [TitleGroup("Visual")]
     [Unit(Units.Second)]
     public float FillingTime;
-    public Color baseColor;
-    public Color warningColor;
+    public Material BaseMaterial;
+    public Material WarningMaterial;
 }
