@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4852053266869170918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1984367767035297485}
+  m_Layer: 0
+  m_Name: EngineManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1984367767035297485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4852053266869170918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8235324572824965133}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6075534060733130482
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,6 +62,7 @@ Transform:
   m_Children:
   - {fileID: 6942783288873977256}
   - {fileID: 7463707348313193746}
+  - {fileID: 1984367767035297485}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3502157080421616469
@@ -168,19 +200,19 @@ PrefabInstance:
     - target: {fileID: 983497856690636875, guid: eef22c81207fbf14395aac95b3f58ae3,
         type: 3}
       propertyPath: toSave.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 983497856690636875, guid: eef22c81207fbf14395aac95b3f58ae3,
         type: 3}
       propertyPath: 'toSave.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 01921c996bf732c41b4a084dfc2d15ac,
+      objectReference: {fileID: 11400000, guid: bb687962df8ccd2469114787f49cb545,
         type: 2}
     - target: {fileID: 983497856690636875, guid: eef22c81207fbf14395aac95b3f58ae3,
         type: 3}
       propertyPath: 'toSave.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 01921c996bf732c41b4a084dfc2d15ac,
+      objectReference: {fileID: 11400000, guid: bb687962df8ccd2469114787f49cb545,
         type: 2}
     - target: {fileID: 8482851904115477742, guid: eef22c81207fbf14395aac95b3f58ae3,
         type: 3}
