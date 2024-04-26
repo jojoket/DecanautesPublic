@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using TMPro;
 
 public class PostIt : MonoBehaviour
@@ -22,6 +21,9 @@ public class PostIt : MonoBehaviour
     private bool _isPosting;
     [SerializeField, ReadOnly]
     private bool _isPosted;
+    public int UsesLeft;
+    [SerializeField]
+    private int _modifLeft;
     [ReadOnly]
     public bool _isValid;
     [SerializeField, ReadOnly]
@@ -108,11 +110,31 @@ public class PostIt : MonoBehaviour
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, toCamera.eulerAngles.z);*/
     }
 
+    public bool CanHover()
+    {
+        if (_modifLeft > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void LockPostIt()
+    {
+        UsesLeft = 0;
+        _modifLeft = 0;
+    }
+
     //TEXT
 
     [Button("Select Text")]
     public void SelectText()
     {
+        if (_modifLeft <= 0)
+        {
+            return;
+        }
+        _modifLeft--;
         Text.Select();
     }
 

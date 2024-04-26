@@ -2476,9 +2476,20 @@ MonoBehaviour:
   - {fileID: 1804441691}
   ToDisableOnTrigger:
   - {fileID: 451040631}
+  EngineLinked: {fileID: 0}
+  OnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFix:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBreak:
+    m_PersistentCalls:
+      m_Calls: []
   NeedToBeDoneInOrder: 0
   InteractionsToFix:
   - {fileID: 1407140411}
+  InteractionsToBreak: []
   InteractionsState: 
 --- !u!1001 &1407140410
 PrefabInstance:
@@ -4418,9 +4429,20 @@ MonoBehaviour:
   - {fileID: 392092440}
   ToDisableOnTrigger:
   - {fileID: 451040631}
+  EngineLinked: {fileID: 0}
+  OnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFix:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBreak:
+    m_PersistentCalls:
+      m_Calls: []
   NeedToBeDoneInOrder: 0
   InteractionsToFix:
   - {fileID: 3992899579525042198}
+  InteractionsToBreak: []
   InteractionsState: 
 --- !u!1 &2062983880
 GameObject:
@@ -4621,11 +4643,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1582047440533169341, guid: eb48df92635be124cbc4416cc8889c47,
-        type: 3}
-      propertyPath: originalPrefabPath
-      value: Assets/Prefabs/grabBall.prefab
-      objectReference: {fileID: 0}
     - target: {fileID: 2415454375400528460, guid: eb48df92635be124cbc4416cc8889c47,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4931,6 +4948,11 @@ PrefabInstance:
       propertyPath: savedFile
       value: 
       objectReference: {fileID: 1557933102}
+    - target: {fileID: 5180416731259895245, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
+        type: 3}
+      propertyPath: originalPrefabPath
+      value: Lever
+      objectReference: {fileID: 0}
     - target: {fileID: 6075534060733130482, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
         type: 3}
       propertyPath: m_Name

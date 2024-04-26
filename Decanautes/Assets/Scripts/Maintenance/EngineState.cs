@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
+using UnityEngine.UIElements;
 
 public class EngineState : MonoBehaviour
 {
@@ -22,11 +24,30 @@ public class EngineState : MonoBehaviour
     public TMP_Text EngineText;
 
     public Event LinkedEvent;
+    public Interactable ResetButton;
+    public Material ResetButtonMatBase;
+    public Material ResetButtonMatWarning;
+
+    [TitleGroup("Visual")]
+    public List<GameObject> ToEnableOnGood = new List<GameObject>();
+    public List<GameObject> ToDisableOnGood = new List<GameObject>();
+
+    public List<GameObject> ToEnableOnMalfunction = new List<GameObject>();
+    public List<GameObject> ToDisableOnMalfunction = new List<GameObject>();
+
+    public List<GameObject> ToEnableOnBreakDown = new List<GameObject>();
+    public List<GameObject> ToDisableOnBreakDown = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        ChangeStateToGood();
+        ResetButton.OnInteractStartedEvent.AddListener(FixBreakDown);
+        ChangeState(EngineStateEnum.Good);
+    }
+
+    private void OnDestroy()
+    {
+        ResetButton.OnInteractStartedEvent.RemoveListener(FixBreakDown);
     }
 
     // Update is called once per frame
@@ -38,52 +59,80 @@ public class EngineState : MonoBehaviour
     public void ChangeState(EngineStateEnum state)
     {
         CurrentState = state;
-        EngineText.text = "Engine state : " + state.ToString();
+        EngineText.text = "Engine state : " + state.ToString() + "\n";
         EngineText.text += StateMessages[(int)state];
-        if (CurrentState == EngineStateEnum.Good)
+        switch (CurrentState)
         {
-            List<Interactable> temp = new List<Interactable>(LinkedEvent.InteractionsToFix);
-            LinkedEvent.InteractionsToFix = new List<Interactable>(LinkedEvent.InteractionsToBreak);
-            LinkedEvent.InteractionsToBreak = temp;
+            case EngineStateEnum.Good:
+                GoodVfx();
+                break;
+            case EngineStateEnum.Malfunction:
+                MalfunctionVfx();
+                break;
+            case EngineStateEnum.BreakDown:
+                BreakDownVfx();
+                break;
+            default:
+                break;
         }
     }
 
-    public void ChangeStateToMalfunction()
+    public void ChangeInteractions()
     {
-        CurrentState = EngineStateEnum.Malfunction;
-        EngineText.text = "Engine state : " + EngineStateEnum.Malfunction.ToString();
-        EngineText.text += StateMessages[(int)EngineStateEnum.Malfunction];
-        if (CurrentState == EngineStateEnum.Good)
+        List<Interactable> temp = new List<Interactable>(LinkedEvent.InteractionsToFix);
+        LinkedEvent.InteractionsToFix = new List<Interactable>(LinkedEvent.InteractionsToBreak);
+        LinkedEvent.InteractionsToBreak = temp;
+    }
+
+    public void GoodVfx()
+    {
+        ResetButton.BaseMaterial = ResetButtonMatBase;
+        ResetButton.ChangeMaterials(ResetButtonMatBase);
+        foreach (GameObject gameObj in ToEnableOnGood)
         {
-            List<Interactable> temp = new List<Interactable>(LinkedEvent.InteractionsToFix);
-            LinkedEvent.InteractionsToFix = new List<Interactable>(LinkedEvent.InteractionsToBreak);
-            LinkedEvent.InteractionsToBreak = temp;
+            gameObj.gameObject.SetActive(true);
+        }
+        foreach (GameObject gameObj in ToDisableOnGood)
+        {
+            gameObj.gameObject.SetActive(false);
         }
     }
 
-    public void ChangeStateToBreakDown()
+    public void MalfunctionVfx()
     {
-        CurrentState = EngineStateEnum.BreakDown;
-        EngineText.text = "Engine state : " + EngineStateEnum.BreakDown.ToString();
-        EngineText.text += StateMessages[(int)EngineStateEnum.BreakDown];
-        if (CurrentState == EngineStateEnum.Good)
+        ResetButton.BaseMaterial = ResetButtonMatBase;
+        ResetButton.ChangeMaterials(ResetButtonMatBase);
+        foreach (GameObject gameObj in ToEnableOnMalfunction)
         {
-            List<Interactable> temp = new List<Interactable>(LinkedEvent.InteractionsToFix);
-            LinkedEvent.InteractionsToFix = new List<Interactable>(LinkedEvent.InteractionsToBreak);
-            LinkedEvent.InteractionsToBreak = temp;
+            gameObj.gameObject.SetActive(true);
+        }
+        foreach (GameObject gameObj in ToDisableOnMalfunction)
+        {
+            gameObj.gameObject.SetActive(false);
         }
     }
 
-    public void ChangeStateToGood()
+    public void BreakDownVfx()
     {
-        CurrentState = EngineStateEnum.Good;
-        EngineText.text = "Engine state : " + EngineStateEnum.Good.ToString();
-        EngineText.text += StateMessages[(int)EngineStateEnum.Good];
-        if (CurrentState == EngineStateEnum.Good)
+        ResetButton.BaseMaterial = ResetButtonMatWarning;
+        ResetButton.ChangeMaterials(ResetButtonMatWarning);
+        foreach (GameObject gameObj in ToEnableOnBreakDown)
         {
-            List<Interactable> temp = new List<Interactable>(LinkedEvent.InteractionsToFix);
-            LinkedEvent.InteractionsToFix = new List<Interactable>(LinkedEvent.InteractionsToBreak);
-            LinkedEvent.InteractionsToBreak = temp;
+            gameObj.gameObject.SetActive(true);
         }
+        foreach (GameObject gameObj in ToDisableOnBreakDown)
+        {
+            gameObj.gameObject.SetActive(false);
+        }
+    }
+
+    public void FixBreakDown()
+    {
+        if (CurrentState != EngineStateEnum.BreakDown)
+        {
+            return;
+        }
+        ChangeState(EngineStateEnum.Good);
+        ChangeInteractions();
     }
 }

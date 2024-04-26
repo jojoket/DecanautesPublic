@@ -112,6 +112,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lookingAt: {fileID: 0}
+  grabbed: {fileID: 0}
 --- !u!1 &6800377687091589629
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +235,7 @@ GameObject:
   - component: {fileID: 7891440584260631288}
   - component: {fileID: 1072869494940431267}
   - component: {fileID: 6896573885892303099}
+  - component: {fileID: 3482258626370594223}
   m_Layer: 3
   m_Name: Camera
   m_TagString: MainCamera
@@ -581,7 +583,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 400
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse Y
@@ -605,7 +607,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 400
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse X

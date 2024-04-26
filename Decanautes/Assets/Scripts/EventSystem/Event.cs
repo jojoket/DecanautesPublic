@@ -21,6 +21,7 @@ public class Event : MonoBehaviour
 
     public List<GameObject> ToEnableOnTrigger = new List<GameObject>();
     public List<GameObject> ToDisableOnTrigger = new List<GameObject>();
+    public EngineState EngineLinked;
     public UnityEvent OnEnable;
     public UnityEvent OnFix;
     public UnityEvent OnBreak;
