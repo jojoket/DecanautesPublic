@@ -87,6 +87,16 @@ public class Grabbable : Interactable
 
     public void GrabToTransform(Transform toTransform)
     {
+        if (TryGetComponent<PostIt>(out PostIt post))
+        {
+            if (post.UsesLeft<=0)
+            {
+                return;
+            }
+            post.UsesLeft--;
+            post.StartPosting();
+        }
+        SpawnerReset();
         _isTransformBased = true;
         _isGrabbed = true;
         _grabTransform = toTransform;
@@ -110,14 +120,12 @@ public class Grabbable : Interactable
             transform.rotation = _grabTransform.rotation;
             transform.parent = _grabTransform;
         }
-        if (TryGetComponent<PostIt>(out PostIt post))
-        {
-            post.StartPosting();
-        }
+        
     }
 
     public void GrabToPosition(Vector3 position)
     {
+        SpawnerReset();
         _isTransformBased = false;
         _isGrabbed = true;
         _grabPosition = position;
@@ -141,6 +149,17 @@ public class Grabbable : Interactable
             transform.rotation = Quaternion.identity;
             transform.parent = _grabTransform;
         }
+    }
+
+    private void SpawnerReset()
+    {
+        Spawner spawner= GetComponentInParent<Spawner>();
+        if (!spawner)
+        {
+            return;
+        }
+        _originParent = null;
+        spawner.StartSpawnCoroutine();
     }
 
     public void Release()
