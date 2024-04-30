@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -142,6 +143,11 @@ public class PlayerController : MonoBehaviour
                     StopLookAtInteractable();
                 }
                 lookingAt = component;
+                if (hit.transform.TryGetComponent<PostIt>(out PostIt postIt))
+                {
+                    if (!postIt.CanHover())
+                        return;
+                }
                 lookingAt.Hover();
             }
         }

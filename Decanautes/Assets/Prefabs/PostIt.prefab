@@ -433,6 +433,8 @@ MonoBehaviour:
     m_Bits: 1023
   _isPosting: 0
   _isPosted: 0
+  UsesLeft: 1
+  _modifLeft: 1
   _isValid: 0
   _validPosition: {x: 0, y: 0, z: 0}
   _validRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -500,11 +502,19 @@ MonoBehaviour:
     OnUnderThreshold:
       m_PersistentCalls:
         m_Calls: []
+    OnOverThreshold:
+      m_PersistentCalls:
+        m_Calls: []
     ToEnableOnZero: []
     ToDisableOnZero: []
     OnZero:
       m_PersistentCalls:
         m_Calls: []
+    OnOverZero:
+      m_PersistentCalls:
+        m_Calls: []
+    isOverThreshold: 0
+    isZero: 0
   isActivated: 0
   isPressed: 0
   GrabbableData: {fileID: 11400000, guid: f114c832f4d222b48856a1fa354ef683, type: 2}
@@ -524,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5d54d26aeaf364b9a9370331e12df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalPrefabPath: Assets/Prefabs/PostIt.prefab
+  originalPrefabPath: PostIt
 --- !u!1 &2655880637222682857
 GameObject:
   m_ObjectHideFlags: 0
