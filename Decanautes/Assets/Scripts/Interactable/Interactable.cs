@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 
 [Serializable]
 public class AnimatorTriggerer
@@ -104,23 +105,24 @@ public class Interactable : MonoBehaviour
         
     }
 
+    public void ChangeMaterials(Material material)
+    {
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material = material;
+        }
+    }
+
     public virtual void Hover()
     {
         //Activate Outline
-        foreach (Renderer renderer in renderers)
-        {
-            renderer.material = HoverMaterial;
-        }
-
+        ChangeMaterials(HoverMaterial);
     }
 
     public virtual void StopHover()
     {
         //Deactivate Outline
-        foreach (Renderer renderer in renderers)
-        {
-            renderer.material = BaseMaterial;
-        }
+        ChangeMaterials(BaseMaterial);
     }
 
     public virtual void InteractionStart()

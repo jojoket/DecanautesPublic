@@ -10,7 +10,6 @@ public class MapManager : MonoBehaviour
 {
     public MapData MapData;
     public GameObject savedFile;
-    public GameObject PostItPrefab;
     
 
     // Start is called before the first frame update
@@ -60,6 +59,11 @@ public class MapManager : MonoBehaviour
             objectSave.Scale = obj.transform.localScale;
             objectSave.PrefabPath = obj.originalPrefabPath;
             objectSave.PostItText = obj.TryGetComponent<PostIt>(out PostIt post) ? post.Text.text : "";
+            if (obj.TryGetComponent<Event>(out Event eventFound))
+            {
+                objectSave.EventInteractionsTofix = eventFound.InteractionsToFix.ToList();
+                objectSave.EventInteractionsToBreak = eventFound.InteractionsToBreak.ToList();
+            }
             int index = MapData.SavedObjects.FindIndex(x => x.Name == objectSave.Name);
             if (index != -1)
             {
@@ -72,6 +76,7 @@ public class MapManager : MonoBehaviour
 
     public void LoadMap()
     {
+        MapData.CurrentCycle++;
         SavedObject[] savedObjects = GameObject.FindObjectsByType<SavedObject>(FindObjectsSortMode.None);
         foreach (ObjectSave obj in MapData.SavedObjects)
         {
@@ -82,13 +87,22 @@ public class MapManager : MonoBehaviour
                 found.transform.rotation = obj.Rotation;
                 found.transform.localScale = obj.Scale;
                 if (obj.PostItText != null && obj.PostItText != "")
+                {
                     found.GetComponent<PostIt>().Text.text = obj.PostItText;
+                    found.GetComponent<PostIt>().LockPostIt();
+                }
                 if (found.TryGetComponent<Interactable>(out Interactable interactable))
                     interactable.isActivated = obj.IsActivated;
+                if (found.TryGetComponent<Event>(out Event eventFound))
+                {
+                    eventFound.InteractionsToFix = obj.EventInteractionsTofix.ToList();
+                    eventFound.InteractionsToBreak = obj.EventInteractionsToBreak.ToList();
+                }
             }
             else
             {
-                GameObject objSpn = Instantiate(PrefabUtility.LoadPrefabContents(obj.PrefabPath), savedFile.transform);
+                GameObject objSpn = Instantiate(transform.Find(obj.PrefabPath).gameObject, savedFile.transform);
+                objSpn.SetActive(true);
                 objSpn.name = obj.Name;
                 objSpn.transform.position = obj.Position;
                 objSpn.transform.rotation = obj.Rotation;
@@ -101,6 +115,13 @@ public class MapManager : MonoBehaviour
         }
 
 
+    }
+
+    [Button("Reset Map Data")]
+    public void ResetMapData()
+    {
+        MapData.CurrentCycle = 0;
+        MapData.SavedObjects = new List<ObjectSave>();
     }
 
 }

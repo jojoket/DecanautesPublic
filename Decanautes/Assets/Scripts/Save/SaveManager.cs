@@ -30,6 +30,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
+    [Button("Save datas")]
     public void SaveDatas()
     {
         foreach (ScriptableObject data in toSave)
