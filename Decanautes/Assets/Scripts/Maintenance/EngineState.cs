@@ -28,6 +28,8 @@ public class EngineState : MonoBehaviour
     public Material ResetButtonMatBase;
     public Material ResetButtonMatWarning;
 
+    public KilometerData KilometerData;
+
     [TitleGroup("Visual")]
     public List<GameObject> ToEnableOnGood = new List<GameObject>();
     public List<GameObject> ToDisableOnGood = new List<GameObject>();
@@ -53,31 +55,38 @@ public class EngineState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateScreen();
     }
 
     public void ChangeState(EngineStateEnum state)
     {
         CurrentState = state;
-        EngineText.text = "Engine state : " + state.ToString() + "\n";
-        EngineText.text += StateMessages[(int)state];
         switch (CurrentState)
         {
             case EngineStateEnum.Good:
                 GoodVfx();
+                KilometerData.speedType = KilometerData.SpeedType.Normal;
                 break;
             case EngineStateEnum.Malfunction:
                 MalfunctionVfx();
+                KilometerData.speedType = KilometerData.SpeedType.Malfunction;
                 break;
             case EngineStateEnum.BreakDown:
                 BreakDownVfx();
+                KilometerData.speedType = KilometerData.SpeedType.Breakdown;
                 break;
             default:
                 break;
         }
     }
 
-    
+    public void UpdateScreen()
+    {
+        EngineText.text = "Engine state : " + CurrentState.ToString() + "\n";
+        EngineText.text += " dist : " + KilometerData.CurrentKm + "km \n";
+        EngineText.text += " speed : " + KilometerData.CurrentSpeed + "km/s \n";
+        EngineText.text += StateMessages[(int)CurrentState] + "\n";
+    }
 
     public void ChangeInteractions()
     {

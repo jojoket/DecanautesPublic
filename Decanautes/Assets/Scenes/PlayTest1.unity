@@ -848,6 +848,7 @@ MonoBehaviour:
   ResetButtonMatBase: {fileID: 2100000, guid: 8c01b487f4e4a1f4bb381f6e73689153, type: 2}
   ResetButtonMatWarning: {fileID: 2100000, guid: 86a710bc330798b4ea9a650720e44b72,
     type: 2}
+  KilometerData: {fileID: 11400000, guid: 79ab2f3be45161c42bbf224dd76e3035, type: 2}
   ToEnableOnGood:
   - {fileID: 1219740635}
   ToDisableOnGood:
@@ -4261,7 +4262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 4210a4c974aeab840b110232155d6a10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5600,216 +5601,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1353585907727271370, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
         type: 3}
-      propertyPath: MapData
-      value: 
-      objectReference: {fileID: 11400000, guid: 55728e4331af6c24babbd74343f4a305,
-        type: 2}
-    - target: {fileID: 1353585907727271370, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
       propertyPath: savedFile
       value: 
       objectReference: {fileID: 1515294668}
-    - target: {fileID: 1353585907727271370, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: PostItPrefab
-      value: 
-      objectReference: {fileID: 2063057608008802094, guid: 69bf5503607eb6940bfe7e16b06f76c7,
-        type: 3}
-    - target: {fileID: 1889922065038789568, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1889922065038789568, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1889922065038789568, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3017881201950394130, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3017881201950394130, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3017881201950394130, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295246720776599570, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EngineText
-      value: 
-      objectReference: {fileID: 165499391}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: LinkedEvent
-      value: 
-      objectReference: {fileID: 1472453165}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ResetButton
-      value: 
-      objectReference: {fileID: 750017009}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ResetButtonMatBase
-      value: 
-      objectReference: {fileID: 2100000, guid: 8c01b487f4e4a1f4bb381f6e73689153, type: 2}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: LinkedScriptedEvent
-      value: 
-      objectReference: {fileID: 1248978221}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ResetButtonMatWarning
-      value: 
-      objectReference: {fileID: 2100000, guid: 86a710bc330798b4ea9a650720e44b72, type: 2}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ToEnableOnGood.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ToDisableOnGood.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToEnableOnGood.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1219740635}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToDisableOnGood.Array.data[0]'
-      value: 
-      objectReference: {fileID: 809620260}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToDisableOnGood.Array.data[1]'
-      value: 
-      objectReference: {fileID: 306122165}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ToEnableOnBreakDown.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ToDisableOnBreakDown.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ToEnableOnMalfunction.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: ToDisableOnMalfunction.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToEnableOnBreakDown.Array.data[0]'
-      value: 
-      objectReference: {fileID: 306122165}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: TimeBeforeBreakDownFromMalfunction
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToDisableOnBreakDown.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1219740635}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToDisableOnBreakDown.Array.data[1]'
-      value: 
-      objectReference: {fileID: 809620260}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToEnableOnMalfunction.Array.data[0]'
-      value: 
-      objectReference: {fileID: 809620260}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToDisableOnMalfunction.Array.data[0]'
-      value: 
-      objectReference: {fileID: 306122165}
-    - target: {fileID: 4713717827669652560, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'ToDisableOnMalfunction.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1219740635}
-    - target: {fileID: 4852053266869170918, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_Name
-      value: EngineState
-      objectReference: {fileID: 0}
-    - target: {fileID: 4956936477174974950, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4956936477174974950, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5070193661484253227, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5070193661484253227, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5070193661484253227, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6075534060733130482, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
         type: 3}
       propertyPath: m_Name
       value: MANAGERS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6970562496238424422, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: toSave.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6970562496238424422, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: 'toSave.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 55728e4331af6c24babbd74343f4a305,
-        type: 2}
-    - target: {fileID: 8227257874969411290, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: originalPrefabPath
-      value: grabBall
       objectReference: {fileID: 0}
     - target: {fileID: 8235324572824965133, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
         type: 3}
