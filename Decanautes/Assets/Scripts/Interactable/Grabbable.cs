@@ -91,6 +91,7 @@ public class Grabbable : Interactable
         {
             if (post.UsesLeft<=0)
             {
+                _playerController.grabbed = null;
                 return;
             }
             post.UsesLeft--;

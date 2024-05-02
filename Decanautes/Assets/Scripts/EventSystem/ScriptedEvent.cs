@@ -46,6 +46,7 @@ public class ScriptedEvent : MonoBehaviour
         {
             EventToTrigger.EngineLinked.ChangeState(EngineState.EngineStateEnum.Malfunction);
         }
+        StartCoroutine(TimeLimit(EventToTrigger));
         TaskTriggeredEvent?.Invoke();
     }
 
@@ -120,7 +121,15 @@ public class ScriptedEvent : MonoBehaviour
         }
     }
 
-    private void EventBreak(Event eventBroken)
+    private IEnumerator TimeLimit(Event eventToFix)
+    {
+        yield return new WaitForSeconds(eventToFix.TimeMaxToFix);
+        if (eventToFix.isActive)
+        {
+            EventBreak(eventToFix);
+        }
+    }
+    public void EventBreak(Event eventBroken)
     {
         eventBroken.OnBreak?.Invoke();
         if (eventBroken.EngineLinked)

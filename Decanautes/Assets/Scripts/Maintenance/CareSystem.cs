@@ -114,11 +114,11 @@ public class CareSystem : MonoBehaviour
         maintain.MaintainableMeter.FillAmount = maintain.MaintainableData.CurrentState;
         if (maintain.MaintainableData.CurrentState <= maintain.MaintainableData.Threshold)
         {
-            maintain.MaintainableMeter.fillRenderer.material.color = maintain.MaintainableData.warningColor; //.SetColor("_Color", maintain.MaintainableData.warningColor);
+            maintain.MaintainableMeter.fillRenderer.material = maintain.MaintainableData.WarningMaterial;
         }
         else
         {
-            maintain.MaintainableMeter.fillRenderer.material.color = maintain.MaintainableData.baseColor; //.SetColor("_Color", maintain.MaintainableData.baseColor);
+            maintain.MaintainableMeter.fillRenderer.material = maintain.MaintainableData.BaseMaterial;
         }
     }
 

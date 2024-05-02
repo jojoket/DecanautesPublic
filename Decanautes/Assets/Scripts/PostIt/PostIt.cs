@@ -22,6 +22,7 @@ public class PostIt : MonoBehaviour
     [SerializeField, ReadOnly]
     private bool _isPosted;
     public int UsesLeft;
+    public bool isEditing;
     [SerializeField]
     private int _modifLeft;
     [ReadOnly]
@@ -128,14 +129,22 @@ public class PostIt : MonoBehaviour
     //TEXT
 
     [Button("Select Text")]
-    public void SelectText()
+    public bool SelectText()
     {
         if (_modifLeft <= 0)
         {
-            return;
+            return false;
         }
         _modifLeft--;
         Text.Select();
+        isEditing = true;
+        return true;
+    }
+
+    public void DeselectText()
+    {
+        Text.ReleaseSelection();
+        isEditing = false;
     }
 
     private void OnDrawGizmosSelected()
