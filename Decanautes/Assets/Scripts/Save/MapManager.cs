@@ -108,7 +108,10 @@ public class MapManager : MonoBehaviour
                 objSpn.transform.rotation = obj.Rotation;
                 objSpn.transform.localScale = obj.Scale;
                 if (obj.PostItText != null && obj.PostItText != "")
+                {
                     objSpn.GetComponent<PostIt>().Text.text = obj.PostItText;
+                    objSpn.GetComponent<PostIt>().LockPostIt();
+                }
                 if (objSpn.TryGetComponent<Interactable>(out Interactable interactable))
                     interactable.isActivated = obj.IsActivated;
             }

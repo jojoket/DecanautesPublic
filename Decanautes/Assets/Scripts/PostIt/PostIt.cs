@@ -121,6 +121,7 @@ public class PostIt : MonoBehaviour
 
     public void LockPostIt()
     {
+        Debug.Log("locked", this);
         UsesLeft = 0;
         _modifLeft = 0;
     }
