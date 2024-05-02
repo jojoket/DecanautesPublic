@@ -132,6 +132,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""InteractSec"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75013889-ffd6-4f63-b1a7-49289fd6ff55"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InteractSec"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
