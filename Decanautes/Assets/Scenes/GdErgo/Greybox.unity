@@ -993,11 +993,19 @@ MonoBehaviour:
     OnUnderThreshold:
       m_PersistentCalls:
         m_Calls: []
+    OnOverThreshold:
+      m_PersistentCalls:
+        m_Calls: []
     ToEnableOnZero: []
     ToDisableOnZero: []
     OnZero:
       m_PersistentCalls:
         m_Calls: []
+    OnOverZero:
+      m_PersistentCalls:
+        m_Calls: []
+    isOverThreshold: 0
+    isZero: 0
 --- !u!1 &1032789746
 GameObject:
   m_ObjectHideFlags: 0

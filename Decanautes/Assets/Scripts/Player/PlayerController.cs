@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -15,7 +16,8 @@ public class PlayerController : MonoBehaviour
 
     //Variable
     private Vector2 _moveDirection = Vector2.zero;
-
+    [Sirenix.OdinInspector.ReadOnly]
+    public bool CanMove = true;
 
     public PlayerData PlayerData;
     public LayerMask InteractionLayer;
@@ -24,11 +26,13 @@ public class PlayerController : MonoBehaviour
     private Interactable lookingAt;
     [Sirenix.OdinInspector.ReadOnly]
     public Grabbable grabbed;
+    public PostIt editing;
 
 
 
     void Start()
     {
+        CanMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
         _playerInput = new PlayerInput();
@@ -64,6 +68,11 @@ public class PlayerController : MonoBehaviour
 
     private void Move(InputAction.CallbackContext callbackContext)
     {
+        if (!CanMove)
+        {
+            _moveDirection = Vector3.zero;
+            return;
+        }
         _moveDirection  = callbackContext.ReadValue<Vector2>();
     }
 
@@ -91,11 +100,11 @@ public class PlayerController : MonoBehaviour
         }
         if (callbackContext.ReadValueAsButton())
         {
-            lookingAt.InteractionStart();
             if (lookingAt.GetType() == typeof(Grabbable))
             {
                 grabbed = lookingAt.GetComponent<Grabbable>();
             }
+            lookingAt.InteractionStart();
             return;
         }
         if (lookingAt.isPressed)
@@ -107,13 +116,31 @@ public class PlayerController : MonoBehaviour
 
     private void InteractSec(InputAction.CallbackContext callbackContext)
     {
+        if (editing)
+        {
+            if (editing.isEditing)
+            {
+                CanMove = true;
+                editing.DeselectText();
+                editing = null;
+            }
+            return;
+        }
         if (grabbed && grabbed.TryGetComponent<PostIt>(out PostIt postIt))
         {
-            postIt.SelectText();
+            bool isEditing = postIt.SelectText();
+            if (!isEditing)
+                return;
+            editing = postIt;
+            CanMove = false;
         }
         if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
         {
-            postIt1.SelectText();
+            bool isEditing = postIt1.SelectText();
+            if (!isEditing)
+                return;
+            editing = postIt1;
+            CanMove = false;
         }
     }
 

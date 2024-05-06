@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [Serializable]
 public class ObjectSave
@@ -19,8 +20,8 @@ public class ObjectSave
     public string PostItText;
 
     //For Events objects
-    public List<Interactable> EventInteractionsTofix;
-    public List<Interactable> EventInteractionsToBreak;
+    public List<string> EventInteractionsTofix = new List<string>();
+    public List<string> EventInteractionsToBreak = new List<string>();
 }
 
 public class SavedObject : MonoBehaviour

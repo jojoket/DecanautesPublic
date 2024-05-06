@@ -61,8 +61,14 @@ public class MapManager : MonoBehaviour
             objectSave.PostItText = obj.TryGetComponent<PostIt>(out PostIt post) ? post.Text.text : "";
             if (obj.TryGetComponent<Event>(out Event eventFound))
             {
-                objectSave.EventInteractionsTofix = eventFound.InteractionsToFix.ToList();
-                objectSave.EventInteractionsToBreak = eventFound.InteractionsToBreak.ToList();
+                foreach (Interactable item in eventFound.InteractionsToFix)
+                {
+                    objectSave.EventInteractionsTofix.Add(item.gameObject.name);
+                }
+                foreach (Interactable item in eventFound.InteractionsToBreak)
+                {
+                    objectSave.EventInteractionsToBreak.Add(item.gameObject.name);
+                }
             }
             int index = MapData.SavedObjects.FindIndex(x => x.Name == objectSave.Name);
             if (index != -1)
@@ -95,8 +101,17 @@ public class MapManager : MonoBehaviour
                     interactable.isActivated = obj.IsActivated;
                 if (found.TryGetComponent<Event>(out Event eventFound))
                 {
-                    eventFound.InteractionsToFix = obj.EventInteractionsTofix.ToList();
-                    eventFound.InteractionsToBreak = obj.EventInteractionsToBreak.ToList();
+                    //Retrieve interactables for events
+                    eventFound.InteractionsToFix.Clear();
+                    foreach (string objName in obj.EventInteractionsTofix)
+                    {
+                        eventFound.InteractionsToFix.Add(GameObject.Find(objName).GetComponent<Interactable>());
+                    }
+                    eventFound.InteractionsToBreak.Clear();
+                    foreach (string objName in obj.EventInteractionsToBreak)
+                    {
+                        eventFound.InteractionsToBreak.Add(GameObject.Find(objName).GetComponent<Interactable>());
+                    }
                 }
             }
             else
@@ -108,7 +123,10 @@ public class MapManager : MonoBehaviour
                 objSpn.transform.rotation = obj.Rotation;
                 objSpn.transform.localScale = obj.Scale;
                 if (obj.PostItText != null && obj.PostItText != "")
+                {
                     objSpn.GetComponent<PostIt>().Text.text = obj.PostItText;
+                    objSpn.GetComponent<PostIt>().LockPostIt();
+                }
                 if (objSpn.TryGetComponent<Interactable>(out Interactable interactable))
                     interactable.isActivated = obj.IsActivated;
             }
