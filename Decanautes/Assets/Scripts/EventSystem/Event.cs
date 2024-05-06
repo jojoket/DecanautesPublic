@@ -13,6 +13,7 @@ public class Event : MonoBehaviour
     public bool isActive;
     [PropertyRange(0, 1)]
     public float Probability;
+    public float TimeMaxToFix;
 
     
     [HideInInspector]
