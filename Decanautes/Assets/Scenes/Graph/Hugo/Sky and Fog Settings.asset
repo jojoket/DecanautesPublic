@@ -103,7 +103,7 @@ MonoBehaviour:
   active: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 3
   cloudType:
     m_OverrideState: 0
     m_Value: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 14.5
+    m_Value: 12.1
   multiplier:
     m_OverrideState: 1
     m_Value: 5000
@@ -164,16 +164,16 @@ MonoBehaviour:
     m_Value: 0
   top:
     m_OverrideState: 1
-    m_Value: {r: 0.122152, g: 0.15629123, b: 0.4245283, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   middle:
     m_OverrideState: 1
-    m_Value: {r: 0.7830189, g: 0.26602143, b: 0, a: 1}
+    m_Value: {r: 1, g: 0.32381704, b: 0.1273585, a: 1}
   bottom:
     m_OverrideState: 1
-    m_Value: {r: 0.008143453, g: 0.015037871, b: 0.5754717, a: 1}
+    m_Value: {r: 0, g: 0.020568086, b: 0.13207549, a: 1}
   gradientDiffusion:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,10 +372,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   skyIntensityMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   exposure:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   multiplier:
     m_OverrideState: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 20000
   updateMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   updatePeriod:
     m_OverrideState: 0
@@ -482,10 +482,10 @@ MonoBehaviour:
     m_Value: 1
   horizonTint:
     m_OverrideState: 1
-    m_Value: {r: 0.6721698, g: 0.8962264, b: 0.8855907, a: 1}
+    m_Value: {r: 0.14085598, g: 0.033018887, b: 1, a: 1}
   zenithTint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0, g: 0.7555051, b: 1, a: 1}
   horizonZenithShift:
     m_OverrideState: 1
     m_Value: 0
