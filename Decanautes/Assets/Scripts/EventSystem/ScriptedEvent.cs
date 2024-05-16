@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using UnityEngine.EventSystems;
 
+using Decanautes.Interactable;
+
 public class ScriptedEvent : MonoBehaviour
 {
     public float TaskAppearanceTimeInSec;

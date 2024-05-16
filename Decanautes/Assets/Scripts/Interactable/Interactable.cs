@@ -6,134 +6,92 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 
-[Serializable]
-public class AnimatorTriggerer
+namespace Decanautes.Interactable
 {
-    public Animator animator;
-    public enum ParameterType
+    [Serializable]
+    public class AnimatorTriggerer
     {
-        Trigger,
-        Bool,
-        Float,
-        Vector3,
-    }
-    public ParameterType triggerType;
-    public string parameterName;
-    [ShowIf("triggerType", ParameterType.Bool)]
-    public bool StateToApply;
-    [ShowIf("triggerType", ParameterType.Float)]
-    public float FloatToApply;
-    [ShowIf("triggerType", ParameterType.Vector3)]
-    public Vector3 Vector3ToApply;
-
-    public void TriggerAnimation()
-    {
-        switch (triggerType)
+        public Animator animator;
+        public enum ParameterType
         {
-            case ParameterType.Trigger:
+            Trigger,
+            Bool,
+            Float,
+            Vector3,
+        }
+        public ParameterType triggerType;
+        public string parameterName;
+        [ShowIf("triggerType", ParameterType.Bool)]
+        public bool StateToApply;
+        [ShowIf("triggerType", ParameterType.Float)]
+        public float FloatToApply;
+        [ShowIf("triggerType", ParameterType.Vector3)]
+        public Vector3 Vector3ToApply;
+
+        public void TriggerAnimation()
+        {
+            switch (triggerType)
             {
-                animator.SetTrigger(parameterName);
-                break;
+                case ParameterType.Trigger:
+                {
+                    animator.SetTrigger(parameterName);
+                    break;
+                }
+                case ParameterType.Bool:
+                {
+                    animator.SetBool(parameterName, StateToApply);
+                    break;
+                }
+                case ParameterType.Float:
+                {
+                    animator.SetFloat(parameterName, FloatToApply);
+                    break;
+                }
+                case ParameterType.Vector3:
+                {
+                    break;
+                }
             }
-            case ParameterType.Bool:
-            {
-                animator.SetBool(parameterName, StateToApply);
-                break;
-            }
-            case ParameterType.Float:
-            {
-                animator.SetFloat(parameterName, FloatToApply);
-                break;
-            }
-            case ParameterType.Vector3:
-            {
-                break;
-            }
         }
+
     }
 
-}
-
-public class Interactable : MonoBehaviour
-{
-    //--------Components
-    [TitleGroup("Components")]
-    public List<Renderer> renderers;
-    public Material BaseMaterial;
-    public Material HoverMaterial;
-    public Material ActiveMaterial;
-
-    [TitleGroup("Parameters")]
-    public bool IsToggle = false;
-    public bool NeedLookToKeepInteraction = true;
-
-
-    //--------Events
-    public List<AnimatorTriggerer> OnInteractStartedAnimations = new List<AnimatorTriggerer>();
-    public UnityAction<Interactable> OnInteractStarted;
-    public UnityEvent OnInteractStartedEvent;
-    public List<AnimatorTriggerer> OnInteractEndedAnimations = new List<AnimatorTriggerer>();
-    public UnityAction<Interactable> OnInteractEnded;
-    public UnityEvent OnInteractEndedEvent;
-    [HideInInspector]
-    public Event LinkedEvent;
-    [HideInInspector]
-    public Maintain LinkedMaintainable;
-    [TitleGroup("Debug")]
-    public bool isActivated = false;
-    [ReadOnly]
-    public bool isPressed;
-
-
-
-    void Start()
+    public class Interactable : MonoBehaviour
     {
-        if (!IsToggle)
-            return;
-        if (isActivated)
+        //--------Components
+        [TitleGroup("Components")]
+        public List<Renderer> renderers;
+        public Material BaseMaterial;
+        public Material HoverMaterial;
+        public Material ActiveMaterial;
+
+        [TitleGroup("Parameters")]
+        public bool IsToggle = false;
+        public bool NeedLookToKeepInteraction = true;
+
+
+        //--------Events
+        public List<AnimatorTriggerer> OnInteractStartedAnimations = new List<AnimatorTriggerer>();
+        public UnityAction<Interactable> OnInteractStarted;
+        public UnityEvent OnInteractStartedEvent;
+        public List<AnimatorTriggerer> OnInteractEndedAnimations = new List<AnimatorTriggerer>();
+        public UnityAction<Interactable> OnInteractEnded;
+        public UnityEvent OnInteractEndedEvent;
+        [HideInInspector]
+        public Event LinkedEvent;
+        [HideInInspector]
+        public Maintain LinkedMaintainable;
+        [TitleGroup("Debug")]
+        public bool isActivated = false;
+        [ReadOnly]
+        public bool isPressed;
+
+
+
+        void Start()
         {
-            InvokeInteractStart();
-        }
-        else
-        {
-            InvokeInteractEnded();
-        }
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void ChangeMaterials(Material material)
-    {
-        foreach (Renderer renderer in renderers)
-        {
-            renderer.material = material;
-        }
-    }
-
-    public virtual void Hover()
-    {
-        //Activate Outline
-        ChangeMaterials(HoverMaterial);
-    }
-
-    public virtual void StopHover()
-    {
-        //Deactivate Outline
-        ChangeMaterials(BaseMaterial);
-    }
-
-    public virtual void InteractionStart()
-    {
-        if (!IsToggle)
-        {
-            InvokeInteractStart();
-        }
-        else
-        {
-            isActivated = !isActivated;
+            if (!IsToggle)
+                return;
             if (isActivated)
             {
                 InvokeInteractStart();
@@ -144,35 +102,81 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        isPressed = true;
-    }
-
-    public virtual void InteractionEnd()
-    {
-        if (!IsToggle)
+        void Update()
         {
-            InvokeInteractEnded();
+        
         }
-        isPressed = false;
-    }
 
-    protected virtual void InvokeInteractStart()
-    {
-        OnInteractStarted?.Invoke(this);
-        OnInteractStartedEvent?.Invoke();
-        foreach (AnimatorTriggerer anim in OnInteractStartedAnimations)
+        public void ChangeMaterials(Material material)
         {
-            anim.TriggerAnimation();
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.material = material;
+            }
         }
-    }
 
-    protected virtual void InvokeInteractEnded()
-    {
-        OnInteractEnded?.Invoke(this);
-        OnInteractEndedEvent?.Invoke();
-        foreach (AnimatorTriggerer anim in OnInteractEndedAnimations)
+        public virtual void Hover()
         {
-            anim.TriggerAnimation();
+            //Activate Outline
+            ChangeMaterials(HoverMaterial);
+        }
+
+        public virtual void StopHover()
+        {
+            //Deactivate Outline
+            ChangeMaterials(BaseMaterial);
+        }
+
+        public virtual void InteractionStart()
+        {
+            if (!IsToggle)
+            {
+                InvokeInteractStart();
+            }
+            else
+            {
+                isActivated = !isActivated;
+                if (isActivated)
+                {
+                    InvokeInteractStart();
+                }
+                else
+                {
+                    InvokeInteractEnded();
+                }
+            }
+
+            isPressed = true;
+        }
+
+        public virtual void InteractionEnd()
+        {
+            if (!IsToggle)
+            {
+                InvokeInteractEnded();
+            }
+            isPressed = false;
+        }
+
+        protected virtual void InvokeInteractStart()
+        {
+            OnInteractStarted?.Invoke(this);
+            OnInteractStartedEvent?.Invoke();
+            foreach (AnimatorTriggerer anim in OnInteractStartedAnimations)
+            {
+                anim.TriggerAnimation();
+            }
+        }
+
+        protected virtual void InvokeInteractEnded()
+        {
+            OnInteractEnded?.Invoke(this);
+            OnInteractEndedEvent?.Invoke();
+            foreach (AnimatorTriggerer anim in OnInteractEndedAnimations)
+            {
+                anim.TriggerAnimation();
+            }
         }
     }
 }
+
