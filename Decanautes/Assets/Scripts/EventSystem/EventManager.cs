@@ -8,6 +8,8 @@ using System;
 using System.Data;
 using System.Runtime.CompilerServices;
 
+using Decanautes.Interactable;
+
 
 public class EventManager : MonoBehaviour
 {

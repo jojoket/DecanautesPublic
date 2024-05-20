@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using Decanautes.Interactable;
+
+
 
 [Serializable]
 public class Maintain

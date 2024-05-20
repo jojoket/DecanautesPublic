@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
 using UnityEngine.UIElements;
+using Decanautes.Interactable;
 
 public class EngineState : MonoBehaviour
 {
