@@ -32,8 +32,63 @@ Transform:
   - {fileID: 6942783288873977256}
   - {fileID: 7463707348313193746}
   - {fileID: 7672059277014729048}
+  - {fileID: 7932537127906617646}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8675723561725040425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7932537127906617646}
+  - component: {fileID: 3441635749159697665}
+  m_Layer: 0
+  m_Name: RythmManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7932537127906617646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675723561725040425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8235324572824965133}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3441635749159697665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675723561725040425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c716736555f4eb0449970fe883b19394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RythmManagerData: {fileID: 11400000, guid: 041b9cd36170c9049ab097b10d8363f7, type: 2}
+  OnQuarterNoteTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHalfQuarterNoteTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDoubleQuarterNoteTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &3502157080421616469
 PrefabInstance:
   m_ObjectHideFlags: 0
