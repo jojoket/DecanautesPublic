@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953beb541740ddc499d005ee80c9ff29, type: 3}
   m_Name: Fog
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   quality:
     m_OverrideState: 0
     m_Value: 1
@@ -42,13 +42,13 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1.91
   maximumHeight:
     m_OverrideState: 1
     m_Value: 56.5
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 900
+    m_Value: 588.7
   enableVolumetricFog:
     m_OverrideState: 0
     m_Value: 1
@@ -106,9 +106,9 @@ MonoBehaviour:
     m_Value: 3
   cloudType:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   skyAmbientMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   windOrientation:
     m_OverrideState: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 12.42
   multiplier:
     m_OverrideState: 1
     m_Value: 5000
@@ -164,16 +164,16 @@ MonoBehaviour:
     m_Value: 0
   top:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0.09258766, b: 0.86415094, a: 1}
+    m_Value: {r: 0.034131378, g: 0.058245584, b: 0.5566038, a: 1}
   middle:
     m_OverrideState: 1
-    m_Value: {r: 0.645283, g: 1.8645284, b: 2, a: 1}
+    m_Value: {r: 1, g: 0.24449503, b: 0, a: 1}
   bottom:
     m_OverrideState: 1
-    m_Value: {r: 2, g: 2, b: 2, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   gradientDiffusion:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88178bb13f64a54f90d6cd6ef7aa9a1, type: 3}
   m_Name: CloudLayer
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   opacity:
     m_OverrideState: 1
     m_Value: 1
@@ -222,7 +222,7 @@ MonoBehaviour:
     m_Value: 1
   shadowTint:
     m_OverrideState: 0
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0, g: 0.15466875, b: 0.5377358, a: 1}
   shadowResolution:
     m_OverrideState: 0
     m_Value: 256
@@ -247,12 +247,12 @@ MonoBehaviour:
       m_Value: 0
     altitude:
       m_OverrideState: 1
-      m_Value: 292.22
+      m_Value: 1
     rotation:
       m_OverrideState: 1
-      m_Value: 0
+      m_Value: 114
     tint:
-      m_OverrideState: 0
+      m_OverrideState: 1
       m_Value: {r: 1, g: 1, b: 1, a: 1}
     exposure:
       m_OverrideState: 0
@@ -367,15 +367,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
   m_Name: PhysicallyBasedSky
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   rotation:
     m_OverrideState: 0
     m_Value: 0
   skyIntensityMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   exposure:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   multiplier:
     m_OverrideState: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 20000
   updateMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   updatePeriod:
     m_OverrideState: 0
@@ -399,17 +399,17 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   type:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   renderingMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   material:
     m_OverrideState: 0
     m_Value: {fileID: -876546973899608171, guid: 02532cbb810fb404db49da84f1efe41e,
       type: 3}
   sphericalMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   seaLevel:
     m_OverrideState: 0
@@ -418,8 +418,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 6378100
   planetCenterPosition:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: -6378100, z: 0}
+    m_OverrideState: 1
+    m_Value: {x: 0, y: -6380014.5, z: 0}
   airDensityR:
     m_OverrideState: 0
     m_Value: 0.04534
@@ -437,7 +437,7 @@ MonoBehaviour:
     m_Value: 55261.973
   aerosolDensity:
     m_OverrideState: 0
-    m_Value: 0.01192826
+    m_Value: 0
   aerosolTint:
     m_OverrideState: 0
     m_Value: {r: 0.9, g: 0.9, b: 0.9, a: 1}
@@ -449,7 +449,7 @@ MonoBehaviour:
     m_Value: 0
   groundTint:
     m_OverrideState: 1
-    m_Value: {r: 0.16981131, g: 0.14752904, b: 0.12896048, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   groundColorTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -472,22 +472,22 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 0}
   colorSaturation:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   alphaSaturation:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   alphaMultiplier:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   horizonTint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.14085598, g: 0.033018887, b: 1, a: 1}
   zenithTint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0.7555051, b: 1, a: 1}
   horizonZenithShift:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   numberOfBounces:
     m_OverrideState: 0

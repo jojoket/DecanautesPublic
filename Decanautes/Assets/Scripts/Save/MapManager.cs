@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEditor;
+using Decanautes.Interactable;
 
 public class MapManager : MonoBehaviour
 {

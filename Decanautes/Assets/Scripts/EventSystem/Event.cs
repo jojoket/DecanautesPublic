@@ -6,6 +6,8 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
+using Decanautes.Interactable;
+
 public class Event : MonoBehaviour
 {
     public string Name;
