@@ -21,7 +21,11 @@ namespace Decanautes.Interactable
         }
         public ParameterType triggerType;
         public bool IsInRythm = false;
-
+        public bool HasSound = false;
+        [ShowIf("HasSound")]
+        public string EventPath;
+        
+        
         public string parameterName;
         [ShowIf("triggerType", ParameterType.Bool)]
         public bool StateToApply;
@@ -44,6 +48,11 @@ namespace Decanautes.Interactable
         private void StartAnim()
         {
             RythmManager.Instance.OnQuarterNoteTrigger.RemoveListener(StartAnim);
+            if (HasSound)
+            {
+                Debug.Log("1");
+                FMODUnity.RuntimeManager.PlayOneShot(EventPath);
+            }
             switch (triggerType)
             {
                 case ParameterType.Trigger:

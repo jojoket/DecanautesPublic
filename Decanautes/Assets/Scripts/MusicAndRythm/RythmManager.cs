@@ -15,11 +15,12 @@ public class RythmManager : MonoBehaviour
     public UnityEvent OnHalfQuarterNoteTrigger;
     public UnityEvent OnDoubleQuarterNoteTrigger;
 
-    //(une noire en français)
+    private bool isFirst = true;
+    //(une noire en franÃ§ais)
     [SerializeField, ReadOnly] private float _quarterNoteRythmInMs;
-    //(une croche en français)
+    //(une croche en franÃ§ais)
     [SerializeField, ReadOnly] private float _halfQuarterNoteRythmInMs;
-    //(une blanche en français)
+    //(une blanche en franÃ§ais)
     [SerializeField, ReadOnly] private float _doubleQuarterNoteRythmInMs;
 
     [SerializeField, ReadOnly]
@@ -40,20 +41,21 @@ public class RythmManager : MonoBehaviour
         _quarterNoteRythmInMs = 60 / RythmManagerData.Bpm;
         _halfQuarterNoteRythmInMs = _quarterNoteRythmInMs / 2;
         _doubleQuarterNoteRythmInMs = _quarterNoteRythmInMs * 2;
+        StartCoroutine(Quarter());
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdateTimers();
-        ResetTimersAndTriggerEvents();
+        //ResetTimersAndTriggerEvents();
     }
 
     private void UpdateTimers()
     {
-        _currentQuarterNoteTime += Time.deltaTime;
-        _currentHalfQuarterNoteTime += Time.deltaTime;
-        _currentDoubleQuarterNoteTime += Time.deltaTime;
+        _currentQuarterNoteTime += Time.fixedDeltaTime;
+        _currentHalfQuarterNoteTime += Time.fixedDeltaTime;
+        _currentDoubleQuarterNoteTime += Time.fixedDeltaTime;
     }
 
     private void ResetTimersAndTriggerEvents()
@@ -62,6 +64,11 @@ public class RythmManager : MonoBehaviour
         {
             _currentQuarterNoteTime = 0;
             OnQuarterNoteTrigger?.Invoke();
+            if (isFirst)
+            {
+                isFirst = false;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/TestEvent/TestSync");
+            }
         }
         if (_currentHalfQuarterNoteTime >= _halfQuarterNoteRythmInMs)
         {
@@ -75,6 +82,22 @@ public class RythmManager : MonoBehaviour
         }
     }
 
+    private IEnumerator Quarter()
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(_quarterNoteRythmInMs);
+            _currentQuarterNoteTime = 0;
+            OnQuarterNoteTrigger?.Invoke();
+            if (isFirst)
+            {
+                isFirst = false;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/TestEvent/TestSync");
+            }
+        }
+    }
+    
+    
     private void OnDestroy()
     {
         OnQuarterNoteTrigger.RemoveAllListeners();

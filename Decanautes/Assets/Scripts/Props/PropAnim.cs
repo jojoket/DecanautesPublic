@@ -28,5 +28,10 @@ public class PropAnim : MonoBehaviour
 
 
     }
+    
+    public void TriggerIndexAnim(int index)
+    {
+        Animations[index].TriggerAnimation();
+    }
 
 }
