@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7825139196831704623}
-  - component: {fileID: 5795408953200147677}
   - component: {fileID: 6953218005179304465}
   - component: {fileID: 2858541883137322638}
   - component: {fileID: 8049727231396614660}
@@ -36,24 +35,6 @@ Transform:
   - {fileID: 5984844851896146807}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &5795408953200147677
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033243744054689177}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 69d7bfbb48149aa4197fef8d2de48d83, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 69d7bfbb48149aa4197fef8d2de48d83, type: 2}
-  - {fileID: 7400000, guid: 7dbba623ef51dca4ab82d852cae64f54, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!114 &6953218005179304465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,9 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a6e82dd6c29904eb0b6aa319fa5ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderers:
-  - {fileID: 0}
-  - {fileID: 0}
+  renderers: []
   BaseMaterial: {fileID: 2100000, guid: 8c01b487f4e4a1f4bb381f6e73689153, type: 2}
   HoverMaterial: {fileID: 2100000, guid: 8e08a92d52f0a504aa943dff0a67e077, type: 2}
   ActiveMaterial: {fileID: 2100000, guid: e70312b012663ec4992e97ed2aebae6d, type: 2}
@@ -77,6 +56,7 @@ MonoBehaviour:
   OnInteractStartedAnimations:
   - animator: {fileID: 4246700126658677814}
     triggerType: 1
+    IsInRythm: 0
     parameterName: Pulled
     StateToApply: 1
     FloatToApply: 0
@@ -99,6 +79,7 @@ MonoBehaviour:
   OnInteractEndedAnimations:
   - animator: {fileID: 4246700126658677814}
     triggerType: 1
+    IsInRythm: 0
     parameterName: Pulled
     StateToApply: 0
     FloatToApply: 0
@@ -141,10 +122,8 @@ MonoBehaviour:
         m_Calls: []
     isOverThreshold: 0
     isZero: 0
-  isActivated: 1
+  isActivated: 0
   isPressed: 0
-  LeverAnimation: {fileID: 0}
-  LeverAnimationClips: []
 --- !u!65 &2858541883137322638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,8 +143,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.116468824, y: 0.467785, z: 0.5202236}
-  m_Center: {x: 0, y: 0.2265541, z: 0}
+  m_Size: {x: 0.41178155, y: 0.6830633, z: 1.0052085}
+  m_Center: {x: 0, y: 0.33419326, z: 0.1824696}
 --- !u!114 &8049727231396614660
 MonoBehaviour:
   m_ObjectHideFlags: 0

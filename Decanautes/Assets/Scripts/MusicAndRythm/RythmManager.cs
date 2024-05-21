@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Sirenix.OdinInspector;
 
 public class RythmManager : MonoBehaviour
 {
+    //Singleton
+    public static RythmManager Instance;
+
     public RythmManagerData RythmManagerData;
 
     public UnityEvent OnQuarterNoteTrigger;
@@ -12,20 +16,28 @@ public class RythmManager : MonoBehaviour
     public UnityEvent OnDoubleQuarterNoteTrigger;
 
     //(une noire en français)
-    private float _quarterNoteRythmInMs;
+    [SerializeField, ReadOnly] private float _quarterNoteRythmInMs;
     //(une croche en français)
-    private float _halfQuarterNoteRythmInMs;
-    //(uen blanche en français)
-    private float _doubleQuarterNoteRythmInMs;
+    [SerializeField, ReadOnly] private float _halfQuarterNoteRythmInMs;
+    //(une blanche en français)
+    [SerializeField, ReadOnly] private float _doubleQuarterNoteRythmInMs;
 
+    [SerializeField, ReadOnly]
     private float _currentQuarterNoteTime;
+    [SerializeField, ReadOnly]
     private float _currentHalfQuarterNoteTime;
+    [SerializeField, ReadOnly]
     private float _currentDoubleQuarterNoteTime;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        _quarterNoteRythmInMs = 60000 / RythmManagerData.Bpm;
+        if (Instance != null)
+        {
+            Debug.LogWarning("Rythm Manager already exist");
+            return;
+        }
+        Instance = this;
+        _quarterNoteRythmInMs = 60 / RythmManagerData.Bpm;
         _halfQuarterNoteRythmInMs = _quarterNoteRythmInMs / 2;
         _doubleQuarterNoteRythmInMs = _quarterNoteRythmInMs * 2;
     }
@@ -63,4 +75,10 @@ public class RythmManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        OnQuarterNoteTrigger.RemoveAllListeners();
+        OnHalfQuarterNoteTrigger.RemoveAllListeners();
+        OnDoubleQuarterNoteTrigger.RemoveAllListeners();
+    }
 }
