@@ -20,6 +20,8 @@ namespace Decanautes.Interactable
             Vector3,
         }
         public ParameterType triggerType;
+        public bool IsInRythm = false;
+
         public string parameterName;
         [ShowIf("triggerType", ParameterType.Bool)]
         public bool StateToApply;
@@ -30,27 +32,39 @@ namespace Decanautes.Interactable
 
         public void TriggerAnimation()
         {
+            if (IsInRythm)
+            {
+                RythmManager.Instance.OnQuarterNoteTrigger.AddListener(StartAnim);
+                return;
+            }
+
+            StartAnim();
+        }
+
+        private void StartAnim()
+        {
+            RythmManager.Instance.OnQuarterNoteTrigger.RemoveListener(StartAnim);
             switch (triggerType)
             {
                 case ParameterType.Trigger:
-                {
-                    animator.SetTrigger(parameterName);
-                    break;
-                }
+                    {
+                        animator.SetTrigger(parameterName);
+                        break;
+                    }
                 case ParameterType.Bool:
-                {
-                    animator.SetBool(parameterName, StateToApply);
-                    break;
-                }
+                    {
+                        animator.SetBool(parameterName, StateToApply);
+                        break;
+                    }
                 case ParameterType.Float:
-                {
-                    animator.SetFloat(parameterName, FloatToApply);
-                    break;
-                }
+                    {
+                        animator.SetFloat(parameterName, FloatToApply);
+                        break;
+                    }
                 case ParameterType.Vector3:
-                {
-                    break;
-                }
+                    {
+                        break;
+                    }
             }
         }
 
