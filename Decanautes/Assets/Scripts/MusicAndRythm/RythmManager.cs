@@ -67,7 +67,6 @@ public class RythmManager : MonoBehaviour
             _musicInstance.setUserData(GCHandle.ToIntPtr(_timelineHandle));
             _musicInstance.setCallback(_beatCallBack, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         }
-        AddFModEventToBuffer(Music);
     }
 
     void Update()
@@ -84,6 +83,11 @@ public class RythmManager : MonoBehaviour
     {
         OnBeatTrigger?.Invoke();
         PlayAndRelieveBuffer();
+        if (isFirst)
+        {
+            AddFModEventToBuffer(Music);
+            isFirst = false;
+        }
     }
 
     public void AddFModEventToBuffer(EventReference fmodEventAdded)
