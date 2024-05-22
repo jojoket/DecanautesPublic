@@ -40,6 +40,10 @@ namespace Decanautes.Interactable
             if (IsInRythm)
             {
                 RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
+                if (HasSound)
+                {
+                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
+                }
                 return;
             }
 
@@ -49,11 +53,7 @@ namespace Decanautes.Interactable
         private void StartAnim()
         {
             RythmManager.Instance.OnBeatTrigger.RemoveListener(StartAnim);
-            if (HasSound)
-            {
-                Debug.Log("1");
-                FMODUnity.RuntimeManager.PlayOneShot(EventPath);
-            }
+            
             switch (triggerType)
             {
                 case ParameterType.Trigger:

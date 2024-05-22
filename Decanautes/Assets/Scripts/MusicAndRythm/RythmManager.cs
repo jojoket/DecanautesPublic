@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
+using UnityEngine.UIElements.Experimental;
 
 public class RythmManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class RythmManager : MonoBehaviour
 
     private bool isFirst = true;
     public int lastBeat = 0;
+
+    private List<EventReference> FMODEvents = new List<EventReference>();
 
 
     //From FMOD
@@ -64,12 +67,14 @@ public class RythmManager : MonoBehaviour
             _musicInstance.setUserData(GCHandle.ToIntPtr(_timelineHandle));
             _musicInstance.setCallback(_beatCallBack, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         }
+        AddFModEventToBuffer(Music);
     }
 
     void Update()
     {
         if (timelineInfo.currentBeat != lastBeat)
         {
+            lastBeat = timelineInfo.currentBeat;
             TriggerBeatEvent();
         }
     }
@@ -78,12 +83,21 @@ public class RythmManager : MonoBehaviour
     private void TriggerBeatEvent()
     {
         OnBeatTrigger?.Invoke();
-        if (isFirst)
-        {
-            isFirst = false;
-            FMODUnity.RuntimeManager.PlayOneShot(Music);
-        }
+        PlayAndRelieveBuffer();
+    }
 
+    public void AddFModEventToBuffer(EventReference fmodEventAdded)
+    {
+        FMODEvents.Add(fmodEventAdded);
+    }
+
+    private void PlayAndRelieveBuffer()
+    {
+        foreach (EventReference fmodEvent in FMODEvents)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(fmodEvent);
+        }
+        FMODEvents.Clear();
     }
 
 

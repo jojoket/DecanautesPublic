@@ -16,10 +16,6 @@ namespace Decanautes.Interactable
             {
                 InvokeInteractStart();
             }
-            else
-            {
-                InvokeInteractEnded();
-            }
         }
 
         // Update is called once per frame
