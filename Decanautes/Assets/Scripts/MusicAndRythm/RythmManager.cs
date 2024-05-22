@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements.Experimental;
 
 public class RythmManager : MonoBehaviour
@@ -32,7 +33,7 @@ public class RythmManager : MonoBehaviour
 
     public TimelineInfo timelineInfo = null;
     public EventReference Base;
-    public EventReference Music;
+    public List<EventReference> EventsOnStart = new List<EventReference>();
     private GCHandle _timelineHandle;
     private FMOD.Studio.EventInstance _musicInstance;
     private FMOD.Studio.EVENT_CALLBACK _beatCallBack;
@@ -85,7 +86,10 @@ public class RythmManager : MonoBehaviour
         PlayAndRelieveBuffer();
         if (isFirst)
         {
-            AddFModEventToBuffer(Music);
+            foreach (EventReference fmodEvent in EventsOnStart)
+            {
+                AddFModEventToBuffer(fmodEvent);
+            }
             isFirst = false;
         }
     }
