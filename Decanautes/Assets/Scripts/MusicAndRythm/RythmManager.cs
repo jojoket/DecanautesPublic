@@ -1,34 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Events;
+using FMODUnity;
 using Sirenix.OdinInspector;
+using System;
 
 public class RythmManager : MonoBehaviour
 {
+    [StructLayout(LayoutKind.Sequential)]
+    public class TimelineInfo
+    {
+        public int currentBeat = 0;
+        public FMOD.StringWrapper lastMarker = new FMOD.StringWrapper();
+    }
+
     //Singleton
     public static RythmManager Instance;
 
-    public RythmManagerData RythmManagerData;
-
-    public UnityEvent OnQuarterNoteTrigger;
-    public UnityEvent OnHalfQuarterNoteTrigger;
-    public UnityEvent OnDoubleQuarterNoteTrigger;
+    public UnityEvent OnBeatTrigger;
 
     private bool isFirst = true;
-    //(une noire en français)
-    [SerializeField, ReadOnly] private float _quarterNoteRythmInMs;
-    //(une croche en français)
-    [SerializeField, ReadOnly] private float _halfQuarterNoteRythmInMs;
-    //(une blanche en français)
-    [SerializeField, ReadOnly] private float _doubleQuarterNoteRythmInMs;
+    public int lastBeat = 0;
 
-    [SerializeField, ReadOnly]
-    private float _currentQuarterNoteTime;
-    [SerializeField, ReadOnly]
-    private float _currentHalfQuarterNoteTime;
-    [SerializeField, ReadOnly]
-    private float _currentDoubleQuarterNoteTime;
+
+    //From FMOD
+
+    public TimelineInfo timelineInfo = null;
+    public EventReference Music;
+    private GCHandle _timelineHandle;
+    private FMOD.Studio.EventInstance _musicInstance;
+    private FMOD.Studio.EVENT_CALLBACK _beatCallBack;
+
+
 
     void Awake()
     {
@@ -38,70 +43,98 @@ public class RythmManager : MonoBehaviour
             return;
         }
         Instance = this;
-        _quarterNoteRythmInMs = 60 / RythmManagerData.Bpm;
-        _halfQuarterNoteRythmInMs = _quarterNoteRythmInMs / 2;
-        _doubleQuarterNoteRythmInMs = _quarterNoteRythmInMs * 2;
-        StartCoroutine(Quarter());
-    }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        UpdateTimers();
-        //ResetTimersAndTriggerEvents();
-    }
-
-    private void UpdateTimers()
-    {
-        _currentQuarterNoteTime += Time.fixedDeltaTime;
-        _currentHalfQuarterNoteTime += Time.fixedDeltaTime;
-        _currentDoubleQuarterNoteTime += Time.fixedDeltaTime;
-    }
-
-    private void ResetTimersAndTriggerEvents()
-    {
-        if (_currentQuarterNoteTime >= _quarterNoteRythmInMs)
+        if (!Music.IsNull)
         {
-            _currentQuarterNoteTime = 0;
-            OnQuarterNoteTrigger?.Invoke();
-            if (isFirst)
-            {
-                isFirst = false;
-                FMODUnity.RuntimeManager.PlayOneShot("event:/TestEvent/TestSync");
-            }
+            _musicInstance = RuntimeManager.CreateInstance(Music);
+            _musicInstance.start();
         }
-        if (_currentHalfQuarterNoteTime >= _halfQuarterNoteRythmInMs)
+
+
+    }
+
+    private void Start()
+    {
+        if(!Music.IsNull)
         {
-            _currentHalfQuarterNoteTime = 0;
-            OnHalfQuarterNoteTrigger?.Invoke();
-        }
-        if (_currentDoubleQuarterNoteTime >= _doubleQuarterNoteRythmInMs)
-        {
-            _currentDoubleQuarterNoteTime = 0;
-            OnDoubleQuarterNoteTrigger?.Invoke();
+            timelineInfo = new TimelineInfo();
+            _beatCallBack = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
+            _timelineHandle = GCHandle.Alloc(timelineInfo, GCHandleType.Pinned);
+            _musicInstance.setUserData(GCHandle.ToIntPtr(_timelineHandle));
+            _musicInstance.setCallback(_beatCallBack, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         }
     }
 
-    private IEnumerator Quarter()
+    void Update()
     {
-        while (true)
+        if (timelineInfo.currentBeat != lastBeat)
         {
-            yield return new WaitForSecondsRealtime(_quarterNoteRythmInMs);
-            _currentQuarterNoteTime = 0;
-            OnQuarterNoteTrigger?.Invoke();
-            if (isFirst)
-            {
-                isFirst = false;
-                FMODUnity.RuntimeManager.PlayOneShot("event:/TestEvent/TestSync");
-            }
+            TriggerBeatEvent();
         }
     }
+
     
-    
+    private void TriggerBeatEvent()
+    {
+        OnBeatTrigger?.Invoke();
+        if (isFirst)
+        {
+            isFirst = false;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/TestEvent/TestSync");
+        }
+
+    }
+
+
+
     private void OnDestroy()
     {
-        OnQuarterNoteTrigger.RemoveAllListeners();
-        OnHalfQuarterNoteTrigger.RemoveAllListeners();
-        OnDoubleQuarterNoteTrigger.RemoveAllListeners();
+        OnBeatTrigger.RemoveAllListeners();
+
+        _musicInstance.setUserData(IntPtr.Zero);
+        _musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        _musicInstance.release();
+        _timelineHandle.Free();
+    }
+
+#if UNITY_EDITOR
+    private void OnGUI()
+    {
+        GUILayout.Box($"Current Beat = {timelineInfo.currentBeat}, last marker = {(string)timelineInfo.lastMarker}");
+    }
+#endif
+
+    [AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
+    static FMOD.RESULT BeatEventCallback(FMOD.Studio.EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
+    {
+        FMOD.Studio.EventInstance instance = new FMOD.Studio.EventInstance(instancePtr);
+        IntPtr timelineInfoPtr;
+        FMOD.RESULT result = instance.getUserData(out timelineInfoPtr);
+
+        if( result != FMOD.RESULT.OK )
+        {
+            Debug.LogError("TimeLine CallBack error " + result);
+        }
+        else if (timelineInfoPtr != IntPtr.Zero )
+        {
+            GCHandle timelineHandle = GCHandle.FromIntPtr(timelineInfoPtr);
+            TimelineInfo timelineInfo = (TimelineInfo)timelineHandle.Target;
+            switch(type )
+            {
+                case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT:
+                    {
+                        var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
+                        timelineInfo.currentBeat = parameter.beat;
+                        break;
+                    }
+                case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
+                    {
+                        var parameter = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
+                        timelineInfo.lastMarker = parameter.name;
+                        break;
+                    }
+            }
+        }
+        return FMOD.RESULT.OK;
     }
 }

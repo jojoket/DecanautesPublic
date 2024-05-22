@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
+using FMODUnity;
 
 namespace Decanautes.Interactable
 {
@@ -23,7 +24,7 @@ namespace Decanautes.Interactable
         public bool IsInRythm = false;
         public bool HasSound = false;
         [ShowIf("HasSound")]
-        public string EventPath;
+        public EventReference EventPath;
         
         
         public string parameterName;
@@ -38,7 +39,7 @@ namespace Decanautes.Interactable
         {
             if (IsInRythm)
             {
-                RythmManager.Instance.OnQuarterNoteTrigger.AddListener(StartAnim);
+                RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
                 return;
             }
 
@@ -47,7 +48,7 @@ namespace Decanautes.Interactable
 
         private void StartAnim()
         {
-            RythmManager.Instance.OnQuarterNoteTrigger.RemoveListener(StartAnim);
+            RythmManager.Instance.OnBeatTrigger.RemoveListener(StartAnim);
             if (HasSound)
             {
                 Debug.Log("1");
