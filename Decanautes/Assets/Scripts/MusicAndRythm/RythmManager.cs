@@ -28,6 +28,7 @@ public class RythmManager : MonoBehaviour
     //From FMOD
 
     public TimelineInfo timelineInfo = null;
+    public EventReference Base;
     public EventReference Music;
     private GCHandle _timelineHandle;
     private FMOD.Studio.EventInstance _musicInstance;
@@ -44,9 +45,9 @@ public class RythmManager : MonoBehaviour
         }
         Instance = this;
 
-        if (!Music.IsNull)
+        if (!Base.IsNull)
         {
-            _musicInstance = RuntimeManager.CreateInstance(Music);
+            _musicInstance = RuntimeManager.CreateInstance(Base);
             _musicInstance.start();
         }
 
@@ -55,7 +56,7 @@ public class RythmManager : MonoBehaviour
 
     private void Start()
     {
-        if(!Music.IsNull)
+        if(!Base.IsNull)
         {
             timelineInfo = new TimelineInfo();
             _beatCallBack = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
@@ -80,7 +81,7 @@ public class RythmManager : MonoBehaviour
         if (isFirst)
         {
             isFirst = false;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/TestEvent/TestSync");
+            FMODUnity.RuntimeManager.PlayOneShot(Music);
         }
 
     }
