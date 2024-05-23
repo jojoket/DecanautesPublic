@@ -21,10 +21,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         Debug.developerConsoleEnabled = true;
-        Debug.Log("1");
         if (IsDisplay)
         {
-            Debug.Log("2");
             SpawnPrefab();
             _IsDisplaying = true;
         }
@@ -38,7 +36,6 @@ public class Spawner : MonoBehaviour
     IEnumerator SpawnNext()
     {
         yield return new WaitForSeconds(SpawnSpan);
-        Debug.Log("5");
         SpawnPrefab();
     }
 

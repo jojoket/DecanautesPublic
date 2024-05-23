@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
+using FMODUnity;
 
 namespace Decanautes.Interactable
 {
@@ -20,6 +21,12 @@ namespace Decanautes.Interactable
             Vector3,
         }
         public ParameterType triggerType;
+        public bool IsInRythm = false;
+        public bool HasSound = false;
+        [ShowIf("HasSound")]
+        public EventReference EventPath;
+        
+        
         public string parameterName;
         [ShowIf("triggerType", ParameterType.Bool)]
         public bool StateToApply;
@@ -30,27 +37,44 @@ namespace Decanautes.Interactable
 
         public void TriggerAnimation()
         {
+            if (IsInRythm)
+            {
+                RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
+                if (HasSound)
+                {
+                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
+                }
+                return;
+            }
+
+            StartAnim();
+        }
+
+        private void StartAnim()
+        {
+            RythmManager.Instance.OnBeatTrigger.RemoveListener(StartAnim);
+            
             switch (triggerType)
             {
                 case ParameterType.Trigger:
-                {
-                    animator.SetTrigger(parameterName);
-                    break;
-                }
+                    {
+                        animator.SetTrigger(parameterName);
+                        break;
+                    }
                 case ParameterType.Bool:
-                {
-                    animator.SetBool(parameterName, StateToApply);
-                    break;
-                }
+                    {
+                        animator.SetBool(parameterName, StateToApply);
+                        break;
+                    }
                 case ParameterType.Float:
-                {
-                    animator.SetFloat(parameterName, FloatToApply);
-                    break;
-                }
+                    {
+                        animator.SetFloat(parameterName, FloatToApply);
+                        break;
+                    }
                 case ParameterType.Vector3:
-                {
-                    break;
-                }
+                    {
+                        break;
+                    }
             }
         }
 
