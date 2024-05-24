@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using System;
 using JetBrains.Annotations;
 using UnityEditor.ShaderGraph.Internal;
+using Sirenix.Utilities;
 
 [Serializable]
 public class MaterialChangement
@@ -15,9 +16,14 @@ public class MaterialChangement
         Color,
         Vector3,
     }
+
+    public bool IsMaterialInstance = false;
+
+    [ShowIf("IsMaterialInstance")]
     public MeshRenderer Renderer;
+    [ShowIf("IsMaterialInstance")]
     public int MaterialIndex;
-    [HideInInspector]
+    [HideIf("IsMaterialInstance")]
     public Material Material;
 
     [Unit(Units.Second)]
@@ -26,15 +32,26 @@ public class MaterialChangement
     public MaterialParameterType ParameterType;
 
     [HideInInspector]
+    public float ParameterFloatValueInit;
+    [HideInInspector]
     public float ParameterFloatValueStart;
     [ShowIf("ParameterType", MaterialParameterType.Float)]
     public float ParameterFloatValueEnd;
 
+
+    [HideInInspector]
+    public Color ParameterColorValueInit;
     [HideInInspector]
     public Color ParameterColorValueStart;
     [ShowIf("ParameterType", MaterialParameterType.Color)]
     public Color ParameterColorValueEnd;
+    [ShowIf("ParameterType", MaterialParameterType.Color)]
+    public float ParameterColorValueStartMult;
+    [ShowIf("ParameterType", MaterialParameterType.Color)]
+    public float ParameterColorValueEndMult;
 
+    [HideInInspector]
+    public Vector3 ParameterVector3ValueInit;
     [HideInInspector]
     public Vector3 ParameterVector3ValueStart;
     [ShowIf("ParameterType", MaterialParameterType.Vector3)]
@@ -52,7 +69,18 @@ public class MaterialAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foreach (var materialChangement in materialChangements)
+        {
+            SetMaterialInitialState(materialChangement);
+        }
+    }
 
+    private void OnDestroy()
+    {
+        foreach (var materialChangement in materialChangements)
+        {
+            SetMaterialBackToInitialState(materialChangement);
+        }
     }
 
     // Update is called once per frame
@@ -71,6 +99,7 @@ public class MaterialAnimation : MonoBehaviour
         }
     }
 
+    [Button]
     public void TriggerAnimationByIndex(int index)
     {
         StartCoroutine(StartAnimation(materialChangements[index]));
@@ -82,7 +111,10 @@ public class MaterialAnimation : MonoBehaviour
         float startTime = Time.time;
         float endTime = Time.time + materialChangement.LerpDuration;
 
-        materialChangement.Material = materialChangement.Renderer.materials[materialChangement.MaterialIndex];
+        if (materialChangement.IsMaterialInstance)
+        {
+            materialChangement.Material = materialChangement.Renderer.materials[materialChangement.MaterialIndex];
+        }
         SetMaterialStartValues(materialChangement);
         float delta = 0;
         while (Time.time < endTime)
@@ -99,7 +131,6 @@ public class MaterialAnimation : MonoBehaviour
             case MaterialChangement.MaterialParameterType.Color:
                 {
                     Color lerpedColor = Color.Lerp(materialChangement.ParameterColorValueStart, materialChangement.ParameterColorValueEnd, delta);
-
                     materialChangement.Material.SetColor(materialChangement.ParameterName, lerpedColor);
                     break;
                 }
@@ -137,6 +168,52 @@ public class MaterialAnimation : MonoBehaviour
             case MaterialChangement.MaterialParameterType.Vector3:
                 {
                     materialChangement.ParameterVector3ValueStart = materialChangement.Material.GetVector(materialChangement.ParameterName);
+                    break;
+                }
+        }
+    }
+
+    public void SetMaterialBackToInitialState(MaterialChangement materialChangement)
+    {
+        if (materialChangement.IsMaterialInstance) return;
+        switch (materialChangement.ParameterType)
+        {
+            case MaterialChangement.MaterialParameterType.Color:
+                {
+                    materialChangement.Material.SetColor(materialChangement.ParameterName, materialChangement.ParameterColorValueInit);
+                    break;
+                }
+            case MaterialChangement.MaterialParameterType.Float:
+                {
+                    materialChangement.Material.SetFloat(materialChangement.ParameterName, materialChangement.ParameterFloatValueInit);
+                    break;
+                }
+            case MaterialChangement.MaterialParameterType.Vector3:
+                {
+                    materialChangement.Material.SetVector(materialChangement.ParameterName, materialChangement.ParameterVector3ValueInit);
+                    break;
+                }
+        }
+    }
+
+    public void SetMaterialInitialState(MaterialChangement materialChangement)
+    {
+        if (materialChangement.IsMaterialInstance) return;
+        switch (materialChangement.ParameterType)
+        {
+            case MaterialChangement.MaterialParameterType.Color:
+                {
+                    materialChangement.ParameterColorValueInit =  materialChangement.Material.GetColor(materialChangement.ParameterName);
+                    break;
+                }
+            case MaterialChangement.MaterialParameterType.Float:
+                {
+                    materialChangement.ParameterFloatValueInit = materialChangement.Material.GetFloat(materialChangement.ParameterName);
+                    break;
+                }
+            case MaterialChangement.MaterialParameterType.Vector3:
+                {
+                    materialChangement.ParameterVector3ValueInit = materialChangement.Material.GetVector(materialChangement.ParameterName);
                     break;
                 }
         }
