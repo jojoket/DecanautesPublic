@@ -39,6 +39,7 @@ namespace Decanautes.Interactable
         {
             if (IsInRythm)
             {
+                Debug.Log("AddListener");
                 RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
                 if (HasSound)
                 {
