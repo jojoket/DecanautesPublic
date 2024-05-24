@@ -6,7 +6,6 @@ namespace Decanautes.Interactable
 {
     public class DecaButton : Interactable
     {
-        public Animation pressAnimation;
 
 
         void Start()
@@ -23,13 +22,11 @@ namespace Decanautes.Interactable
         public override void InteractionStart()
         {
             base.InteractionStart();
-            pressAnimation.Play();
         }
 
         public override void InteractionEnd()
         {
             base.InteractionEnd();
-            pressAnimation.Play("ButtonReleased");
         }
     }
 }

@@ -35,7 +35,7 @@ public class Maintain
     [TabGroup("Parameters")]
     public UnityEvent OnOverZero;
     [TabGroup("Debug"), ReadOnly]
-    public bool isOverThreshold;
+    public bool isOverThreshold = true;
     [TabGroup("Debug"), ReadOnly]
     public bool isZero;
 }
@@ -56,6 +56,7 @@ public class CareSystem : MonoBehaviour
         foreach (Maintain item in Maintainables)
         {
             MaintainableData data = Instantiate<MaintainableData>(item.MaintainableData);
+            item.isOverThreshold = true;
             initialState.Add(data);
             item.interactableFiller.LinkedMaintainable = item;
             item.interactableFiller.OnInteractStarted += FillMaintainable;
@@ -117,11 +118,11 @@ public class CareSystem : MonoBehaviour
         maintain.MaintainableMeter.FillAmount = maintain.MaintainableData.CurrentState;
         if (maintain.MaintainableData.CurrentState <= maintain.MaintainableData.Threshold)
         {
-            maintain.MaintainableMeter.fillRenderer.material = maintain.MaintainableData.WarningMaterial;
+            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.WarningMaterial;
         }
         else
         {
-            maintain.MaintainableMeter.fillRenderer.material = maintain.MaintainableData.BaseMaterial;
+            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.BaseMaterial;
         }
     }
 
