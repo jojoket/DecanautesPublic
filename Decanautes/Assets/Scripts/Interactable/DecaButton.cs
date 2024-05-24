@@ -10,12 +10,12 @@ namespace Decanautes.Interactable
 
         void Start()
         {
-        
+
         }
 
         void Update()
         {
-        
+
         }
 
 

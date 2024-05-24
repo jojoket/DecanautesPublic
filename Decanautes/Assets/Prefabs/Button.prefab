@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4796285745593778437}
-  - component: {fileID: 6170066714506044004}
+  - component: {fileID: 215479137458901187}
   - component: {fileID: 7466209993968807965}
   m_Layer: 6
   m_Name: Button
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 3922187286837528524}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6170066714506044004
+--- !u!114 &215479137458901187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,11 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc7b85ff62e93e4c811324068f41690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderers:
-  - {fileID: 6522636726412219463}
-  BaseMaterial: {fileID: 2100000, guid: 8c01b487f4e4a1f4bb381f6e73689153, type: 2}
-  HoverMaterial: {fileID: 2100000, guid: 8e08a92d52f0a504aa943dff0a67e077, type: 2}
-  ActiveMaterial: {fileID: 2100000, guid: e70312b012663ec4992e97ed2aebae6d, type: 2}
+  renderers: []
+  BaseMaterial: {fileID: 0}
+  HoverMaterial: {fileID: 0}
+  ActiveMaterial: {fileID: 0}
   IsToggle: 0
   NeedLookToKeepInteraction: 1
   OnInteractStartedAnimations:
@@ -113,7 +112,7 @@ MonoBehaviour:
     OnOverZero:
       m_PersistentCalls:
         m_Calls: []
-    isOverThreshold: 0
+    isOverThreshold: 1
     isZero: 0
   isActivated: 0
   isPressed: 0
