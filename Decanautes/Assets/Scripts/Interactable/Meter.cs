@@ -8,8 +8,9 @@ namespace Decanautes.Interactable
     public class Meter : MonoBehaviour
     {
         [TabGroup("Components")]
-        public GameObject fill;
-        public MeshRenderer fillRenderer;
+        public GameObject Indicator;
+        [TabGroup("Components")]
+        public MeshRenderer IndicatorRenderer;
         [HideInInspector]
         public Material material;
 
@@ -20,18 +21,24 @@ namespace Decanautes.Interactable
         public Vector3 FillSizeMax;
         [TabGroup("Property")]
         public Vector3 FillDirection;
+        [TabGroup("Property")]
+        public Vector3 RotationMax;
+        [TabGroup("Property")]
+        public Vector3 TranslationMax;
 
         private Vector3 baseScale;
         private Vector3 basePosition;
+        private Quaternion baseRotation;
 
         // Start is called before the first frame update
         void Start()
         {
-            baseScale = fill.transform.localScale;
-            basePosition = fill.transform.position;
-            fillRenderer = fill.GetComponent<MeshRenderer>();
-            material = Instantiate<Material>(fillRenderer.material);
-            fillRenderer.material = material;
+            baseScale = Indicator.transform.localScale;
+            basePosition = Indicator.transform.position;
+            baseRotation = Indicator.transform.rotation;
+            IndicatorRenderer = Indicator.GetComponent<MeshRenderer>();
+            material = Instantiate<Material>(IndicatorRenderer.material);
+            IndicatorRenderer.material = material;
         }
 
         // Update is called once per frame
@@ -44,18 +51,20 @@ namespace Decanautes.Interactable
         private void FillVisual()
         {
             Vector3 currentFill = FillAmount * FillSizeMax;
-            fill.transform.localScale = baseScale + currentFill;
-            fill.transform.position = basePosition + new Vector3(currentFill.x * FillDirection.x/2, currentFill.y * FillDirection.y/2, currentFill.z * FillDirection.z/2); 
+            Indicator.transform.localScale = baseScale + currentFill;
+            Indicator.transform.position = basePosition + new Vector3(currentFill.x * FillDirection.x/2, currentFill.y * FillDirection.y/2, currentFill.z * FillDirection.z/2) + TranslationMax * FillAmount;
+
+            Indicator.transform.rotation = Quaternion.Lerp(baseRotation, Quaternion.Euler(RotationMax), FillAmount);
         }
 
         private void OnDrawGizmosSelected()
         {
-            Mesh mesh = fill.GetComponent<MeshFilter>().sharedMesh;
+            Mesh mesh = Indicator.GetComponent<MeshFilter>().sharedMesh;
             Vector3 currentFill = FillAmount * FillSizeMax;
-            Vector3 scale = fill.transform.localScale + currentFill;
-            Vector3 pos = fill.transform.position + new Vector3(currentFill.x * FillDirection.x/2, currentFill.y * FillDirection.y/2, currentFill.z * FillDirection.z/2);
-
-            Gizmos.DrawWireMesh(mesh, pos, fill.transform.rotation, scale);
+            Vector3 scale = Indicator.transform.localScale + currentFill;
+            Vector3 pos = Indicator.transform.position + new Vector3(currentFill.x * FillDirection.x/2, currentFill.y * FillDirection.y/2, currentFill.z * FillDirection.z/2) + TranslationMax * FillAmount;
+            Quaternion rot = Quaternion.Lerp(Indicator.transform.rotation, Quaternion.Euler(RotationMax), FillAmount);
+            Gizmos.DrawWireMesh(mesh, pos, rot, scale);
         }
 
     }

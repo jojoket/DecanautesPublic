@@ -39,6 +39,7 @@ namespace Decanautes.Interactable
         {
             if (IsInRythm)
             {
+                Debug.Log("AddListener");
                 RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
                 if (HasSound)
                 {
@@ -53,28 +54,28 @@ namespace Decanautes.Interactable
         private void StartAnim()
         {
             RythmManager.Instance.OnBeatTrigger.RemoveListener(StartAnim);
-            
+
             switch (triggerType)
             {
                 case ParameterType.Trigger:
-                    {
-                        animator.SetTrigger(parameterName);
-                        break;
-                    }
+                {
+                    animator.SetTrigger(parameterName);
+                    break;
+                }
                 case ParameterType.Bool:
-                    {
-                        animator.SetBool(parameterName, StateToApply);
-                        break;
-                    }
+                {
+                    animator.SetBool(parameterName, StateToApply);
+                    break;
+                }
                 case ParameterType.Float:
-                    {
-                        animator.SetFloat(parameterName, FloatToApply);
-                        break;
-                    }
+                {
+                    animator.SetFloat(parameterName, FloatToApply);
+                    break;
+                }
                 case ParameterType.Vector3:
-                    {
-                        break;
-                    }
+                {
+                    break;
+                }
             }
         }
 

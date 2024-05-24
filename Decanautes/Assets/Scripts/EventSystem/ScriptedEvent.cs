@@ -9,35 +9,37 @@ using Decanautes.Interactable;
 
 public class ScriptedEvent : MonoBehaviour
 {
-    public float TaskAppearanceTimeInSec;
+    public ScriptedEventData ScriptedEventData;
 
     public Event EventToTrigger;
 
     [TitleGroup("Events")]
     public UnityEvent TaskTriggeredEvent;
 
-    [TitleGroup("Debug")]
-    public float currentTime;
-
     // Start is called before the first frame update
     void Start()
     {
         CheckForTaskFixBreak(EventToTrigger);
-        StartCoroutine(StartTimer());
+        if (MapManager.Instance.MapData.CurrentCycle == 0)
+        {
+            ScriptedEventData.CurrentTimeLeft = ScriptedEventData.FirstCycleStartTime;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
+        ScriptedEventData.CurrentTimeLeft -= Time.deltaTime;
+
+        if (ScriptedEventData.CurrentTimeLeft < 0)
+        {
+            ScriptedEventData.CurrentTimeLeft = Random.Range(ScriptedEventData.TaskAppearanceTimeInSec.x, ScriptedEventData.TaskAppearanceTimeInSec.y);
+            StartEvent();
+        }
+
     }
 
-    //Start the timer to launch the Event
-    private IEnumerator StartTimer()
-    {
-        yield return new WaitForSeconds(TaskAppearanceTimeInSec);
-        StartEvent();
-    }
+    #region Cycle
 
     private void StartEvent()
     {
@@ -64,6 +66,33 @@ public class ScriptedEvent : MonoBehaviour
             obj.SetActive(!state);
         }
     }
+
+    private IEnumerator TimeLimit(Event eventToFix)
+    {
+        yield return new WaitForSeconds(eventToFix.TimeMaxToFix);
+        if (eventToFix.isActive)
+        {
+            EventBreak(eventToFix);
+        }
+    }
+    public void EventBreak(Event eventBroken)
+    {
+        eventBroken.OnBreak?.Invoke();
+        if (eventBroken.EngineLinked)
+        {
+            eventBroken.EngineLinked.ChangeState(EngineState.EngineStateEnum.BreakDown);
+        }
+        eventBroken.isActive = false;
+        eventBroken.InteractionsState.Clear();
+        foreach (Interactable item in eventBroken.InteractionsToFix)
+        {
+            eventBroken.InteractionsState.Add(false);
+        }
+    }
+
+    #endregion
+
+    #region Event interaction
 
     //subscribe the events to check the task's end
     private void CheckForTaskFixBreak(Event eventToCheck)
@@ -122,28 +151,6 @@ public class ScriptedEvent : MonoBehaviour
             eventToClean.EngineLinked.ChangeInteractions();
         }
     }
-
-    private IEnumerator TimeLimit(Event eventToFix)
-    {
-        yield return new WaitForSeconds(eventToFix.TimeMaxToFix);
-        if (eventToFix.isActive)
-        {
-            EventBreak(eventToFix);
-        }
-    }
-    public void EventBreak(Event eventBroken)
-    {
-        eventBroken.OnBreak?.Invoke();
-        if (eventBroken.EngineLinked)
-        {
-            eventBroken.EngineLinked.ChangeState(EngineState.EngineStateEnum.BreakDown);
-        }
-        eventBroken.isActive = false;
-        eventBroken.InteractionsState.Clear();
-        foreach (Interactable item in eventBroken.InteractionsToFix)
-        {
-            eventBroken.InteractionsState.Add(false);
-        }
-    }
+    #endregion
 
 }
