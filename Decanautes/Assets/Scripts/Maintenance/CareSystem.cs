@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using Decanautes.Interactable;
+
+
 
 [Serializable]
 public class Maintain
@@ -14,7 +17,10 @@ public class Maintain
     [TabGroup("Components")]
     public Meter MaintainableMeter;
     [TabGroup("Components")]
-    public Interactable interactableFiller;
+    public Interactable InteractableFiller;
+    [TabGroup("Components")]
+    public EngineState LinkedEngineState;
+
     [TabGroup("Parameters")]
     public List<GameObject> ToEnableOnUnderThreshold;
     [TabGroup("Parameters")]
@@ -31,8 +37,9 @@ public class Maintain
     public UnityEvent OnZero;
     [TabGroup("Parameters")]
     public UnityEvent OnOverZero;
+
     [TabGroup("Debug"), ReadOnly]
-    public bool isOverThreshold;
+    public bool isOverThreshold = true;
     [TabGroup("Debug"), ReadOnly]
     public bool isZero;
 }
@@ -53,9 +60,16 @@ public class CareSystem : MonoBehaviour
         foreach (Maintain item in Maintainables)
         {
             MaintainableData data = Instantiate<MaintainableData>(item.MaintainableData);
+            item.isOverThreshold = true;
             initialState.Add(data);
-            item.interactableFiller.LinkedMaintainable = item;
-            item.interactableFiller.OnInteractStarted += FillMaintainable;
+            item.InteractableFiller.LinkedMaintainable = item;
+            item.InteractableFiller.OnInteractStarted += FillMaintainable;
+            if (item.LinkedEngineState != null)
+            {
+                //setup linked engine's event link
+                item.OnUnderThreshold.AddListener(item.LinkedEngineState.CheckForLinkedEventsAndMaintainables);
+                item.OnOverThreshold.AddListener(item.LinkedEngineState.CheckForLinkedEventsAndMaintainables);
+            }
         }
     }
 
@@ -72,7 +86,7 @@ public class CareSystem : MonoBehaviour
         for (int i = 0; i < Maintainables.Count; i++)
         {
             Maintainables[i].MaintainableData.CurrentState = initialState[i].CurrentState;
-            Maintainables[i].interactableFiller.OnInteractStarted -= FillMaintainable;
+            Maintainables[i].InteractableFiller.OnInteractStarted -= FillMaintainable;
             Destroy(initialState[i]);
         }
     }
@@ -114,11 +128,11 @@ public class CareSystem : MonoBehaviour
         maintain.MaintainableMeter.FillAmount = maintain.MaintainableData.CurrentState;
         if (maintain.MaintainableData.CurrentState <= maintain.MaintainableData.Threshold)
         {
-            maintain.MaintainableMeter.fillRenderer.material = maintain.MaintainableData.WarningMaterial;
+            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.WarningMaterial;
         }
         else
         {
-            maintain.MaintainableMeter.fillRenderer.material = maintain.MaintainableData.BaseMaterial;
+            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.BaseMaterial;
         }
     }
 

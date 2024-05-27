@@ -20,6 +20,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.developerConsoleEnabled = true;
         if (IsDisplay)
         {
             SpawnPrefab();
@@ -41,6 +42,7 @@ public class Spawner : MonoBehaviour
     public void SpawnPrefab()
     {
         _spawned = Instantiate(ToSpawnPrefab,transform);
+        Debug.Log("3");
         _spawned.name = ToSpawnPrefab.name + _spawned.GetInstanceID();
         _spawned.transform.position = transform.position;
         _spawned.transform.rotation = transform.rotation;
@@ -50,6 +52,7 @@ public class Spawner : MonoBehaviour
     {
         _spawned = null;
         _IsDisplaying = false;
+        Debug.Log("4");
         StartCoroutine(SpawnNext());
     }
 }

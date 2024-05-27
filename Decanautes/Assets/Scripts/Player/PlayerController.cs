@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Decanautes.Interactable;
+
 
 public class PlayerController : MonoBehaviour
 {

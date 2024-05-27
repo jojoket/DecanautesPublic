@@ -5,9 +5,12 @@ using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEditor;
+using Decanautes.Interactable;
 
 public class MapManager : MonoBehaviour
 {
+    static public MapManager Instance { get; private set; }
+
     public MapData MapData;
     public GameObject savedFile;
     
@@ -15,6 +18,12 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (Instance != null)
+        {
+            Debug.LogWarning("two or more map managers are present");
+            return;
+        }
+        Instance = this;
         LoadMap();
     }
 
