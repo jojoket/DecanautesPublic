@@ -13,6 +13,7 @@ namespace Decanautes.Interactable
     [Serializable]
     public class AnimatorTriggerer
     {
+        [HideInInspector]
         public MonoBehaviour parent;
         public Animator animator;
         public enum ParameterType
@@ -95,14 +96,19 @@ namespace Decanautes.Interactable
         }
         private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
         {
+            bool animStarted = false;
             while (animator != null)
             {
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+                if (!animStarted && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.5f)
+                {
+                    animStarted = true;
+                }
+                if (animStarted && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
                 {
                     callBack();
                     break;
                 }
-                yield return new WaitForSecondsRealtime(0.05f);
+                yield return new WaitForSecondsRealtime(0.02f);
             }
         }
 
