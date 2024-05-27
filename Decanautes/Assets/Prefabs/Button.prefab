@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4796285745593778437}
   - component: {fileID: 215479137458901187}
   - component: {fileID: 7466209993968807965}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,11 +48,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderers: []
+  SelectionColors:
+  - {fileID: 2165557202635895362}
+  - {fileID: 1990157971079721253}
   BaseMaterial: {fileID: 0}
-  HoverMaterial: {fileID: 0}
-  ActiveMaterial: {fileID: 0}
+  HoverColor: {r: 1, g: 0.46672806, b: 0, a: 1}
+  ActiveColor: {r: 0.25497222, g: 1, b: 0, a: 1}
   IsToggle: 0
   NeedLookToKeepInteraction: 1
+  DoApplyStateAfterAnimation: 0
   OnInteractStartedAnimations:
   - animator: {fileID: 7716629385505923511}
     triggerType: 1
@@ -95,7 +99,8 @@ MonoBehaviour:
   LinkedMaintainable:
     MaintainableData: {fileID: 0}
     MaintainableMeter: {fileID: 0}
-    interactableFiller: {fileID: 0}
+    InteractableFiller: {fileID: 0}
+    LinkedEngineState: {fileID: 0}
     ToEnableOnUnderThreshold: []
     ToDisableOnUnderThreshold: []
     OnUnderThreshold:
@@ -148,7 +153,7 @@ GameObject:
   - component: {fileID: 1186097254832356512}
   - component: {fileID: 5326250943311190705}
   - component: {fileID: 6522636726412219463}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,6 +305,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anim_Button
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2603f4be1d69b41458e92709a7e5ba64,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821887585681450876, guid: 2603f4be1d69b41458e92709a7e5ba64,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -308,6 +323,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7716629385505923511}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2603f4be1d69b41458e92709a7e5ba64,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2165557202635895362}
+    - targetCorrespondingSourceObject: {fileID: 6821887585681450876, guid: 2603f4be1d69b41458e92709a7e5ba64,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1990157971079721253}
   m_SourcePrefab: {fileID: 100100000, guid: 2603f4be1d69b41458e92709a7e5ba64, type: 3}
 --- !u!4 &3922187286837528524 stripped
 Transform:
@@ -343,3 +366,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2165557202635895362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4406130267093294454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da01327b33407748b81f9d2186a1e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &8018913598213244763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6821887585681450876, guid: 2603f4be1d69b41458e92709a7e5ba64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3595229248320462887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1990157971079721253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8018913598213244763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da01327b33407748b81f9d2186a1e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionColor: {r: 0, g: 0, b: 0, a: 0}

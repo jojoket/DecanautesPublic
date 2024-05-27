@@ -7,7 +7,6 @@ namespace Decanautes.Interactable
 {
     public class Lever : Interactable
     {
-
         // Start is called before the first frame update
         void Start()
         {

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using FMODUnity;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Decanautes.Interactable
 {
@@ -39,7 +40,6 @@ namespace Decanautes.Interactable
         {
             if (IsInRythm)
             {
-                Debug.Log("AddListener");
                 RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
                 if (HasSound)
                 {
@@ -86,13 +86,15 @@ namespace Decanautes.Interactable
         //--------Components
         [TitleGroup("Components")]
         public List<Renderer> renderers;
+        public List<SelectionColor> SelectionColors;
         public Material BaseMaterial;
-        public Material HoverMaterial;
-        public Material ActiveMaterial;
+        public Color HoverColor;
+        public Color ActiveColor;
 
         [TitleGroup("Parameters")]
         public bool IsToggle = false;
         public bool NeedLookToKeepInteraction = true;
+        public bool DoApplyStateAfterAnimation = true;
 
 
         //--------Events
@@ -143,14 +145,25 @@ namespace Decanautes.Interactable
         public virtual void Hover()
         {
             //Activate Outline
-            ChangeMaterials(HoverMaterial);
+            //ChangeMaterials(HoverMaterial);
+            foreach (SelectionColor selectionColor in SelectionColors)
+            {
+                selectionColor.selectionColor = HoverColor;
+                selectionColor.SetColor();
+            }
         }
 
         public virtual void StopHover()
         {
             //Deactivate Outline
-            ChangeMaterials(BaseMaterial);
+            //ChangeMaterials(BaseMaterial);
+            foreach (SelectionColor selectionColor in SelectionColors)
+            {
+                selectionColor.selectionColor = new Color(0,0,0,0);
+                selectionColor.SetColor();
+            }
         }
+
 
         public virtual void InteractionStart()
         {
@@ -185,23 +198,57 @@ namespace Decanautes.Interactable
 
         protected virtual void InvokeInteractStart()
         {
-            OnInteractStarted?.Invoke(this);
-            OnInteractStartedEvent?.Invoke();
             foreach (AnimatorTriggerer anim in OnInteractStartedAnimations)
             {
                 anim.TriggerAnimation();
             }
+            if (DoApplyStateAfterAnimation)
+            {
+                Animator animator = OnInteractStartedAnimations[0].animator;
+                StartCoroutine(CheckForAnimationEnd(animator, () =>
+                {
+                    OnInteractStarted?.Invoke(this);
+                    OnInteractStartedEvent?.Invoke();
+                }));
+                return;
+            }
+            OnInteractStarted?.Invoke(this);
+            OnInteractStartedEvent?.Invoke();
         }
 
         protected virtual void InvokeInteractEnded()
         {
-            OnInteractEnded?.Invoke(this);
-            OnInteractEndedEvent?.Invoke();
             foreach (AnimatorTriggerer anim in OnInteractEndedAnimations)
             {
                 anim.TriggerAnimation();
             }
+            if (DoApplyStateAfterAnimation)
+            {
+                Animator animator = OnInteractEndedAnimations[0].animator;
+                StartCoroutine(CheckForAnimationEnd(animator, () =>
+                {
+                    OnInteractEnded?.Invoke(this);
+                    OnInteractEndedEvent?.Invoke();
+                }));
+                return;
+            }
+            OnInteractEnded?.Invoke(this);
+            OnInteractEndedEvent?.Invoke();
         }
+
+        private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
+        {
+            while (animator != null)
+            {
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+                {
+                    callBack();
+                    break;
+                }
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
+        }
+
     }
 }
 
