@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8913299126641524100}
   - component: {fileID: 6070141571704990480}
+  - component: {fileID: 2119760066559375030}
+  - component: {fileID: 5219992806812034759}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -55,6 +57,106 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2119760066559375030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457370714729953587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e314f3dbbd73fb46b7346a521ecd454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialChangements:
+  - IsInRythm: 0
+    HasSound: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 59685018e629adc47a6f4c3eb8ddfb1e, type: 2}
+    LerpDuration: 10
+    ParameterName: _Fill_Amount
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: -0.1
+    ParameterFloatValueEnd: -0.1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsInRythm: 0
+    HasSound: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 922d6cb862749c44aa9b0f57d4835e0b, type: 2}
+    LerpDuration: 10
+    ParameterName: _Fill_Amount
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: -0.1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+--- !u!114 &5219992806812034759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457370714729953587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - parent: {fileID: 0}
+    animator: {fileID: 6070141571704990480}
+    triggerType: 0
+    IsInRythm: 0
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Battery_change
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &5077680055334392461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,17 +188,17 @@ PrefabInstance:
     - target: {fileID: 6311537460232129623, guid: f83292b7af9093145940d1c85a10a2b5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8020551
+      value: 0.496
       objectReference: {fileID: 0}
     - target: {fileID: 6311537460232129623, guid: f83292b7af9093145940d1c85a10a2b5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0031636953
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 6311537460232129623, guid: f83292b7af9093145940d1c85a10a2b5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.05188286
+      value: -0.052
       objectReference: {fileID: 0}
     - target: {fileID: 6311537460232129623, guid: f83292b7af9093145940d1c85a10a2b5,
         type: 3}
