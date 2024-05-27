@@ -7,6 +7,7 @@ public class TriggerZone : MonoBehaviour
 {
     private Collider _collider;
     public LayerMask LayerToDetect;
+    public bool DoExitOnDisable = true;
     public UnityEvent OnEnterZone;
     public UnityEvent OnExitZone;
 
@@ -20,6 +21,14 @@ public class TriggerZone : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnDisable()
+    {
+        if (DoExitOnDisable)
+        {
+            OnExitZone?.Invoke();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
