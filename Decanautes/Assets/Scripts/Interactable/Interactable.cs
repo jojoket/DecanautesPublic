@@ -13,6 +13,7 @@ namespace Decanautes.Interactable
     [Serializable]
     public class AnimatorTriggerer
     {
+        public MonoBehaviour parent;
         public Animator animator;
         public enum ParameterType
         {
@@ -25,6 +26,8 @@ namespace Decanautes.Interactable
         public bool IsInRythm = false;
         public bool HasSound = false;
         [ShowIf("HasSound")]
+        public bool DoLaunchSoundAfterAnimation;
+        [ShowIf("HasSound")]
         public EventReference EventPath;
         
         
@@ -36,12 +39,14 @@ namespace Decanautes.Interactable
         [ShowIf("triggerType", ParameterType.Vector3)]
         public Vector3 Vector3ToApply;
 
+        public UnityEvent OnAnimationFirstLooped;
+
         public void TriggerAnimation()
         {
             if (IsInRythm)
             {
                 RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
-                if (HasSound)
+                if (HasSound && !DoLaunchSoundAfterAnimation)
                 {
                     RythmManager.Instance.AddFModEventToBuffer(EventPath);
                 }
@@ -77,6 +82,28 @@ namespace Decanautes.Interactable
                     break;
                 }
             }
+            parent.StartCoroutine(CheckForAnimationEnd(animator, () =>
+            {
+                OnAnimationFirstLooped?.Invoke();
+                OnAnimationFirstLooped.RemoveAllListeners();
+                if (DoLaunchSoundAfterAnimation && HasSound)
+                {
+                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
+                }
+            }));
+            return;
+        }
+        private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
+        {
+            while (animator != null)
+            {
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+                {
+                    callBack();
+                    break;
+                }
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
         }
 
     }
@@ -94,6 +121,7 @@ namespace Decanautes.Interactable
         [TitleGroup("Parameters")]
         public bool IsToggle = false;
         public bool NeedLookToKeepInteraction = true;
+        [Tooltip("It will wait for the first animation trigerrer's next animation end.")]
         public bool DoApplyStateAfterAnimation = true;
 
 
@@ -117,6 +145,15 @@ namespace Decanautes.Interactable
 
         void Start()
         {
+            foreach (AnimatorTriggerer animatorTriggerer in OnInteractStartedAnimations)
+            {
+                animatorTriggerer.parent = this;
+            }
+            foreach (AnimatorTriggerer animatorTriggerer in OnInteractEndedAnimations)
+            {
+                animatorTriggerer.parent = this;
+            }
+
             if (!IsToggle)
                 return;
             if (isActivated)
@@ -204,12 +241,11 @@ namespace Decanautes.Interactable
             }
             if (DoApplyStateAfterAnimation)
             {
-                Animator animator = OnInteractStartedAnimations[0].animator;
-                StartCoroutine(CheckForAnimationEnd(animator, () =>
+                OnInteractEndedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
                 {
                     OnInteractStarted?.Invoke(this);
                     OnInteractStartedEvent?.Invoke();
-                }));
+                });
                 return;
             }
             OnInteractStarted?.Invoke(this);
@@ -224,29 +260,15 @@ namespace Decanautes.Interactable
             }
             if (DoApplyStateAfterAnimation)
             {
-                Animator animator = OnInteractEndedAnimations[0].animator;
-                StartCoroutine(CheckForAnimationEnd(animator, () =>
+                OnInteractEndedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
                 {
                     OnInteractEnded?.Invoke(this);
                     OnInteractEndedEvent?.Invoke();
-                }));
+                });
                 return;
             }
             OnInteractEnded?.Invoke(this);
             OnInteractEndedEvent?.Invoke();
-        }
-
-        private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
-        {
-            while (animator != null)
-            {
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
-                {
-                    callBack();
-                    break;
-                }
-                yield return new WaitForSecondsRealtime(0.05f);
-            }
         }
 
     }
