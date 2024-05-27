@@ -245,9 +245,9 @@ namespace Decanautes.Interactable
             {
                 anim.TriggerAnimation();
             }
-            if (DoApplyStateAfterAnimation)
+            if (DoApplyStateAfterAnimation && OnInteractStartedAnimations.Count > 0)
             {
-                OnInteractEndedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
+                OnInteractStartedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
                 {
                     OnInteractStarted?.Invoke(this);
                     OnInteractStartedEvent?.Invoke();
@@ -264,7 +264,7 @@ namespace Decanautes.Interactable
             {
                 anim.TriggerAnimation();
             }
-            if (DoApplyStateAfterAnimation)
+            if (DoApplyStateAfterAnimation && OnInteractEndedAnimations.Count > 0)
             {
                 OnInteractEndedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
                 {
