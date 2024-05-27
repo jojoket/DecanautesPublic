@@ -28,14 +28,14 @@ Material:
     type: 3}
   m_Parent: {fileID: -876546973899608171, guid: 24566537426d7754fab7199ae67c025d,
     type: 3}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2225
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -49,7 +49,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Emissive_strenght: 200000
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
