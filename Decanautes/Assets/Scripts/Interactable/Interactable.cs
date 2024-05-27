@@ -132,6 +132,7 @@ namespace Decanautes.Interactable
 
 
         //--------Events
+        [TitleGroup("Events")]
         public List<AnimatorTriggerer> OnInteractStartedAnimations = new List<AnimatorTriggerer>();
         public UnityAction<Interactable> OnInteractStarted;
         public UnityEvent OnInteractStartedEvent;
