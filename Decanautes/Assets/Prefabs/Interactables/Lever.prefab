@@ -62,11 +62,14 @@ MonoBehaviour:
   ActiveColor: {r: 0.15622401, g: 1, b: 0, a: 1}
   IsToggle: 0
   NeedLookToKeepInteraction: 1
+  DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations:
-  - animator: {fileID: 4246700126658677814}
+  - parent: {fileID: 0}
+    animator: {fileID: 4246700126658677814}
     triggerType: 1
     IsInRythm: 0
     HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
     EventPath:
       Guid:
         Data1: 0
@@ -78,26 +81,39 @@ MonoBehaviour:
     StateToApply: 1
     FloatToApply: 0
     Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 0
+    IsInRythm: 0
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: 
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
   OnInteractStartedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   OnInteractEndedAnimations:
-  - animator: {fileID: 4246700126658677814}
+  - parent: {fileID: 0}
+    animator: {fileID: 4246700126658677814}
     triggerType: 1
     IsInRythm: 0
     HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
     EventPath:
       Guid:
         Data1: 0
@@ -109,6 +125,9 @@ MonoBehaviour:
     StateToApply: 0
     FloatToApply: 0
     Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
   OnInteractEndedEvent:
     m_PersistentCalls:
       m_Calls:
