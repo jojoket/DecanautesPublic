@@ -673,18 +673,6 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 1dc888bf4d2715e43a4a08674c68aedf, type: 2}
---- !u!114 &165499391 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5430341006351767355, guid: a659040e726747246997e61ca7c582b0,
-    type: 3}
-  m_PrefabInstance: {fileID: 39614228214497274}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &177539078
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,18 +702,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255ce1d8c8d75e74591c513dbf0dc8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState: 0
-  StateMessages:
-  - SO GOOD
-  - FIXIT
-  - dammnnnnn it's all red
-  EngineText: {fileID: 165499391}
-  LinkedEvent: {fileID: 1472453165}
+  LinkedEvents: []
+  LinkedMaintainables: []
   ResetButton: {fileID: 0}
   ResetButtonMatBase: {fileID: 2100000, guid: 8c01b487f4e4a1f4bb381f6e73689153, type: 2}
   ResetButtonMatWarning: {fileID: 2100000, guid: 86a710bc330798b4ea9a650720e44b72,
     type: 2}
   KilometerData: {fileID: 11400000, guid: 79ab2f3be45161c42bbf224dd76e3035, type: 2}
+  MalfunctionsInfluence: 0
   ToEnableOnGood:
   - {fileID: 1219740635}
   ToDisableOnGood:
@@ -741,6 +725,19 @@ MonoBehaviour:
   ToDisableOnBreakDown:
   - {fileID: 1219740635}
   - {fileID: 809620260}
+  StateMessages:
+  - SO GOOD
+  - FIXIT
+  - dammnnnnn it's all red
+  GeneralText: {fileID: 0}
+  PowerLevelText: {fileID: 0}
+  StateText: {fileID: 0}
+  StateMessageText: {fileID: 0}
+  DistanceText: {fileID: 0}
+  SpeedText: {fileID: 0}
+  LinkedMachinesTexts: []
+  CurrentState: 0
+  malfunctionsNumber: 0
 --- !u!4 &177539080
 Transform:
   m_ObjectHideFlags: 0
@@ -3323,7 +3320,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472453163}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 285e38a2ed762804197da0b4a32d8bdd, type: 3}
   m_Name: 
@@ -3336,6 +3333,7 @@ MonoBehaviour:
   EventsToTrigger: []
   ToEnableOnTrigger: []
   ToDisableOnTrigger: []
+  GoodOrderMaterial: {fileID: 0}
   EngineLinked: {fileID: 177539079}
   OnEnable:
     m_PersistentCalls:
