@@ -18,7 +18,6 @@ public class Kilometer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        data.CurrentSpeed = 0;
         switch (data.speedType)
         {
             case KilometerData.SpeedType.Normal:
@@ -28,7 +27,7 @@ public class Kilometer : MonoBehaviour
                 data.CurrentSpeed = data.OverlockSpeed;
                 break;
             case KilometerData.SpeedType.Malfunction:
-                data.CurrentSpeed = data.MalfunctionSpeed;
+                //Speed handled by EngineState script
                 break;
             case KilometerData.SpeedType.Breakdown:
                 data.CurrentSpeed = data.BreakdownSpeed;

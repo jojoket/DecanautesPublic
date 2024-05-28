@@ -8,7 +8,6 @@ public class MapData : ScriptableObject
 {
     [TitleGroup("DO NOT DELETE THIS FILE")]
     public string Name;
-    [HideInInspector]
     public int CurrentCycle;
     public List<ObjectSave> SavedObjects = new List<ObjectSave>();
 }

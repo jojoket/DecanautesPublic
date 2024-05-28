@@ -10,12 +10,19 @@ namespace Decanautes.Interactable
 
         void Start()
         {
-        
+            foreach (AnimatorTriggerer animatorTriggerer in OnInteractStartedAnimations)
+            {
+                animatorTriggerer.parent = this;
+            }
+            foreach (AnimatorTriggerer animatorTriggerer in OnInteractEndedAnimations)
+            {
+                animatorTriggerer.parent = this;
+            }
         }
 
         void Update()
         {
-        
+
         }
 
 

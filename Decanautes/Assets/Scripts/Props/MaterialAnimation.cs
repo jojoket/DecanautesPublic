@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
-using JetBrains.Annotations;
-using UnityEditor.ShaderGraph.Internal;
 using Sirenix.Utilities;
+using FMODUnity;
+
 
 [Serializable]
 public class MaterialChangement
@@ -16,6 +16,10 @@ public class MaterialChangement
         Color,
         Vector3,
     }
+    public bool IsInRythm = false;
+    public bool HasSound = false;
+    [ShowIf("HasSound")]
+    public EventReference EventPath;
 
     public bool IsMaterialInstance = false;
 
@@ -95,16 +99,41 @@ public class MaterialAnimation : MonoBehaviour
     {
         foreach (var materialChangement in materialChangements)
         {
+            if (materialChangement.IsInRythm)
+            {
+                RythmManager.Instance.OnBeatTrigger.AddListener(() =>
+                {
+                    StartCoroutine(StartAnimation(materialChangement));
+                });
+                if (materialChangement.HasSound)
+                {
+                    RythmManager.Instance.AddFModEventToBuffer(materialChangement.EventPath);
+                }
+                return;
+            }
             StartCoroutine(StartAnimation(materialChangement));
+
         }
     }
 
     [Button]
     public void TriggerAnimationByIndex(int index)
     {
+        if (materialChangements[index].IsInRythm)
+        {
+            RythmManager.Instance.OnBeatTrigger.AddListener(() =>
+            {
+                StartCoroutine(StartAnimation(materialChangements[index]));
+            });
+            if (materialChangements[index].HasSound)
+            {
+                RythmManager.Instance.AddFModEventToBuffer(materialChangements[index].EventPath);
+            }
+            return;
+        }
         StartCoroutine(StartAnimation(materialChangements[index]));
-    }
 
+    }
 
     private IEnumerator StartAnimation(MaterialChangement materialChangement)
     {

@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     private Interactable lookingAt;
     [Sirenix.OdinInspector.ReadOnly]
     public Grabbable grabbed;
-    public PostIt editing;
+    public PostIt PostItEditing;
+    public InputScreen InputScreenEditing;
 
 
 
@@ -118,13 +119,19 @@ public class PlayerController : MonoBehaviour
 
     private void InteractSec(InputAction.CallbackContext callbackContext)
     {
-        if (editing)
+        ManagePostItInteraction();
+        ManageInputScreenInteraction();
+    }
+
+    private void ManagePostItInteraction()
+    {
+        if (PostItEditing)
         {
-            if (editing.isEditing)
+            if (PostItEditing.isEditing)
             {
                 CanMove = true;
-                editing.DeselectText();
-                editing = null;
+                PostItEditing.DeselectText();
+                PostItEditing = null;
             }
             return;
         }
@@ -133,7 +140,7 @@ public class PlayerController : MonoBehaviour
             bool isEditing = postIt.SelectText();
             if (!isEditing)
                 return;
-            editing = postIt;
+            PostItEditing = postIt;
             CanMove = false;
         }
         if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
@@ -141,8 +148,40 @@ public class PlayerController : MonoBehaviour
             bool isEditing = postIt1.SelectText();
             if (!isEditing)
                 return;
-            editing = postIt1;
+            PostItEditing = postIt1;
             CanMove = false;
+        }
+    }
+
+    private void ManageInputScreenInteraction()
+    {
+        if (InputScreenEditing)
+        {
+            if (InputScreenEditing.IsEditing)
+            {
+                if (InputScreenEditing.DoStopMovementsWhenIsEditing)
+                {
+                    CanMove = true;
+                }
+                InputScreenEditing.DeselectText();
+                InputScreenEditing = null;
+            }
+            return;
+        }
+        if (grabbed || PostItEditing != null)
+        {
+            return;
+        }
+        if (lookingAt && lookingAt.TryGetComponent<InputScreen>(out InputScreen inputScreen1))
+        {
+            bool isEditing = inputScreen1.SelectText();
+            if (!isEditing)
+                return;
+            InputScreenEditing = inputScreen1;
+            if (InputScreenEditing.DoStopMovementsWhenIsEditing)
+            {
+                CanMove = false;
+            }
         }
     }
 

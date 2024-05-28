@@ -434,6 +434,7 @@ MonoBehaviour:
   _isPosting: 0
   _isPosted: 0
   UsesLeft: 1
+  isEditing: 0
   _modifLeft: 1
   _isValid: 0
   _validPosition: {x: 0, y: 0, z: 0}
@@ -479,11 +480,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers:
   - {fileID: 1132087018504560431}
+  SelectionColors:
+  - {fileID: 8955507149343234126}
   BaseMaterial: {fileID: 2100000, guid: 341d032b143d2cf498a6dd40d97523b5, type: 2}
-  HoverMaterial: {fileID: 2100000, guid: 8e08a92d52f0a504aa943dff0a67e077, type: 2}
-  ActiveMaterial: {fileID: 2100000, guid: e70312b012663ec4992e97ed2aebae6d, type: 2}
+  HoverColor: {r: 1, g: 0.48377457, b: 0, a: 1}
+  ActiveColor: {r: 0.06587124, g: 1, b: 0, a: 1}
   IsToggle: 1
   NeedLookToKeepInteraction: 0
+  DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations: []
   OnInteractStartedEvent:
     m_PersistentCalls:
@@ -496,7 +500,8 @@ MonoBehaviour:
   LinkedMaintainable:
     MaintainableData: {fileID: 0}
     MaintainableMeter: {fileID: 0}
-    interactableFiller: {fileID: 0}
+    InteractableFiller: {fileID: 0}
+    LinkedEngineState: {fileID: 0}
     ToEnableOnUnderThreshold: []
     ToDisableOnUnderThreshold: []
     OnUnderThreshold:
@@ -547,7 +552,8 @@ GameObject:
   - component: {fileID: 6407202248791805891}
   - component: {fileID: 1132087018504560431}
   - component: {fileID: 4579558585733161888}
-  m_Layer: 10
+  - component: {fileID: 8955507149343234126}
+  m_Layer: 11
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,6 +649,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8955507149343234126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655880637222682857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da01327b33407748b81f9d2186a1e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3773047586557591029
 GameObject:
   m_ObjectHideFlags: 0

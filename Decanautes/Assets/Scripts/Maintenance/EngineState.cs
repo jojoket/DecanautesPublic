@@ -8,6 +8,15 @@ using TMPro;
 using Sirenix.OdinInspector;
 using UnityEngine.UIElements;
 using Decanautes.Interactable;
+using System;
+
+[Serializable]
+public struct EngineLinkedMachineText
+{
+    public TMP_Text Text;
+    public Event linkedEvent;
+    public MaintainableData linkedMaintainable;
+}
 
 public class EngineState : MonoBehaviour
 {
@@ -18,46 +27,92 @@ public class EngineState : MonoBehaviour
         BreakDown,
     }
 
-    public EngineStateEnum CurrentState;
-
-    public List<string> StateMessages;
-
-    public TMP_Text EngineText;
-
-    public Event LinkedEvent;
+    [TabGroup("Components")]
+    public List<Event> LinkedEvents = new List<Event>();
+    [TabGroup("Components")]
+    public List<MaintainableData> LinkedMaintainables = new List<MaintainableData>();
+    [TabGroup("Components")]
     public Interactable ResetButton;
+    [TabGroup("Components")]
     public Material ResetButtonMatBase;
+    [TabGroup("Components")]
     public Material ResetButtonMatWarning;
-
+    [TabGroup("Components")]
     public KilometerData KilometerData;
 
-    [TitleGroup("Visual")]
+
+    [TabGroup("Parameters"), SerializeField]
+    private float MalfunctionsInfluence;
+
+    [TabGroup("Visual")]
     public List<GameObject> ToEnableOnGood = new List<GameObject>();
+    [TabGroup("Visual")]
     public List<GameObject> ToDisableOnGood = new List<GameObject>();
 
+    [TabGroup("Visual")]
     public List<GameObject> ToEnableOnMalfunction = new List<GameObject>();
+    [TabGroup("Visual")]
     public List<GameObject> ToDisableOnMalfunction = new List<GameObject>();
 
+    [TabGroup("Visual")]
     public List<GameObject> ToEnableOnBreakDown = new List<GameObject>();
+    [TabGroup("Visual")]
     public List<GameObject> ToDisableOnBreakDown = new List<GameObject>();
+
+    [TabGroup("Texts")]
+    public List<string> StateMessages;
+    [TabGroup("Texts")]
+    public TMP_Text GeneralText;
+    [TabGroup("Texts")]
+    public TMP_Text PowerLevelText;
+    [TabGroup("Texts")]
+    public TMP_Text StateText;
+    [TabGroup("Texts")]
+    public TMP_Text StateMessageText;
+    [TabGroup("Texts")]
+    public TMP_Text DistanceText;
+    [TabGroup("Texts")]
+    public TMP_Text SpeedText;
+    [TabGroup("Texts")]
+    public List<EngineLinkedMachineText> LinkedMachinesTexts = new List<EngineLinkedMachineText>();
+    
+
+    [TabGroup("Debug"), ReadOnly]
+    public EngineStateEnum CurrentState;
+    [TabGroup("Debug"), SerializeField, ReadOnly]
+    private int malfunctionsNumber;
 
     // Start is called before the first frame update
     void Start()
     {
-        ResetButton.OnInteractStartedEvent.AddListener(FixBreakDown);
+        SetupLinkedEventsAndMaintainables();
         ChangeState(EngineStateEnum.Good);
+        UpdateMachinesText();
     }
 
     private void OnDestroy()
     {
-        ResetButton.OnInteractStartedEvent.RemoveListener(FixBreakDown);
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateScreen();
+        UpdateScreens();
     }
+
+    private void SetupLinkedEventsAndMaintainables()
+    {
+        ResetButton.OnInteractStartedEvent.AddListener(FixBreakDown);
+        foreach (Event linkedEvent in LinkedEvents)
+        {
+            linkedEvent.EngineLinked = this;
+            linkedEvent.OnBreak.AddListener(GoToBreakDown);
+            linkedEvent.OnEnable.AddListener(CheckForLinkedEventsAndMaintainables);
+            linkedEvent.OnFix.AddListener(CheckForLinkedEventsAndMaintainables);
+        }
+    }
+
+    #region State logic
 
     public void ChangeState(EngineStateEnum state)
     {
@@ -71,6 +126,7 @@ public class EngineState : MonoBehaviour
             case EngineStateEnum.Malfunction:
                 MalfunctionVfx();
                 KilometerData.speedType = KilometerData.SpeedType.Malfunction;
+                KilometerData.CurrentSpeed = KilometerData.NormalSpeed * (1- MalfunctionsInfluence*malfunctionsNumber);
                 break;
             case EngineStateEnum.BreakDown:
                 BreakDownVfx();
@@ -81,19 +137,93 @@ public class EngineState : MonoBehaviour
         }
     }
 
-    public void UpdateScreen()
+    public void CheckForLinkedEventsAndMaintainables()
     {
-        EngineText.text = "Engine state : " + CurrentState.ToString() + "\n";
-        EngineText.text += " dist : " + KilometerData.CurrentKm + "km \n";
-        EngineText.text += " speed : " + KilometerData.CurrentSpeed + "km/s \n";
-        EngineText.text += StateMessages[(int)CurrentState] + "\n";
+        malfunctionsNumber = 0;
+        foreach(Event linkedEvent in LinkedEvents)
+        {
+            if (linkedEvent.isActive)
+            {
+                malfunctionsNumber++;
+            }
+        }
+        foreach(MaintainableData maintainable in LinkedMaintainables)
+        {
+            if (maintainable.CurrentState <= maintainable.Threshold)
+            {
+                malfunctionsNumber++;
+            }
+        }
+        UpdateMachinesText();
+        if (malfunctionsNumber == 0)
+        {
+            ChangeState(EngineStateEnum.Good);
+            return;
+        }
+        if (malfunctionsNumber <= LinkedEvents.Count + LinkedMaintainables.Count)
+        {
+            ChangeState(EngineStateEnum.Malfunction);
+            return;
+        }
+        //ChangeState(EngineStateEnum.BreakDown);
     }
 
-    public void ChangeInteractions()
+
+    #endregion
+
+    #region Visual
+
+    public void UpdateScreens()
     {
-        List<Interactable> temp = new List<Interactable>(LinkedEvent.InteractionsToFix);
-        LinkedEvent.InteractionsToFix = new List<Interactable>(LinkedEvent.InteractionsToBreak);
-        LinkedEvent.InteractionsToBreak = temp;
+        if (GeneralText)
+        {
+            GeneralText.text = "Engine state : " + CurrentState.ToString() + "\n";
+            GeneralText.text += " Power : " + (1 - MalfunctionsInfluence * malfunctionsNumber)*100 + "% \n";
+            GeneralText.text += " dist : " + KilometerData.CurrentKm + "km \n";
+            GeneralText.text += " speed : " + KilometerData.CurrentSpeed + "km/s \n";
+            GeneralText.text += StateMessages[(int)CurrentState] + "\n";
+        }
+
+        if (PowerLevelText)
+        {
+            PowerLevelText.text = "Power : " + (1 - MalfunctionsInfluence * malfunctionsNumber) * 100 + "% \n";
+        }
+        if (StateText)
+        {
+            StateText.text = "Engine state : " + CurrentState.ToString();
+        }
+        if (StateMessageText)
+        {
+            StateMessageText.text = StateMessages[(int)CurrentState];
+        }
+        if (DistanceText)
+        {
+            DistanceText.text = "dist : " + KilometerData.CurrentKm + "km";
+        }
+        if (SpeedText)
+        {
+            SpeedText.text = "speed : " + KilometerData.CurrentSpeed + "km/s";
+        }
+    }
+    public void UpdateMachinesText()
+    {
+        //set every machines texts
+        for (int i = 0; i < LinkedMachinesTexts.Count; i++)
+        {
+            TMP_Text textMP = LinkedMachinesTexts[i].Text;
+            string textToDisplay = "";
+            if (LinkedMachinesTexts[i].linkedEvent != null)
+            {
+                textToDisplay += LinkedMachinesTexts[i].linkedEvent.Name + "'s state : " + (LinkedMachinesTexts[i].linkedEvent.isActive ? "Broken" : "OK");
+            }
+            else
+            {
+                textToDisplay += LinkedMachinesTexts[i].linkedMaintainable.Name + "'s state : " + (LinkedMachinesTexts[i].linkedMaintainable.CurrentState <= LinkedMachinesTexts[i].linkedMaintainable.Threshold ? "Broken" : "OK");
+
+            }
+
+            textMP.text = textToDisplay;
+        }
     }
 
     public void GoodVfx()
@@ -137,7 +267,9 @@ public class EngineState : MonoBehaviour
             gameObj.gameObject.SetActive(false);
         }
     }
+    #endregion
 
+    [Button]
     public void FixBreakDown()
     {
         if (CurrentState != EngineStateEnum.BreakDown)
@@ -145,6 +277,15 @@ public class EngineState : MonoBehaviour
             return;
         }
         ChangeState(EngineStateEnum.Good);
-        ChangeInteractions();
+    }
+
+    [Button]
+    public void GoToBreakDown()
+    {
+        if (CurrentState == EngineStateEnum.BreakDown)
+        {
+            return;
+        }
+        ChangeState(EngineStateEnum.BreakDown);
     }
 }

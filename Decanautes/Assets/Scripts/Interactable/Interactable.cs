@@ -12,6 +12,8 @@ namespace Decanautes.Interactable
     [Serializable]
     public class AnimatorTriggerer
     {
+        [HideInInspector]
+        public MonoBehaviour parent;
         public Animator animator;
         public enum ParameterType
         {
@@ -24,6 +26,8 @@ namespace Decanautes.Interactable
         public bool IsInRythm = false;
         public bool HasSound = false;
         [ShowIf("HasSound")]
+        public bool DoLaunchSoundAfterAnimation;
+        [ShowIf("HasSound")]
         public EventReference EventPath;
         
         
@@ -35,13 +39,14 @@ namespace Decanautes.Interactable
         [ShowIf("triggerType", ParameterType.Vector3)]
         public Vector3 Vector3ToApply;
 
+        public UnityEvent OnAnimationFirstLooped;
+
         public void TriggerAnimation()
         {
             if (IsInRythm)
             {
-                Debug.Log("AddListener");
                 RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
-                if (HasSound)
+                if (HasSound && !DoLaunchSoundAfterAnimation)
                 {
                     RythmManager.Instance.AddFModEventToBuffer(EventPath);
                 }
@@ -77,6 +82,33 @@ namespace Decanautes.Interactable
                     break;
                 }
             }
+            parent.StartCoroutine(CheckForAnimationEnd(animator, () =>
+            {
+                OnAnimationFirstLooped?.Invoke();
+                OnAnimationFirstLooped.RemoveAllListeners();
+                if (DoLaunchSoundAfterAnimation && HasSound)
+                {
+                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
+                }
+            }));
+            return;
+        }
+        private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
+        {
+            bool animStarted = false;
+            while (animator != null)
+            {
+                if (!animStarted && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.5f)
+                {
+                    animStarted = true;
+                }
+                if (animStarted && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+                {
+                    callBack();
+                    break;
+                }
+                yield return new WaitForSecondsRealtime(0.02f);
+            }
         }
 
     }
@@ -86,16 +118,20 @@ namespace Decanautes.Interactable
         //--------Components
         [TitleGroup("Components")]
         public List<Renderer> renderers;
+        public List<SelectionColor> SelectionColors;
         public Material BaseMaterial;
-        public Material HoverMaterial;
-        public Material ActiveMaterial;
+        public Color HoverColor;
+        public Color ActiveColor;
 
         [TitleGroup("Parameters")]
         public bool IsToggle = false;
         public bool NeedLookToKeepInteraction = true;
+        [Tooltip("It will wait for the first animation trigerrer's next animation end.")]
+        public bool DoApplyStateAfterAnimation = true;
 
 
         //--------Events
+        [TitleGroup("Events")]
         public List<AnimatorTriggerer> OnInteractStartedAnimations = new List<AnimatorTriggerer>();
         public UnityAction<Interactable> OnInteractStarted;
         public UnityEvent OnInteractStartedEvent;
@@ -115,6 +151,15 @@ namespace Decanautes.Interactable
 
         void Start()
         {
+            foreach (AnimatorTriggerer animatorTriggerer in OnInteractStartedAnimations)
+            {
+                animatorTriggerer.parent = this;
+            }
+            foreach (AnimatorTriggerer animatorTriggerer in OnInteractEndedAnimations)
+            {
+                animatorTriggerer.parent = this;
+            }
+
             if (!IsToggle)
                 return;
             if (isActivated)
@@ -143,14 +188,25 @@ namespace Decanautes.Interactable
         public virtual void Hover()
         {
             //Activate Outline
-            ChangeMaterials(HoverMaterial);
+            //ChangeMaterials(HoverMaterial);
+            foreach (SelectionColor selectionColor in SelectionColors)
+            {
+                selectionColor.selectionColor = HoverColor;
+                selectionColor.SetColor();
+            }
         }
 
         public virtual void StopHover()
         {
             //Deactivate Outline
-            ChangeMaterials(BaseMaterial);
+            //ChangeMaterials(BaseMaterial);
+            foreach (SelectionColor selectionColor in SelectionColors)
+            {
+                selectionColor.selectionColor = new Color(0,0,0,0);
+                selectionColor.SetColor();
+            }
         }
+
 
         public virtual void InteractionStart()
         {
@@ -185,23 +241,42 @@ namespace Decanautes.Interactable
 
         protected virtual void InvokeInteractStart()
         {
-            OnInteractStarted?.Invoke(this);
-            OnInteractStartedEvent?.Invoke();
             foreach (AnimatorTriggerer anim in OnInteractStartedAnimations)
             {
                 anim.TriggerAnimation();
             }
+            if (DoApplyStateAfterAnimation && OnInteractStartedAnimations.Count > 0)
+            {
+                OnInteractStartedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
+                {
+                    OnInteractStarted?.Invoke(this);
+                    OnInteractStartedEvent?.Invoke();
+                });
+                return;
+            }
+            OnInteractStarted?.Invoke(this);
+            OnInteractStartedEvent?.Invoke();
         }
 
         protected virtual void InvokeInteractEnded()
         {
-            OnInteractEnded?.Invoke(this);
-            OnInteractEndedEvent?.Invoke();
             foreach (AnimatorTriggerer anim in OnInteractEndedAnimations)
             {
                 anim.TriggerAnimation();
             }
+            if (DoApplyStateAfterAnimation && OnInteractEndedAnimations.Count > 0)
+            {
+                OnInteractEndedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
+                {
+                    OnInteractEnded?.Invoke(this);
+                    OnInteractEndedEvent?.Invoke();
+                });
+                return;
+            }
+            OnInteractEnded?.Invoke(this);
+            OnInteractEndedEvent?.Invoke();
         }
+
     }
 }
 

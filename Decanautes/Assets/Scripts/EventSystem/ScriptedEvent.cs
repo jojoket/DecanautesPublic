@@ -16,11 +16,13 @@ public class ScriptedEvent : MonoBehaviour
     [TitleGroup("Events")]
     public UnityEvent TaskTriggeredEvent;
 
+    private int _currentInteractionFixIndex = -1;
+
     // Start is called before the first frame update
     void Start()
     {
         CheckForTaskFixBreak(EventToTrigger);
-        if (MapManager.Instance.MapData.CurrentCycle == 0)
+        if (MapManager.Instance.MapData.CurrentCycle == 1)
         {
             ScriptedEventData.CurrentTimeLeft = ScriptedEventData.FirstCycleStartTime;
         }
@@ -29,9 +31,13 @@ public class ScriptedEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventToTrigger.isActive)
+        {
+            return;
+        }
         ScriptedEventData.CurrentTimeLeft -= Time.deltaTime;
 
-        if (ScriptedEventData.CurrentTimeLeft < 0)
+        if (ScriptedEventData.CurrentTimeLeft <= 0)
         {
             ScriptedEventData.CurrentTimeLeft = Random.Range(ScriptedEventData.TaskAppearanceTimeInSec.x, ScriptedEventData.TaskAppearanceTimeInSec.y);
             StartEvent();
@@ -46,10 +52,6 @@ public class ScriptedEvent : MonoBehaviour
         EventToTrigger.isActive = true;
         EnableEventVFX(EventToTrigger, true);
         EventToTrigger.OnEnable?.Invoke();
-        if (EventToTrigger.EngineLinked)
-        {
-            EventToTrigger.EngineLinked.ChangeState(EngineState.EngineStateEnum.Malfunction);
-        }
         StartCoroutine(TimeLimit(EventToTrigger));
         TaskTriggeredEvent?.Invoke();
     }
@@ -69,19 +71,19 @@ public class ScriptedEvent : MonoBehaviour
 
     private IEnumerator TimeLimit(Event eventToFix)
     {
-        yield return new WaitForSeconds(eventToFix.TimeMaxToFix);
-        if (eventToFix.isActive)
-        {
-            EventBreak(eventToFix);
+        //don't do break if time max to fix is unlimited
+        if (eventToFix.TimeMaxToFix != -1) {
+            yield return new WaitForSeconds(eventToFix.TimeMaxToFix);
+            if (eventToFix.isActive)
+            {
+                EventBreak(eventToFix);
+            }
         }
     }
+
     public void EventBreak(Event eventBroken)
     {
         eventBroken.OnBreak?.Invoke();
-        if (eventBroken.EngineLinked)
-        {
-            eventBroken.EngineLinked.ChangeState(EngineState.EngineStateEnum.BreakDown);
-        }
         eventBroken.isActive = false;
         eventBroken.InteractionsState.Clear();
         foreach (Interactable item in eventBroken.InteractionsToFix)
@@ -100,13 +102,29 @@ public class ScriptedEvent : MonoBehaviour
         eventToCheck.InteractionsState.Clear();
         foreach (Interactable item in eventToCheck.InteractionsToFix)
         {
-            item.OnInteractStarted += TaskInteracted;
+            if(item.GetType() == typeof(InputScreen))
+            {
+                InputScreen inputScreen = (InputScreen)item;
+                inputScreen.OnCodeValidAction += TaskInteracted;
+            }
+            else
+            {
+                item.OnInteractStarted += TaskInteracted;
+            }
             item.LinkedEvent = eventToCheck;
             eventToCheck.InteractionsState.Add(false);
         }
         foreach (Interactable item in eventToCheck.InteractionsToBreak)
         {
-            item.OnInteractStarted += TaskInteracted;
+            if (item.GetType() == typeof(InputScreen))
+            {
+                InputScreen inputScreen = (InputScreen)item;
+                inputScreen.OnCodeValidAction += TaskInteracted;
+            }
+            else
+            {
+                item.OnInteractStarted += TaskInteracted;
+            }
             item.LinkedEvent = eventToCheck;
         }
     }
@@ -128,13 +146,43 @@ public class ScriptedEvent : MonoBehaviour
         {
             return;
         }
+
+        if (interactable.LinkedEvent.NeedToBeDoneInOrder && index != _currentInteractionFixIndex + 1)
+        {
+            //if interacted in wrong interaction order
+            ResetButtonOrders(interactable);
+            return;
+        }
+
         interactable.LinkedEvent.InteractionsState[index] = true;
+        _currentInteractionFixIndex = index;
+        if (interactable.LinkedEvent.NeedToBeDoneInOrder)
+        {
+            interactable.ChangeMaterials(interactable.LinkedEvent.GoodOrderMaterial);
+        }
 
         if (!interactable.LinkedEvent.InteractionsState.Contains(false))
         {
             CleanEvent(interactable.LinkedEvent);
         }
     }
+
+    private void ResetButtonOrders(Interactable interactable)
+    {
+        _currentInteractionFixIndex = -1;
+        for (int i = 0; i < interactable.LinkedEvent.InteractionsState.Count; i++)
+        {
+            interactable.LinkedEvent.InteractionsState[i] = false;
+            interactable.LinkedEvent.InteractionsToFix[i].ChangeMaterials(interactable.BaseMaterial);
+        }
+    }
+
+    private IEnumerator ResetButtonAfter(float sec, Interactable interactable)
+    {
+        yield return new WaitForSeconds(sec);
+        ResetButtonOrders(interactable);
+    }
+
     private void CleanEvent(Event eventToClean)
     {
         EnableEventVFX(eventToClean, false);
@@ -144,13 +192,17 @@ public class ScriptedEvent : MonoBehaviour
         foreach (Interactable item in eventToClean.InteractionsToFix)
         {
             eventToClean.InteractionsState.Add(false);
-        }
-        if (eventToClean.EngineLinked)
-        {
-            eventToClean.EngineLinked.ChangeState(EngineState.EngineStateEnum.Good);
-            eventToClean.EngineLinked.ChangeInteractions();
+            StartCoroutine(ResetButtonAfter(1, item));
         }
     }
     #endregion
 
+
+    [Button]
+    public void SwitchInteractions()
+    {
+        List<Interactable> temp = new List<Interactable>(EventToTrigger.InteractionsToFix);
+        EventToTrigger.InteractionsToFix = new List<Interactable>(EventToTrigger.InteractionsToBreak);
+        EventToTrigger.InteractionsToBreak = temp;
+    }
 }

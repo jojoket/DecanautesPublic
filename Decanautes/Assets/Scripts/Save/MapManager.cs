@@ -13,10 +13,9 @@ public class MapManager : MonoBehaviour
 
     public MapData MapData;
     public GameObject savedFile;
-    
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         if (Instance != null)
         {
@@ -24,6 +23,12 @@ public class MapManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
         LoadMap();
     }
 

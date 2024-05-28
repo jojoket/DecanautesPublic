@@ -11,13 +11,16 @@ public class PropAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (AnimatorTriggerer animatorTriggerer in Animations)
+        {
+            animatorTriggerer.parent = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     [Button]
