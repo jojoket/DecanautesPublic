@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
-using JetBrains.Annotations;
-using UnityEditor.ShaderGraph.Internal;
 using Sirenix.Utilities;
 using FMODUnity;
 

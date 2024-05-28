@@ -6,7 +6,6 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using FMODUnity;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Decanautes.Interactable
 {
