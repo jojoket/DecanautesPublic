@@ -6,13 +6,13 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using FMODUnity;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Decanautes.Interactable
 {
     [Serializable]
     public class AnimatorTriggerer
     {
+        [HideInInspector]
         public MonoBehaviour parent;
         public Animator animator;
         public enum ParameterType
@@ -95,14 +95,19 @@ namespace Decanautes.Interactable
         }
         private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
         {
+            bool animStarted = false;
             while (animator != null)
             {
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+                if (!animStarted && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.5f)
+                {
+                    animStarted = true;
+                }
+                if (animStarted && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
                 {
                     callBack();
                     break;
                 }
-                yield return new WaitForSecondsRealtime(0.05f);
+                yield return new WaitForSecondsRealtime(0.02f);
             }
         }
 
@@ -126,6 +131,7 @@ namespace Decanautes.Interactable
 
 
         //--------Events
+        [TitleGroup("Events")]
         public List<AnimatorTriggerer> OnInteractStartedAnimations = new List<AnimatorTriggerer>();
         public UnityAction<Interactable> OnInteractStarted;
         public UnityEvent OnInteractStartedEvent;
@@ -239,9 +245,9 @@ namespace Decanautes.Interactable
             {
                 anim.TriggerAnimation();
             }
-            if (DoApplyStateAfterAnimation)
+            if (DoApplyStateAfterAnimation && OnInteractStartedAnimations.Count > 0)
             {
-                OnInteractEndedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
+                OnInteractStartedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
                 {
                     OnInteractStarted?.Invoke(this);
                     OnInteractStartedEvent?.Invoke();
@@ -258,7 +264,7 @@ namespace Decanautes.Interactable
             {
                 anim.TriggerAnimation();
             }
-            if (DoApplyStateAfterAnimation)
+            if (DoApplyStateAfterAnimation && OnInteractEndedAnimations.Count > 0)
             {
                 OnInteractEndedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
                 {

@@ -102,13 +102,29 @@ public class ScriptedEvent : MonoBehaviour
         eventToCheck.InteractionsState.Clear();
         foreach (Interactable item in eventToCheck.InteractionsToFix)
         {
-            item.OnInteractStarted += TaskInteracted;
+            if(item.GetType() == typeof(InputScreen))
+            {
+                InputScreen inputScreen = (InputScreen)item;
+                inputScreen.OnCodeValidAction += TaskInteracted;
+            }
+            else
+            {
+                item.OnInteractStarted += TaskInteracted;
+            }
             item.LinkedEvent = eventToCheck;
             eventToCheck.InteractionsState.Add(false);
         }
         foreach (Interactable item in eventToCheck.InteractionsToBreak)
         {
-            item.OnInteractStarted += TaskInteracted;
+            if (item.GetType() == typeof(InputScreen))
+            {
+                InputScreen inputScreen = (InputScreen)item;
+                inputScreen.OnCodeValidAction += TaskInteracted;
+            }
+            else
+            {
+                item.OnInteractStarted += TaskInteracted;
+            }
             item.LinkedEvent = eventToCheck;
         }
     }

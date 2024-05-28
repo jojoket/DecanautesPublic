@@ -107,12 +107,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrabPoint: {fileID: 107574339451760140}
+  CanMove: 1
   PlayerData: {fileID: 11400000, guid: 7588c2c3e85c1d841967976e93ee0e11, type: 2}
   InteractionLayer:
     serializedVersion: 2
     m_Bits: 64
   lookingAt: {fileID: 0}
   grabbed: {fileID: 0}
+  editing: {fileID: 0}
 --- !u!1 &6800377687091589629
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,8 +575,8 @@ MonoBehaviour:
   m_RecenterTarget: 0
   m_VerticalAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 400
+    m_SpeedMode: 1
+    m_MaxSpeed: 3
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse Y
@@ -597,8 +599,8 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 400
+    m_SpeedMode: 1
+    m_MaxSpeed: 3
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse X
