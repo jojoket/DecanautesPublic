@@ -52,6 +52,8 @@ public class ScriptedEvent : MonoBehaviour
         EventToTrigger.isActive = true;
         EnableEventVFX(EventToTrigger, true);
         EventToTrigger.OnEnable?.Invoke();
+        if (EventToTrigger.OnEnableFmod.Transform != null)
+            RythmManager.Instance.AddFModEventToBuffer(EventToTrigger.OnEnableFmod);
         StartCoroutine(TimeLimit(EventToTrigger));
         TaskTriggeredEvent?.Invoke();
     }
@@ -84,6 +86,8 @@ public class ScriptedEvent : MonoBehaviour
     public void EventBreak(Event eventBroken)
     {
         eventBroken.OnBreak?.Invoke();
+        if (eventBroken.OnBreakFmod.Transform != null)
+            RythmManager.Instance.AddFModEventToBuffer(eventBroken.OnBreakFmod);
         eventBroken.isActive = false;
         eventBroken.InteractionsState.Clear();
         foreach (Interactable item in eventBroken.InteractionsToFix)
@@ -189,6 +193,8 @@ public class ScriptedEvent : MonoBehaviour
         eventToClean.isActive = false;
         eventToClean.InteractionsState.Clear();
         eventToClean.OnFix?.Invoke();
+        if (eventToClean.OnFixFmod.Transform != null)
+            RythmManager.Instance.AddFModEventToBuffer(eventToClean.OnFixFmod);
         foreach (Interactable item in eventToClean.InteractionsToFix)
         {
             eventToClean.InteractionsState.Add(false);

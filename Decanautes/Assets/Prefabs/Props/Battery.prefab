@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0336256, y: -0.7520001, z: -7.999716}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2386001, y: 1.2386, z: 1.2386001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8660356574235948490}
@@ -70,8 +70,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialChangements:
-  - IsInRythm: 0
+  - StartAnimOnStart: 1
+    IsInRythm: 0
     HasSound: 0
+    SoundPositionTransform: {fileID: 0}
     EventPath:
       Guid:
         Data1: 0
@@ -97,8 +99,10 @@ MonoBehaviour:
     ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
     ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
     ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
-  - IsInRythm: 0
+  - StartAnimOnStart: 1
+    IsInRythm: 0
     HasSound: 0
+    SoundPositionTransform: {fileID: 0}
     EventPath:
       Guid:
         Data1: 0
@@ -116,6 +120,64 @@ MonoBehaviour:
     ParameterFloatValueInit: 0
     ParameterFloatValueStart: 0
     ParameterFloatValueEnd: -0.1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - StartAnimOnStart: 0
+    IsInRythm: 0
+    HasSound: 0
+    SoundPositionTransform: {fileID: 0}
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 922d6cb862749c44aa9b0f57d4835e0b, type: 2}
+    LerpDuration: 0
+    ParameterName: _Fill_Amount
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0.1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - StartAnimOnStart: 0
+    IsInRythm: 0
+    HasSound: 0
+    SoundPositionTransform: {fileID: 0}
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 922d6cb862749c44aa9b0f57d4835e0b, type: 2}
+    LerpDuration: 0
+    ParameterName: _Fill_Amount
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0.1
     ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
     ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
     ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
@@ -142,6 +204,7 @@ MonoBehaviour:
     triggerType: 0
     IsInRythm: 0
     HasSound: 0
+    SoundPositionTransform: {fileID: 0}
     DoLaunchSoundAfterAnimation: 0
     EventPath:
       Guid:
@@ -156,7 +219,31 @@ MonoBehaviour:
     Vector3ToApply: {x: 0, y: 0, z: 0}
     OnAnimationFirstLooped:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2119760066559375030}
+          m_TargetAssemblyTypeName: MaterialAnimation, Assembly-CSharp
+          m_MethodName: TriggerAnimationByIndex
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2119760066559375030}
+          m_TargetAssemblyTypeName: MaterialAnimation, Assembly-CSharp
+          m_MethodName: TriggerAnimationByIndex
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &5077680055334392461
 PrefabInstance:
   m_ObjectHideFlags: 0

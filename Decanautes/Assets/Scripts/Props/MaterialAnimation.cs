@@ -20,6 +20,8 @@ public class MaterialChangement
     public bool IsInRythm = false;
     public bool HasSound = false;
     [ShowIf("HasSound")]
+    public Transform SoundPositionTransform;
+    [ShowIf("HasSound")]
     public EventReference EventPath;
 
     public bool IsMaterialInstance = false;
@@ -78,7 +80,7 @@ public class MaterialAnimation : MonoBehaviour
         {
             SetMaterialInitialState(materialChangement);
             if(materialChangement.StartAnimOnStart){
-
+                TriggerAnimation(materialChangement);
             }
         }
     }
@@ -111,7 +113,7 @@ public class MaterialAnimation : MonoBehaviour
                 });
                 if (materialChangement.HasSound)
                 {
-                    RythmManager.Instance.AddFModEventToBuffer(materialChangement.EventPath);
+                    RythmManager.Instance.AddFModEventToBuffer(new RythmManager.FmodEventAndPos(materialChangement.EventPath, materialChangement.SoundPositionTransform));
                 }
                 return;
             }
@@ -131,13 +133,32 @@ public class MaterialAnimation : MonoBehaviour
             });
             if (materialChangements[index].HasSound)
             {
-                RythmManager.Instance.AddFModEventToBuffer(materialChangements[index].EventPath);
+                RythmManager.Instance.AddFModEventToBuffer(new RythmManager.FmodEventAndPos(materialChangements[index].EventPath, materialChangements[index].SoundPositionTransform));
             }
             return;
         }
         StartCoroutine(StartAnimation(materialChangements[index]));
 
     }
+
+    public void TriggerAnimation(MaterialChangement materialChangement)
+    {
+        if (materialChangement.IsInRythm)
+        {
+            RythmManager.Instance.OnBeatTrigger.AddListener(() =>
+            {
+                StartCoroutine(StartAnimation(materialChangement));
+            });
+            if (materialChangement.HasSound)
+            {
+                RythmManager.Instance.AddFModEventToBuffer(new RythmManager.FmodEventAndPos(materialChangement.EventPath, materialChangement.SoundPositionTransform));
+            }
+            return;
+        }
+        StartCoroutine(StartAnimation(materialChangement));
+
+    }
+
 
     private IEnumerator StartAnimation(MaterialChangement materialChangement)
     {

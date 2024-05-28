@@ -18,6 +18,18 @@ public class RythmManager : MonoBehaviour
         public FMOD.StringWrapper lastMarker = new FMOD.StringWrapper();
     }
 
+    [Serializable]
+    public class FmodEventAndPos
+    {
+        public EventReference FmodRef;
+        public Transform Transform;
+        public FmodEventAndPos(EventReference fmodRef, Transform transform)
+        {
+            FmodRef = fmodRef;
+            Transform = transform;
+        }
+    }
+
     //Singleton
     public static RythmManager Instance;
 
@@ -26,14 +38,14 @@ public class RythmManager : MonoBehaviour
     private bool isFirst = true;
     public int lastBeat = 0;
 
-    private List<EventReference> FMODEvents = new List<EventReference>();
+    private List<FmodEventAndPos> FMODEvents = new List<FmodEventAndPos>();
 
 
     //From FMOD
 
     public TimelineInfo timelineInfo = null;
     public EventReference Base;
-    public List<EventReference> EventsOnStart = new List<EventReference>();
+    public List<FmodEventAndPos> EventsOnStart = new List<FmodEventAndPos>();
     private GCHandle _timelineHandle;
     private FMOD.Studio.EventInstance _musicInstance;
     private FMOD.Studio.EVENT_CALLBACK _beatCallBack;
@@ -86,7 +98,7 @@ public class RythmManager : MonoBehaviour
         PlayAndRelieveBuffer();
         if (isFirst)
         {
-            foreach (EventReference fmodEvent in EventsOnStart)
+            foreach (FmodEventAndPos fmodEvent in EventsOnStart)
             {
                 AddFModEventToBuffer(fmodEvent);
             }
@@ -94,16 +106,16 @@ public class RythmManager : MonoBehaviour
         }
     }
 
-    public void AddFModEventToBuffer(EventReference fmodEventAdded)
+    public void AddFModEventToBuffer(FmodEventAndPos fmodEventAdded)
     {
         FMODEvents.Add(fmodEventAdded);
     }
 
     private void PlayAndRelieveBuffer()
     {
-        foreach (EventReference fmodEvent in FMODEvents)
+        foreach (FmodEventAndPos fmodEvent in FMODEvents)
         {
-            FMODUnity.RuntimeManager.PlayOneShot(fmodEvent);
+            FMODUnity.RuntimeManager.PlayOneShot(fmodEvent.FmodRef, fmodEvent.Transform.position);
         }
         FMODEvents.Clear();
     }

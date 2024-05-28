@@ -26,17 +26,26 @@ public class Maintain
     [TabGroup("Parameters")]
     public List<GameObject> ToDisableOnUnderThreshold;
     [TabGroup("Parameters")]
-    public UnityEvent OnUnderThreshold;
-    [TabGroup("Parameters")]
-    public UnityEvent OnOverThreshold;
-    [TabGroup("Parameters")]
     public List<GameObject> ToEnableOnZero;
     [TabGroup("Parameters")]
     public List<GameObject> ToDisableOnZero;
-    [TabGroup("Parameters")]
+    [TabGroup("Event")]
+    public UnityEvent OnUnderThreshold;
+    [TabGroup("Event")]
+    public UnityEvent OnOverThreshold;
+    [TabGroup("Event")]
     public UnityEvent OnZero;
-    [TabGroup("Parameters")]
+    [TabGroup("Event")]
     public UnityEvent OnOverZero;
+
+    [TabGroup("FMOD")]
+    public RythmManager.FmodEventAndPos OnUnderThresholdFmod;
+    [TabGroup("FMOD")]
+    public RythmManager.FmodEventAndPos OnOverThresholdFmod;
+    [TabGroup("FMOD")]
+    public RythmManager.FmodEventAndPos OnZeroFmod;
+    [TabGroup("FMOD")]
+    public RythmManager.FmodEventAndPos OnOverZeroFmod;
 
     [TabGroup("Debug"), ReadOnly]
     public bool isOverThreshold = true;
@@ -153,6 +162,8 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isOverThreshold = false;
         maintain.OnUnderThreshold?.Invoke();
+        if (maintain.OnUnderThresholdFmod.Transform != null)
+            RythmManager.Instance.AddFModEventToBuffer(maintain.OnUnderThresholdFmod);
         foreach (GameObject item in maintain.ToDisableOnUnderThreshold)
         {
             item.SetActive(false);
@@ -166,6 +177,8 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isOverThreshold = true;
         maintain.OnOverThreshold?.Invoke();
+        if (maintain.OnOverThresholdFmod.Transform != null)
+            RythmManager.Instance.AddFModEventToBuffer(maintain.OnOverThresholdFmod);
         foreach (GameObject item in maintain.ToDisableOnUnderThreshold)
         {
             item.SetActive(true);
@@ -180,6 +193,10 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isZero = true;
         maintain.OnZero?.Invoke();
+        if (maintain.OnZeroFmod.Transform != null)
+        {
+            RythmManager.Instance.AddFModEventToBuffer(maintain.OnZeroFmod);
+        }
         foreach (GameObject item in maintain.ToDisableOnZero)
         {
             item.SetActive(false);
@@ -194,6 +211,8 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isZero = false;
         maintain.OnOverZero?.Invoke();
+        if (maintain.OnOverZeroFmod.Transform != null)
+            RythmManager.Instance.AddFModEventToBuffer(maintain.OnOverZeroFmod);
         foreach (GameObject item in maintain.ToDisableOnZero)
         {
             item.SetActive(true);

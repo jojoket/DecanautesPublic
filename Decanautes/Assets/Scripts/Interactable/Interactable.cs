@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using FMODUnity;
+using static UnityEditor.Profiling.RawFrameDataView;
 
 namespace Decanautes.Interactable
 {
@@ -25,6 +26,8 @@ namespace Decanautes.Interactable
         public ParameterType triggerType;
         public bool IsInRythm = false;
         public bool HasSound = false;
+        [ShowIf("HasSound")]
+        public Transform SoundPositionTransform;
         [ShowIf("HasSound")]
         public bool DoLaunchSoundAfterAnimation;
         [ShowIf("HasSound")]
@@ -48,7 +51,7 @@ namespace Decanautes.Interactable
                 RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
                 if (HasSound && !DoLaunchSoundAfterAnimation)
                 {
-                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
+                    RythmManager.Instance.AddFModEventToBuffer(new RythmManager.FmodEventAndPos(EventPath, SoundPositionTransform));
                 }
                 return;
             }
@@ -88,11 +91,30 @@ namespace Decanautes.Interactable
                 OnAnimationFirstLooped.RemoveAllListeners();
                 if (DoLaunchSoundAfterAnimation && HasSound)
                 {
-                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
+                    if (IsInRythm)
+                    {
+                        RythmManager.Instance.AddFModEventToBuffer(new RythmManager.FmodEventAndPos(EventPath, SoundPositionTransform));
+                    }
+                    else
+                    {
+                        FMODUnity.RuntimeManager.PlayOneShot(EventPath, SoundPositionTransform.position);
+                    }
                 }
             }));
-            return;
+            if (DoLaunchSoundAfterAnimation || !HasSound)
+            {
+                return;
+            }
+            if (IsInRythm)
+            {
+                RythmManager.Instance.AddFModEventToBuffer(new RythmManager.FmodEventAndPos(EventPath, SoundPositionTransform));
+            }
+            else
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(EventPath, SoundPositionTransform.position);
+            }
         }
+
         private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
         {
             bool animStarted = false;
