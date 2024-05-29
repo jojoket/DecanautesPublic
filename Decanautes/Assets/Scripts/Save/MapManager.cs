@@ -25,11 +25,15 @@ public class MapManager : MonoBehaviour
         Instance = this;
     }
 
+    void OnEnable() {
+        LoadMap();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         
-        LoadMap();
+        
     }
 
     // Update is called once per frame

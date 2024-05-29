@@ -16,6 +16,7 @@ public class MaterialChangement
         Color,
         Vector3,
     }
+    public bool StartAnimOnStart = false;
     public bool IsInRythm = false;
     public bool HasSound = false;
     [ShowIf("HasSound")]
@@ -76,6 +77,9 @@ public class MaterialAnimation : MonoBehaviour
         foreach (var materialChangement in materialChangements)
         {
             SetMaterialInitialState(materialChangement);
+            if(materialChangement.StartAnimOnStart){
+
+            }
         }
     }
 
