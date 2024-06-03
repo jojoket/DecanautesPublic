@@ -3,7 +3,12 @@ guid: 58abda18f2b1c5d4fbc2b043a0766603
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Diode_Base
+    second: {fileID: 2100000, guid: 0b81bc86871c38c47b69460962af4981, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
