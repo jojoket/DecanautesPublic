@@ -137,11 +137,17 @@ public class CareSystem : MonoBehaviour
         maintain.MaintainableMeter.FillAmount = maintain.MaintainableData.CurrentState;
         if (maintain.MaintainableData.CurrentState <= maintain.MaintainableData.Threshold)
         {
-            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.WarningMaterial;
+            if (maintain.MaintainableMeter.IndicatorRenderer)
+            {
+                maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.WarningMaterial;
+            }
         }
         else
         {
-            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.BaseMaterial;
+            if (maintain.MaintainableMeter.IndicatorRenderer)
+            {
+                maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.BaseMaterial;
+            }
         }
     }
 
