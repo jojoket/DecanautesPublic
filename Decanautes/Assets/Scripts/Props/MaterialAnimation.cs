@@ -20,7 +20,7 @@ public class MaterialChangement
     public bool IsInRythm = false;
     public bool HasSound = false;
     [ShowIf("HasSound")]
-    public EventReference EventPath;
+    public FmodEventInfo FmodEvent;
 
     public bool IsMaterialInstance = false;
 
@@ -111,7 +111,7 @@ public class MaterialAnimation : MonoBehaviour
                 });
                 if (materialChangement.HasSound)
                 {
-                    RythmManager.Instance.AddFModEventToBuffer(materialChangement.EventPath);
+                    RythmManager.Instance.AddFModEventToBuffer(materialChangement.FmodEvent);
                 }
                 return;
             }
@@ -131,7 +131,7 @@ public class MaterialAnimation : MonoBehaviour
             });
             if (materialChangements[index].HasSound)
             {
-                RythmManager.Instance.AddFModEventToBuffer(materialChangements[index].EventPath);
+                RythmManager.Instance.AddFModEventToBuffer(materialChangements[index].FmodEvent);
             }
             return;
         }

@@ -9,6 +9,14 @@ using System;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements.Experimental;
 
+[Serializable]
+public class FmodEventInfo
+{
+    public Transform EventPosition;
+    public EventReference FmodReference;
+}
+
+
 public class RythmManager : MonoBehaviour
 {
     [StructLayout(LayoutKind.Sequential)]
@@ -26,14 +34,14 @@ public class RythmManager : MonoBehaviour
     private bool isFirst = true;
     public int lastBeat = 0;
 
-    private List<EventReference> FMODEvents = new List<EventReference>();
+    private List<FmodEventInfo> FMODEvents = new List<FmodEventInfo>();
 
 
     //From FMOD
 
     public TimelineInfo timelineInfo = null;
-    public EventReference Base;
-    public List<EventReference> EventsOnStart = new List<EventReference>();
+    public FmodEventInfo Base;
+    public List<FmodEventInfo> EventsOnStart = new List<FmodEventInfo>();
     private GCHandle _timelineHandle;
     private FMOD.Studio.EventInstance _musicInstance;
     private FMOD.Studio.EVENT_CALLBACK _beatCallBack;
@@ -49,9 +57,9 @@ public class RythmManager : MonoBehaviour
         }
         Instance = this;
 
-        if (!Base.IsNull)
+        if (!Base.FmodReference.IsNull)
         {
-            _musicInstance = RuntimeManager.CreateInstance(Base);
+            _musicInstance = RuntimeManager.CreateInstance(Base.FmodReference);
             _musicInstance.start();
         }
 
@@ -60,7 +68,7 @@ public class RythmManager : MonoBehaviour
 
     private void Start()
     {
-        if(!Base.IsNull)
+        if(!Base.FmodReference.IsNull)
         {
             timelineInfo = new TimelineInfo();
             _beatCallBack = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
@@ -86,7 +94,7 @@ public class RythmManager : MonoBehaviour
         PlayAndRelieveBuffer();
         if (isFirst)
         {
-            foreach (EventReference fmodEvent in EventsOnStart)
+            foreach (FmodEventInfo fmodEvent in EventsOnStart)
             {
                 AddFModEventToBuffer(fmodEvent);
             }
@@ -94,16 +102,16 @@ public class RythmManager : MonoBehaviour
         }
     }
 
-    public void AddFModEventToBuffer(EventReference fmodEventAdded)
+    public void AddFModEventToBuffer(FmodEventInfo fmodEventAdded)
     {
         FMODEvents.Add(fmodEventAdded);
     }
 
     private void PlayAndRelieveBuffer()
     {
-        foreach (EventReference fmodEvent in FMODEvents)
+        foreach (FmodEventInfo fmodEvent in FMODEvents)
         {
-            FMODUnity.RuntimeManager.PlayOneShot(fmodEvent);
+            FMODUnity.RuntimeManager.PlayOneShot(fmodEvent.FmodReference, fmodEvent.EventPosition.position);
         }
         FMODEvents.Clear();
     }

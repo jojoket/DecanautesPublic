@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using FMODUnity;
+using static UnityEditor.Profiling.RawFrameDataView;
 
 namespace Decanautes.Interactable
 {
@@ -28,7 +29,7 @@ namespace Decanautes.Interactable
         [ShowIf("HasSound")]
         public bool DoLaunchSoundAfterAnimation;
         [ShowIf("HasSound")]
-        public EventReference EventPath;
+        public FmodEventInfo FmodEvent;
         
         
         public string parameterName;
@@ -48,7 +49,7 @@ namespace Decanautes.Interactable
                 RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
                 if (HasSound && !DoLaunchSoundAfterAnimation)
                 {
-                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
+                    RythmManager.Instance.AddFModEventToBuffer(FmodEvent);
                 }
                 return;
             }
@@ -88,9 +89,13 @@ namespace Decanautes.Interactable
                 OnAnimationFirstLooped.RemoveAllListeners();
                 if (DoLaunchSoundAfterAnimation && HasSound)
                 {
-                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
+                    RythmManager.Instance.AddFModEventToBuffer(FmodEvent);
                 }
             }));
+            if (!IsInRythm && !DoLaunchSoundAfterAnimation && HasSound)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(FmodEvent.FmodReference, FmodEvent.EventPosition.position);
+            }
             return;
         }
         private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
