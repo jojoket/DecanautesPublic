@@ -944,6 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7248895034186738923}
+  - component: {fileID: 1289182403122537556}
   - component: {fileID: 5271979238416628863}
   m_Layer: 0
   m_Name: Pressuriseur
@@ -969,6 +970,99 @@ Transform:
   - {fileID: 2453767179213570432}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289182403122537556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526761458260382526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Broken
+    StateToApply: 1
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Broken
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 6273778700357165783}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Ready
+    StateToApply: 1
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 6273778700357165783}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Ready
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!95 &5271979238416628863
 Animator:
   serializedVersion: 7
