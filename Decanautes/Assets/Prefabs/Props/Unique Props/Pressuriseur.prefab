@@ -944,6 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7248895034186738923}
+  - component: {fileID: 1289182403122537556}
   - component: {fileID: 5271979238416628863}
   m_Layer: 0
   m_Name: Pressuriseur
@@ -969,6 +970,99 @@ Transform:
   - {fileID: 2453767179213570432}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289182403122537556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526761458260382526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Broken
+    StateToApply: 1
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Broken
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 6273778700357165783}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Ready
+    StateToApply: 1
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 6273778700357165783}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: Ready
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!95 &5271979238416628863
 Animator:
   serializedVersion: 7
@@ -2287,6 +2381,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 573350290981563070}
+    - targetCorrespondingSourceObject: {fileID: -5969915619163066625, guid: acf06ebe40e195a48a6c07d7854a81fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2988838583583403628}
   m_SourcePrefab: {fileID: 100100000, guid: acf06ebe40e195a48a6c07d7854a81fd, type: 3}
 --- !u!1 &2161869155879273354 stripped
 GameObject:
@@ -2376,6 +2474,27 @@ MonoBehaviour:
   OnCodeInvalid:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &2988838583583403628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2161869155879273354}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0032636393, y: 0.00030685554, z: 0.001662084}
+  m_Center: {x: 0, y: 0.0000015703172, z: 0.00067917904}
 --- !u!4 &3795585236445235870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: acf06ebe40e195a48a6c07d7854a81fd,

@@ -6572,6 +6572,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 56.986
       objectReference: {fileID: 0}
+    - target: {fileID: 3456868405075127784, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animator
+      value: 
+      objectReference: {fileID: 8542711576952711956}
+    - target: {fileID: 3456868405075127784, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animator
+      value: 
+      objectReference: {fileID: 8542711576952711956}
     - target: {fileID: 3871059068631625769, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: m_Name
@@ -7059,6 +7069,12 @@ Animation:
 --- !u!4 &5582607949483396920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6796985201533268621, guid: d24494c9ecd930548993fb039bedf3db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381151931833056693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8542711576952711956 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7324850490097981089, guid: d24494c9ecd930548993fb039bedf3db,
     type: 3}
   m_PrefabInstance: {fileID: 1381151931833056693}
   m_PrefabAsset: {fileID: 0}
