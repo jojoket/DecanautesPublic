@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4072094628423449258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2347921000637892894}
+  m_Layer: 0
+  m_Name: Diode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2347921000637892894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072094628423449258}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9145046139446415676}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8746837648368187095
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2347921000637892894}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000003774895
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f1195650ccee9154d94f5223a93470fe, type: 2}
+    - target: {fileID: 919132149155446097, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Mesh_Hatch_Diode
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5655416639050922745}
+  m_SourcePrefab: {fileID: 100100000, guid: bdb306b48a89b7641aeb10e64f56d2b9, type: 3}
+--- !u!23 &7972101271351798355 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8746837648368187095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8476455845863000966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8746837648368187095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5655416639050922745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8476455845863000966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e314f3dbbd73fb46b7346a521ecd454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialChangements:
+  - StartAnimOnStart: 0
+    IsInRythm: 0
+    HasSound: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    IsMaterialInstance: 1
+    Renderer: {fileID: 7972101271351798355}
+    MaterialIndex: 0
+    Material: {fileID: 0}
+    LerpDuration: 2
+    ParameterName: 
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 1, g: 0.027406208, b: 0, a: 1}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 200
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - StartAnimOnStart: 0
+    IsInRythm: 0
+    HasSound: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    IsMaterialInstance: 1
+    Renderer: {fileID: 7972101271351798355}
+    MaterialIndex: 0
+    Material: {fileID: 0}
+    LerpDuration: 2
+    ParameterName: 
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 1, b: 0.17926908, a: 1}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 2002
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - StartAnimOnStart: 0
+    IsInRythm: 0
+    HasSound: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    IsMaterialInstance: 1
+    Renderer: {fileID: 7972101271351798355}
+    MaterialIndex: 0
+    Material: {fileID: 0}
+    LerpDuration: 2
+    ParameterName: 
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0.9622642, g: 0.8578676, b: 0.8578676, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 200
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+--- !u!4 &9145046139446415676 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bdb306b48a89b7641aeb10e64f56d2b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8746837648368187095}
+  m_PrefabAsset: {fileID: 0}
