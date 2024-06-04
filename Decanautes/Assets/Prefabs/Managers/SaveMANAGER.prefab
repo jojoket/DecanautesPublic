@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 955826495921511557}
   - component: {fileID: 983497856690636875}
   m_Layer: 0
-  m_Name: SaveMANAGER
+  m_Name: SaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8482851904115477742}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,12 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dd0ece37fcbac4fbd173dbeaf7649a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSave:
-  - {fileID: 11400000, guid: 619fc669e790c354dbc5373d7d514642, type: 2}
-  - {fileID: 11400000, guid: 5e788305f97cb3349bce6f03a8038f91, type: 2}
-  - {fileID: 11400000, guid: defa66761ba968e44ab0b65cd88f879d, type: 2}
-  - {fileID: 11400000, guid: 45802d2d39e40924588b05890c36ea24, type: 2}
-  - {fileID: 11400000, guid: 01921c996bf732c41b4a084dfc2d15ac, type: 2}
-  - {fileID: 11400000, guid: 79ab2f3be45161c42bbf224dd76e3035, type: 2}
-  EditorPath: Assets/DATAS/Saves
-  BuildPath: DATAS/Saves
+  toSave: []
+  Path: Assets/DATAS/Saves
