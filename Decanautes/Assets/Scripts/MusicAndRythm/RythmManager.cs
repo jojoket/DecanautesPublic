@@ -8,10 +8,12 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements.Experimental;
+using static UnityEditor.Profiling.RawFrameDataView;
 
 [Serializable]
 public class FmodEventInfo
 {
+    public bool IsInRythm;
     public Transform EventPosition;
     public EventReference FmodReference;
 }
@@ -96,15 +98,22 @@ public class RythmManager : MonoBehaviour
         {
             foreach (FmodEventInfo fmodEvent in EventsOnStart)
             {
-                AddFModEventToBuffer(fmodEvent);
+                StartFmodEvent(fmodEvent);
             }
             isFirst = false;
         }
     }
 
-    public void AddFModEventToBuffer(FmodEventInfo fmodEventAdded)
+    public void StartFmodEvent(FmodEventInfo fmodEventAdded)
     {
-        FMODEvents.Add(fmodEventAdded);
+        if (fmodEventAdded.IsInRythm)
+        {
+            FMODEvents.Add(fmodEventAdded);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(fmodEventAdded.FmodReference, fmodEventAdded.EventPosition.position);
+        }
     }
 
     private void PlayAndRelieveBuffer()

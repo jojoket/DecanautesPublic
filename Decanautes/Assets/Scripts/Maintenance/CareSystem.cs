@@ -38,6 +38,15 @@ public class Maintain
     [TabGroup("Parameters")]
     public UnityEvent OnOverZero;
 
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnUnderThresholdFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnOverThresholdFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnZeroFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnOverZeroFmod;
+
     [TabGroup("Debug"), ReadOnly]
     public bool isOverThreshold = true;
     [TabGroup("Debug"), ReadOnly]

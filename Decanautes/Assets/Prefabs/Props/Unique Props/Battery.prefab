@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8913299126641524100}
   - component: {fileID: 6070141571704990480}
-  - component: {fileID: 2119760066559375030}
   - component: {fileID: 5219992806812034759}
+  - component: {fileID: 8730811706877241073}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -57,73 +57,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2119760066559375030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457370714729953587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e314f3dbbd73fb46b7346a521ecd454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materialChangements:
-  - IsInRythm: 0
-    HasSound: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    IsMaterialInstance: 0
-    Renderer: {fileID: 0}
-    MaterialIndex: 0
-    Material: {fileID: 2100000, guid: 59685018e629adc47a6f4c3eb8ddfb1e, type: 2}
-    LerpDuration: 240
-    ParameterName: _Fill_Amount
-    ParameterType: 0
-    ParameterFloatValueInit: 0
-    ParameterFloatValueStart: -0.1
-    ParameterFloatValueEnd: -0.1
-    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStartMult: 0
-    ParameterColorValueEndMult: 0
-    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
-    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
-    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
-  - IsInRythm: 0
-    HasSound: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    IsMaterialInstance: 0
-    Renderer: {fileID: 0}
-    MaterialIndex: 0
-    Material: {fileID: 2100000, guid: 922d6cb862749c44aa9b0f57d4835e0b, type: 2}
-    LerpDuration: 240
-    ParameterName: _Fill_Amount
-    ParameterType: 0
-    ParameterFloatValueInit: 0
-    ParameterFloatValueStart: 0
-    ParameterFloatValueEnd: -0.1
-    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStartMult: 0
-    ParameterColorValueEndMult: 0
-    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
-    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
-    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
 --- !u!114 &5219992806812034759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,14 +75,6 @@ MonoBehaviour:
     triggerType: 0
     IsInRythm: 0
     HasSound: 0
-    DoLaunchSoundAfterAnimation: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
     parameterName: Battery_change
     StateToApply: 0
     FloatToApply: 0
@@ -157,6 +82,73 @@ MonoBehaviour:
     OnAnimationFirstLooped:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &8730811706877241073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457370714729953587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328c0be6633e3ae4083520e3260243e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Indicator: {fileID: 0}
+  IndicatorRenderer: {fileID: 0}
+  material: {fileID: 0}
+  FillAmount: 0
+  FillSizeMax: {x: 0, y: 0, z: 0}
+  FillDirection: {x: 0, y: 0, z: 0}
+  RotationMax: {x: 0, y: 0, z: 0}
+  TranslationMax: {x: 0, y: 0, z: 0}
+  materialChangements:
+  - IsAnim: 0
+    StartAnimOnStart: 0
+    IsInRythm: 0
+    HasSound: 0
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 59685018e629adc47a6f4c3eb8ddfb1e, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 0
+    ParameterName: _Fill_Amount
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: -0.1
+    ParameterFloatValueEnd: 0.1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAnim: 0
+    StartAnimOnStart: 0
+    IsInRythm: 0
+    HasSound: 0
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 922d6cb862749c44aa9b0f57d4835e0b, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 0
+    ParameterName: _Fill_Amount
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: -0.1
+    ParameterFloatValueEnd: 0.1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
 --- !u!1001 &5077680055334392461
 PrefabInstance:
   m_ObjectHideFlags: 0
