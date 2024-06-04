@@ -128,7 +128,10 @@ public class MaterialAnimation : MonoBehaviour
         {
             materialChangement.Material = materialChangement.Renderer.materials[materialChangement.MaterialIndex];
         }
-        materialChangement.SetMaterialStartValues();
+        if (materialChangement.IsAutoStart)
+        {
+            materialChangement.SetMaterialStartValues();
+        }
         float delta = 0;
         while (Time.time < endTime)
         {

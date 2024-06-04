@@ -22,6 +22,7 @@ namespace Decanautes.Interactable
 
         [TitleGroup("Parameters")]
         public bool IsToggle = false;
+        public bool CanInteract = true;
         public bool NeedLookToKeepInteraction = true;
         [Tooltip("It will wait for the first animation trigerrer's next animation end.")]
         public bool DoApplyStateAfterAnimation = true;
@@ -107,6 +108,10 @@ namespace Decanautes.Interactable
 
         public virtual void InteractionStart()
         {
+            if (!CanInteract)
+            {
+                return;
+            }
             if (!IsToggle)
             {
                 InvokeInteractStart();
@@ -129,11 +134,24 @@ namespace Decanautes.Interactable
 
         public virtual void InteractionEnd()
         {
+            if (!CanInteract)
+            {
+                return;
+            }
             if (!IsToggle)
             {
                 InvokeInteractEnded();
             }
             isPressed = false;
+        }
+
+        public void SetCanInteract(bool canInteract)
+        {
+            if (isPressed)
+            {
+                InteractionEnd();
+            }
+            CanInteract = canInteract;
         }
 
         protected virtual void InvokeInteractStart()

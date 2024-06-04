@@ -93,6 +93,7 @@ public class RythmManager : MonoBehaviour
     private void TriggerBeatEvent()
     {
         OnBeatTrigger?.Invoke();
+        OnBeatTrigger.RemoveAllListeners();
         PlayAndRelieveBuffer();
         if (isFirst)
         {

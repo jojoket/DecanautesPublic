@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ public class MaterialChangement
         Color,
         Vector3,
     }
+    public bool IsAutoStart = true;
     public bool IsAnim = false;
     [ShowIf("IsAnim")]
     public bool StartAnimOnStart = false;
@@ -72,25 +74,27 @@ public class MaterialChangement
         switch (ParameterType)
         {
             case MaterialChangement.MaterialParameterType.Color:
-                {
-                    Color lerpedColor = Color.Lerp(ParameterColorValueStart, ParameterColorValueEnd, delta);
-                    Material.SetColor(ParameterName, lerpedColor);
-                    break;
-                }
+            {
+                Color lerpedColor = Color.Lerp(ParameterColorValueStart, ParameterColorValueEnd, delta);
+                float lerpedFloat = Mathf.Lerp(ParameterColorValueStartMult, ParameterColorValueEndMult, delta);
+                lerpedColor = lerpedColor.NormalizeRGB() * lerpedFloat;
+                Material.SetColor(ParameterName, lerpedColor);
+                break;
+            }
             case MaterialChangement.MaterialParameterType.Float:
-                {
-                    float lerpedFloat = Mathf.Lerp(ParameterFloatValueStart, ParameterFloatValueEnd, delta);
+            {
+                float lerpedFloat = Mathf.Lerp(ParameterFloatValueStart, ParameterFloatValueEnd, delta);
 
-                    Material.SetFloat(ParameterName, lerpedFloat);
-                    break;
-                }
+                Material.SetFloat(ParameterName, lerpedFloat);
+                break;
+            }
             case MaterialChangement.MaterialParameterType.Vector3:
-                {
-                    Vector3 lerpedVector = Vector3.Lerp(ParameterVector3ValueStart, ParameterVector3ValueEnd, delta);
+            {
+                Vector3 lerpedVector = Vector3.Lerp(ParameterVector3ValueStart, ParameterVector3ValueEnd, delta);
 
-                    Material.SetVector(ParameterName, lerpedVector);
-                    break;
-                }
+                Material.SetVector(ParameterName, lerpedVector);
+                break;
+            }
         }
     }
 
@@ -99,25 +103,25 @@ public class MaterialChangement
         switch (ParameterType)
         {
             case MaterialChangement.MaterialParameterType.Color:
-                {
-                    Color lerpedColor = Color.Lerp(ParameterColorValueStart, ParameterColorValueEnd, CurrentDelta);
-                    Material.SetColor(ParameterName, lerpedColor);
-                    break;
-                }
+            {
+                Color lerpedColor = Color.Lerp(ParameterColorValueStart, ParameterColorValueEnd, CurrentDelta);
+                Material.SetColor(ParameterName, lerpedColor);
+                break;
+            }
             case MaterialChangement.MaterialParameterType.Float:
-                {
-                    float lerpedFloat = Mathf.Lerp(ParameterFloatValueStart, ParameterFloatValueEnd, CurrentDelta);
+            {
+                float lerpedFloat = Mathf.Lerp(ParameterFloatValueStart, ParameterFloatValueEnd, CurrentDelta);
 
-                    Material.SetFloat(ParameterName, lerpedFloat);
-                    break;
-                }
+                Material.SetFloat(ParameterName, lerpedFloat);
+                break;
+            }
             case MaterialChangement.MaterialParameterType.Vector3:
-                {
-                    Vector3 lerpedVector = Vector3.Lerp(ParameterVector3ValueStart, ParameterVector3ValueEnd, CurrentDelta);
+            {
+                Vector3 lerpedVector = Vector3.Lerp(ParameterVector3ValueStart, ParameterVector3ValueEnd, CurrentDelta);
 
-                    Material.SetVector(ParameterName, lerpedVector);
-                    break;
-                }
+                Material.SetVector(ParameterName, lerpedVector);
+                break;
+            }
         }
     }
 
@@ -172,20 +176,20 @@ public class MaterialChangement
         switch (ParameterType)
         {
             case MaterialChangement.MaterialParameterType.Color:
-                {
-                    ParameterColorValueStart = Material.GetColor(ParameterName);
-                    break;
-                }
+            {
+                ParameterColorValueStart = Material.GetColor(ParameterName);
+                break;
+            }
             case MaterialChangement.MaterialParameterType.Float:
-                {
-                    ParameterFloatValueStart = Material.GetFloat(ParameterName);
-                    break;
-                }
+            {
+                ParameterFloatValueStart = Material.GetFloat(ParameterName);
+                break;
+            }
             case MaterialChangement.MaterialParameterType.Vector3:
-                {
-                    ParameterVector3ValueStart = Material.GetVector(ParameterName);
-                    break;
-                }
+            {
+                ParameterVector3ValueStart = Material.GetVector(ParameterName);
+                break;
+            }
         }
     }
 
