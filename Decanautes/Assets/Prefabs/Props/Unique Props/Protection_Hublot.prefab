@@ -95,6 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8429056317333336715}
+  - component: {fileID: 1520098040732609944}
   m_Layer: 0
   m_Name: Protection_Hublot
   m_TagString: Untagged
@@ -118,6 +119,59 @@ Transform:
   - {fileID: 7500639990488122829}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520098040732609944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618789529853917117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: IsDown
+    StateToApply: 1
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 1
+    IsInRythm: 1
+    HasSound: 0
+    DoLaunchSoundAfterAnimation: 0
+    EventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    parameterName: IsDown
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &8042612176451478054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,7 +331,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bab4b0f730c2c0541956fbb7bb0226a5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6875853734818526809}
+      addedObject: {fileID: 6865212979076830929}
   m_SourcePrefab: {fileID: 100100000, guid: bab4b0f730c2c0541956fbb7bb0226a5, type: 3}
 --- !u!1 &7159721719535640439 stripped
 GameObject:
@@ -285,7 +339,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8042612176451478054}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &6875853734818526809
+--- !u!95 &6865212979076830929
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0

@@ -114,7 +114,8 @@ MonoBehaviour:
     m_Bits: 64
   lookingAt: {fileID: 0}
   grabbed: {fileID: 0}
-  editing: {fileID: 0}
+  PostItEditing: {fileID: 0}
+  InputScreenEditing: {fileID: 0}
 --- !u!1 &6800377687091589629
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearColorMode: 1
+  clearColorMode: 0
   backgroundColorHDR: {r: 0, g: 0, b: 0, a: 0}
   clearDepth: 1
   volumeLayerMask:

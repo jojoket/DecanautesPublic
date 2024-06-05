@@ -26,26 +26,26 @@ public class Maintain
     [TabGroup("Parameters")]
     public List<GameObject> ToDisableOnUnderThreshold;
     [TabGroup("Parameters")]
+    public UnityEvent OnUnderThreshold;
+    [TabGroup("Parameters")]
+    public UnityEvent OnOverThreshold;
+    [TabGroup("Parameters")]
     public List<GameObject> ToEnableOnZero;
     [TabGroup("Parameters")]
     public List<GameObject> ToDisableOnZero;
-    [TabGroup("Event")]
-    public UnityEvent OnUnderThreshold;
-    [TabGroup("Event")]
-    public UnityEvent OnOverThreshold;
-    [TabGroup("Event")]
+    [TabGroup("Parameters")]
     public UnityEvent OnZero;
-    [TabGroup("Event")]
+    [TabGroup("Parameters")]
     public UnityEvent OnOverZero;
 
-    [TabGroup("FMOD")]
-    public RythmManager.FmodEventAndPos OnUnderThresholdFmod;
-    [TabGroup("FMOD")]
-    public RythmManager.FmodEventAndPos OnOverThresholdFmod;
-    [TabGroup("FMOD")]
-    public RythmManager.FmodEventAndPos OnZeroFmod;
-    [TabGroup("FMOD")]
-    public RythmManager.FmodEventAndPos OnOverZeroFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnUnderThresholdFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnOverThresholdFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnZeroFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnOverZeroFmod;
 
     [TabGroup("Debug"), ReadOnly]
     public bool isOverThreshold = true;
@@ -137,11 +137,17 @@ public class CareSystem : MonoBehaviour
         maintain.MaintainableMeter.FillAmount = maintain.MaintainableData.CurrentState;
         if (maintain.MaintainableData.CurrentState <= maintain.MaintainableData.Threshold)
         {
-            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.WarningMaterial;
+            if (maintain.MaintainableMeter.IndicatorRenderer)
+            {
+                maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.WarningMaterial;
+            }
         }
         else
         {
-            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.BaseMaterial;
+            if (maintain.MaintainableMeter.IndicatorRenderer)
+            {
+                maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.BaseMaterial;
+            }
         }
     }
 
@@ -162,8 +168,6 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isOverThreshold = false;
         maintain.OnUnderThreshold?.Invoke();
-        if (maintain.OnUnderThresholdFmod.Transform != null)
-            RythmManager.Instance.AddFModEventToBuffer(maintain.OnUnderThresholdFmod);
         foreach (GameObject item in maintain.ToDisableOnUnderThreshold)
         {
             item.SetActive(false);
@@ -177,8 +181,6 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isOverThreshold = true;
         maintain.OnOverThreshold?.Invoke();
-        if (maintain.OnOverThresholdFmod.Transform != null)
-            RythmManager.Instance.AddFModEventToBuffer(maintain.OnOverThresholdFmod);
         foreach (GameObject item in maintain.ToDisableOnUnderThreshold)
         {
             item.SetActive(true);
@@ -193,10 +195,6 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isZero = true;
         maintain.OnZero?.Invoke();
-        if (maintain.OnZeroFmod.Transform != null)
-        {
-            RythmManager.Instance.AddFModEventToBuffer(maintain.OnZeroFmod);
-        }
         foreach (GameObject item in maintain.ToDisableOnZero)
         {
             item.SetActive(false);
@@ -211,8 +209,6 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isZero = false;
         maintain.OnOverZero?.Invoke();
-        if (maintain.OnOverZeroFmod.Transform != null)
-            RythmManager.Instance.AddFModEventToBuffer(maintain.OnOverZeroFmod);
         foreach (GameObject item in maintain.ToDisableOnZero)
         {
             item.SetActive(true);
