@@ -6572,6 +6572,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 56.986
       objectReference: {fileID: 0}
+    - target: {fileID: 3456868405075127784, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animator
+      value: 
+      objectReference: {fileID: 8542711576952711956}
+    - target: {fileID: 3456868405075127784, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animator
+      value: 
+      objectReference: {fileID: 8542711576952711956}
     - target: {fileID: 3871059068631625769, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: m_Name
@@ -6797,10 +6807,215 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 484679938125287956}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 484679938125287956}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorLeverOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorLeverClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: 183180218
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1339017097
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: -1011951989
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: -1247937951
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: 1795871846
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1173654871
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: -814928205
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705317739499913524, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: 392354691
+      objectReference: {fileID: 0}
     - target: {fileID: 5746976057231359683, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: m_Name
       value: Main_Button_InputScreen 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799089387383870459, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animator
+      value: 
+      objectReference: {fileID: 265330540767677548}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animator
+      value: 
+      objectReference: {fileID: 265330540767677548}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_PressirizerPschtStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_PressirizerPschtFree
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: 493954148
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1329324081
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: -1780121962
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: 133315483
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: 794050904
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1287196219
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: 381679535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887373664107437161, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: -1178784611
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 484679938125287956}
+    - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorLeverPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: -177706663
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1087753281
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: 2023486390
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: -1086054663
       objectReference: {fileID: 0}
     - target: {fileID: 6796985201533268621, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
@@ -6851,6 +7066,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929015494336287213, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: materialChangements.Array.data[0].IsAnim
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929015494336287213, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: materialChangements.Array.data[1].IsAnim
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6929279588803647967, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
@@ -6967,6 +7192,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.082
       objectReference: {fileID: 0}
+    - target: {fileID: 8649564342661483020, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: CanInteract
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766502220310962687, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766502220310962687, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766502220310962687, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: 930262183
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766502220310962687, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1110395259
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766502220310962687, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: -1199459146
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766502220310962687, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: -893496875
+      objectReference: {fileID: 0}
     - target: {fileID: 8818957671433061082, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6997,11 +7257,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].IsInRythm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].OnAnimationFirstLooped.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d24494c9ecd930548993fb039bedf3db, type: 3}
+--- !u!95 &265330540767677548 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1190202532950307289, guid: d24494c9ecd930548993fb039bedf3db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381151931833056693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &484679938125287956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1554651754635177889, guid: d24494c9ecd930548993fb039bedf3db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381151931833056693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!111 &1645215960617253002 stripped
 Animation:
   m_CorrespondingSourceObject: {fileID: 431832565996062015, guid: d24494c9ecd930548993fb039bedf3db,
@@ -7059,6 +7346,12 @@ Animation:
 --- !u!4 &5582607949483396920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6796985201533268621, guid: d24494c9ecd930548993fb039bedf3db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381151931833056693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8542711576952711956 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7324850490097981089, guid: d24494c9ecd930548993fb039bedf3db,
     type: 3}
   m_PrefabInstance: {fileID: 1381151931833056693}
   m_PrefabAsset: {fileID: 0}

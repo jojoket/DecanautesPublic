@@ -41,6 +41,13 @@ public class Event : MonoBehaviour
     [TabGroup("Events")]
     public UnityEvent OnBreak;
 
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnEnableFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnFixFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnBreakFmod;
+
     [TabGroup("Interactions")]
     public bool NeedToBeDoneInOrder = false;
     [TabGroup("Interactions")]
