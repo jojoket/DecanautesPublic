@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveDirection = Vector2.zero;
     [Sirenix.OdinInspector.ReadOnly]
     public bool CanMove = true;
+    public bool CanInteract = true;
 
     public PlayerData PlayerData;
     public LayerMask InteractionLayer;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
         _playerInput.InGame.Move.performed += Move;
         _playerInput.InGame.Interact.performed += Interact;
         _playerInput.InGame.InteractSec.performed += InteractSec;
+        _playerInput.InGame.Escape.performed += Escape;
     }
 
     private void OnDestroy()
@@ -66,6 +68,20 @@ public class PlayerController : MonoBehaviour
         _rigidbody.AddForce(dir * PlayerData.MoveSpeed);
         Vector3 currentVelocity = _rigidbody.velocity;
         _rigidbody.velocity = new Vector3(currentVelocity.x / (PlayerData.Drag * Time.fixedDeltaTime*100), currentVelocity.y, currentVelocity.z / (PlayerData.Drag * Time.fixedDeltaTime * 100));
+    }
+
+    public void UIScreenBlock(bool isBlocked)
+    {
+        CanMove = !isBlocked;
+        CanInteract = !isBlocked;
+        if (isBlocked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
 
@@ -119,9 +135,22 @@ public class PlayerController : MonoBehaviour
 
     private void InteractSec(InputAction.CallbackContext callbackContext)
     {
+        if (!CanInteract)
+        {
+            return;
+        }
         ManagePostItInteraction();
         ManageInputScreenInteraction();
     }
+
+    private void Escape(InputAction.CallbackContext callbackContext)
+    {
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.Escape();
+        }
+    }
+
 
     private void ManagePostItInteraction()
     {

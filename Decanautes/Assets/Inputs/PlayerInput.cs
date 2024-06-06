@@ -53,6 +53,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6a2b197-5e92-4de2-a010-cdd8d929cf62"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -154,6 +163,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""InteractSec"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8bd79eac-a019-405e-9f71-7ab50d0e1bfa"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ddeb97ee-41f6-44d3-a4dd-1be3fc093f14"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -165,6 +196,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_InGame_Move = m_InGame.FindAction("Move", throwIfNotFound: true);
         m_InGame_Interact = m_InGame.FindAction("Interact", throwIfNotFound: true);
         m_InGame_InteractSec = m_InGame.FindAction("InteractSec", throwIfNotFound: true);
+        m_InGame_Escape = m_InGame.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +261,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Move;
     private readonly InputAction m_InGame_Interact;
     private readonly InputAction m_InGame_InteractSec;
+    private readonly InputAction m_InGame_Escape;
     public struct InGameActions
     {
         private @PlayerInput m_Wrapper;
@@ -236,6 +269,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_InGame_Move;
         public InputAction @Interact => m_Wrapper.m_InGame_Interact;
         public InputAction @InteractSec => m_Wrapper.m_InGame_InteractSec;
+        public InputAction @Escape => m_Wrapper.m_InGame_Escape;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -254,6 +288,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @InteractSec.started += instance.OnInteractSec;
             @InteractSec.performed += instance.OnInteractSec;
             @InteractSec.canceled += instance.OnInteractSec;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -267,6 +304,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @InteractSec.started -= instance.OnInteractSec;
             @InteractSec.performed -= instance.OnInteractSec;
             @InteractSec.canceled -= instance.OnInteractSec;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -289,5 +329,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnInteractSec(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }
