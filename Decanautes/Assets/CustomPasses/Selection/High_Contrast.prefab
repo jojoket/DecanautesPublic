@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8436617061557465952}
+  - component: {fileID: 7034268804512173598}
   - component: {fileID: -8498401518627060002}
   m_Layer: 0
   m_Name: High_Contrast
@@ -32,6 +33,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7034268804512173598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760003062222315077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 10
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: bbc33f66f20077e478700092cb8a0a28, type: 2}
 --- !u!114 &-8498401518627060002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +68,7 @@ MonoBehaviour:
   customPasses:
   - rid: 0
   - rid: 1
-  injectionPoint: 2
+  injectionPoint: 3
   m_TargetCamera: {fileID: 0}
   useTargetCamera: 0
   references:
@@ -64,26 +82,26 @@ MonoBehaviour:
         enabled: 1
         targetColorBuffer: 1
         targetDepthBuffer: 1
-        clearFlags: 0
+        clearFlags: 3
         passFoldout: 0
         m_Version: 0
-        filterFoldout: 0
+        filterFoldout: 1
         rendererFoldout: 1
-        renderQueueType: 2
+        renderQueueType: 10
         layerMask:
           serializedVersion: 2
-          m_Bits: 4294967295
+          m_Bits: 3072
         sortingCriteria: 59
         overrideMode: 1
-        overrideMaterial: {fileID: 2100000, guid: 3d1a1d2c1850b074399eb05a2009d138,
+        overrideMaterial: {fileID: 2100000, guid: a59da71860672eb42a24d8d9d84d5e54,
           type: 2}
         overrideMaterialPassIndex: 0
-        overrideMaterialPassName: Forward
+        overrideMaterialPassName: FirstPass
         overrideShader: {fileID: 0}
         overrideShaderPassIndex: 0
         overrideShaderPassName: Forward
         overrideDepthState: 0
-        depthCompareFunction: 4
+        depthCompareFunction: 0
         depthWrite: 1
         overrideStencil: 0
         stencilReferenceValue: 64
@@ -105,7 +123,7 @@ MonoBehaviour:
         clearFlags: 0
         passFoldout: 0
         m_Version: 0
-        fullscreenPassMaterial: {fileID: 2100000, guid: 0138e207cf5f54b4198e41463eee8583,
+        fullscreenPassMaterial: {fileID: 2100000, guid: 51427405ac95f7249b33578f3d6f4250,
           type: 2}
         materialPassIndex: 0
         materialPassName: Custom Pass 0
