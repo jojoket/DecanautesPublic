@@ -52,8 +52,6 @@ public class ScriptedEvent : MonoBehaviour
         EventToTrigger.isActive = true;
         EnableEventVFX(EventToTrigger, true);
         EventToTrigger.OnEnable?.Invoke();
-        if (EventToTrigger.OnEnableFmod.Transform != null)
-            RythmManager.Instance.AddFModEventToBuffer(EventToTrigger.OnEnableFmod);
         StartCoroutine(TimeLimit(EventToTrigger));
         TaskTriggeredEvent?.Invoke();
     }
@@ -74,7 +72,8 @@ public class ScriptedEvent : MonoBehaviour
     private IEnumerator TimeLimit(Event eventToFix)
     {
         //don't do break if time max to fix is unlimited
-        if (eventToFix.TimeMaxToFix != -1) {
+        if (eventToFix.TimeMaxToFix != -1)
+        {
             yield return new WaitForSeconds(eventToFix.TimeMaxToFix);
             if (eventToFix.isActive)
             {
@@ -86,8 +85,6 @@ public class ScriptedEvent : MonoBehaviour
     public void EventBreak(Event eventBroken)
     {
         eventBroken.OnBreak?.Invoke();
-        if (eventBroken.OnBreakFmod.Transform != null)
-            RythmManager.Instance.AddFModEventToBuffer(eventBroken.OnBreakFmod);
         eventBroken.isActive = false;
         eventBroken.InteractionsState.Clear();
         foreach (Interactable item in eventBroken.InteractionsToFix)
@@ -106,7 +103,7 @@ public class ScriptedEvent : MonoBehaviour
         eventToCheck.InteractionsState.Clear();
         foreach (Interactable item in eventToCheck.InteractionsToFix)
         {
-            if(item.GetType() == typeof(InputScreen))
+            if (item.GetType() == typeof(InputScreen))
             {
                 InputScreen inputScreen = (InputScreen)item;
                 inputScreen.OnCodeValidAction += TaskInteracted;
@@ -193,8 +190,6 @@ public class ScriptedEvent : MonoBehaviour
         eventToClean.isActive = false;
         eventToClean.InteractionsState.Clear();
         eventToClean.OnFix?.Invoke();
-        if (eventToClean.OnFixFmod.Transform != null)
-            RythmManager.Instance.AddFModEventToBuffer(eventToClean.OnFixFmod);
         foreach (Interactable item in eventToClean.InteractionsToFix)
         {
             eventToClean.InteractionsState.Add(false);
