@@ -100,6 +100,10 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             public Sprite zKey;
             public Sprite escapeKey;
             public Sprite spaceKey;
+            public Sprite upArrowKey;
+            public Sprite downArrowKey;
+            public Sprite leftArrowKey;
+            public Sprite rightArrowKey;
 
             public Sprite GetSprite(string controlPath)
             {
@@ -136,6 +140,10 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     case "z": return zKey;
                     case "escape": return escapeKey;
                     case "space": return spaceKey;
+                    case "upArrow": return upArrowKey;
+                    case "downArrow": return downArrowKey;
+                    case "leftArrow": return leftArrowKey;
+                    case "rightArrow": return rightArrowKey;
                 }
                 return null;
             }
