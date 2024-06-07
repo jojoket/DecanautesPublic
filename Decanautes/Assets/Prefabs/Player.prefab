@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2185170539282178000}
   - component: {fileID: 6155217590185667143}
   - component: {fileID: 5026608948024696433}
+  - component: {fileID: 3163162743684649618}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -106,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b210c3d67bf2ee24badab97249546cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerInput: {fileID: 3163162743684649618}
   GrabPoint: {fileID: 107574339451760140}
   VirtualCamera: {fileID: 4495261938294493002}
   CanMove: 1
@@ -118,6 +120,38 @@ MonoBehaviour:
   grabbed: {fileID: 0}
   PostItEditing: {fileID: 0}
   InputScreenEditing: {fileID: 0}
+  MoveInput: {x: 0, y: 0}
+--- !u!114 &3163162743684649618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464884778237742366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4ff44b9bdf940e8488d09cce05e1352d,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: InGame
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &6800377687091589629
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ using Cinemachine;
 public class PlayerController : MonoBehaviour
 {
     //Components
-    private PlayerInput _playerInput;
+    [SerializeField] private UnityEngine.InputSystem.PlayerInput _playerInput;
     private Rigidbody _rigidbody;
     public Transform GrabPoint;
     public CinemachineVirtualCamera VirtualCamera;
@@ -35,33 +35,26 @@ public class PlayerController : MonoBehaviour
     public InputScreen InputScreenEditing;
 
 
+    //Input actions
+    private InputAction _moveAction;
+    private InputAction _interactAction;
+    private InputAction _interactSecAction;
+    private InputAction _escapeAction;
 
     void Start()
     {
         CanMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
-        _playerInput = new PlayerInput();
-        _playerInput.Enable();
 
         UIScreenBlock(false);
 
-        //Input Events
-        _playerInput.InGame.Move.performed += Move;
-        _playerInput.InGame.Interact.performed += Interact;
-        _playerInput.InGame.InteractSec.performed += InteractSec;
-        _playerInput.InGame.Escape.performed += Escape;
-    }
-
-    private void OnDestroy()
-    {
-        _playerInput.InGame.Move.performed -= Move;
-        _playerInput.InGame.Interact.performed -= Interact;
-        _playerInput.InGame.InteractSec.performed -= InteractSec;
+        SetupInputActions();
     }
 
     void Update()
     {
+        UpdateInputs();
         LookInteraction();
     }
 
@@ -71,6 +64,22 @@ public class PlayerController : MonoBehaviour
         _rigidbody.AddForce(dir * PlayerData.MoveSpeed);
         Vector3 currentVelocity = _rigidbody.velocity;
         _rigidbody.velocity = new Vector3(currentVelocity.x / (PlayerData.Drag * Time.fixedDeltaTime*100), currentVelocity.y, currentVelocity.z / (PlayerData.Drag * Time.fixedDeltaTime * 100));
+    }
+
+    private void SetupInputActions()
+    {
+        _moveAction = _playerInput.actions["Move"];
+        _escapeAction = _playerInput.actions["Escape"];
+        _interactAction = _playerInput.actions["Interact"];
+        _interactSecAction = _playerInput.actions["InteractSec"];
+    }
+
+    private void UpdateInputs()
+    {
+        Move();
+        if (_escapeAction.WasPressedThisFrame()) Escape();
+        if (_interactAction.WasPressedThisFrame()) Interact();
+        if (_interactSecAction.WasPressedThisFrame()) InteractSec();
     }
 
     public void UIScreenBlock(bool isBlocked)
@@ -91,24 +100,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    private void Move(InputAction.CallbackContext callbackContext)
+    private void Move()
     {
         if (!CanMove)
         {
             _moveDirection = Vector3.zero;
             return;
         }
-        _moveDirection  = callbackContext.ReadValue<Vector2>();
+        _moveDirection  = _moveAction.ReadValue<Vector2>();
     }
 
-    private void Interact(InputAction.CallbackContext callbackContext)
+    private void Interact()
     {
-        
         //If there is a grabbed object
         if (grabbed)
         {
-            if (callbackContext.ReadValueAsButton())
+            if (_interactAction.IsPressed())
             {
                 grabbed.InteractionStart();
             }
@@ -124,7 +131,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (callbackContext.ReadValueAsButton())
+        if (_interactAction.IsPressed())
         {
             if (lookingAt.GetType() == typeof(Grabbable))
             {
@@ -140,7 +147,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void InteractSec(InputAction.CallbackContext callbackContext)
+    private void InteractSec()
     {
         if (!CanInteract)
         {
@@ -150,7 +157,7 @@ public class PlayerController : MonoBehaviour
         ManageInputScreenInteraction();
     }
 
-    private void Escape(InputAction.CallbackContext callbackContext)
+    private void Escape()
     {
         if (UIManager.Instance)
         {
@@ -274,5 +281,4 @@ public class PlayerController : MonoBehaviour
             lookingAt.InteractionEnd();
         }
     }
-
 }
