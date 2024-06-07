@@ -14,7 +14,7 @@ public class PlayerPreferencesManager : MonoBehaviour
 
     public Material Quadrichromic;
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         ApplyPreferences();
@@ -22,10 +22,6 @@ public class PlayerPreferencesManager : MonoBehaviour
 
     public void ApplyPreferences()
     {
-        //Mouse Sensitivity
-        VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = PlayerPreferencesData.CameraSensibility/3;
-        VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = PlayerPreferencesData.CameraSensibility/3;
-
         //Keys
 
         //Outline

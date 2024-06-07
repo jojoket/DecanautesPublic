@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Decanautes.Interactable;
+using Cinemachine;
 
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
     public Transform GrabPoint;
+    public CinemachineVirtualCamera VirtualCamera;
 
     //Variable
     private Vector2 _moveDirection = Vector2.zero;
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         _playerInput = new PlayerInput();
         _playerInput.Enable();
 
+        UIScreenBlock(false);
 
         //Input Events
         _playerInput.InGame.Move.performed += Move;
@@ -76,10 +79,14 @@ public class PlayerController : MonoBehaviour
         CanInteract = !isBlocked;
         if (isBlocked)
         {
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = 0;
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = 0;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = PlayerPreferencesManager.Instance.PlayerPreferencesData.CameraSensibility;
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = PlayerPreferencesManager.Instance.PlayerPreferencesData.CameraSensibility;
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
