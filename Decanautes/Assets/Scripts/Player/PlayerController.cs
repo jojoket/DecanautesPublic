@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Decanautes.Interactable;
 using Cinemachine;
+using DG.Tweening;
 
 
 public class PlayerController : MonoBehaviour
@@ -32,6 +33,9 @@ public class PlayerController : MonoBehaviour
     [Sirenix.OdinInspector.ReadOnly]
     public Grabbable grabbed;
     public PostIt PostItEditing;
+    public Vector3 PostItEditingLastPos;
+    public Vector3 PostItEditingLastRot;
+    public Transform PostItEditPos;
     public InputScreen InputScreenEditing;
 
 
@@ -112,6 +116,10 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
+        if (PostItEditing != null)
+        {
+            return;
+        }
         //If there is a grabbed object
         if (grabbed)
         {
@@ -126,7 +134,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        //If we're looking at smthg and not grabbing
         if (!lookingAt)
         {
             return;
@@ -165,7 +172,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #endregion
 
+    #region postIt
     private void ManagePostItInteraction()
     {
         if (PostItEditing)
@@ -174,6 +183,10 @@ public class PlayerController : MonoBehaviour
             {
                 CanMove = true;
                 PostItEditing.DeselectText();
+                if (PostItEditing.UsesLeft == PostItEditing.MaxUses-1)
+                    ResetPostItPos(PostItEditing);
+                else
+                    MovePostItTo(PostItEditing, PostItEditingLastPos, PostItEditingLastRot);
                 PostItEditing = null;
             }
             return;
@@ -185,6 +198,9 @@ public class PlayerController : MonoBehaviour
                 return;
             PostItEditing = postIt;
             CanMove = false;
+            PostItEditingLastPos = postIt.transform.position;
+            PostItEditingLastRot = postIt.transform.eulerAngles;
+            MovePostItTo(postIt, PostItEditPos);
         }
         if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
         {
@@ -193,9 +209,32 @@ public class PlayerController : MonoBehaviour
                 return;
             PostItEditing = postIt1;
             CanMove = false;
+            PostItEditingLastPos = postIt1.transform.position;
+            PostItEditingLastRot = postIt1.transform.eulerAngles;
+            MovePostItTo(postIt1, PostItEditPos);
         }
     }
 
+    private void ResetPostItPos(PostIt postIt)
+    {
+        postIt.transform.DOLocalMove(Vector3.zero, 0.35f);
+        postIt.transform.DOLocalRotate(Vector3.zero, 0.35f);
+    }
+
+    private void MovePostItTo(PostIt postIt, Transform towards)
+    {
+        postIt.transform.DOLocalMove(towards.localPosition, 0.35f);
+        postIt.transform.DOLocalRotate(towards.localEulerAngles, 0.35f);
+    }
+    private void MovePostItTo(PostIt postIt, Vector3 pos, Vector3 rot)
+    {
+        postIt.transform.DOLocalMove(postIt.transform.InverseTransformPoint(pos), 0.35f);
+        postIt.transform.DOLocalRotate(rot, 0.35f);
+    }
+
+    #endregion
+
+    #region Input Screen
     private void ManageInputScreenInteraction()
     {
         if (InputScreenEditing)
@@ -227,8 +266,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    #endregion
 
 
+    #region Look
     private void LookInteraction()
     {
         Vector3 dir = Camera.main.transform.forward;
@@ -281,4 +322,5 @@ public class PlayerController : MonoBehaviour
             lookingAt.InteractionEnd();
         }
     }
+    #endregion
 }

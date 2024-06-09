@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1655021647682162228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 564402586463953216}
+  m_Layer: 3
+  m_Name: PostItEditPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &564402586463953216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655021647682162228}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.16386707, y: -0.2872036, z: -0.049937263, w: 0.9424267}
+  m_LocalPosition: {x: 0.13972804, y: 0.22709018, z: 0.42434806}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 107574339451760140}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &2476217162610653283
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,13 +55,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2476217162610653283}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000050291413, y: -0.98521763, z: -0.17130725, w: 0.0000029206271}
-  m_LocalPosition: {x: -0, y: -0.357, z: 0.75}
+  m_LocalRotation: {x: -0.04993721, y: -0.9424268, z: -0.16386709, w: 0.2872033}
+  m_LocalPosition: {x: 0.296, y: -0.357, z: 0.705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 564402586463953216}
   m_Father: {fileID: 4581235665711629189}
-  m_LocalEulerAnglesHint: {x: -19.728, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: -19.728, y: -146.103, z: 0}
 --- !u!1 &5464884778237742366
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +151,9 @@ MonoBehaviour:
   lookingAt: {fileID: 0}
   grabbed: {fileID: 0}
   PostItEditing: {fileID: 0}
+  PostItEditingLastPos: {x: 0, y: 0, z: 0}
+  PostItEditingLastRot: {x: 0, y: 0, z: 0}
+  PostItEditPos: {fileID: 564402586463953216}
   InputScreenEditing: {fileID: 0}
   MoveInput: {x: 0, y: 0}
 --- !u!114 &3163162743684649618

@@ -54,7 +54,7 @@ public class RythmManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogWarning("Rythm Manager already exist");
+            Debug.LogWarning("Rythm Manager already exist", gameObject);
             return;
         }
         Instance = this;

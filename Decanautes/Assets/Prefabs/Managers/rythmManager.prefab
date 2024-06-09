@@ -49,42 +49,49 @@ MonoBehaviour:
       m_Calls: []
   lastBeat: 0
   Base:
-    Guid:
-      Data1: -859696311
-      Data2: 1214446029
-      Data3: 1498154922
-      Data4: 10915450
-    Path: event:/TestEvent/MX/RythmMain
-  EventsOnStart:
-  - FmodRef:
+    IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
       Guid:
-        Data1: 1456301787
-        Data2: 1105301253
-        Data3: 1096262301
-        Data4: -1673866222
-      Path: event:/MX/MX_V1
-    Transform: {fileID: 0}
-  - FmodRef:
+        Data1: -1321801225
+        Data2: 1142391329
+        Data3: 1128155526
+        Data4: 1943452289
+      Path: event:/MX/MX_RythmMain
+  EventsOnStart:
+  - IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: 1541873591
+        Data2: 1289083727
+        Data3: -1271335805
+        Data4: -209553049
+      Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BatteryWork
+  - IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
       Guid:
         Data1: 970061290
         Data2: 1269139856
         Data3: 339579266
         Data4: -1796020044
       Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorWork
-    Transform: {fileID: 0}
-  - FmodRef:
+  - IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
       Guid:
         Data1: -145085193
         Data2: 1135764735
         Data3: 1450650293
         Data4: -759200258
-      Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_HourglassWork
-    Transform: {fileID: 0}
-  - FmodRef:
+      Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_HourGlassWork
+  - IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
       Guid:
         Data1: 2040359142
         Data2: 1099308602
         Data3: -838587461
         Data4: -741535134
       Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_PressirizerWork
-    Transform: {fileID: 0}

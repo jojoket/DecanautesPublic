@@ -39,7 +39,6 @@ public class ScriptedEvent : MonoBehaviour
 
         if (ScriptedEventData.CurrentTimeLeft <= 0)
         {
-            ScriptedEventData.CurrentTimeLeft = Random.Range(ScriptedEventData.TaskAppearanceTimeInSec.x, ScriptedEventData.TaskAppearanceTimeInSec.y);
             StartEvent();
         }
 
@@ -195,6 +194,7 @@ public class ScriptedEvent : MonoBehaviour
             eventToClean.InteractionsState.Add(false);
             StartCoroutine(ResetButtonAfter(1, item));
         }
+        ScriptedEventData.CurrentTimeLeft = Random.Range(ScriptedEventData.TaskAppearanceTimeInSec.x, ScriptedEventData.TaskAppearanceTimeInSec.y);
     }
     #endregion
 
