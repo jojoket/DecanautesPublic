@@ -52,6 +52,7 @@ public class MapManager : MonoBehaviour
     {
         SavedObject[] toSaveObjects= GameObject.FindObjectsByType<SavedObject>(FindObjectsSortMode.None);
         List<ObjectSave> toDelete = new List<ObjectSave>();
+        //Check for Deleted objects (to be removed)
         foreach (ObjectSave objectSave in MapData.SavedObjects)
         {
             if (Array.Find(toSaveObjects, x => x.name == objectSave.Name) == null)
@@ -64,9 +65,10 @@ public class MapManager : MonoBehaviour
             MapData.SavedObjects.Remove(objectDeleted);
         }
 
+        //Objects that are new from this cycle
         foreach (SavedObject obj in toSaveObjects)
         {
-            if (obj.GetComponentInParent<Spawner>() != null)
+            if (obj.GetComponentInParent<Spawner>() != null || (obj.transform.parent && obj.transform.parent.name == "GrabPoint"))
             {
                 continue;
             }
@@ -77,6 +79,7 @@ public class MapManager : MonoBehaviour
             objectSave.Scale = obj.transform.localScale;
             objectSave.PrefabPath = obj.originalPrefabPath;
             objectSave.PostItText = obj.TryGetComponent<PostIt>(out PostIt post) ? post.Text.text : "";
+            objectSave.CycleNum = MapManager.Instance.MapData.CurrentCycle;
             if (obj.TryGetComponent<Event>(out Event eventFound))
             {
                 foreach (Interactable item in eventFound.InteractionsToFix)
@@ -91,6 +94,7 @@ public class MapManager : MonoBehaviour
             int index = MapData.SavedObjects.FindIndex(x => x.Name == objectSave.Name);
             if (index != -1)
             {
+                objectSave.CycleNum = MapData.SavedObjects[index].CycleNum;
                 MapData.SavedObjects[index] = objectSave;
                 continue;
             }
@@ -113,6 +117,7 @@ public class MapManager : MonoBehaviour
                 if (obj.PostItText != null && obj.PostItText != "")
                 {
                     found.GetComponent<PostIt>().Text.text = obj.PostItText;
+                    found.GetComponent<PostIt>().CycleText.text = "Cycle : " + obj.CycleNum.ToString();
                     found.GetComponent<PostIt>().LockPostIt();
                 }
                 if (found.TryGetComponent<Interactable>(out Interactable interactable))
@@ -143,6 +148,7 @@ public class MapManager : MonoBehaviour
                 if (obj.PostItText != null && obj.PostItText != "")
                 {
                     objSpn.GetComponent<PostIt>().Text.text = obj.PostItText;
+                    objSpn.GetComponent<PostIt>().CycleText.text = "Cycle : " + obj.CycleNum.ToString();
                     objSpn.GetComponent<PostIt>().LockPostIt();
                 }
                 if (objSpn.TryGetComponent<Interactable>(out Interactable interactable))

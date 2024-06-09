@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using TMPro;
+using Decanautes.Interactable;
+using UnityEditor.Experimental.GraphView;
 
 public class PostIt : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class PostIt : MonoBehaviour
     public GameObject Model;
     public GameObject PreviewModel;
     public TMP_InputField Text;
+    public TMP_Text CycleText;
     private Rigidbody rigidbody;
 
     [TitleGroup("Parameters")]
@@ -21,7 +24,9 @@ public class PostIt : MonoBehaviour
     private bool _isPosting;
     [SerializeField, ReadOnly]
     private bool _isPosted;
+    [ReadOnly]
     public int UsesLeft;
+    public int MaxUses;
     public bool isEditing;
     [SerializeField]
     private int _modifLeft;
@@ -31,7 +36,14 @@ public class PostIt : MonoBehaviour
     private Vector3 _validPosition;
     [SerializeField, ReadOnly]
     private Quaternion _validRotation;
+    [ReadOnly]
+    public bool isStarting = true;
 
+
+    private void Awake()
+    {
+        UsesLeft = MaxUses;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +98,11 @@ public class PostIt : MonoBehaviour
         }
     }
 
+    public void SetCycleText()
+    {
+        CycleText.text = "Cycle : " + MapManager.Instance.MapData.CurrentCycle;
+    }
+
     public void StartPosting()
     {
         PreviewModel.SetActive(true);
@@ -107,6 +124,7 @@ public class PostIt : MonoBehaviour
     {
         transform.position = _validPosition;
         transform.rotation = _validRotation;
+        GetComponent<Grabbable>().SpawnerReset();
         /*Quaternion toCamera = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, toCamera.eulerAngles.z);*/
     }
@@ -145,6 +163,11 @@ public class PostIt : MonoBehaviour
     {
         Text.ReleaseSelection();
         isEditing = false;
+        if (UsesLeft == MaxUses)
+        {
+            StartPosting();
+            UsesLeft --;
+        }
     }
 
     private void OnDrawGizmosSelected()

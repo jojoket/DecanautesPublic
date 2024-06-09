@@ -11,6 +11,8 @@ namespace Decanautes.Interactable
         public GrabbableData GrabbableData;
         private Rigidbody _rigidbody;
         private PlayerController _playerController;
+        [HideInInspector]
+        public Spawner Spawner;
 
         [TitleGroup("Debug")]
         [SerializeField,ReadOnly]
@@ -23,6 +25,8 @@ namespace Decanautes.Interactable
         private Vector3 _grabPosition;
         private Transform _originParent;
         private bool _wasKinematic;
+        public bool DoRespawnFromGrab;
+        
 
         // Start is called before the first frame update
         void Start()
@@ -59,6 +63,14 @@ namespace Decanautes.Interactable
 
         public override void InteractionStart()
         {
+            if(TryGetComponent<PostIt>(out PostIt postIt) && !postIt.isStarting && postIt.UsesLeft == postIt.MaxUses)
+            {
+                return;
+            }
+            postIt.isStarting = false;
+            if (!_playerController){
+                _playerController = GameObject.FindFirstObjectByType<PlayerController>();
+            }
             base.InteractionStart();
             if (!IsToggle)
             {
@@ -104,10 +116,16 @@ namespace Decanautes.Interactable
                     _playerController.grabbed = null;
                     return;
                 }
-                post.UsesLeft--;
-                post.StartPosting();
+                if (post.UsesLeft != post.MaxUses)
+                {
+                    post.StartPosting();
+                    post.UsesLeft--;
+                }
             }
-            SpawnerReset();
+            if (DoRespawnFromGrab)
+            {
+                SpawnerReset();
+            }
             _isTransformBased = true;
             _isGrabbed = true;
             _grabTransform = toTransform;
@@ -136,7 +154,10 @@ namespace Decanautes.Interactable
 
         public void GrabToPosition(Vector3 position)
         {
-            SpawnerReset();
+            if (DoRespawnFromGrab)
+            {
+                SpawnerReset();
+            }
             _isTransformBased = false;
             _isGrabbed = true;
             _grabPosition = position;
@@ -162,15 +183,15 @@ namespace Decanautes.Interactable
             }
         }
 
-        private void SpawnerReset()
+        public void SpawnerReset()
         {
-            Spawner spawner= GetComponentInParent<Spawner>();
-            if (!spawner)
+            if (!Spawner)
             {
                 return;
             }
             _originParent = null;
-            spawner.StartSpawnCoroutine();
+            Spawner.StartSpawnCoroutine();
+            Spawner = null;
         }
 
         public void Release()
@@ -190,7 +211,7 @@ namespace Decanautes.Interactable
             }
             if (!GrabbableData.isSimulated)
             {
-                transform.parent = _originParent;
+                transform.parent = null;
             }
             if (_rigidbody)
             {
