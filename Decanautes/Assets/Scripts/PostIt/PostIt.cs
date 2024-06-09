@@ -5,6 +5,8 @@ using Sirenix.OdinInspector;
 using TMPro;
 using Decanautes.Interactable;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine.Events;
+using System;
 
 public class PostIt : MonoBehaviour
 {
@@ -12,24 +14,40 @@ public class PostIt : MonoBehaviour
     public PostItData PostItData;
     public GameObject Model;
     public GameObject PreviewModel;
-    public TMP_InputField Text;
+    public TMP_InputField InputText;
     public TMP_Text CycleText;
+    public TMP_Text VoteText;
     private Rigidbody rigidbody;
 
     [TitleGroup("Parameters")]
     public LayerMask NotPostItLayer;
+    public UnityEvent OnEnterView;
+    public UnityEvent OnExitView;
+    public UnityEvent OnEnterEditorView;
+    public UnityEvent OnExitEditorView;
+    public UnityEvent OnEnterEdit;
+    public UnityEvent OnExitEdit;
+    public int Vote;
+    public int Voted;
+    public int VoteTresholdDelete;
 
     [TitleGroup("Debug")]
+    [ReadOnly]
+    public int CycleNum;
     [SerializeField, ReadOnly]
     private bool _isPosting;
-    [SerializeField, ReadOnly]
-    private bool _isPosted;
+    [ReadOnly]
+    public bool IsPosted;
     [ReadOnly]
     public int UsesLeft;
     public int MaxUses;
+    [ReadOnly]
+    public int ModifLeft;
+    public int MaxModif;
+    [ReadOnly]
     public bool isEditing;
-    [SerializeField]
-    private int _modifLeft;
+    [ReadOnly]
+    public bool isViewing;
     [ReadOnly]
     public bool _isValid;
     [SerializeField, ReadOnly]
@@ -43,12 +61,15 @@ public class PostIt : MonoBehaviour
     private void Awake()
     {
         UsesLeft = MaxUses;
+        ModifLeft = MaxModif;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        Voted = Vote;
+        VoteText.text = Voted.ToString();
     }
 
     // Update is called once per frame
@@ -101,13 +122,14 @@ public class PostIt : MonoBehaviour
     public void SetCycleText()
     {
         CycleText.text = "Cycle : " + MapManager.Instance.MapData.CurrentCycle;
+        CycleNum = MapManager.Instance.MapData.CurrentCycle;
     }
 
     public void StartPosting()
     {
         PreviewModel.SetActive(true);
         _isPosting = true;
-        _isPosted = false;
+        IsPosted = false;
     }
     public void StopPosting()
     {
@@ -115,7 +137,7 @@ public class PostIt : MonoBehaviour
         _isPosting = false;
         if (_isValid)
         {
-            _isPosted = true;
+            IsPosted = true;
             Post();
         }
     }
@@ -131,7 +153,7 @@ public class PostIt : MonoBehaviour
 
     public bool CanHover()
     {
-        if (_modifLeft > 0)
+        if (ModifLeft > 0)
         {
             return true;
         }
@@ -141,7 +163,18 @@ public class PostIt : MonoBehaviour
     public void LockPostIt()
     {
         UsesLeft = 0;
-        _modifLeft = 0;
+        ModifLeft = 0;
+        InputText.enabled = false;
+    }
+
+    public void IncrementVote(int toAdd)
+    {
+        Voted = Vote + toAdd;
+        VoteText.text = Voted.ToString();
+        if (Voted <= VoteTresholdDelete)
+        {
+            DeletePostIt();
+        }
     }
 
     //TEXT
@@ -149,25 +182,72 @@ public class PostIt : MonoBehaviour
     [Button("Select Text")]
     public bool SelectText()
     {
-        if (_modifLeft <= 0)
+        if (ModifLeft <= 0)
         {
+            InputText.enabled = false;
             return false;
         }
-        _modifLeft--;
-        Text.Select();
+        ModifLeft--;
+        InputText.Select();
+        EnterPostItEdit();
         isEditing = true;
         return true;
     }
 
     public void DeselectText()
     {
-        Text.ReleaseSelection();
+        InputText.ReleaseSelection();
         isEditing = false;
+        ExitPostItEdit();
+        if (ModifLeft <= 0)
+        {
+            InputText.enabled = false;
+        }
         if (UsesLeft == MaxUses)
         {
             StartPosting();
             UsesLeft --;
         }
+    }
+
+    public void EnterPostItView()
+    {
+        isViewing = true;
+        if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
+        {
+            OnEnterEditorView?.Invoke();
+            return;
+        }
+        OnEnterView?.Invoke();
+    }
+    public void ExitPostItView()
+    {
+        isViewing = false;
+        if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
+        {
+            OnExitEditorView?.Invoke();
+            return;
+        }
+        OnExitView?.Invoke();
+    }
+
+    public void EnterPostItEdit()
+    {
+        OnEnterEdit?.Invoke();
+    }
+    public void ExitPostItEdit()
+    {
+        OnExitEdit?.Invoke();
+    }
+
+    public void DeletePostIt()
+    {
+        Destroy(gameObject);
+        GameObject.FindFirstObjectByType<PlayerController>().UIPostItBlock(false);
+    }
+    public void ConfirmPostIt()
+    {
+        GameObject.FindFirstObjectByType<PlayerController>().ManagePostItInteraction();
     }
 
     private void OnDrawGizmosSelected()

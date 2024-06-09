@@ -19,6 +19,7 @@ public class ObjectSave
     //For Post it objects
     public string PostItText;
     public int CycleNum = -1;
+    public int VoteNum = 0;
 
     //For Events objects
     public List<string> EventInteractionsTofix = new List<string>();

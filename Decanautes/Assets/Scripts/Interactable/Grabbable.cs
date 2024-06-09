@@ -63,11 +63,14 @@ namespace Decanautes.Interactable
 
         public override void InteractionStart()
         {
-            if(TryGetComponent<PostIt>(out PostIt postIt) && !postIt.isStarting && postIt.UsesLeft == postIt.MaxUses)
+            if(TryGetComponent<PostIt>(out PostIt postIt) && (!postIt.isStarting && postIt.UsesLeft == postIt.MaxUses || !postIt.isStarting && !postIt._isValid))
             {
                 return;
             }
-            postIt.isStarting = false;
+            if (postIt)
+            {
+                postIt.isStarting = false;
+            }
             if (!_playerController){
                 _playerController = GameObject.FindFirstObjectByType<PlayerController>();
             }

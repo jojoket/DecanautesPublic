@@ -117,7 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09555808793f1940aa57685b67b2b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentUIScreen: {fileID: 0}
+  playerController: {fileID: 0}
+  CurrentUIScreen: {fileID: 2479994833955360412}
+  isBlocked: 0
 --- !u!1001 &3356794206062033289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,6 +429,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -54
       objectReference: {fileID: 0}
+    - target: {fileID: 2022120879150601955, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022120879150601955, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022120879150601955, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2976024165963848256}
+    - target: {fileID: 2022120879150601955, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022120879150601955, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Escape
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022120879150601955, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022120879150601955, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2573005463790157082, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -496,6 +533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -427.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648469096348213500, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: IsBlocking
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4648469096348213500, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
@@ -791,6 +833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -721.0713
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111483747528030705, guid: b2d6a77b86c57434aaa5f5e28051a52b,
+        type: 3}
+      propertyPath: IsBlocking
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5111483747528030705, guid: b2d6a77b86c57434aaa5f5e28051a52b,
         type: 3}

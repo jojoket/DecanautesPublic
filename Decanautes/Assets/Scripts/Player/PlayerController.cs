@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using Decanautes.Interactable;
 using Cinemachine;
 using DG.Tweening;
+using Mono.Cecil.Cil;
 
 
 public class PlayerController : MonoBehaviour
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [Sirenix.OdinInspector.ReadOnly]
     public bool CanMove = true;
     public bool CanInteract = true;
+    private bool IsUiPostItBlock = false;
+    private bool IsUiScreenBlock = false;
 
     public PlayerData PlayerData;
     public LayerMask InteractionLayer;
@@ -70,6 +73,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody.velocity = new Vector3(currentVelocity.x / (PlayerData.Drag * Time.fixedDeltaTime*100), currentVelocity.y, currentVelocity.z / (PlayerData.Drag * Time.fixedDeltaTime * 100));
     }
 
+    #region Inputs
     private void SetupInputActions()
     {
         _moveAction = _playerInput.actions["Move"];
@@ -88,8 +92,31 @@ public class PlayerController : MonoBehaviour
 
     public void UIScreenBlock(bool isBlocked)
     {
+        IsUiScreenBlock = isBlocked;
+        if (!isBlocked && IsUiPostItBlock)
+        {
+            return;
+        }
         CanMove = !isBlocked;
         CanInteract = !isBlocked;
+        if (isBlocked)
+        {
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = 0;
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = 0;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = PlayerPreferencesManager.Instance.PlayerPreferencesData.CameraSensibility;
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = PlayerPreferencesManager.Instance.PlayerPreferencesData.CameraSensibility;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void UIPostItBlock(bool isBlocked)
+    {
+        IsUiPostItBlock = isBlocked;
+        CanMove = !isBlocked;
         if (isBlocked)
         {
             VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = 0;
@@ -116,6 +143,7 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
+        EnterPostItView();
         if (PostItEditing != null)
         {
             return;
@@ -175,19 +203,63 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region postIt
-    private void ManagePostItInteraction()
+
+    private void EnterPostItView()
+    {
+        if (IsUiScreenBlock)
+        {
+            return;
+        }
+        if (PostItEditing)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.transform.gameObject == PostItEditing.gameObject)
+                {
+                    return;
+                }
+            }
+            if (!PostItEditing.isEditing)
+                ExitPostItView();
+            return;
+        }
+        if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
+        {
+            PostItEditing = postIt1;
+            PostItEditingLastPos = postIt1.transform.position;
+            PostItEditingLastRot = postIt1.transform.eulerAngles;
+            PostItEditing.EnterPostItView();
+            MovePostItTo(postIt1, PostItEditPos, false);
+            UIPostItBlock(true);
+        }
+    }
+
+    private void ExitPostItView()
+    {
+        MovePostItTo(PostItEditing, PostItEditingLastPos, PostItEditingLastRot);
+        PostItEditing.ExitPostItView();
+        PostItEditing = null;
+        UIPostItBlock(false);
+    }
+
+    public void ManagePostItInteraction()
     {
         if (PostItEditing)
         {
             if (PostItEditing.isEditing)
             {
-                CanMove = true;
                 PostItEditing.DeselectText();
-                if (PostItEditing.UsesLeft == PostItEditing.MaxUses-1)
+                if (!PostItEditing.IsPosted)
                     ResetPostItPos(PostItEditing);
                 else
                     MovePostItTo(PostItEditing, PostItEditingLastPos, PostItEditingLastRot);
                 PostItEditing = null;
+                UIPostItBlock(false);
+            }
+            else
+            {
+                ExitPostItView();
             }
             return;
         }
@@ -197,39 +269,36 @@ public class PlayerController : MonoBehaviour
             if (!isEditing)
                 return;
             PostItEditing = postIt;
-            CanMove = false;
             PostItEditingLastPos = postIt.transform.position;
             PostItEditingLastRot = postIt.transform.eulerAngles;
-            MovePostItTo(postIt, PostItEditPos);
-        }
-        if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
-        {
-            bool isEditing = postIt1.SelectText();
-            if (!isEditing)
-                return;
-            PostItEditing = postIt1;
-            CanMove = false;
-            PostItEditingLastPos = postIt1.transform.position;
-            PostItEditingLastRot = postIt1.transform.eulerAngles;
-            MovePostItTo(postIt1, PostItEditPos);
+            MovePostItTo(postIt, PostItEditPos, true);
+            UIPostItBlock(true);
         }
     }
 
     private void ResetPostItPos(PostIt postIt)
     {
-        postIt.transform.DOLocalMove(Vector3.zero, 0.35f);
-        postIt.transform.DOLocalRotate(Vector3.zero, 0.35f);
+        postIt.transform.DOLocalMove(Vector3.zero, 0.1f);
+        postIt.transform.DOLocalRotate(Vector3.zero, 0.1f);
     }
 
-    private void MovePostItTo(PostIt postIt, Transform towards)
+    private void MovePostItTo(PostIt postIt, Transform towards, bool isLocal)
     {
-        postIt.transform.DOLocalMove(towards.localPosition, 0.35f);
-        postIt.transform.DOLocalRotate(towards.localEulerAngles, 0.35f);
+        if (isLocal)
+        {
+            postIt.transform.DOLocalMove(towards.localPosition, 0.1f);
+            postIt.transform.DOLocalRotate(towards.localEulerAngles, 0.1f);
+        }
+        else
+        {
+            postIt.transform.DOMove(towards.position, 0.1f);
+            postIt.transform.DORotate(towards.eulerAngles, 0.1f);
+        }
     }
     private void MovePostItTo(PostIt postIt, Vector3 pos, Vector3 rot)
     {
-        postIt.transform.DOLocalMove(postIt.transform.InverseTransformPoint(pos), 0.35f);
-        postIt.transform.DOLocalRotate(rot, 0.35f);
+        postIt.transform.DOMove(pos, 0.1f);
+        postIt.transform.DORotate(rot, 0.1f);
     }
 
     #endregion

@@ -16,7 +16,6 @@ public class Spawner : MonoBehaviour
     [SerializeField, Sirenix.OdinInspector.ReadOnly]
     private bool _IsDisplaying = false;
     public float SpawnSpan;
-    public bool IsPostItCarry = false;
 
     [SerializeField, Sirenix.OdinInspector.ReadOnly]
     private GameObject _spawned = null;

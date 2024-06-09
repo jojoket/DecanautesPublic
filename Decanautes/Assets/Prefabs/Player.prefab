@@ -98,6 +98,7 @@ Transform:
   - {fileID: 8159250354114323461}
   - {fileID: 4581235665711629189}
   - {fileID: 2175875961933017175}
+  - {fileID: 2424431334150358664}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6155217590185667143
@@ -155,7 +156,6 @@ MonoBehaviour:
   PostItEditingLastRot: {x: 0, y: 0, z: 0}
   PostItEditPos: {fileID: 564402586463953216}
   InputScreenEditing: {fileID: 0}
-  MoveInput: {x: 0, y: 0}
 --- !u!114 &3163162743684649618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +187,56 @@ MonoBehaviour:
   m_DefaultActionMap: InGame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &6043440476917764359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2424431334150358664}
+  - component: {fileID: 2434948792153243281}
+  m_Layer: 3
+  m_Name: PostItSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2424431334150358664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6043440476917764359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2185170539282178000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2434948792153243281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6043440476917764359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb6fdd239743b645ba562049efcc7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToSpawnPrefab: {fileID: 2063057608008802094, guid: 69bf5503607eb6940bfe7e16b06f76c7,
+    type: 3}
+  IsDisplay: 1
+  _IsDisplaying: 0
+  SpawnSpan: 1
+  _spawned: {fileID: 0}
 --- !u!1 &6800377687091589629
 GameObject:
   m_ObjectHideFlags: 0
