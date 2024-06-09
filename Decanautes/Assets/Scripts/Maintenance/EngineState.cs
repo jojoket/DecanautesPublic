@@ -92,7 +92,7 @@ public class EngineState : MonoBehaviour
     [TabGroup("Debug"), ReadOnly]
     public EngineStateEnum CurrentState;
     [TabGroup("Debug"), SerializeField, ReadOnly]
-    private int malfunctionsNumber;
+    public int malfunctionsNumber;
 
     // Start is called before the first frame update
     void Start()

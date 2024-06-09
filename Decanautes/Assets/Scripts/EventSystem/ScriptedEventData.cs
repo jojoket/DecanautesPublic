@@ -13,6 +13,6 @@ public class ScriptedEventData : ScriptableObject
     public float FirstCycleStartTime;
 
     [TitleGroup("Debug")]
-    [ReadOnly, Unit(Units.Second)]
+    [Unit(Units.Second)]
     public float CurrentTimeLeft;
 }

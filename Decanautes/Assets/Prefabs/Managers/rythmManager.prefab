@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4489585891853868667}
   - component: {fileID: 5953756199168844632}
+  - component: {fileID: 1261153846641071984}
   m_Layer: 0
   m_Name: rythmManager
   m_TagString: Untagged
@@ -95,3 +96,32 @@ MonoBehaviour:
         Data3: -838587461
         Data4: -741535134
       Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_PressirizerWork
+--- !u!114 &1261153846641071984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2289990921653194261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e63ec7a15118842b82f142f76d47ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeUntilNextEvent: 1
+  MinTimeForMusicStart: 40
+  MinGameTimeForMusicStart: 0
+  CreshendoTime: 40
+  EndingTime: 40
+  MusicFmodEvent:
+    IsInRythm: 1
+    EventPosition: {fileID: 4489585891853868667}
+    FmodReference:
+      Guid:
+        Data1: 1334801709
+        Data2: 1175677802
+        Data3: -538525271
+        Data4: -884569095
+      Path: event:/MX/MX_V2
+  CurrentEngineState: {fileID: 0}
+  CurrentMusicState: 0
