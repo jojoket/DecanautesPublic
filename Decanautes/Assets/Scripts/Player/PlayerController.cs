@@ -2,14 +2,12 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Decanautes.Interactable;
 using Cinemachine;
 using DG.Tweening;
-using Mono.Cecil.Cil;
 
 
 public class PlayerController : MonoBehaviour
@@ -149,7 +147,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         //If there is a grabbed object
-        if (grabbed)
+        if (grabbed && !lookingAt)
         {
             if (_interactAction.IsPressed())
             {

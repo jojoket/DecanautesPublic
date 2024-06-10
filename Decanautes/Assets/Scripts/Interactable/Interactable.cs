@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using FMODUnity;
-using static UnityEditor.Profiling.RawFrameDataView;
 
 namespace Decanautes.Interactable
 {

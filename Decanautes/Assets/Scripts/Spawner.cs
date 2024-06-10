@@ -14,7 +14,6 @@ public class Spawner : MonoBehaviour
     [TitleGroup("Parameters")]
     public bool IsDisplay;
     [SerializeField, Sirenix.OdinInspector.ReadOnly]
-    private bool _IsDisplaying = false;
     public float SpawnSpan;
 
     [SerializeField, Sirenix.OdinInspector.ReadOnly]
@@ -27,7 +26,6 @@ public class Spawner : MonoBehaviour
         if (IsDisplay)
         {
             SpawnPrefab();
-            _IsDisplaying = true;
         }
     }
 
@@ -60,7 +58,6 @@ public class Spawner : MonoBehaviour
     public void StartSpawnCoroutine()
     {
         _spawned = null;
-        _IsDisplaying = false;
         StartCoroutine(SpawnNext());
     }
 }

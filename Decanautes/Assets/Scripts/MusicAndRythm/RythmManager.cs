@@ -7,8 +7,6 @@ using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine.Serialization;
-using UnityEngine.UIElements.Experimental;
-using static UnityEditor.Profiling.RawFrameDataView;
 
 [Serializable]
 public class FmodEventInfo
