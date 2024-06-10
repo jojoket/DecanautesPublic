@@ -51,7 +51,13 @@ public class Event : MonoBehaviour
     [TabGroup("Interactions")]
     public bool NeedToBeDoneInOrder = false;
     [TabGroup("Interactions")]
+    public bool HasSecondaryInteractions = false;
+    [ShowIf("HasSecondaryInteractions"), TabGroup("Interactions")]
+    public int CurrentInteractionFixSet = 0;
+    [TabGroup("Interactions")]
     public List<Interactable> InteractionsToFix = new List<Interactable>();
+    [ShowIf("HasSecondaryInteractions"), TabGroup("Interactions")]
+    public List<Interactable> SecondaryInteractionsToFix = new List<Interactable>();
     [TabGroup("Interactions")]
     public List<Interactable> InteractionsToBreak = new List<Interactable>();
     [HideInInspector]
