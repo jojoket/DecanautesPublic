@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 2185170539282178000}
   - component: {fileID: 6155217590185667143}
   - component: {fileID: 5026608948024696433}
-  - component: {fileID: 3163162743684649618}
+  - component: {fileID: 5947630330340799665}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b210c3d67bf2ee24badab97249546cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 3163162743684649618}
+  _playerInput: {fileID: 5947630330340799665}
   GrabPoint: {fileID: 107574339451760140}
   VirtualCamera: {fileID: 4495261938294493002}
   CanMove: 1
@@ -156,7 +156,7 @@ MonoBehaviour:
   PostItEditingLastRot: {x: 0, y: 0, z: 0}
   PostItEditPos: {fileID: 564402586463953216}
   InputScreenEditing: {fileID: 0}
---- !u!114 &3163162743684649618
+--- !u!114 &5947630330340799665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,8 +182,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: InGame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -234,7 +234,6 @@ MonoBehaviour:
   ToSpawnPrefab: {fileID: 2063057608008802094, guid: 69bf5503607eb6940bfe7e16b06f76c7,
     type: 3}
   IsDisplay: 1
-  _IsDisplaying: 0
   SpawnSpan: 1
   _spawned: {fileID: 0}
 --- !u!1 &6800377687091589629
@@ -698,7 +697,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 3
+    m_MaxSpeed: 0
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse Y
@@ -722,7 +721,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 3
+    m_MaxSpeed: 0
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse X
