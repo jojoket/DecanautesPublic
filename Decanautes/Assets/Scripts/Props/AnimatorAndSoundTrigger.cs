@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -63,7 +64,7 @@ public class AnimatorTriggerer
         {
             case ParameterType.Trigger:
                 {
-                    animator.SetTrigger(parameterName);
+                    parent.StartCoroutine(StartAndResetTrigger(animator, parameterName));
                     break;
                 }
             case ParameterType.Bool:
@@ -98,6 +99,14 @@ public class AnimatorTriggerer
         }));
         return;
     }
+
+    private IEnumerator StartAndResetTrigger(Animator animator, string TriggName)
+    {
+        animator.SetTrigger(TriggName);
+        yield return new WaitForNextFrameUnit();
+        animator.ResetTrigger(TriggName);
+    }
+
     private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
     {
         bool animStarted = false;
