@@ -113,6 +113,7 @@ namespace Decanautes.Interactable
         {
             if (InputField.text == CodeNeeded)
             {
+                InputField.text = "";
                 OnCodeValid?.Invoke();
                 OnCodeValidAction?.Invoke(this);
                 return;

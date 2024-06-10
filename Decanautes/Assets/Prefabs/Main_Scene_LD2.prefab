@@ -18920,11 +18920,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5310763559867605063, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5310763559867605063, guid: d24494c9ecd930548993fb039bedf3db,
-        type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.936
       objectReference: {fileID: 0}
@@ -19351,7 +19346,7 @@ PrefabInstance:
     - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: CanInteract
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6453719770637779782, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
@@ -20135,6 +20130,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8766502220310962687, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
+      propertyPath: Animations.Array.data[0].parameterName
+      value: Broken
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766502220310962687, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
       propertyPath: Animations.Array.data[0].animationSounds.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -20275,17 +20275,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
+      propertyPath: Animations.Array.data[0].animator
+      value: 
+      objectReference: {fileID: 8096376282336791661}
+    - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animator
+      value: 
+      objectReference: {fileID: 8096376282336791661}
+    - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
       propertyPath: Animations.Array.data[0].IsInRythm
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: Animations.Array.data[0].parameterName
-      value: Battery_Change
+      value: IsBroken
       objectReference: {fileID: 0}
     - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: Animations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.IsInRythm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.IsInRythm
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9167806414750186511, guid: d24494c9ecd930548993fb039bedf3db,
@@ -20734,6 +20754,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!95 &8096376282336791661 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7167141292614742488, guid: d24494c9ecd930548993fb039bedf3db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381151931833056693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8108239699486702704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7182281881581191621, guid: d24494c9ecd930548993fb039bedf3db,

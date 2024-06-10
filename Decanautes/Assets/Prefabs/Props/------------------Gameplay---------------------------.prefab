@@ -325,7 +325,7 @@ PrefabInstance:
     - target: {fileID: 8337248625558958260, guid: 4c2185ddd908898418a1ee94467fdd9a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2859,120 +2859,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2341988064088718058, guid: d19188f74c1dad4488cd8b612b10f247,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8766502220310962687}
-    - targetCorrespondingSourceObject: {fileID: 2341988064088718058, guid: d19188f74c1dad4488cd8b612b10f247,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6929015494336287213}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d19188f74c1dad4488cd8b612b10f247, type: 3}
---- !u!1 &7388420431141992395 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2341988064088718058, guid: d19188f74c1dad4488cd8b612b10f247,
-    type: 3}
-  m_PrefabInstance: {fileID: 5046451062106656033}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8766502220310962687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7388420431141992395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animations:
-  - parent: {fileID: 0}
-    animator: {fileID: 8839954140995576209}
-    triggerType: 0
-    IsInRythm: 1
-    HasSound: 1
-    animationSounds: []
-    parameterName: Open
-    StateToApply: 0
-    FloatToApply: 0
-    Vector3ToApply: {x: 0, y: 0, z: 0}
-    OnAnimationFirstLooped:
-      m_PersistentCalls:
-        m_Calls: []
---- !u!114 &6929015494336287213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7388420431141992395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e314f3dbbd73fb46b7346a521ecd454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materialChangements:
-  - IsAutoStart: 1
-    IsAnim: 0
-    StartAnimOnStart: 0
-    IsInRythm: 1
-    HasSound: 0
-    animationSounds: []
-    IsMaterialInstance: 0
-    Renderer: {fileID: 0}
-    MaterialIndex: 0
-    Material: {fileID: 2100000, guid: 2fe43754456df0f44970820cfd5db492, type: 2}
-    CurrentDelta: 0
-    LerpDuration: 13
-    ParameterName: _EmissiveExposureWeight
-    ParameterType: 0
-    ParameterFloatValueInit: 0
-    ParameterFloatValueStart: 0
-    ParameterFloatValueEnd: 1
-    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStartMult: 0
-    ParameterColorValueEndMult: 0
-    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
-    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
-    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
-  - IsAutoStart: 1
-    IsAnim: 0
-    StartAnimOnStart: 0
-    IsInRythm: 1
-    HasSound: 0
-    animationSounds: []
-    IsMaterialInstance: 0
-    Renderer: {fileID: 0}
-    MaterialIndex: 0
-    Material: {fileID: 2100000, guid: 2fe43754456df0f44970820cfd5db492, type: 2}
-    CurrentDelta: 0
-    LerpDuration: 0.05
-    ParameterName: _EmissiveExposureWeight
-    ParameterType: 0
-    ParameterFloatValueInit: 0
-    ParameterFloatValueStart: 0
-    ParameterFloatValueEnd: 0
-    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStartMult: 0
-    ParameterColorValueEndMult: 0
-    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
-    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
-    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
 --- !u!4 &8007242799834256443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2961090805058394394, guid: d19188f74c1dad4488cd8b612b10f247,
-    type: 3}
-  m_PrefabInstance: {fileID: 5046451062106656033}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &8839954140995576209 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4369982526681935024, guid: d19188f74c1dad4488cd8b612b10f247,
     type: 3}
   m_PrefabInstance: {fileID: 5046451062106656033}
   m_PrefabAsset: {fileID: 0}
@@ -3081,7 +2972,7 @@ PrefabInstance:
     - target: {fileID: 427306337922360515, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4475884
+      value: -2.869
       objectReference: {fileID: 0}
     - target: {fileID: 427306337922360515, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}

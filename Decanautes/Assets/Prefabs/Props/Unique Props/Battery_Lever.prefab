@@ -74,6 +74,7 @@ MonoBehaviour:
   HoverColor: {r: 1, g: 0.41093177, b: 0, a: 1}
   ActiveColor: {r: 0, g: 0, b: 0, a: 0}
   IsToggle: 0
+  CanInteract: 1
   NeedLookToKeepInteraction: 1
   DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations:
@@ -82,14 +83,7 @@ MonoBehaviour:
     triggerType: 0
     IsInRythm: 0
     HasSound: 0
-    DoLaunchSoundAfterAnimation: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+    animationSounds: []
     parameterName: Pulled
     StateToApply: 0
     FloatToApply: 0
@@ -100,8 +94,28 @@ MonoBehaviour:
   OnInteractStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  OnInteractEndedAnimations: []
+  OnClickedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractEndedAnimations:
+  - parent: {fileID: 0}
+    animator: {fileID: 7104777394357667274}
+    triggerType: 0
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    parameterName: Failed Try
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
   OnInteractEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriedAnimations: []
+  OnTriedEvent:
     m_PersistentCalls:
       m_Calls: []
   LinkedEvent: {fileID: 0}
@@ -126,6 +140,10 @@ MonoBehaviour:
     OnOverZero:
       m_PersistentCalls:
         m_Calls: []
+    OnUnderThresholdFmod: []
+    OnOverThresholdFmod: []
+    OnZeroFmod: []
+    OnOverZeroFmod: []
     isOverThreshold: 1
     isZero: 0
   isActivated: 0
