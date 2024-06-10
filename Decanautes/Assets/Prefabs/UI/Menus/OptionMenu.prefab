@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.12941177}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6156863}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3518,7 +3518,7 @@ PrefabInstance:
     - target: {fileID: 5922169732722400739, guid: db873f1694499304bbd2e25320143d75,
         type: 3}
       propertyPath: m_text
-      value: Enter
+      value: Entree
       objectReference: {fileID: 0}
     - target: {fileID: 5922169732722400739, guid: db873f1694499304bbd2e25320143d75,
         type: 3}
@@ -5076,6 +5076,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4481649432952753484, guid: e557ec0de8c697e4f8764125df655106,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6212086059338607991, guid: e557ec0de8c697e4f8764125df655106,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5083,8 +5088,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6212086059338607991, guid: e557ec0de8c697e4f8764125df655106,
         type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212086059338607991, guid: e557ec0de8c697e4f8764125df655106,
+        type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212086059338607991, guid: e557ec0de8c697e4f8764125df655106,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8966184424719663468, guid: e557ec0de8c697e4f8764125df655106,
         type: 3}
