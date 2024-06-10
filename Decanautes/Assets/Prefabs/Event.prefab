@@ -187,19 +187,11 @@ MonoBehaviour:
   OnEnableFmod: []
   OnFixFmod: []
   OnBreakFmod: []
-  NeedToBeDoneInOrder: 1
+  NeedToBeDoneInOrder: 0
   HasSecondaryInteractions: 1
   CurrentInteractionFixSet: 0
-  InteractionsToFix:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  SecondaryInteractionsToFix:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  InteractionsToFix: []
+  SecondaryInteractionsToFix: []
   InteractionsToBreak: []
   InteractionsState: 
 --- !u!114 &2846246284779708716
