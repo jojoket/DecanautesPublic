@@ -464,6 +464,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main_Scene_LD2
       objectReference: {fileID: 0}
+    - target: {fileID: 4800539762884469212, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 2091537378}
+    - target: {fileID: 4800539762884469212, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 2091537378}
+    - target: {fileID: 5417268101205621482, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 2091537379}
+    - target: {fileID: 5417268101205621482, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 2091537379}
+    - target: {fileID: 5417268101205621482, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[2].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 2091537379}
+    - target: {fileID: 5417268101205621482, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[3].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 2091537379}
+    - target: {fileID: 7674706678403439690, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 2091537377}
     - target: {fileID: 7743252076441766209, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -514,6 +549,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7786795229171646906, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 2091537376}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1861,6 +1901,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36981c3b27a9ce14fa19a4b3c8e59d80, type: 3}
+--- !u!4 &2091537376 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1248822446668065287, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 2091537375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2091537377 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7387629533361243983, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 2091537375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2091537378 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5749904877953481986, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 2091537375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2091537379 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 155155995681731237, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 2091537375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108696726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,7 +2077,7 @@ MonoBehaviour:
         m_Calls: []
     OnUnderThresholdFmod:
     - IsInRythm: 1
-      EventPosition: {fileID: 0}
+      EventPosition: {fileID: 2091537377}
       FmodReference:
         Guid:
           Data1: -2114054507
@@ -2132,7 +2196,7 @@ MonoBehaviour:
         m_Calls: []
     OnUnderThresholdFmod:
     - IsInRythm: 1
-      EventPosition: {fileID: 0}
+      EventPosition: {fileID: 2091537376}
       FmodReference:
         Guid:
           Data1: -1292050268
