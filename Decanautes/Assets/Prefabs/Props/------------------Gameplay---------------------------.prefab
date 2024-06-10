@@ -1030,7 +1030,7 @@ PrefabInstance:
     - target: {fileID: 190423266627904512, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427306337922360515, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
@@ -1239,7 +1239,7 @@ PrefabInstance:
     - target: {fileID: 190423266627904512, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427306337922360515, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
@@ -2914,7 +2914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialChangements:
-  - IsAnim: 0
+  - IsAutoStart: 1
+    IsAnim: 0
     StartAnimOnStart: 0
     IsInRythm: 1
     HasSound: 0
@@ -2938,7 +2939,8 @@ MonoBehaviour:
     ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
     ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
     ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
-  - IsAnim: 0
+  - IsAutoStart: 1
+    IsAnim: 0
     StartAnimOnStart: 0
     IsInRythm: 1
     HasSound: 0
@@ -3069,7 +3071,7 @@ PrefabInstance:
     - target: {fileID: 190423266627904512, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427306337922360515, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
@@ -3715,7 +3717,7 @@ PrefabInstance:
     - target: {fileID: 190423266627904512, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427306337922360515, guid: 5b75013b89ae4e64ab347b656331c40f,
         type: 3}
