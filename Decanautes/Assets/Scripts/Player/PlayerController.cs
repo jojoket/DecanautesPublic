@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
         }
         if (_interactAction.IsPressed())
         {
+            ManageInputScreenInteraction();
             if (lookingAt.GetType() == typeof(Grabbable))
             {
                 grabbed = lookingAt.GetComponent<Grabbable>();
@@ -187,7 +188,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
         ManagePostItInteraction();
-        ManageInputScreenInteraction();
+        if (InputScreenEditing)
+        {
+            ManageInputScreenInteraction();
+        }
     }
 
     private void Escape()
@@ -204,7 +208,7 @@ public class PlayerController : MonoBehaviour
 
     private void EnterPostItView()
     {
-        if (IsUiScreenBlock)
+        if (IsUiScreenBlock || InputScreenEditing)
         {
             return;
         }
@@ -243,6 +247,10 @@ public class PlayerController : MonoBehaviour
 
     public void ManagePostItInteraction()
     {
+        if (InputScreenEditing)
+        {
+            return;
+        }
         if (PostItEditing)
         {
             if (PostItEditing.isEditing)
@@ -317,7 +325,7 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        if (grabbed || PostItEditing != null)
+        if (PostItEditing != null)
         {
             return;
         }
