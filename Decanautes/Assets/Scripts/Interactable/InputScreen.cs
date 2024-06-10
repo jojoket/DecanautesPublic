@@ -85,7 +85,10 @@ namespace Decanautes.Interactable
                 
                 if (!isNum)
                 {
-                    InputField.text = InputField.text.Remove(InputField.text.Length-1);
+                    if (InputField.text.Length != 0)
+                    {
+                        InputField.text = InputField.text.Remove(InputField.text.Length-1);
+                    }
                     return;
                 }
                 NumPadInput(num);
