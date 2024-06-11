@@ -66,6 +66,7 @@ MonoBehaviour:
   fadeRadius: 0
   priority: 0
   customPasses:
+  - rid: 2963059850853220353
   - rid: 0
   - rid: 1
   injectionPoint: 3
@@ -90,10 +91,10 @@ MonoBehaviour:
         renderQueueType: 10
         layerMask:
           serializedVersion: 2
-          m_Bits: 3072
+          m_Bits: 2048
         sortingCriteria: 59
         overrideMode: 1
-        overrideMaterial: {fileID: 2100000, guid: a59da71860672eb42a24d8d9d84d5e54,
+        overrideMaterial: {fileID: 2100000, guid: 041465b8ba204b64b949dbeac5b1abd0,
           type: 2}
         overrideMaterialPassIndex: 0
         overrideMaterialPassName: FirstPass
@@ -123,8 +124,46 @@ MonoBehaviour:
         clearFlags: 0
         passFoldout: 0
         m_Version: 0
-        fullscreenPassMaterial: {fileID: 2100000, guid: 51427405ac95f7249b33578f3d6f4250,
+        fullscreenPassMaterial: {fileID: 2100000, guid: 66e34ee8e164960459ecc27fd0595a6b,
           type: 2}
         materialPassIndex: 0
         materialPassName: Custom Pass 0
         fetchColorBuffer: 0
+    - rid: 2963059850853220353
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: Custom Pass
+        enabled: 1
+        targetColorBuffer: 1
+        targetDepthBuffer: 1
+        clearFlags: 3
+        passFoldout: 0
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 10
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 1024
+        sortingCriteria: 59
+        overrideMode: 1
+        overrideMaterial: {fileID: 2100000, guid: 134389b1eecadf347a09e11424c8e68c,
+          type: 2}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: FirstPass
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 0
+        depthCompareFunction: 4
+        depthWrite: 1
+        overrideStencil: 0
+        stencilReferenceValue: 64
+        stencilWriteMask: 192
+        stencilReadMask: 192
+        stencilCompareFunction: 8
+        stencilPassOperation: 0
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0

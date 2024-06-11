@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Rendering.LookDev;
 
 public class script_Day_Night : MonoBehaviour
 {       
@@ -59,34 +60,51 @@ public class script_Day_Night : MonoBehaviour
         lerpDuration2 = lerpDuration * 0.7f;
         lerpDuration3 = lerpDuration * 0.3f;
 
+        currentColorTop = startColorTop;
+        currentColorMid = startColorMid;
+
+
+        sky.top.value = startColorTop;
+        sky.middle.value = startColorMid;
+        sky.bottom.value = startColorBottom;
+
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-    
-        if (timeElapsed < lerpDuration2)
-        { 
-            currentColorTop = Color.Lerp(startColorTop, middleColorTop, timeElapsed/ lerpDuration2);
-            currentColorMid = Color.Lerp(startColorMid, middleColorMid, timeElapsed/ lerpDuration2);
-            currentColorBottom = Color.Lerp(startColorBottom, middleColorBottom, timeElapsed/ lerpDuration2);
-        }
+          
+        
 
-        if (timeElapsed > lerpDuration2)
-        {
-            currentColorTop = Color.Lerp(middleColorTop, finalColorTop, (timeElapsed - lerpDuration2) / lerpDuration3);
-            currentColorMid = Color.Lerp(middleColorMid, finalColorMid, (timeElapsed - lerpDuration2) / lerpDuration3);
-            currentColorBottom = Color.Lerp(middleColorBottom, finalColorBottom, (timeElapsed - lerpDuration2) / lerpDuration3);
+            
 
-        }
+           if (timeElapsed < lerpDuration2 && timeElapsed > (lerpDuration * 0.6f))
+            {
+                currentColorTop = Color.Lerp(startColorTop, middleColorTop, (timeElapsed - lerpDuration*0.6f) / (lerpDuration * 0.1f));
+                currentColorMid = Color.Lerp(startColorMid, middleColorMid, (timeElapsed - lerpDuration * 0.6f) / (lerpDuration * 0.1f));
+                currentColorBottom = Color.Lerp(startColorBottom, middleColorBottom, (timeElapsed - lerpDuration * 0.6f) / (lerpDuration * 0.1f));
+            }
+
+            else if (timeElapsed > lerpDuration2)
+            {
+                currentColorTop = Color.Lerp(middleColorTop, finalColorTop, (timeElapsed - lerpDuration2) / lerpDuration3);
+                currentColorMid = Color.Lerp(middleColorMid, finalColorMid, (timeElapsed - lerpDuration2) / lerpDuration3);
+                currentColorBottom = Color.Lerp(middleColorBottom, finalColorBottom, (timeElapsed - lerpDuration2) / lerpDuration3);
+
+            }
 
 
 
-        sky.top.value = currentColorTop;
-        sky.middle.value = currentColorMid;
-        sky.bottom.value = currentColorBottom;
+            sky.top.value = currentColorTop;
+            sky.middle.value = currentColorMid;
+            sky.bottom.value = currentColorBottom;
 
-         timeElapsed += Time.deltaTime;
+            timeElapsed += Time.deltaTime;
+           
+
         
     }
 }

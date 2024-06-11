@@ -100,6 +100,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: mesh_Roof_End
       objectReference: {fileID: 0}
+    - target: {fileID: 8470741754228928694, guid: b7169dcc3c3ddb5418f1d4f976944b12,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470741754228928694, guid: b7169dcc3c3ddb5418f1d4f976944b12,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b81bc86871c38c47b69460962af4981, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
