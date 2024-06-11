@@ -3129,8 +3129,15 @@ MonoBehaviour:
   OnInteractStartedEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnClickedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnInteractEndedAnimations: []
   OnInteractEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriedAnimations: []
+  OnTriedEvent:
     m_PersistentCalls:
       m_Calls: []
   LinkedEvent: {fileID: 0}
@@ -3175,9 +3182,12 @@ MonoBehaviour:
   - {fileID: 5608856950747432497}
   - {fileID: 5020971359316262146}
   - {fileID: 1749601219906514887}
-  DoStopMovementsWhenIsEditing: 0
+  DoStopMovementsWhenIsEditing: 1
   CodeNeeded: 
   IsEditing: 0
+  NormalColor: {r: 1, g: 0.9137255, b: 0.84313726, a: 1}
+  InvalidColor: {r: 1, g: 0, b: 0, a: 1}
+  ValidColor: {r: 0.19723403, g: 1, b: 0, a: 1}
   OnStartEditing:
     m_PersistentCalls:
       m_Calls: []

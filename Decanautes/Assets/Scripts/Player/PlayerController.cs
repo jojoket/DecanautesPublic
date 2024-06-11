@@ -169,6 +169,10 @@ public class PlayerController : MonoBehaviour
             ManageInputScreenInteraction();
             if (lookingAt.GetType() == typeof(Grabbable))
             {
+                if (lookingAt.TryGetComponent<PostIt>(out PostIt postIt) && postIt.UsesLeft <= 0)
+                {
+                    return;
+                }
                 grabbed = lookingAt.GetComponent<Grabbable>();
             }
             lookingAt.InteractionStart();

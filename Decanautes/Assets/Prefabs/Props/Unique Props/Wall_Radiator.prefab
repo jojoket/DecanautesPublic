@@ -9910,6 +9910,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2961090805058394394}
+  - component: {fileID: 5996148493598847204}
+  - component: {fileID: 4805623616625144229}
   m_Layer: 0
   m_Name: Wall_Radiator
   m_TagString: Untagged
@@ -9933,6 +9935,180 @@ Transform:
   - {fileID: 9084212326541878976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5996148493598847204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2341988064088718058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 0
+    IsInRythm: 1
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 0}
+        FmodReference:
+          Guid:
+            Data1: 930262183
+            Data2: 1110395259
+            Data3: -1199459146
+            Data4: -893496875
+          Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorOpen
+    parameterName: Broken
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 0}
+    triggerType: 0
+    IsInRythm: 1
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 0}
+        FmodReference:
+          Guid:
+            Data1: 930262183
+            Data2: 1110395259
+            Data3: -1199459146
+            Data4: -893496875
+          Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorOpen
+    parameterName: Open
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &4805623616625144229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2341988064088718058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e314f3dbbd73fb46b7346a521ecd454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialChangements:
+  - IsAutoStart: 1
+    IsAnim: 1
+    StartAnimOnStart: 0
+    IsInRythm: 1
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 2fe43754456df0f44970820cfd5db492, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 13
+    ParameterName: _EmissiveExposureWeight
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAutoStart: 1
+    IsAnim: 1
+    StartAnimOnStart: 0
+    IsInRythm: 1
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 2fe43754456df0f44970820cfd5db492, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 0.05
+    ParameterName: _EmissiveExposureWeight
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAutoStart: 0
+    IsAnim: 1
+    StartAnimOnStart: 0
+    IsInRythm: 1
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 2fe43754456df0f44970820cfd5db492, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 2
+    ParameterName: _EmissiveColor
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 1, g: 0, b: 0, a: 1}
+    ParameterColorValueEnd: {r: 0, g: 0.4717369, b: 1, a: 1}
+    ParameterColorValueStartMult: 2500
+    ParameterColorValueEndMult: 2500
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAutoStart: 0
+    IsAnim: 1
+    StartAnimOnStart: 0
+    IsInRythm: 1
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 2fe43754456df0f44970820cfd5db492, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 2
+    ParameterName: _EmissiveColor
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 1
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0.46326423, b: 1, a: 1}
+    ParameterColorValueEnd: {r: 1, g: 0, b: 0, a: 1}
+    ParameterColorValueStartMult: 2500
+    ParameterColorValueEndMult: 2500
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
 --- !u!1 &2950156660500995242
 GameObject:
   m_ObjectHideFlags: 0
