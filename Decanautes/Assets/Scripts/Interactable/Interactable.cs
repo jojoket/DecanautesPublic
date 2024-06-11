@@ -4,115 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using FMODUnity;
 
 namespace Decanautes.Interactable
 {
-    [Serializable]
-    public class AnimatorTriggerer
-    {
-        [HideInInspector]
-        public MonoBehaviour parent;
-        public Animator animator;
-        public enum ParameterType
-        {
-            Trigger,
-            Bool,
-            Float,
-            Vector3,
-        }
-        public ParameterType triggerType;
-        public bool IsInRythm = false;
-        public bool HasSound = false;
-        [ShowIf("HasSound")]
-        public bool DoLaunchSoundAfterAnimation;
-        [ShowIf("HasSound")]
-        public EventReference EventPath;
-        
-        
-        public string parameterName;
-        [ShowIf("triggerType", ParameterType.Bool)]
-        public bool StateToApply;
-        [ShowIf("triggerType", ParameterType.Float)]
-        public float FloatToApply;
-        [ShowIf("triggerType", ParameterType.Vector3)]
-        public Vector3 Vector3ToApply;
-
-        public UnityEvent OnAnimationFirstLooped;
-
-        public void TriggerAnimation()
-        {
-            if (IsInRythm)
-            {
-                RythmManager.Instance.OnBeatTrigger.AddListener(StartAnim);
-                if (HasSound && !DoLaunchSoundAfterAnimation)
-                {
-                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
-                }
-                return;
-            }
-
-            StartAnim();
-        }
-
-        private void StartAnim()
-        {
-            RythmManager.Instance.OnBeatTrigger.RemoveListener(StartAnim);
-
-            switch (triggerType)
-            {
-                case ParameterType.Trigger:
-                {
-                    animator.SetTrigger(parameterName);
-                    break;
-                }
-                case ParameterType.Bool:
-                {
-                    animator.SetBool(parameterName, StateToApply);
-                    break;
-                }
-                case ParameterType.Float:
-                {
-                    animator.SetFloat(parameterName, FloatToApply);
-                    break;
-                }
-                case ParameterType.Vector3:
-                {
-                    break;
-                }
-            }
-            parent.StartCoroutine(CheckForAnimationEnd(animator, () =>
-            {
-                OnAnimationFirstLooped?.Invoke();
-                OnAnimationFirstLooped.RemoveAllListeners();
-                if (DoLaunchSoundAfterAnimation && HasSound)
-                {
-                    RythmManager.Instance.AddFModEventToBuffer(EventPath);
-                }
-            }));
-            return;
-        }
-        private IEnumerator CheckForAnimationEnd(Animator animator, Action callBack)
-        {
-            bool animStarted = false;
-            while (animator != null)
-            {
-                if (!animStarted && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.5f)
-                {
-                    animStarted = true;
-                }
-                if (animStarted && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-                {
-                    callBack();
-                    break;
-                }
-                yield return new WaitForSecondsRealtime(0.02f);
-            }
-        }
-
-    }
-
     public class Interactable : MonoBehaviour
     {
         //--------Components
@@ -125,6 +20,7 @@ namespace Decanautes.Interactable
 
         [TitleGroup("Parameters")]
         public bool IsToggle = false;
+        public bool CanInteract = true;
         public bool NeedLookToKeepInteraction = true;
         [Tooltip("It will wait for the first animation trigerrer's next animation end.")]
         public bool DoApplyStateAfterAnimation = true;
@@ -135,9 +31,13 @@ namespace Decanautes.Interactable
         public List<AnimatorTriggerer> OnInteractStartedAnimations = new List<AnimatorTriggerer>();
         public UnityAction<Interactable> OnInteractStarted;
         public UnityEvent OnInteractStartedEvent;
+        public UnityEvent OnClickedEvent;
         public List<AnimatorTriggerer> OnInteractEndedAnimations = new List<AnimatorTriggerer>();
         public UnityAction<Interactable> OnInteractEnded;
         public UnityEvent OnInteractEndedEvent;
+        public List<AnimatorTriggerer> OnTriedAnimations = new List<AnimatorTriggerer>();
+        public UnityEvent OnTriedEvent;
+
         [HideInInspector]
         public Event LinkedEvent;
         [HideInInspector]
@@ -210,6 +110,15 @@ namespace Decanautes.Interactable
 
         public virtual void InteractionStart()
         {
+            if (!CanInteract)
+            {
+                foreach (AnimatorTriggerer anim in OnTriedAnimations)
+                {
+                    anim.TriggerAnimation();
+                }
+                OnTriedEvent?.Invoke();
+                return;
+            }
             if (!IsToggle)
             {
                 InvokeInteractStart();
@@ -232,11 +141,24 @@ namespace Decanautes.Interactable
 
         public virtual void InteractionEnd()
         {
+            if (!CanInteract)
+            {
+                return;
+            }
             if (!IsToggle)
             {
                 InvokeInteractEnded();
             }
             isPressed = false;
+        }
+
+        public void SetCanInteract(bool canInteract)
+        {
+            if (isPressed)
+            {
+                InteractionEnd();
+            }
+            CanInteract = canInteract;
         }
 
         protected virtual void InvokeInteractStart()
@@ -245,6 +167,7 @@ namespace Decanautes.Interactable
             {
                 anim.TriggerAnimation();
             }
+            OnClickedEvent?.Invoke();
             if (DoApplyStateAfterAnimation && OnInteractStartedAnimations.Count > 0)
             {
                 OnInteractStartedAnimations[0].OnAnimationFirstLooped.AddListener(() =>

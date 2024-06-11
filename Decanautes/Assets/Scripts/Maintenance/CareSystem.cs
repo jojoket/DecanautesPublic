@@ -38,6 +38,15 @@ public class Maintain
     [TabGroup("Parameters")]
     public UnityEvent OnOverZero;
 
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnUnderThresholdFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnOverThresholdFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnZeroFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnOverZeroFmod;
+
     [TabGroup("Debug"), ReadOnly]
     public bool isOverThreshold = true;
     [TabGroup("Debug"), ReadOnly]
@@ -128,11 +137,17 @@ public class CareSystem : MonoBehaviour
         maintain.MaintainableMeter.FillAmount = maintain.MaintainableData.CurrentState;
         if (maintain.MaintainableData.CurrentState <= maintain.MaintainableData.Threshold)
         {
-            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.WarningMaterial;
+            if (maintain.MaintainableMeter.IndicatorRenderer)
+            {
+                maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.WarningMaterial;
+            }
         }
         else
         {
-            maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.BaseMaterial;
+            if (maintain.MaintainableMeter.IndicatorRenderer)
+            {
+                maintain.MaintainableMeter.IndicatorRenderer.material = maintain.MaintainableData.BaseMaterial;
+            }
         }
     }
 

@@ -2,24 +2,29 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Decanautes.Interactable;
+using Cinemachine;
+using DG.Tweening;
 
 
 public class PlayerController : MonoBehaviour
 {
     //Components
-    private PlayerInput _playerInput;
+    [SerializeField] private UnityEngine.InputSystem.PlayerInput _playerInput;
     private Rigidbody _rigidbody;
     public Transform GrabPoint;
+    public CinemachineVirtualCamera VirtualCamera;
 
     //Variable
     private Vector2 _moveDirection = Vector2.zero;
     [Sirenix.OdinInspector.ReadOnly]
     public bool CanMove = true;
+    public bool CanInteract = true;
+    private bool IsUiPostItBlock = false;
+    private bool IsUiScreenBlock = false;
 
     public PlayerData PlayerData;
     public LayerMask InteractionLayer;
@@ -29,34 +34,32 @@ public class PlayerController : MonoBehaviour
     [Sirenix.OdinInspector.ReadOnly]
     public Grabbable grabbed;
     public PostIt PostItEditing;
+    public Vector3 PostItEditingLastPos;
+    public Vector3 PostItEditingLastRot;
+    public Transform PostItEditPos;
     public InputScreen InputScreenEditing;
 
 
+    //Input actions
+    private InputAction _moveAction;
+    private InputAction _interactAction;
+    private InputAction _interactSecAction;
+    private InputAction _escapeAction;
 
     void Start()
     {
         CanMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
-        _playerInput = new PlayerInput();
-        _playerInput.Enable();
 
+        UIScreenBlock(false);
 
-        //Input Events
-        _playerInput.InGame.Move.performed += Move;
-        _playerInput.InGame.Interact.performed += Interact;
-        _playerInput.InGame.InteractSec.performed += InteractSec;
-    }
-
-    private void OnDestroy()
-    {
-        _playerInput.InGame.Move.performed -= Move;
-        _playerInput.InGame.Interact.performed -= Interact;
-        _playerInput.InGame.InteractSec.performed -= InteractSec;
+        SetupInputActions();
     }
 
     void Update()
     {
+        UpdateInputs();
         LookInteraction();
     }
 
@@ -68,24 +71,85 @@ public class PlayerController : MonoBehaviour
         _rigidbody.velocity = new Vector3(currentVelocity.x / (PlayerData.Drag * Time.fixedDeltaTime*100), currentVelocity.y, currentVelocity.z / (PlayerData.Drag * Time.fixedDeltaTime * 100));
     }
 
+    #region Inputs
+    private void SetupInputActions()
+    {
+        _moveAction = _playerInput.actions["Move"];
+        _escapeAction = _playerInput.actions["Escape"];
+        _interactAction = _playerInput.actions["Interact"];
+        _interactSecAction = _playerInput.actions["InteractSec"];
+    }
 
-    private void Move(InputAction.CallbackContext callbackContext)
+    private void UpdateInputs()
+    {
+        Move();
+        if (_escapeAction.WasPressedThisFrame()) Escape();
+        if (_interactAction.WasPressedThisFrame()) Interact();
+        if (_interactSecAction.WasPressedThisFrame()) InteractSec();
+    }
+
+    public void UIScreenBlock(bool isBlocked)
+    {
+        IsUiScreenBlock = isBlocked;
+        if (!isBlocked && IsUiPostItBlock)
+        {
+            return;
+        }
+        CanMove = !isBlocked;
+        CanInteract = !isBlocked;
+        if (isBlocked)
+        {
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = 0;
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = 0;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = PlayerPreferencesManager.Instance.PlayerPreferencesData.CameraSensibility;
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = PlayerPreferencesManager.Instance.PlayerPreferencesData.CameraSensibility;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void UIPostItBlock(bool isBlocked)
+    {
+        IsUiPostItBlock = isBlocked;
+        CanMove = !isBlocked;
+        if (isBlocked)
+        {
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = 0;
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = 0;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = PlayerPreferencesManager.Instance.PlayerPreferencesData.CameraSensibility;
+            VirtualCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = PlayerPreferencesManager.Instance.PlayerPreferencesData.CameraSensibility;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    private void Move()
     {
         if (!CanMove)
         {
             _moveDirection = Vector3.zero;
             return;
         }
-        _moveDirection  = callbackContext.ReadValue<Vector2>();
+        _moveDirection  = _moveAction.ReadValue<Vector2>();
     }
 
-    private void Interact(InputAction.CallbackContext callbackContext)
+    private void Interact()
     {
-        
-        //If there is a grabbed object
-        if (grabbed)
+        EnterPostItView();
+        if (PostItEditing != null)
         {
-            if (callbackContext.ReadValueAsButton())
+            return;
+        }
+        //If there is a grabbed object
+        if (grabbed && !lookingAt)
+        {
+            if (_interactAction.IsPressed())
             {
                 grabbed.InteractionStart();
             }
@@ -96,15 +160,19 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        //If we're looking at smthg and not grabbing
         if (!lookingAt)
         {
             return;
         }
-        if (callbackContext.ReadValueAsButton())
+        if (_interactAction.IsPressed())
         {
+            ManageInputScreenInteraction();
             if (lookingAt.GetType() == typeof(Grabbable))
             {
+                if (lookingAt.TryGetComponent<PostIt>(out PostIt postIt) && postIt.UsesLeft <= 0)
+                {
+                    return;
+                }
                 grabbed = lookingAt.GetComponent<Grabbable>();
             }
             lookingAt.InteractionStart();
@@ -117,21 +185,91 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void InteractSec(InputAction.CallbackContext callbackContext)
+    private void InteractSec()
     {
+        if (!CanInteract)
+        {
+            return;
+        }
         ManagePostItInteraction();
-        ManageInputScreenInteraction();
+        if (InputScreenEditing)
+        {
+            ManageInputScreenInteraction();
+        }
     }
 
-    private void ManagePostItInteraction()
+    private void Escape()
     {
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.Escape();
+        }
+    }
+
+    #endregion
+
+    #region postIt
+
+    private void EnterPostItView()
+    {
+        if (IsUiScreenBlock || InputScreenEditing)
+        {
+            return;
+        }
+        if (PostItEditing)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.transform.gameObject == PostItEditing.gameObject)
+                {
+                    return;
+                }
+            }
+            if (!PostItEditing.isEditing)
+                ExitPostItView();
+            return;
+        }
+        if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
+        {
+            PostItEditing = postIt1;
+            PostItEditingLastPos = postIt1.transform.position;
+            PostItEditingLastRot = postIt1.transform.eulerAngles;
+            PostItEditing.EnterPostItView();
+            MovePostItTo(postIt1, PostItEditPos, false);
+            UIPostItBlock(true);
+        }
+    }
+
+    private void ExitPostItView()
+    {
+        MovePostItTo(PostItEditing, PostItEditingLastPos, PostItEditingLastRot);
+        PostItEditing.ExitPostItView();
+        PostItEditing = null;
+        UIPostItBlock(false);
+    }
+
+    public void ManagePostItInteraction()
+    {
+        if (InputScreenEditing)
+        {
+            return;
+        }
         if (PostItEditing)
         {
             if (PostItEditing.isEditing)
             {
-                CanMove = true;
                 PostItEditing.DeselectText();
+                if (!PostItEditing.IsPosted)
+                    ResetPostItPos(PostItEditing);
+                else
+                    MovePostItTo(PostItEditing, PostItEditingLastPos, PostItEditingLastRot);
                 PostItEditing = null;
+                UIPostItBlock(false);
+            }
+            else
+            {
+                ExitPostItView();
             }
             return;
         }
@@ -141,18 +279,41 @@ public class PlayerController : MonoBehaviour
             if (!isEditing)
                 return;
             PostItEditing = postIt;
-            CanMove = false;
-        }
-        if (lookingAt && lookingAt.TryGetComponent<PostIt>(out PostIt postIt1))
-        {
-            bool isEditing = postIt1.SelectText();
-            if (!isEditing)
-                return;
-            PostItEditing = postIt1;
-            CanMove = false;
+            PostItEditingLastPos = postIt.transform.position;
+            PostItEditingLastRot = postIt.transform.eulerAngles;
+            MovePostItTo(postIt, PostItEditPos, true);
+            UIPostItBlock(true);
         }
     }
 
+    private void ResetPostItPos(PostIt postIt)
+    {
+        postIt.transform.DOLocalMove(Vector3.zero, 0.1f);
+        postIt.transform.DOLocalRotate(Vector3.zero, 0.1f);
+    }
+
+    private void MovePostItTo(PostIt postIt, Transform towards, bool isLocal)
+    {
+        if (isLocal)
+        {
+            postIt.transform.DOLocalMove(towards.localPosition, 0.1f);
+            postIt.transform.DOLocalRotate(towards.localEulerAngles, 0.1f);
+        }
+        else
+        {
+            postIt.transform.DOMove(towards.position, 0.1f);
+            postIt.transform.DORotate(towards.eulerAngles, 0.1f);
+        }
+    }
+    private void MovePostItTo(PostIt postIt, Vector3 pos, Vector3 rot)
+    {
+        postIt.transform.DOMove(pos, 0.1f);
+        postIt.transform.DORotate(rot, 0.1f);
+    }
+
+    #endregion
+
+    #region Input Screen
     private void ManageInputScreenInteraction()
     {
         if (InputScreenEditing)
@@ -168,7 +329,7 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        if (grabbed || PostItEditing != null)
+        if (PostItEditing != null)
         {
             return;
         }
@@ -184,8 +345,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    #endregion
 
 
+    #region Look
     private void LookInteraction()
     {
         Vector3 dir = Camera.main.transform.forward;
@@ -238,5 +401,5 @@ public class PlayerController : MonoBehaviour
             lookingAt.InteractionEnd();
         }
     }
-
+    #endregion
 }

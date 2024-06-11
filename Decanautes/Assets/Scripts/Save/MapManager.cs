@@ -52,6 +52,7 @@ public class MapManager : MonoBehaviour
     {
         SavedObject[] toSaveObjects= GameObject.FindObjectsByType<SavedObject>(FindObjectsSortMode.None);
         List<ObjectSave> toDelete = new List<ObjectSave>();
+        //Check for Deleted objects (to be removed)
         foreach (ObjectSave objectSave in MapData.SavedObjects)
         {
             if (Array.Find(toSaveObjects, x => x.name == objectSave.Name) == null)
@@ -64,9 +65,10 @@ public class MapManager : MonoBehaviour
             MapData.SavedObjects.Remove(objectDeleted);
         }
 
+        
         foreach (SavedObject obj in toSaveObjects)
         {
-            if (obj.GetComponentInParent<Spawner>() != null)
+            if (obj.GetComponentInParent<Spawner>() != null || (obj.transform.parent && obj.transform.parent.name == "GrabPoint"))
             {
                 continue;
             }
@@ -76,7 +78,9 @@ public class MapManager : MonoBehaviour
             objectSave.Rotation = obj.transform.rotation;
             objectSave.Scale = obj.transform.localScale;
             objectSave.PrefabPath = obj.originalPrefabPath;
-            objectSave.PostItText = obj.TryGetComponent<PostIt>(out PostIt post) ? post.Text.text : "";
+            objectSave.PostItText = obj.TryGetComponent<PostIt>(out PostIt post) ? post.InputText.text : "";
+            objectSave.CycleNum = MapManager.Instance.MapData.CurrentCycle;
+            objectSave.VoteNum = post ? post.Voted : 0;
             if (obj.TryGetComponent<Event>(out Event eventFound))
             {
                 foreach (Interactable item in eventFound.InteractionsToFix)
@@ -91,6 +95,13 @@ public class MapManager : MonoBehaviour
             int index = MapData.SavedObjects.FindIndex(x => x.Name == objectSave.Name);
             if (index != -1)
             {
+                objectSave.CycleNum = MapData.SavedObjects[index].CycleNum;
+                
+                if (post && (!post.IsPosted || post.isEditing || post.isViewing))
+                {
+                    //Don't save changes on posted post its if they're in hand or in edition
+                    continue;
+                }
                 MapData.SavedObjects[index] = objectSave;
                 continue;
             }
@@ -105,15 +116,20 @@ public class MapManager : MonoBehaviour
         foreach (ObjectSave obj in MapData.SavedObjects)
         {
             SavedObject found = Array.Find(savedObjects, x => x.name == obj.Name);
+            //if object is in base Map
             if (found != null)
             {
                 found.transform.position = obj.Position;
                 found.transform.rotation = obj.Rotation;
                 found.transform.localScale = obj.Scale;
-                if (obj.PostItText != null && obj.PostItText != "")
+                if (found.TryGetComponent<PostIt>(out PostIt postIt))
                 {
-                    found.GetComponent<PostIt>().Text.text = obj.PostItText;
-                    found.GetComponent<PostIt>().LockPostIt();
+                    postIt.InputText.text = obj.PostItText;
+                    postIt.CycleNum = obj.CycleNum;
+                    postIt.Vote = obj.VoteNum;
+                    postIt.CycleText.text = "Cycle : " + obj.CycleNum.ToString();
+                    postIt.IsPosted = true;
+                    postIt.LockPostIt();
                 }
                 if (found.TryGetComponent<Interactable>(out Interactable interactable))
                     interactable.isActivated = obj.IsActivated;
@@ -134,16 +150,21 @@ public class MapManager : MonoBehaviour
             }
             else
             {
+                //if object is not in base map
                 GameObject objSpn = Instantiate(transform.Find(obj.PrefabPath).gameObject, savedFile.transform);
                 objSpn.SetActive(true);
                 objSpn.name = obj.Name;
                 objSpn.transform.position = obj.Position;
                 objSpn.transform.rotation = obj.Rotation;
                 objSpn.transform.localScale = obj.Scale;
-                if (obj.PostItText != null && obj.PostItText != "")
+                if (objSpn.TryGetComponent<PostIt>(out PostIt postIt))
                 {
-                    objSpn.GetComponent<PostIt>().Text.text = obj.PostItText;
-                    objSpn.GetComponent<PostIt>().LockPostIt();
+                    postIt.InputText.text = obj.PostItText;
+                    postIt.CycleText.text = "Cycle : " + obj.CycleNum.ToString();
+                    postIt.CycleNum = obj.CycleNum;
+                    postIt.Vote = obj.VoteNum;
+                    postIt.IsPosted = true;
+                    postIt.LockPostIt();
                 }
                 if (objSpn.TryGetComponent<Interactable>(out Interactable interactable))
                     interactable.isActivated = obj.IsActivated;

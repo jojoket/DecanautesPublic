@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4489585891853868667}
   - component: {fileID: 5953756199168844632}
+  - component: {fileID: 1261153846641071984}
   m_Layer: 0
   m_Name: rythmManager
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2289990921653194261}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.325228, y: -0.5841144, z: -2.4880116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -49,22 +50,79 @@ MonoBehaviour:
       m_Calls: []
   lastBeat: 0
   Base:
-    Guid:
-      Data1: -859696311
-      Data2: 1214446029
-      Data3: 1498154922
-      Data4: 10915450
-    Path: event:/TestEvent/MX/RythmMain
+    IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: -1321801225
+        Data2: 1142391329
+        Data3: 1128155526
+        Data4: 1943452289
+      Path: event:/MX/MX_RythmMain
   EventsOnStart:
-  - Guid:
-      Data1: -1397484114
-      Data2: 1240696102
-      Data3: 796386199
-      Data4: 1251994224
-    Path: event:/TestEvent/MX/MX_Main
-  - Guid:
-      Data1: 970061290
-      Data2: 1269139856
-      Data3: 339579266
-      Data4: -1796020044
-    Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorWork
+  - IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: 1541873591
+        Data2: 1289083727
+        Data3: -1271335805
+        Data4: -209553049
+      Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BatteryWork
+  - IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: 970061290
+        Data2: 1269139856
+        Data3: 339579266
+        Data4: -1796020044
+      Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorWork
+  - IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: -145085193
+        Data2: 1135764735
+        Data3: 1450650293
+        Data4: -759200258
+      Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_HourGlassWork
+  - IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: 2040359142
+        Data2: 1099308602
+        Data3: -838587461
+        Data4: -741535134
+      Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_PressirizerWork
+--- !u!114 &1261153846641071984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2289990921653194261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e63ec7a15118842b82f142f76d47ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeUntilNextEvent: 1
+  MinTimeForMusicStart: 40
+  MinGameTimeForMusicStart: 0
+  CreshendoTime: 40
+  EndingTime: 15
+  MusicFmodEvent:
+    IsInRythm: 1
+    EventPosition: {fileID: 4489585891853868667}
+    FmodReference:
+      Guid:
+        Data1: 543809004
+        Data2: 1277776712
+        Data3: 2085528474
+        Data4: 527687229
+      Path: event:/MX/MX_Main
+  CurrentEngineState: {fileID: 0}
+  CurrentMusicState: 0
+  MusicChangeState: PC_MX_State

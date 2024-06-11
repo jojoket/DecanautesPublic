@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 using UnityEngine.UIElements;
 using Decanautes.Interactable;
 using System;
+using FMODUnityResonance;
 
 [Serializable]
 public struct EngineLinkedMachineText
@@ -59,6 +60,17 @@ public class EngineState : MonoBehaviour
     [TabGroup("Visual")]
     public List<GameObject> ToDisableOnBreakDown = new List<GameObject>();
 
+    [TabGroup("FMOD")]
+    public List<FmodEventInfo> OnStateGoodFmodEvents;
+    [TabGroup("FMOD")]
+    public List<FmodEventInfo> OnStateMalfunctionFmodEvents;
+    [TabGroup("FMOD")]
+    public List<FmodEventInfo> OnPowerDecreaseFmodEvent;
+    [TabGroup("FMOD")]
+    public List<FmodEventInfo> OnPowerIncreaseFmodEvent;
+    [TabGroup("FMOD")]
+    public List<FmodEventInfo> OnStateBreakdownFmodEvents;
+
     [TabGroup("Texts")]
     public List<string> StateMessages;
     [TabGroup("Texts")]
@@ -80,7 +92,7 @@ public class EngineState : MonoBehaviour
     [TabGroup("Debug"), ReadOnly]
     public EngineStateEnum CurrentState;
     [TabGroup("Debug"), SerializeField, ReadOnly]
-    private int malfunctionsNumber;
+    public int malfunctionsNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -139,6 +151,7 @@ public class EngineState : MonoBehaviour
 
     public void CheckForLinkedEventsAndMaintainables()
     {
+        int lastMalfunctionNum = malfunctionsNumber;
         malfunctionsNumber = 0;
         foreach(Event linkedEvent in LinkedEvents)
         {
@@ -154,6 +167,23 @@ public class EngineState : MonoBehaviour
                 malfunctionsNumber++;
             }
         }
+
+        //sound
+        if (malfunctionsNumber < lastMalfunctionNum)
+        {
+            foreach (FmodEventInfo fmodEvent in OnPowerDecreaseFmodEvent)
+            {
+                RythmManager.Instance.StartFmodEvent(fmodEvent);
+            }
+        }
+        if (malfunctionsNumber > lastMalfunctionNum)
+        {
+            foreach (FmodEventInfo fmodEvent in OnPowerIncreaseFmodEvent)
+            {
+                RythmManager.Instance.StartFmodEvent(fmodEvent);
+            }
+        }
+
         UpdateMachinesText();
         if (malfunctionsNumber == 0)
         {
@@ -228,6 +258,10 @@ public class EngineState : MonoBehaviour
 
     public void GoodVfx()
     {
+        foreach (FmodEventInfo fmodEvent in OnStateGoodFmodEvents)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         ResetButton.BaseMaterial = ResetButtonMatBase;
         ResetButton.ChangeMaterials(ResetButtonMatBase);
         foreach (GameObject gameObj in ToEnableOnGood)
@@ -242,6 +276,10 @@ public class EngineState : MonoBehaviour
 
     public void MalfunctionVfx()
     {
+        foreach (FmodEventInfo fmodEvent in OnStateMalfunctionFmodEvents)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         ResetButton.BaseMaterial = ResetButtonMatBase;
         ResetButton.ChangeMaterials(ResetButtonMatBase);
         foreach (GameObject gameObj in ToEnableOnMalfunction)
@@ -256,6 +294,10 @@ public class EngineState : MonoBehaviour
 
     public void BreakDownVfx()
     {
+        foreach (FmodEventInfo fmodEvent in OnStateBreakdownFmodEvents)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         ResetButton.BaseMaterial = ResetButtonMatWarning;
         ResetButton.ChangeMaterials(ResetButtonMatWarning);
         foreach (GameObject gameObj in ToEnableOnBreakDown)

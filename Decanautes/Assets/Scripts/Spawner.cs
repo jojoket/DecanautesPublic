@@ -4,6 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
 using System.ComponentModel;
+using Decanautes.Interactable;
 
 public class Spawner : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class Spawner : MonoBehaviour
 
     [TitleGroup("Parameters")]
     public bool IsDisplay;
-    private bool _IsDisplaying = false;
+    [SerializeField, Sirenix.OdinInspector.ReadOnly]
     public float SpawnSpan;
 
+    [SerializeField, Sirenix.OdinInspector.ReadOnly]
     private GameObject _spawned = null;
 
     // Start is called before the first frame update
@@ -24,7 +26,6 @@ public class Spawner : MonoBehaviour
         if (IsDisplay)
         {
             SpawnPrefab();
-            _IsDisplaying = true;
         }
     }
 
@@ -42,17 +43,21 @@ public class Spawner : MonoBehaviour
     public void SpawnPrefab()
     {
         _spawned = Instantiate(ToSpawnPrefab,transform);
-        Debug.Log("3");
         _spawned.name = ToSpawnPrefab.name + _spawned.GetInstanceID();
         _spawned.transform.position = transform.position;
         _spawned.transform.rotation = transform.rotation;
+        _spawned.GetComponent<Grabbable>().Spawner = this;
+        if (_spawned.TryGetComponent<PostIt>(out PostIt postIt))
+        {
+            postIt.SetCycleText();
+            _spawned.GetComponent<Grabbable>().InteractionStart();
+            GameObject.FindFirstObjectByType<PlayerController>().grabbed = _spawned.GetComponent<Grabbable>();
+        }
     }
 
     public void StartSpawnCoroutine()
     {
         _spawned = null;
-        _IsDisplaying = false;
-        Debug.Log("4");
         StartCoroutine(SpawnNext());
     }
 }

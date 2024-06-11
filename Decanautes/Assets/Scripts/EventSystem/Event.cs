@@ -41,10 +41,23 @@ public class Event : MonoBehaviour
     [TabGroup("Events")]
     public UnityEvent OnBreak;
 
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnEnableFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnFixFmod;
+    [TabGroup("Fmod")]
+    public List<FmodEventInfo> OnBreakFmod;
+
     [TabGroup("Interactions")]
     public bool NeedToBeDoneInOrder = false;
     [TabGroup("Interactions")]
+    public bool HasSecondaryInteractions = false;
+    [ShowIf("HasSecondaryInteractions"), TabGroup("Interactions")]
+    public int CurrentInteractionFixSet = 0;
+    [TabGroup("Interactions")]
     public List<Interactable> InteractionsToFix = new List<Interactable>();
+    [ShowIf("HasSecondaryInteractions"), TabGroup("Interactions")]
+    public List<Interactable> SecondaryInteractionsToFix = new List<Interactable>();
     [TabGroup("Interactions")]
     public List<Interactable> InteractionsToBreak = new List<Interactable>();
     [HideInInspector]

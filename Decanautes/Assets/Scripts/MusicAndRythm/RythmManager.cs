@@ -7,7 +7,15 @@ using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine.Serialization;
-using UnityEngine.UIElements.Experimental;
+
+[Serializable]
+public class FmodEventInfo
+{
+    public bool IsInRythm;
+    public Transform EventPosition;
+    public EventReference FmodReference;
+}
+
 
 public class RythmManager : MonoBehaviour
 {
@@ -26,14 +34,14 @@ public class RythmManager : MonoBehaviour
     private bool isFirst = true;
     public int lastBeat = 0;
 
-    private List<EventReference> FMODEvents = new List<EventReference>();
+    private List<FmodEventInfo> FMODEvents = new List<FmodEventInfo>();
 
 
     //From FMOD
 
     public TimelineInfo timelineInfo = null;
-    public EventReference Base;
-    public List<EventReference> EventsOnStart = new List<EventReference>();
+    public FmodEventInfo Base;
+    public List<FmodEventInfo> EventsOnStart = new List<FmodEventInfo>();
     private GCHandle _timelineHandle;
     private FMOD.Studio.EventInstance _musicInstance;
     private FMOD.Studio.EVENT_CALLBACK _beatCallBack;
@@ -44,14 +52,14 @@ public class RythmManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogWarning("Rythm Manager already exist");
+            Debug.LogWarning("Rythm Manager already exist", gameObject);
             return;
         }
         Instance = this;
 
-        if (!Base.IsNull)
+        if (!Base.FmodReference.IsNull)
         {
-            _musicInstance = RuntimeManager.CreateInstance(Base);
+            _musicInstance = RuntimeManager.CreateInstance(Base.FmodReference);
             _musicInstance.start();
         }
 
@@ -60,7 +68,7 @@ public class RythmManager : MonoBehaviour
 
     private void Start()
     {
-        if(!Base.IsNull)
+        if(!Base.FmodReference.IsNull)
         {
             timelineInfo = new TimelineInfo();
             _beatCallBack = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
@@ -83,27 +91,35 @@ public class RythmManager : MonoBehaviour
     private void TriggerBeatEvent()
     {
         OnBeatTrigger?.Invoke();
+        OnBeatTrigger.RemoveAllListeners();
         PlayAndRelieveBuffer();
         if (isFirst)
         {
-            foreach (EventReference fmodEvent in EventsOnStart)
+            foreach (FmodEventInfo fmodEvent in EventsOnStart)
             {
-                AddFModEventToBuffer(fmodEvent);
+                StartFmodEvent(fmodEvent);
             }
             isFirst = false;
         }
     }
 
-    public void AddFModEventToBuffer(EventReference fmodEventAdded)
+    public void StartFmodEvent(FmodEventInfo fmodEventAdded)
     {
-        FMODEvents.Add(fmodEventAdded);
+        if (fmodEventAdded.IsInRythm)
+        {
+            FMODEvents.Add(fmodEventAdded);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(fmodEventAdded.FmodReference, fmodEventAdded.EventPosition.position);
+        }
     }
 
     private void PlayAndRelieveBuffer()
     {
-        foreach (EventReference fmodEvent in FMODEvents)
+        foreach (FmodEventInfo fmodEvent in FMODEvents)
         {
-            FMODUnity.RuntimeManager.PlayOneShot(fmodEvent);
+            FMODUnity.RuntimeManager.PlayOneShot(fmodEvent.FmodReference, fmodEvent.EventPosition.position);
         }
         FMODEvents.Clear();
     }
