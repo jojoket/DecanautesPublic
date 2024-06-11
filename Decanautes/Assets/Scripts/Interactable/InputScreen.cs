@@ -19,6 +19,9 @@ namespace Decanautes.Interactable
         public string CodeNeeded;
         [HideInInspector]
         public bool IsEditing;
+        public Color NormalColor;
+        public Color InvalidColor;
+        public Color ValidColor;
 
         [TitleGroup("Events")]
         public UnityEvent OnStartEditing;
@@ -113,13 +116,30 @@ namespace Decanautes.Interactable
         {
             if (InputField.text == CodeNeeded)
             {
+                InputField.text = "";
                 OnCodeValid?.Invoke();
                 OnCodeValidAction?.Invoke(this);
+                StartCoroutine(CodeMatVisual(ValidColor));
                 return;
             }
             InputField.text = "";
             OnCodeInvalid?.Invoke();
             OnCodeInvalidAction?.Invoke(this);
+            StartCoroutine(CodeMatVisual(InvalidColor));
         }
+
+        private IEnumerator CodeMatVisual(Color colorVisual)
+        {
+            foreach (Animation anims in ButtonsAnimations)
+            {
+                anims.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetColor("_Base_Color", colorVisual);
+            }
+            yield return new WaitForSecondsRealtime(0.75f);
+            foreach (Animation anims in ButtonsAnimations)
+            {
+                anims.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetColor("_Base_Color", NormalColor);
+            }
+        }
+
     }
 }

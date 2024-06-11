@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,9 @@ public class MusicManager : MonoBehaviour
 
     public MusicState CurrentMusicState;
 
+    [ParamRef]
+    public string MusicChangeState;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,16 +50,19 @@ public class MusicManager : MonoBehaviour
         if (CurrentMusicState == MusicState.AllGood && TimeUntilNextEvent <= 0)
         {
             CurrentMusicState = MusicState.Broken;
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(MusicChangeState, 1);
             //Commencer Boucle Broken
         }
         if (CurrentMusicState == MusicState.Broken && CurrentEngineState.malfunctionsNumber <= 0)
         {
             CurrentMusicState = MusicState.Repaired;
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(MusicChangeState, 2);
             //Commencer Boucle Repaired
         }
         if (CurrentMusicState == MusicState.Repaired && CurrentEngineState.malfunctionsNumber > 0)
         {
             CurrentMusicState = MusicState.Ending;
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(MusicChangeState, 3);
             //Commencer fin de musique
             StartCoroutine(ChangeToSilent());
         }

@@ -31,9 +31,13 @@ namespace Decanautes.Interactable
         public List<AnimatorTriggerer> OnInteractStartedAnimations = new List<AnimatorTriggerer>();
         public UnityAction<Interactable> OnInteractStarted;
         public UnityEvent OnInteractStartedEvent;
+        public UnityEvent OnClickedEvent;
         public List<AnimatorTriggerer> OnInteractEndedAnimations = new List<AnimatorTriggerer>();
         public UnityAction<Interactable> OnInteractEnded;
         public UnityEvent OnInteractEndedEvent;
+        public List<AnimatorTriggerer> OnTriedAnimations = new List<AnimatorTriggerer>();
+        public UnityEvent OnTriedEvent;
+
         [HideInInspector]
         public Event LinkedEvent;
         [HideInInspector]
@@ -108,6 +112,11 @@ namespace Decanautes.Interactable
         {
             if (!CanInteract)
             {
+                foreach (AnimatorTriggerer anim in OnTriedAnimations)
+                {
+                    anim.TriggerAnimation();
+                }
+                OnTriedEvent?.Invoke();
                 return;
             }
             if (!IsToggle)
@@ -158,6 +167,7 @@ namespace Decanautes.Interactable
             {
                 anim.TriggerAnimation();
             }
+            OnClickedEvent?.Invoke();
             if (DoApplyStateAfterAnimation && OnInteractStartedAnimations.Count > 0)
             {
                 OnInteractStartedAnimations[0].OnAnimationFirstLooped.AddListener(() =>

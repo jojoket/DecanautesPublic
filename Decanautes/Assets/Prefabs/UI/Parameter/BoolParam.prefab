@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8185771508243517786}
   - component: {fileID: 3893944548234346003}
   - component: {fileID: 8577728002606156666}
+  - component: {fileID: 4855735715819020741}
   m_Layer: 5
   m_Name: On
   m_TagString: Untagged
@@ -121,7 +122,50 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3893944548234346003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4855735715819020741}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4855735715819020741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482649066944997802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 766637945
+      Data2: 1271809678
+      Data3: 1858512311
+      Data4: 2012106869
+    Path: event:/UI/Click
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2747362829771322574
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +178,7 @@ GameObject:
   - component: {fileID: 8135758207271573281}
   - component: {fileID: 8673418704846772478}
   - component: {fileID: 1169527453622890998}
+  - component: {fileID: 8461985968539927956}
   m_Layer: 5
   m_Name: Off
   m_TagString: Untagged
@@ -243,7 +288,50 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8673418704846772478}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8461985968539927956}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8461985968539927956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747362829771322574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 766637945
+      Data2: 1271809678
+      Data3: 1858512311
+      Data4: 2012106869
+    Path: event:/UI/Click
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &5045050091803932106
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +425,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 47.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -550,7 +638,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 47.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -763,7 +851,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 47.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -861,12 +949,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UiParameterType: 0
+  PlayerPreferencetype: 0
   BoolValue: 0
   BoolTrueButton: {fileID: 8577728002606156666}
   BoolFalseButton: {fileID: 1169527453622890998}
+  OnBoolValueCange:
+    m_PersistentCalls:
+      m_Calls: []
   ColorValue: {r: 0, g: 0, b: 0, a: 0}
   ColorButtons: []
+  OnColorValueCanges: []
   KeyValue: 
   KeyButton: {fileID: 0}
+  OnKeyValueCange:
+    m_PersistentCalls:
+      m_Calls: []
   SliderValue: 0
   Slider: {fileID: 0}
+  SliderText: {fileID: 0}
+  OnSliderValueChange:
+    m_PersistentCalls:
+      m_Calls: []

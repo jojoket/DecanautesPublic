@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Maint_Radiator
   m_EditorClassIdentifier: 
   Name: Radiator
-  CurrentState: 1
-  Speed: -0.05
+  CurrentState: 0.6
+  FirstCycleState: 0.6
+  Speed: -0.004
   NeedThresholdToMaintain: 1
   Threshold: 0.01
   FillingTime: 13
-  BaseMaterial: {fileID: 9100000, guid: b3a4bc1ee5442a94eaa03c981e74e64b, type: 2}
+  BaseMaterial: {fileID: 0}
   WarningMaterial: {fileID: 0}
