@@ -107,6 +107,7 @@ public class ScriptedEvent : MonoBehaviour
             if (item.GetType() == typeof(InputScreen))
             {
                 InputScreen inputScreen = (InputScreen)item;
+                inputScreen.CodeNeeded = MapManager.Instance.MapData.CurrentCycle.ToString();
                 inputScreen.OnCodeValidAction += TaskInteracted;
             }
             else
@@ -121,6 +122,7 @@ public class ScriptedEvent : MonoBehaviour
             if (item.GetType() == typeof(InputScreen))
             {
                 InputScreen inputScreen = (InputScreen)item;
+                inputScreen.CodeNeeded = MapManager.Instance.MapData.CurrentCycle.ToString();
                 inputScreen.OnCodeValidAction += TaskInteracted;
             }
             else
