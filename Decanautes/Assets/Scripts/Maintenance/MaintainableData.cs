@@ -11,6 +11,8 @@ public class MaintainableData : ScriptableObject
     public string Name;
     [PropertyRange(0, 1)]
     public float CurrentState = 1;
+    [PropertyRange(0, 1)]
+    public float FirstCycleState = 1;
     public float Speed = -1;
     public bool NeedThresholdToMaintain = true;
     [PropertyRange(0, 1)]

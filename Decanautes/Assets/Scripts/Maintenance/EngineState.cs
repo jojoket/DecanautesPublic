@@ -40,11 +40,12 @@ public class EngineState : MonoBehaviour
     public Material ResetButtonMatWarning;
     [TabGroup("Components")]
     public KilometerData KilometerData;
+    [TabGroup("Components")]
+    public Renderer GeneralTextRenderer;
 
 
     [TabGroup("Parameters"), SerializeField]
     private float MalfunctionsInfluence;
-
     [TabGroup("Visual")]
     public List<GameObject> ToEnableOnGood = new List<GameObject>();
     [TabGroup("Visual")]
@@ -87,12 +88,18 @@ public class EngineState : MonoBehaviour
     public TMP_Text SpeedText;
     [TabGroup("Texts")]
     public List<EngineLinkedMachineText> LinkedMachinesTexts = new List<EngineLinkedMachineText>();
-    
+
 
     [TabGroup("Debug"), ReadOnly]
     public EngineStateEnum CurrentState;
     [TabGroup("Debug"), SerializeField, ReadOnly]
     public int malfunctionsNumber;
+    [ReadOnly]
+    public InterCycleMessage CurrentMessage;
+    [ReadOnly]
+    public bool hasMessage = false;
+    private Color _GeneralTextBaseBackgroundColor;
+    private Color _GeneralTextBaseColor;
 
     // Start is called before the first frame update
     void Start()
@@ -100,6 +107,8 @@ public class EngineState : MonoBehaviour
         SetupLinkedEventsAndMaintainables();
         ChangeState(EngineStateEnum.Good);
         UpdateMachinesText();
+        _GeneralTextBaseBackgroundColor = GeneralTextRenderer.materials[0].GetColor("_Color");
+        _GeneralTextBaseColor = GeneralText.color;
     }
 
     private void OnDestroy()
@@ -205,13 +214,23 @@ public class EngineState : MonoBehaviour
 
     public void UpdateScreens()
     {
+        
         if (GeneralText)
         {
-            GeneralText.text = "Engine state : " + CurrentState.ToString() + "\n";
-            GeneralText.text += " Power : " + (1 - MalfunctionsInfluence * malfunctionsNumber)*100 + "% \n";
-            GeneralText.text += " dist : " + KilometerData.CurrentKm + "km \n";
-            GeneralText.text += " speed : " + KilometerData.CurrentSpeed + "km/s \n";
-            GeneralText.text += StateMessages[(int)CurrentState] + "\n";
+            if (hasMessage)
+            {
+                GeneralText.color = CurrentMessage.MessageColor;
+                GeneralText.text = CurrentMessage.Message;
+            }
+            else
+            {
+                GeneralText.color = _GeneralTextBaseColor;
+                GeneralText.text = "Engine state : " + CurrentState.ToString() + "\n";
+                GeneralText.text += " Power : " + (1 - MalfunctionsInfluence * malfunctionsNumber)*100 + "% \n";
+                GeneralText.text += " dist : " + KilometerData.CurrentKm + "km \n";
+                GeneralText.text += " speed : " + KilometerData.CurrentSpeed + "km/s \n";
+                GeneralText.text += StateMessages[(int)CurrentState] + "\n";
+            }
         }
 
         if (PowerLevelText)
@@ -329,5 +348,35 @@ public class EngineState : MonoBehaviour
             return;
         }
         ChangeState(EngineStateEnum.BreakDown);
+    }
+
+    public void ForceBreakAll()
+    {
+        foreach (Event eventToBreak in LinkedEvents)
+        {
+            eventToBreak.transform.GetComponent<ScriptedEvent>().ScriptedEventData.CurrentTimeLeft = 0;
+        }
+        foreach (MaintainableData Maintainable in LinkedMaintainables)
+        {
+            Maintainable.CurrentState = 0;
+        }
+    }
+
+    public void DisplayMessage(InterCycleMessage message)
+    {
+        hasMessage = true;
+        CurrentMessage = message;
+        GeneralTextRenderer.materials[0].SetColor("_BaseColor", CurrentMessage.MessageBackgroundColor);
+        GeneralText.alignment = TextAlignmentOptions.Center;
+        StartCoroutine(ResetMessageAfter(message.MessageDuration));
+    }
+
+    private IEnumerator ResetMessageAfter(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        hasMessage = false;
+        GeneralText.alignment = TextAlignmentOptions.TopLeft;
+        GeneralTextRenderer.materials[0].SetColor("_BaseColor", _GeneralTextBaseBackgroundColor);
+        CurrentMessage = null;
     }
 }
