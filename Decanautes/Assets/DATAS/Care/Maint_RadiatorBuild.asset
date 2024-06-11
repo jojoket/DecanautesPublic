@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880f9e7726b9275499c6d938e7f405ec, type: 3}
-  m_Name: Hourglass
+  m_Script: {fileID: 11500000, guid: 0764e7b44d94bd44891b537df714f2a8, type: 3}
+  m_Name: Maint_RadiatorBuild
   m_EditorClassIdentifier: 
-  MaxTime: 400
-  TaskAppearanceTimeInSec: {x: 330.89703, y: 389.36877}
-  FirstCycleStartTime: 270
-  CurrentTimeLeft: 0
+  Name: Radiator
+  CurrentState: 0.6
+  Speed: -0.004
+  NeedThresholdToMaintain: 1
+  Threshold: 0.01
+  FillingTime: 13
+  BaseMaterial: {fileID: 0}
+  WarningMaterial: {fileID: 0}
