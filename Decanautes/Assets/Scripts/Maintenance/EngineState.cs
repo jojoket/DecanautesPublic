@@ -15,6 +15,7 @@ using FMODUnityResonance;
 public struct EngineLinkedMachineText
 {
     public TMP_Text Text;
+    public UnityEngine.UI.Image StateImage;
     public Event linkedEvent;
     public MaintainableData linkedMaintainable;
 }
@@ -263,12 +264,13 @@ public class EngineState : MonoBehaviour
             string textToDisplay = "";
             if (LinkedMachinesTexts[i].linkedEvent != null)
             {
-                textToDisplay += LinkedMachinesTexts[i].linkedEvent.Name + "'s state : " + (LinkedMachinesTexts[i].linkedEvent.isActive ? "Broken" : "OK");
+                textToDisplay += LinkedMachinesTexts[i].linkedEvent.Name + "'s state";
+                LinkedMachinesTexts[i].StateImage.color = LinkedMachinesTexts[i].linkedEvent.isActive ? Color.red : Color.green;
             }
             else
             {
-                textToDisplay += LinkedMachinesTexts[i].linkedMaintainable.Name + "'s state : " + (LinkedMachinesTexts[i].linkedMaintainable.CurrentState <= LinkedMachinesTexts[i].linkedMaintainable.Threshold ? "Broken" : "OK");
-
+                textToDisplay += LinkedMachinesTexts[i].linkedMaintainable.Name + "'s state";
+                LinkedMachinesTexts[i].StateImage.color = LinkedMachinesTexts[i].linkedMaintainable.CurrentState <= LinkedMachinesTexts[i].linkedMaintainable.Threshold ? Color.red : Color.green;
             }
 
             textMP.text = textToDisplay;

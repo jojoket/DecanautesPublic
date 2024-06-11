@@ -80,16 +80,20 @@ MonoBehaviour:
   SpeedText: {fileID: 0}
   LinkedMachinesTexts:
   - Text: {fileID: 0}
+    StateImage: {fileID: 0}
     linkedEvent: {fileID: 0}
     linkedMaintainable: {fileID: 11400000, guid: 01921c996bf732c41b4a084dfc2d15ac,
       type: 2}
   - Text: {fileID: 0}
+    StateImage: {fileID: 0}
     linkedEvent: {fileID: 3035480369546437588}
     linkedMaintainable: {fileID: 0}
   - Text: {fileID: 0}
+    StateImage: {fileID: 0}
     linkedEvent: {fileID: 2844069770610891767}
     linkedMaintainable: {fileID: 0}
   - Text: {fileID: 0}
+    StateImage: {fileID: 0}
     linkedEvent: {fileID: 0}
     linkedMaintainable: {fileID: 11400000, guid: 3696fee75bb114140b5b22ee7c63b79b,
       type: 2}
@@ -102,6 +106,7 @@ MonoBehaviour:
     MessageDuration: 0
     MessageColor: {r: 0, g: 0, b: 0, a: 0}
     MessageBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    FmodEvents: []
   hasMessage: 0
 --- !u!1 &2106539190936241019
 GameObject:
@@ -251,8 +256,70 @@ Transform:
   - {fileID: 3480456907012972339}
   - {fileID: 6888288583809847900}
   - {fileID: 5962773379085871743}
+  - {fileID: 1653776017801945476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8119460895518656036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1653776017801945476}
+  - component: {fileID: 4941771511336787414}
+  m_Layer: 0
+  m_Name: LastMinute
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1653776017801945476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119460895518656036}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3645725393608297820}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4941771511336787414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119460895518656036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffa52407f5f7cc4390b80feb2f27bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LastMinuteTime: 0.1
+  LastMinuteDuration: 60
+  LastDecaNoteTime: 50
+  EngineState: {fileID: 6408890377518032855}
+  IsLastMinute: 0
+  IsLastDecaNote: 0
+  LastMinuteMessage:
+    CyclesBefore: 0
+    Message: daymn
+    MessageTimeInCycle: 0
+    MessageDuration: 60
+    MessageColor: {r: 0, g: 0, b: 0, a: 1}
+    MessageBackgroundColor: {r: 0, g: 0.5568628, b: 0.9725491, a: 1}
+    FmodEvents: []
+  OnLastMinute:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9078386341402334869
 GameObject:
   m_ObjectHideFlags: 0
