@@ -148,7 +148,32 @@ MonoBehaviour:
     ParameterFloatValueEnd: 0
     ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
     ParameterColorValueStart: {r: 0.2784314, g: 0.9607843, b: 0.44705883, a: 1}
-    ParameterColorValueEnd: {r: 1, g: 0, b: 0.8489032, a: 1}
+    ParameterColorValueEnd: {r: 0.8699622, g: 0, b: 1, a: 1}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 2000
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAutoStart: 1
+    IsAnim: 0
+    StartAnimOnStart: 0
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 1c44cd54117f5f0448a6c8032e019888, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 0
+    ParameterName: 
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0.2784314, g: 0.9607843, b: 0.44705883, a: 0}
+    ParameterColorValueEnd: {r: 1, g: 0.38012296, b: 0, a: 1}
     ParameterColorValueStartMult: 0
     ParameterColorValueEndMult: 2000
     ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
