@@ -8,6 +8,10 @@ public class Kilometer : MonoBehaviour
 
     public KilometerData data;
 
+    public List<Animator> animators;
+
+    private float lastKilometer=0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +41,18 @@ public class Kilometer : MonoBehaviour
         }
 
         data.CurrentKm += data.CurrentSpeed * Time.deltaTime;
+        if (Mathf.RoundToInt(data.CurrentKm) != Mathf.RoundToInt(lastKilometer))
+        {
+            animators[0].SetFloat("TurnSpeed", data.CurrentSpeed);
+            animators[0].SetTrigger("Turn");
+        }
+
+        if (Mathf.RoundToInt(data.CurrentKm/10) != Mathf.RoundToInt(lastKilometer/10))
+        {
+            animators[1].SetFloat("TurnSpeed", data.CurrentSpeed);
+            animators[1].SetTrigger("Turn");
+        }
+
+        lastKilometer = data.CurrentKm;
     }
 }
