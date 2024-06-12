@@ -68,9 +68,13 @@ public class CareSystem : MonoBehaviour
     {
         foreach (Maintain item in Maintainables)
         {
-            MaintainableData data = Instantiate<MaintainableData>(item.MaintainableData);
+            //MaintainableData data = Instantiate<MaintainableData>(item.MaintainableData);
+            if (MapManager.Instance.MapData.CurrentCycle == 1)
+            {
+                item.MaintainableData.CurrentState = item.MaintainableData.FirstCycleState;
+            }
             item.isOverThreshold = true;
-            initialState.Add(data);
+            //initialState.Add(data);
             item.InteractableFiller.LinkedMaintainable = item;
             item.InteractableFiller.OnInteractStarted += FillMaintainable;
             if (item.LinkedEngineState != null)
@@ -84,19 +88,19 @@ public class CareSystem : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_doSave)
+        /*if (_doSave)
         {
             for (int i = 0; i < Maintainables.Count; i++)
             {
                 Destroy(initialState[i]);
             }
             return;
-        }
+        }*/
         for (int i = 0; i < Maintainables.Count; i++)
         {
-            Maintainables[i].MaintainableData.CurrentState = initialState[i].CurrentState;
+            //Maintainables[i].MaintainableData.CurrentState = initialState[i].CurrentState;
             Maintainables[i].InteractableFiller.OnInteractStarted -= FillMaintainable;
-            Destroy(initialState[i]);
+            //Destroy(initialState[i]);
         }
     }
 

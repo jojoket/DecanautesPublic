@@ -7,7 +7,7 @@ using UnityEngine;
 public class ScriptedEventData : ScriptableObject
 {
     public float MaxTime;
-    [MinMaxSlider(0, "MaxTime")]
+    [MinMaxSlider(0, "MaxTime", ShowFields = true)]
     public Vector2 TaskAppearanceTimeInSec;
     [Unit(Units.Second)]
     public float FirstCycleStartTime;
