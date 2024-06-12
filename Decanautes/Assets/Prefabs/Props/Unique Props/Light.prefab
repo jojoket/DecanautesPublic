@@ -285,6 +285,19 @@ MonoBehaviour:
     OnAnimationFirstLooped:
       m_PersistentCalls:
         m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 5662192310975903530}
+    triggerType: 1
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    parameterName: IsRed
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &4758256521968681766
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +475,58 @@ MonoBehaviour:
     ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
     ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
     ParameterColorValueEnd: {r: 1, g: 0, b: 0.09860468, a: 1}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 22
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAutoStart: 0
+    IsAnim: 1
+    StartAnimOnStart: 0
+    Countdown: 0
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 1c44cd54117f5f0448a6c8032e019888, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 0.5
+    ParameterName: _EmissiveColor
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 1, g: 0, b: 0.098039225, a: 1}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 22
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAutoStart: 0
+    IsAnim: 1
+    StartAnimOnStart: 0
+    Countdown: 10
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 1c44cd54117f5f0448a6c8032e019888, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 0.5
+    ParameterName: _EmissiveColor
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0.2784314, g: 0.9607844, b: 0.44705886, a: 1}
     ParameterColorValueStartMult: 0
     ParameterColorValueEndMult: 22
     ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
