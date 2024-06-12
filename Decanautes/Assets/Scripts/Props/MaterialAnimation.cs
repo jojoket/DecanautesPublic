@@ -121,6 +121,8 @@ public class MaterialAnimation : MonoBehaviour
 
     private IEnumerator StartAnimation(MaterialChangement materialChangement)
     {
+        if(materialChangement.Countdown > 0)
+            yield return new WaitForSecondsRealtime(materialChangement.Countdown);
         float startTime = Time.time;
         float endTime = Time.time + materialChangement.LerpDuration;
 
