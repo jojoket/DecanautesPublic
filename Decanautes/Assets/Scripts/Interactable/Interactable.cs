@@ -59,6 +59,10 @@ namespace Decanautes.Interactable
             {
                 animatorTriggerer.parent = this;
             }
+            foreach (AnimatorTriggerer animatorTriggerer in OnTriedAnimations)
+            {
+                animatorTriggerer.parent = this;
+            }
 
             if (!IsToggle)
                 return;
