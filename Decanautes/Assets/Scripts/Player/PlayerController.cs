@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using Decanautes.Interactable;
 using Cinemachine;
 using DG.Tweening;
+using TMPro;
 
 
 public class PlayerController : MonoBehaviour
@@ -61,6 +62,11 @@ public class PlayerController : MonoBehaviour
     {
         UpdateInputs();
         LookInteraction();
+        if (LastMinute.Instance.IsLastDecaNote && grabbed && grabbed.TryGetComponent<PostIt>(out PostIt postIt) && postIt.ModifLeft == postIt.MaxModif)
+        {
+            postIt.InputText.placeholder.GetComponent<TMP_Text>().text = "Write your last Deca-Note";
+            InteractSec();
+        }
     }
 
     private void FixedUpdate()

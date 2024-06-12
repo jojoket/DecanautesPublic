@@ -146,6 +146,10 @@ public class PostIt : MonoBehaviour
         transform.position = _validPosition;
         transform.rotation = _validRotation;
         GetComponent<Grabbable>().SpawnerReset();
+        if (LastMinute.Instance.IsLastDecaNote)
+        {
+            LastMinute.Instance.EndGame();
+        }
         /*Quaternion toCamera = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, toCamera.eulerAngles.z);*/
     }
