@@ -136,15 +136,19 @@ MonoBehaviour:
     animator: {fileID: 0}
     triggerType: 1
     IsInRythm: 1
-    HasSound: 0
-    DoLaunchSoundAfterAnimation: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 0}
+        FmodReference:
+          Guid:
+            Data1: -1552361503
+            Data2: 1175729201
+            Data3: -150799468
+            Data4: -2127987760
+          Path: event:/SFX/SFX_EnviroEvent/SFX_EE_Shutter_Close
     parameterName: IsDown
     StateToApply: 1
     FloatToApply: 0
@@ -156,15 +160,19 @@ MonoBehaviour:
     animator: {fileID: 0}
     triggerType: 1
     IsInRythm: 1
-    HasSound: 0
-    DoLaunchSoundAfterAnimation: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 0}
+        FmodReference:
+          Guid:
+            Data1: -1919351126
+            Data2: 1149663659
+            Data3: -673919850
+            Data4: 1229405179
+          Path: event:/SFX/SFX_EnviroEvent/SFX_EE_Shutter_Open
     parameterName: IsDown
     StateToApply: 0
     FloatToApply: 0
