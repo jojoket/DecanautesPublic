@@ -1,5 +1,303 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1630475738111511634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286733778667432386}
+  - component: {fileID: 3227220415285894921}
+  - component: {fileID: 6294903690342421341}
+  - component: {fileID: 5662192310975903530}
+  - component: {fileID: 7013760603273463502}
+  m_Layer: 0
+  m_Name: Spot Light (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &286733778667432386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630475738111511634}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7381337, y: 0.4916751, z: 0.43298042, w: 0.16106601}
+  m_LocalPosition: {x: -0.13481532, y: -0.09165599, z: 0.19344975}
+  m_LocalScale: {x: 0.56634444, y: 0.5663443, z: 0.5663443}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7305564587150867136}
+  m_LocalEulerAnglesHint: {x: -12.238, y: 42.281, z: -33.219}
+--- !u!108 &3227220415285894921
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630475738111511634}
+  m_Enabled: 1
+  serializedVersion: 11
+  m_Type: 0
+  m_Color: {r: 0.2784314, g: 0.9607843, b: 0.44705883, a: 1}
+  m_Intensity: 6422.2417
+  m_Range: 3.0917232
+  m_SpotAngle: 179
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 2
+  m_AreaSize: {x: 0.5, y: 0.5}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 1
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0.96
+  m_ShadowAngle: 0
+--- !u!114 &6294903690342421341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630475738111511634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointlightHDType: 0
+  m_SpotLightShape: 0
+  m_AreaLightShape: 0
+  m_Intensity: 40000
+  m_EnableSpotReflector: 1
+  m_LuxAtDistance: 1
+  m_InnerSpotPercent: 63.105713
+  m_SpotIESCutoffPercent: 100
+  m_LightDimmer: 1
+  m_VolumetricDimmer: 1
+  m_LightUnit: 0
+  m_FadeDistance: 10000
+  m_VolumetricFadeDistance: 10000
+  m_AffectDiffuse: 1
+  m_AffectSpecular: 1
+  m_NonLightmappedOnly: 0
+  m_ShapeWidth: 0.5
+  m_ShapeHeight: 0.5
+  m_AspectRatio: 1
+  m_ShapeRadius: 0.96
+  m_SoftnessScale: 1
+  m_UseCustomSpotLightShadowCone: 0
+  m_CustomSpotLightShadowCone: 30
+  m_MaxSmoothness: 0.99
+  m_ApplyRangeAttenuation: 1
+  m_DisplayAreaLightEmissiveMesh: 0
+  m_AreaLightCookie: {fileID: 0}
+  m_IESPoint: {fileID: 0}
+  m_IESSpot: {fileID: 0}
+  m_IncludeForRayTracing: 1
+  m_AreaLightShadowCone: 120
+  m_UseScreenSpaceShadows: 0
+  m_InteractsWithSky: 1
+  m_AngularDiameter: 0.5
+  diameterMultiplerMode: 0
+  diameterMultiplier: 1
+  diameterOverride: 0.5
+  celestialBodyShadingSource: 1
+  sunLightOverride: {fileID: 0}
+  sunColor: {r: 1, g: 1, b: 1, a: 1}
+  sunIntensity: 130000
+  moonPhase: 0.2
+  moonPhaseRotation: 0
+  earthshine: 1
+  flareSize: 2
+  flareTint: {r: 1, g: 1, b: 1, a: 1}
+  flareFalloff: 4
+  flareMultiplier: 1
+  surfaceTexture: {fileID: 0}
+  surfaceTint: {r: 1, g: 1, b: 1, a: 1}
+  m_Distance: 1.5e+11
+  m_UseRayTracedShadows: 0
+  m_NumRayTracingSamples: 4
+  m_FilterTracedShadow: 1
+  m_FilterSizeTraced: 16
+  m_SunLightConeAngle: 0.5
+  m_LightShadowRadius: 0.5
+  m_SemiTransparentShadow: 0
+  m_ColorShadow: 1
+  m_DistanceBasedFiltering: 0
+  m_EvsmExponent: 15
+  m_EvsmLightLeakBias: 0
+  m_EvsmVarianceBias: 0.00001
+  m_EvsmBlurPasses: 0
+  m_LightlayersMask: 1
+  m_LinkShadowLayers: 1
+  m_ShadowNearPlane: 0.1
+  m_BlockerSampleCount: 24
+  m_FilterSampleCount: 16
+  m_MinFilterSize: 0.1
+  m_DirLightPCSSBlockerSampleCount: 24
+  m_DirLightPCSSFilterSampleCount: 16
+  m_DirLightPCSSMaxPenumbraSize: 0.56
+  m_DirLightPCSSMaxSamplingDistance: 0.5
+  m_DirLightPCSSMinFilterSizeTexels: 1.5
+  m_DirLightPCSSMinFilterMaxAngularDiameter: 10
+  m_DirLightPCSSBlockerSearchAngularDiameter: 12
+  m_DirLightPCSSBlockerSamplingClumpExponent: 2
+  m_KernelSize: 5
+  m_LightAngle: 1
+  m_MaxDepthBias: 0.001
+  m_ShadowResolution:
+    m_Override: 512
+    m_UseOverride: 1
+    m_Level: 0
+  m_ShadowDimmer: 1
+  m_VolumetricShadowDimmer: 1
+  m_ShadowFadeDistance: 10000
+  m_UseContactShadow:
+    m_Override: 0
+    m_UseOverride: 1
+    m_Level: 0
+  m_RayTracedContactShadow: 0
+  m_ShadowTint: {r: 0, g: 0, b: 0, a: 1}
+  m_PenumbraTint: 0
+  m_NormalBias: 0.75
+  m_SlopeBias: 0.5
+  m_ShadowUpdateMode: 0
+  m_AlwaysDrawDynamicShadows: 0
+  m_UpdateShadowOnLightMovement: 0
+  m_CachedShadowTranslationThreshold: 0.01
+  m_CachedShadowAngularThreshold: 0.5
+  m_BarnDoorAngle: 90
+  m_BarnDoorLength: 0.05
+  m_preserveCachedShadow: 0
+  m_OnDemandShadowRenderOnPlacement: 1
+  m_ShadowCascadeRatios:
+  - 0.05
+  - 0.2
+  - 0.3
+  m_ShadowCascadeBorders:
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  m_ShadowAlgorithm: 0
+  m_ShadowVariant: 0
+  m_ShadowPrecision: 0
+  useOldInspector: 0
+  useVolumetric: 1
+  featuresFoldout: 1
+  m_AreaLightEmissiveMeshShadowCastingMode: 0
+  m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
+  m_AreaLightEmissiveMeshLayer: -1
+  m_Version: 12
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
+--- !u!95 &5662192310975903530
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630475738111511634}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30224c31be4e0aa45911a9d7f3c6d734, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7013760603273463502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630475738111511634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - parent: {fileID: 0}
+    animator: {fileID: 5662192310975903530}
+    triggerType: 1
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    parameterName: IsRed
+    StateToApply: 1
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 5662192310975903530}
+    triggerType: 1
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    parameterName: IsRed
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &4758256521968681766
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +328,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1253593450661937204}
+  - {fileID: 286733778667432386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1652559261396068319
@@ -129,9 +428,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialChangements:
-  - IsAutoStart: 1
-    IsAnim: 0
+  - IsAutoStart: 0
+    IsAnim: 1
     StartAnimOnStart: 0
+    Countdown: 0
     IsInRythm: 0
     HasSound: 0
     animationSounds: []
@@ -140,23 +440,24 @@ MonoBehaviour:
     MaterialIndex: 0
     Material: {fileID: 2100000, guid: 1c44cd54117f5f0448a6c8032e019888, type: 2}
     CurrentDelta: 0
-    LerpDuration: 0
-    ParameterName: 
+    LerpDuration: 0.5
+    ParameterName: _EmissiveColor
     ParameterType: 1
     ParameterFloatValueInit: 0
     ParameterFloatValueStart: 0
     ParameterFloatValueEnd: 0
     ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
     ParameterColorValueStart: {r: 0.2784314, g: 0.9607843, b: 0.44705883, a: 1}
-    ParameterColorValueEnd: {r: 0.8699622, g: 0, b: 1, a: 1}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 1}
     ParameterColorValueStartMult: 0
-    ParameterColorValueEndMult: 2000
+    ParameterColorValueEndMult: 0
     ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
     ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
     ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
-  - IsAutoStart: 1
-    IsAnim: 0
+  - IsAutoStart: 0
+    IsAnim: 1
     StartAnimOnStart: 0
+    Countdown: 10
     IsInRythm: 0
     HasSound: 0
     animationSounds: []
@@ -165,17 +466,69 @@ MonoBehaviour:
     MaterialIndex: 0
     Material: {fileID: 2100000, guid: 1c44cd54117f5f0448a6c8032e019888, type: 2}
     CurrentDelta: 0
-    LerpDuration: 0
-    ParameterName: 
+    LerpDuration: 0.5
+    ParameterName: _EmissiveColor
     ParameterType: 1
     ParameterFloatValueInit: 0
     ParameterFloatValueStart: 0
     ParameterFloatValueEnd: 0
     ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStart: {r: 0.2784314, g: 0.9607843, b: 0.44705883, a: 0}
-    ParameterColorValueEnd: {r: 1, g: 0.38012296, b: 0, a: 1}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 1, g: 0, b: 0.09860468, a: 1}
     ParameterColorValueStartMult: 0
-    ParameterColorValueEndMult: 2000
+    ParameterColorValueEndMult: 22
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAutoStart: 0
+    IsAnim: 1
+    StartAnimOnStart: 0
+    Countdown: 0
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 1c44cd54117f5f0448a6c8032e019888, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 0.5
+    ParameterName: _EmissiveColor
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 1, g: 0, b: 0.098039225, a: 1}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 22
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
+  - IsAutoStart: 0
+    IsAnim: 1
+    StartAnimOnStart: 0
+    Countdown: 10
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 1c44cd54117f5f0448a6c8032e019888, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 0.5
+    ParameterName: _EmissiveColor
+    ParameterType: 1
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 0
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0.2784314, g: 0.9607844, b: 0.44705886, a: 1}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 22
     ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
     ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
     ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
