@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3762809989637956866}
+  - component: {fileID: 6094129027604793206}
   m_Layer: 0
   m_Name: Roof_Window
   m_TagString: Untagged
@@ -32,6 +33,45 @@ Transform:
   - {fileID: 15634665330348743}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6094129027604793206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748333859643031617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - parent: {fileID: 0}
+    animator: {fileID: 789494650569028200}
+    triggerType: 1
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    parameterName: Closed
+    StateToApply: 1
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
+  - parent: {fileID: 0}
+    animator: {fileID: 789494650569028200}
+    triggerType: 1
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    parameterName: Closed
+    StateToApply: 0
+    FloatToApply: 0
+    Vector3ToApply: {x: 0, y: 0, z: 0}
+    OnAnimationFirstLooped:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &557657833492968748
 PrefabInstance:
   m_ObjectHideFlags: 0
