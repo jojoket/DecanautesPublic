@@ -19,6 +19,8 @@ public class MaterialChangement
     [ShowIf("IsAnim")]
     public bool StartAnimOnStart = false;
     [ShowIf("IsAnim")]
+    public float Countdown = 0;
+    [ShowIf("IsAnim")]
     public bool IsInRythm = false;
     [ShowIf("IsAnim")]
     public bool HasSound = false;

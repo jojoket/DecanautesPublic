@@ -2428,6 +2428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6392824154071295810}
   - component: {fileID: 4282884139125350543}
+  - component: {fileID: 7087353936016270467}
   m_Layer: 0
   m_Name: Liquid_Tasting
   m_TagString: Untagged
@@ -2480,6 +2481,45 @@ MonoBehaviour:
   m_Size: {x: 1, y: 1, z: 0.9}
   m_FadeFactor: 1
   m_Version: 3
+--- !u!114 &7087353936016270467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633015508447322437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e314f3dbbd73fb46b7346a521ecd454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialChangements:
+  - IsAutoStart: 0
+    IsAnim: 1
+    StartAnimOnStart: 0
+    Countdown: 12
+    IsInRythm: 0
+    HasSound: 0
+    animationSounds: []
+    IsMaterialInstance: 0
+    Renderer: {fileID: 0}
+    MaterialIndex: 0
+    Material: {fileID: 2100000, guid: 1d4e282e2b87171428ce1a36119ce3f7, type: 2}
+    CurrentDelta: 0
+    LerpDuration: 3
+    ParameterName: _Emissive_Strength
+    ParameterType: 0
+    ParameterFloatValueInit: 0
+    ParameterFloatValueStart: 0
+    ParameterFloatValueEnd: 5000
+    ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 0}
+    ParameterColorValueStartMult: 0
+    ParameterColorValueEndMult: 0
+    ParameterVector3ValueInit: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueStart: {x: 0, y: 0, z: 0}
+    ParameterVector3ValueEnd: {x: 0, y: 0, z: 0}
 --- !u!1 &6700629650880522503
 GameObject:
   m_ObjectHideFlags: 0
