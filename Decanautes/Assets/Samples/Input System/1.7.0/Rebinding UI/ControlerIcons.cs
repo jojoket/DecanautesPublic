@@ -104,6 +104,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             public Sprite downArrowKey;
             public Sprite leftArrowKey;
             public Sprite rightArrowKey;
+            public Sprite enterKey;
 
             public Sprite GetSprite(string controlPath)
             {
@@ -144,6 +145,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     case "downArrow": return downArrowKey;
                     case "leftArrow": return leftArrowKey;
                     case "rightArrow": return rightArrowKey;
+                    case "enter": return enterKey;
                 }
                 return null;
             }
