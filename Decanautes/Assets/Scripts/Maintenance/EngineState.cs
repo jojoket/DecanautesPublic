@@ -74,6 +74,8 @@ public class EngineState : MonoBehaviour
     public List<FmodEventInfo> OnStateBreakdownFmodEvents;
 
     [TabGroup("Texts")]
+    public bool DoDisableInfoTextsOnMessage;
+    [TabGroup("Texts")]
     public List<string> StateMessages;
     [TabGroup("Texts")]
     public TMP_Text GeneralText;
@@ -99,7 +101,7 @@ public class EngineState : MonoBehaviour
     public InterCycleMessage CurrentMessage;
     [ReadOnly]
     public bool hasMessage = false;
-    private Color _GeneralTextBaseBackgroundColor;
+    private Material _GeneralTextBaseMaterial;
     private Color _GeneralTextBaseColor;
 
     // Start is called before the first frame update
@@ -108,7 +110,7 @@ public class EngineState : MonoBehaviour
         SetupLinkedEventsAndMaintainables();
         ChangeState(EngineStateEnum.Good);
         UpdateMachinesText();
-        _GeneralTextBaseBackgroundColor = GeneralTextRenderer.materials[0].GetColor("_Color");
+        _GeneralTextBaseMaterial = GeneralTextRenderer.material;
         _GeneralTextBaseColor = GeneralText.color;
     }
 
@@ -226,21 +228,21 @@ public class EngineState : MonoBehaviour
             else
             {
                 GeneralText.color = _GeneralTextBaseColor;
-                GeneralText.text = "Engine state : " + CurrentState.ToString() + "\n";
+                /*GeneralText.text = "Engine state : " + CurrentState.ToString() + "\n";
                 GeneralText.text += " Power : " + (1 - MalfunctionsInfluence * malfunctionsNumber)*100 + "% \n";
                 GeneralText.text += " dist : " + KilometerData.CurrentKm + "km \n";
                 GeneralText.text += " speed : " + KilometerData.CurrentSpeed + "km/s \n";
-                GeneralText.text += StateMessages[(int)CurrentState] + "\n";
+                GeneralText.text += StateMessages[(int)CurrentState] + "\n";*/
             }
         }
 
         if (PowerLevelText)
         {
-            PowerLevelText.text = "Power : " + (1 - MalfunctionsInfluence * malfunctionsNumber) * 100 + "% \n";
+            PowerLevelText.text =(1 - MalfunctionsInfluence * malfunctionsNumber) * 100 + "% \n";
         }
         if (StateText)
         {
-            StateText.text = "Engine state : " + CurrentState.ToString();
+            StateText.text = CurrentState.ToString();
         }
         if (StateMessageText)
         {
@@ -248,11 +250,11 @@ public class EngineState : MonoBehaviour
         }
         if (DistanceText)
         {
-            DistanceText.text = "dist : " + KilometerData.CurrentKm + "km";
+            DistanceText.text = KilometerData.CurrentKm + "km";
         }
         if (SpeedText)
         {
-            SpeedText.text = "speed : " + KilometerData.CurrentSpeed + "km/s";
+            SpeedText.text = KilometerData.CurrentSpeed + "km/s";
         }
     }
     public void UpdateMachinesText()
@@ -264,12 +266,12 @@ public class EngineState : MonoBehaviour
             string textToDisplay = "";
             if (LinkedMachinesTexts[i].linkedEvent != null)
             {
-                textToDisplay += LinkedMachinesTexts[i].linkedEvent.Name + "'s state";
+                textToDisplay += LinkedMachinesTexts[i].linkedEvent.Name;
                 LinkedMachinesTexts[i].StateImage.color = LinkedMachinesTexts[i].linkedEvent.isActive ? Color.red : Color.green;
             }
             else
             {
-                textToDisplay += LinkedMachinesTexts[i].linkedMaintainable.Name + "'s state";
+                textToDisplay += LinkedMachinesTexts[i].linkedMaintainable.Name;
                 LinkedMachinesTexts[i].StateImage.color = LinkedMachinesTexts[i].linkedMaintainable.CurrentState <= LinkedMachinesTexts[i].linkedMaintainable.Threshold ? Color.red : Color.green;
             }
 
@@ -366,9 +368,15 @@ public class EngineState : MonoBehaviour
 
     public void DisplayMessage(InterCycleMessage message)
     {
+        if (DoDisableInfoTextsOnMessage)
+        {
+            PowerLevelText.transform.parent.gameObject.SetActive(false);
+            DistanceText.transform.parent.gameObject.SetActive(false);
+            SpeedText.transform.parent.gameObject.SetActive(false);
+        }
         hasMessage = true;
         CurrentMessage = message;
-        GeneralTextRenderer.materials[0].SetColor("_BaseColor", CurrentMessage.MessageBackgroundColor);
+        GeneralTextRenderer.material = message.ScreenMaterial;
         GeneralText.alignment = TextAlignmentOptions.Center;
         StartCoroutine(ResetMessageAfter(message.MessageDuration));
     }
@@ -376,9 +384,12 @@ public class EngineState : MonoBehaviour
     private IEnumerator ResetMessageAfter(float time)
     {
         yield return new WaitForSecondsRealtime(time);
+        PowerLevelText.transform.parent.gameObject.SetActive(true);
+        DistanceText.transform.parent.gameObject.SetActive(true);
+        SpeedText.transform.parent.gameObject.SetActive(true);
         hasMessage = false;
         GeneralText.alignment = TextAlignmentOptions.TopLeft;
-        GeneralTextRenderer.materials[0].SetColor("_BaseColor", _GeneralTextBaseBackgroundColor);
+        GeneralTextRenderer.material = _GeneralTextBaseMaterial;
         CurrentMessage = null;
     }
 }

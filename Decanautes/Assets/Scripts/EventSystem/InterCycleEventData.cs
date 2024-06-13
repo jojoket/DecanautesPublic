@@ -15,7 +15,7 @@ public class InterCycleMessage
     [Unit(Units.Second)]
     public float MessageDuration;
     public Color MessageColor;
-    public Color MessageBackgroundColor;
+    public Material ScreenMaterial;
     public List<FmodEventInfo> FmodEvents;
 }
 
