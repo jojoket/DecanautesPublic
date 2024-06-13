@@ -3,7 +3,17 @@ guid: 3a7e026026a7e934180702bae78cdfc5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base Metal
+    second: {fileID: 2100000, guid: 93fe23b271f23394d8aaa96824d8ed4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Post-It
+    second: {fileID: 2100000, guid: 921a91a2f77235d40846d0f8a57fd897, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
