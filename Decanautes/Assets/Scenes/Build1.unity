@@ -254,6 +254,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4035409476551363932, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].HasSound
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035409476551363932, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4383010837804535901, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
       propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
@@ -1031,6 +1041,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
       propertyPath: OnTriedAnimations.Array.data[0].animator
       value: 
       objectReference: {fileID: 1289743572}
@@ -1041,8 +1056,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].HasSound
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
       propertyPath: OnTriedEvent.m_PersistentCalls.m_Calls.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
@@ -1053,6 +1078,36 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTriedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 1289743574}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BatteryLeverWrongPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: 1721453139
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1290434587
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: -790769278
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: 434146351
       objectReference: {fileID: 0}
     - target: {fileID: 7743252076441766209, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
@@ -1688,6 +1743,12 @@ MonoBehaviour:
 --- !u!95 &1289743572 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7882460054324486609, guid: 7604999d62f23c64fb78583fa0a5933c,
+    type: 3}
+  m_PrefabInstance: {fileID: 298130213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1289743574 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2610497403067533642, guid: 7604999d62f23c64fb78583fa0a5933c,
     type: 3}
   m_PrefabInstance: {fileID: 298130213}
   m_PrefabAsset: {fileID: 0}
