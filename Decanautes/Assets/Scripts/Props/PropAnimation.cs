@@ -28,8 +28,18 @@ public class PropAnimation : MonoBehaviour
     {
         foreach (AnimatorTriggerer anim in Animations)
         {
-            anim.TriggerAnimation();
+            
+
+            if (anim.Countdown != 0)
+            {
+                StartCoroutine(anim.TriggerAnimationAfterSeconds(anim.Countdown));
+            }
+            else
+            {
+                anim.TriggerAnimation();
+            }
         }
+
 
 
     }
@@ -37,7 +47,10 @@ public class PropAnimation : MonoBehaviour
     [Button]
     public void TriggerIndexAnim(int index)
     {
-        Animations[index].TriggerAnimation();
+        if (Animations[index].Countdown != 0)
+            StartCoroutine(Animations[index].TriggerAnimationAfterSeconds(Animations[index].Countdown));
+        else
+            Animations[index].TriggerAnimation();
     }
 
 }
