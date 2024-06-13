@@ -266,12 +266,12 @@ public class EngineState : MonoBehaviour
             string textToDisplay = "";
             if (LinkedMachinesTexts[i].linkedEvent != null)
             {
-                textToDisplay += LinkedMachinesTexts[i].linkedEvent.Name + "'s state";
+                textToDisplay += LinkedMachinesTexts[i].linkedEvent.Name;
                 LinkedMachinesTexts[i].StateImage.color = LinkedMachinesTexts[i].linkedEvent.isActive ? Color.red : Color.green;
             }
             else
             {
-                textToDisplay += LinkedMachinesTexts[i].linkedMaintainable.Name + "'s state";
+                textToDisplay += LinkedMachinesTexts[i].linkedMaintainable.Name;
                 LinkedMachinesTexts[i].StateImage.color = LinkedMachinesTexts[i].linkedMaintainable.CurrentState <= LinkedMachinesTexts[i].linkedMaintainable.Threshold ? Color.red : Color.green;
             }
 
