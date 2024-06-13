@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 8610081865948591870}
   - component: {fileID: 7126860095511011126}
   - component: {fileID: 1605673473404598602}
+  - component: {fileID: 8456103854847673956}
   m_Layer: 5
   m_Name: ColorButton
   m_TagString: Untagged
@@ -257,3 +258,19 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &8456103854847673956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487980001246385198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad3197a930d2ea40b50eb3d91b87bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  img: {fileID: 6777024702902934856}
+  normalColor: {r: 0.40784317, g: 1, b: 0.29803923, a: 1}
+  hoverColor: {r: 0.3529412, g: 0.8117648, b: 0.21176472, a: 0.5882353}

@@ -319,6 +319,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 365445028221500288, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 28747281d87fa354dbfe42b64b872ec5,
+        type: 3}
     - target: {fileID: 382218817640054015, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -554,7 +560,7 @@ PrefabInstance:
     - target: {fileID: 2299120477260353619, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 343.60004
+      value: 313.60004
       objectReference: {fileID: 0}
     - target: {fileID: 2299120477260353619, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
@@ -584,7 +590,7 @@ PrefabInstance:
     - target: {fileID: 2501880167670703236, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 293.52002
+      value: 203.52002
       objectReference: {fileID: 0}
     - target: {fileID: 2501880167670703236, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
@@ -649,7 +655,7 @@ PrefabInstance:
     - target: {fileID: 2960257776319865602, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 393.68005
+      value: 423.68005
       objectReference: {fileID: 0}
     - target: {fileID: 2960257776319865602, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
@@ -745,6 +751,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120666939303134493, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dc23f508d6cfe74498f839a609fc01cc,
+        type: 3}
+    - target: {fileID: 4120666939303134493, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4303835439884200001, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
@@ -895,6 +912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326449377786601705, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6493121807898017625, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
@@ -1116,7 +1138,7 @@ PrefabInstance:
     - target: {fileID: 7561425084509274856, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 443.76007
+      value: 533.7601
       objectReference: {fileID: 0}
     - target: {fileID: 7561425084509274856, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
@@ -1203,6 +1225,26 @@ PrefabInstance:
     - target: {fileID: 8444975614286168962, guid: c60855e1b947c6245bde6ef33b7bcddd,
         type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978728055499684805, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: hoverColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978728055499684805, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: hoverColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978728055499684805, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: normalColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978728055499684805, guid: c60855e1b947c6245bde6ef33b7bcddd,
+        type: 3}
+      propertyPath: normalColor.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
