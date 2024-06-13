@@ -41,7 +41,7 @@ public class Kilometer : MonoBehaviour
         }
 
         data.CurrentKm += data.CurrentSpeed * Time.deltaTime;
-        if (Mathf.RoundToInt(data.CurrentKm) != Mathf.RoundToInt(lastKilometer))
+        /*if (Mathf.RoundToInt(data.CurrentKm) != Mathf.RoundToInt(lastKilometer))
         {
             animators[0].SetFloat("TurnSpeed", data.CurrentSpeed);
             animators[0].SetTrigger("Turn");
@@ -51,7 +51,7 @@ public class Kilometer : MonoBehaviour
         {
             animators[1].SetFloat("TurnSpeed", data.CurrentSpeed);
             animators[1].SetTrigger("Turn");
-        }
+        }*/
 
         lastKilometer = data.CurrentKm;
     }
