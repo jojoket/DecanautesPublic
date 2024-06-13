@@ -1309,7 +1309,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0, g: 0, b: 0, a: 0}
-        key1: {r: 0.5471698, g: 0.47655392, b: 0.37063012, a: 1}
+        key1: {r: 0.9607844, g: 0.85098046, b: 0.74509805, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0.34509805}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1317,7 +1317,7 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 12143
+        ctime1: 11951
         ctime2: 65535
         ctime3: 65535
         ctime4: 65535
@@ -5774,7 +5774,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -6213,7 +6213,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0, g: 0, b: 0, a: 0}
-        key1: {r: 0.5471698, g: 0.47655392, b: 0.37063012, a: 1}
+        key1: {r: 0.9568628, g: 0.8352942, b: 0.74509805, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0.34509805}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -6221,7 +6221,7 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 12143
+        ctime1: 11951
         ctime2: 65535
         ctime3: 65535
         ctime4: 65535
@@ -9772,13 +9772,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7198305095591558587}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70708555, z: -0, w: 0.7071281}
-  m_LocalPosition: {x: 813, y: 26.5, z: 70.1}
+  m_LocalRotation: {x: -0.50001484, y: 0.49998507, z: 0.4999849, w: 0.50001526}
+  m_LocalPosition: {x: 1040, y: -17.2, z: 70}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3521793042007019490}
-  m_LocalEulerAnglesHint: {x: 0, y: 89.997, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 89.997}
 --- !u!198 &1337306626000995589
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -10418,7 +10418,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 293.85962, y: 102.830246, z: 28.424719}
+    m_Scale: {x: 86.40195, y: 36.539753, z: 28.424719}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -10616,7 +10616,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 90
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -12435,7 +12435,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 85
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13546,7 +13546,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     inside: 1
     outside: 0
@@ -14630,5 +14630,5 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: efc0a6477d2c41246a39c2907660b9f3, type: 2}
