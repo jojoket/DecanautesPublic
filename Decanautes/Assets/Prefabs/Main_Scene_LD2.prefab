@@ -18605,6 +18605,16 @@ PrefabInstance:
       propertyPath: Animations.Array.data[1].animator
       value: 
       objectReference: {fileID: 8542711576952711956}
+    - target: {fileID: 3456868405075127784, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 6715406013376155470}
+    - target: {fileID: 3456868405075127784, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 6715406013376155470}
     - target: {fileID: 3504547838478851221, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: OnExitZone.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -21611,6 +21621,7 @@ MonoBehaviour:
   Animations:
   - parent: {fileID: 0}
     animator: {fileID: 3411754459196160780}
+    Countdown: 0
     triggerType: 0
     IsInRythm: 1
     HasSound: 1
@@ -21635,6 +21646,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 3411754459196160780}
+    Countdown: 0
     triggerType: 0
     IsInRythm: 1
     HasSound: 1
@@ -21659,6 +21671,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 3411754459196160780}
+    Countdown: 0
     triggerType: 0
     IsInRythm: 1
     HasSound: 1
@@ -21683,6 +21696,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 3411754459196160780}
+    Countdown: 0
     triggerType: 0
     IsInRythm: 1
     HasSound: 1
@@ -21949,6 +21963,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!4 &6715406013376155470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5628158599119123195, guid: d24494c9ecd930548993fb039bedf3db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381151931833056693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &7604052172728704036 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8839954140995576209, guid: d24494c9ecd930548993fb039bedf3db,
