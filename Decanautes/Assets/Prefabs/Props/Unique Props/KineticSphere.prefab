@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2370569758153035132}
   - component: {fileID: 3228346127449320915}
   - component: {fileID: 4994580798870839357}
+  - component: {fileID: 5823045961820074754}
   m_Layer: 0
   m_Name: KineticSphere
   m_TagString: Untagged
@@ -50,7 +51,7 @@ MonoBehaviour:
   renderers:
   - {fileID: 550161434758112758}
   SelectionColors:
-  - {fileID: 0}
+  - {fileID: 7582309878366818088}
   BaseMaterial: {fileID: 2100000, guid: 0b81bc86871c38c47b69460962af4981, type: 2}
   HoverColor: {r: 0.3200357, g: 1, b: 0, a: 1}
   ActiveColor: {r: 1, g: 0.91147983, b: 0, a: 1}
@@ -158,6 +159,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5823045961820074754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628848375904218187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5d54d26aeaf364b9a9370331e12df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPrefabPath: KineticSphere
 --- !u!1001 &1180793339017099634
 PrefabInstance:
   m_ObjectHideFlags: 0
