@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour
         {
             postIt.SetCycleText();
             _spawned.GetComponent<Grabbable>().InteractionStart();
-            GameObject.FindFirstObjectByType<PlayerController>().grabbed = _spawned.GetComponent<Grabbable>();
+            GameObject.FindFirstObjectByType<PlayerController>().grabbedPostIt = _spawned.GetComponent<Grabbable>();
         }
     }
 

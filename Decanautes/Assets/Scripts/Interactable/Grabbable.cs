@@ -75,15 +75,16 @@ namespace Decanautes.Interactable
                 _playerController = GameObject.FindFirstObjectByType<PlayerController>();
             }
             base.InteractionStart();
+            Transform grabPoint = postIt? _playerController.PostItGrabPoint : _playerController.GrabPoint;
             if (!IsToggle)
             {
-                GrabToTransform(_playerController.GrabPoint);
+                GrabToTransform(grabPoint);
             }
             else
             {
                 if (isActivated)
                 {
-                    GrabToTransform(_playerController.GrabPoint);
+                    GrabToTransform(grabPoint);
                 }
                 else
                 {
@@ -116,7 +117,7 @@ namespace Decanautes.Interactable
             {
                 if (post.UsesLeft<=0)
                 {
-                    _playerController.grabbed = null;
+                    _playerController.grabbedPostIt = null;
                     return;
                 }
                 if (post.UsesLeft != post.MaxUses)
@@ -206,8 +207,12 @@ namespace Decanautes.Interactable
                     return;
                 }
                 post.StopPosting();
+                _playerController.grabbedPostIt = null;
             }
-            _playerController.grabbed = null;
+            else
+            {
+                _playerController.grabbedObj = null;
+            }
             if (GrabbableData.isSimulated && _rigidbody.velocity.magnitude<= 0.5f)
             {
                 _rigidbody.velocity = Vector3.zero;
