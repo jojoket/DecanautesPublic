@@ -320,6 +320,9 @@ MonoBehaviour:
   OnLastMinute:
     m_PersistentCalls:
       m_Calls: []
+  OnGameEnding:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9078386341402334869
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +653,11 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: NeedToBeDoneInOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: HasSecondaryInteractions
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,

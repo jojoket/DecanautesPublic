@@ -61,6 +61,7 @@ MonoBehaviour:
   HoverColor: {r: 1, g: 0.44479144, b: 0, a: 1}
   ActiveColor: {r: 0.15622401, g: 1, b: 0, a: 1}
   IsToggle: 0
+  CanInteract: 1
   NeedLookToKeepInteraction: 1
   DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations:
@@ -68,37 +69,21 @@ MonoBehaviour:
     animator: {fileID: 4246700126658677814}
     triggerType: 1
     IsInRythm: 0
-    HasSound: 0
-    DoLaunchSoundAfterAnimation: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 7825139196831704623}
+        FmodReference:
+          Guid:
+            Data1: -1239854115
+            Data2: 1214447884
+            Data3: 1557221790
+            Data4: -1950511558
+          Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_LeverUse
     parameterName: Pulled
     StateToApply: 1
-    FloatToApply: 0
-    Vector3ToApply: {x: 0, y: 0, z: 0}
-    OnAnimationFirstLooped:
-      m_PersistentCalls:
-        m_Calls: []
-  - parent: {fileID: 0}
-    animator: {fileID: 0}
-    triggerType: 0
-    IsInRythm: 0
-    HasSound: 0
-    DoLaunchSoundAfterAnimation: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    parameterName: 
-    StateToApply: 0
     FloatToApply: 0
     Vector3ToApply: {x: 0, y: 0, z: 0}
     OnAnimationFirstLooped:
@@ -107,20 +92,27 @@ MonoBehaviour:
   OnInteractStartedEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnClickedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnInteractEndedAnimations:
   - parent: {fileID: 0}
     animator: {fileID: 4246700126658677814}
     triggerType: 1
     IsInRythm: 0
-    HasSound: 0
-    DoLaunchSoundAfterAnimation: 0
-    EventPath:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 7825139196831704623}
+        FmodReference:
+          Guid:
+            Data1: 2099371853
+            Data2: 1098935938
+            Data3: 1473143690
+            Data4: 339484271
+          Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_LeverDisable
     parameterName: Pulled
     StateToApply: 0
     FloatToApply: 0
@@ -143,6 +135,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTriedAnimations: []
+  OnTriedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   LinkedEvent: {fileID: 0}
   LinkedMaintainable:
     MaintainableData: {fileID: 0}
@@ -165,6 +161,10 @@ MonoBehaviour:
     OnOverZero:
       m_PersistentCalls:
         m_Calls: []
+    OnUnderThresholdFmod: []
+    OnOverThresholdFmod: []
+    OnZeroFmod: []
+    OnOverZeroFmod: []
     isOverThreshold: 0
     isZero: 0
   isActivated: 0
