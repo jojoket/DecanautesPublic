@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0764e7b44d94bd44891b537df714f2a8, type: 3}
   m_Name: Maint_Radiator
   m_EditorClassIdentifier: 
-  Name: Radiator
+  Name: Temperature
   CurrentState: 0
   FirstCycleState: 0.6
-  Speed: -0.004
+  Speed: -0.05
   NeedThresholdToMaintain: 1
   Threshold: 0.01
   FillingTime: 13
-  BaseMaterial: {fileID: 295762400, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
-  WarningMaterial: {fileID: -1025813420, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  BaseMaterial: {fileID: 3390748188548028351, guid: c4b673b0e0f90a945820422233005a4f,
+    type: 3}
+  WarningMaterial: {fileID: 6496339890714932662, guid: 7abdde1f68872c742a798b809f133ccb,
+    type: 3}

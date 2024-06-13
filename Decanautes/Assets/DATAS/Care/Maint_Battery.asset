@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0764e7b44d94bd44891b537df714f2a8, type: 3}
   m_Name: Maint_Battery
   m_EditorClassIdentifier: 
-  Name: Battery
+  Name: Energy
   CurrentState: 0
   FirstCycleState: 0.75
-  Speed: -0.004
+  Speed: -0.05
   NeedThresholdToMaintain: 1
   Threshold: 0.01
   FillingTime: 4
-  BaseMaterial: {fileID: 0}
+  BaseMaterial: {fileID: 6318663171921284018, guid: c60855e1b947c6245bde6ef33b7bcddd,
+    type: 3}
   WarningMaterial: {fileID: 0}

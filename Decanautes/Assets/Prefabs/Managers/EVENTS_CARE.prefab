@@ -68,6 +68,7 @@ MonoBehaviour:
   OnPowerDecreaseFmodEvent: []
   OnPowerIncreaseFmodEvent: []
   OnStateBreakdownFmodEvents: []
+  DoDisableInfoTextsOnMessage: 0
   StateMessages:
   - SO GOOD
   - FIXIT
@@ -105,7 +106,7 @@ MonoBehaviour:
     MessageTimeInCycle: 0
     MessageDuration: 0
     MessageColor: {r: 0, g: 0, b: 0, a: 0}
-    MessageBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    ScreenMaterial: {fileID: 0}
     FmodEvents: []
   hasMessage: 0
 --- !u!1 &2106539190936241019
@@ -314,8 +315,8 @@ MonoBehaviour:
     Message: daymn
     MessageTimeInCycle: 0
     MessageDuration: 60
-    MessageColor: {r: 0, g: 0, b: 0, a: 1}
-    MessageBackgroundColor: {r: 0, g: 0.5568628, b: 0.9725491, a: 1}
+    MessageColor: {r: 0.00037701178, g: 0, b: 0.103773594, a: 1}
+    ScreenMaterial: {fileID: 0}
     FmodEvents: []
   OnLastMinute:
     m_PersistentCalls:
