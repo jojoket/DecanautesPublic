@@ -28386,10 +28386,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3460345962762791492}
     m_Modifications:
+    - target: {fileID: 85976808339385725, guid: afe88c8db1ca74e4a9e616b438265282,
+        type: 3}
+      propertyPath: lerpDuration
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 1306687054059584896, guid: afe88c8db1ca74e4a9e616b438265282,
         type: 3}
       propertyPath: m_Name
       value: Day_Night_Cycle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4872877281159402767, guid: afe88c8db1ca74e4a9e616b438265282,
+        type: 3}
+      propertyPath: lerpDuration
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 9034005527009695576, guid: afe88c8db1ca74e4a9e616b438265282,
         type: 3}
