@@ -90,9 +90,19 @@ PrefabInstance:
       objectReference: {fileID: 2061124641210554719}
     - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
         type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
       propertyPath: OnInteractEndedAnimations.Array.data[0].animator
       value: 
       objectReference: {fileID: 6682965518671445594}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
         type: 3}
       propertyPath: OnInteractStartedAnimations.Array.data[0].animator
@@ -107,6 +117,76 @@ PrefabInstance:
         type: 3}
       propertyPath: OnInteractStartedAnimations.Array.data[0].parameterName
       value: IsPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 3675189901027185805}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 8666389337204719243}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_HourGlassButtonWrong
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_HourGlassButtonGood
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: -407536737
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1274051372
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: -1494913090
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractEndedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: -1154009482
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: 1812780142
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1303102374
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: -8657481
+      objectReference: {fileID: 0}
+    - target: {fileID: 215479137458901187, guid: aab6f3e85ac0c4746b8efe198e302887,
+        type: 3}
+      propertyPath: OnInteractStartedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: -1779196795
       objectReference: {fileID: 0}
     - target: {fileID: 2694273027710127057, guid: aab6f3e85ac0c4746b8efe198e302887,
         type: 3}

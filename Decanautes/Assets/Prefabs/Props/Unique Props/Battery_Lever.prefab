@@ -83,7 +83,18 @@ MonoBehaviour:
     triggerType: 0
     IsInRythm: 0
     HasSound: 0
-    animationSounds: []
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 3154625592296877393}
+        FmodReference:
+          Guid:
+            Data1: 1721453139
+            Data2: 1290434587
+            Data3: -790769278
+            Data4: 434146351
+          Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BatteryLeverWrongPress
     parameterName: Pulled
     StateToApply: 0
     FloatToApply: 0
@@ -103,7 +114,18 @@ MonoBehaviour:
     triggerType: 0
     IsInRythm: 0
     HasSound: 0
-    animationSounds: []
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 3154625592296877393}
+        FmodReference:
+          Guid:
+            Data1: 1721453139
+            Data2: 1290434587
+            Data3: -790769278
+            Data4: 434146351
+          Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BatteryLeverWrongPress
     parameterName: Failed Try
     StateToApply: 0
     FloatToApply: 0
