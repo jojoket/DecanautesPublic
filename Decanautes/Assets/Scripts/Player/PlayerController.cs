@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     //Components
     [SerializeField] private UnityEngine.InputSystem.PlayerInput _playerInput;
     private Rigidbody _rigidbody;
+    public Transform PostItGrabPoint;
     public Transform GrabPoint;
     public CinemachineVirtualCamera VirtualCamera;
 
@@ -33,7 +34,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Sirenix.OdinInspector.ReadOnly]
     private Interactable lookingAt;
     [Sirenix.OdinInspector.ReadOnly]
-    public Grabbable grabbed;
+    public Grabbable grabbedPostIt;
+    public Grabbable grabbedObj;
     public PostIt PostItEditing;
     public Vector3 PostItEditingLastPos;
     public Vector3 PostItEditingLastRot;
@@ -62,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateInputs();
         LookInteraction();
-        if (LastMinute.Instance.IsLastDecaNote && grabbed && grabbed.TryGetComponent<PostIt>(out PostIt postIt) && postIt.ModifLeft == postIt.MaxModif)
+        if (LastMinute.Instance.IsLastDecaNote && grabbedPostIt && grabbedPostIt.TryGetComponent<PostIt>(out PostIt postIt) && postIt.ModifLeft == postIt.MaxModif)
         {
             postIt.InputText.placeholder.GetComponent<TMP_Text>().text = "Write your last Deca-Note";
             InteractSec();
@@ -153,15 +155,27 @@ public class PlayerController : MonoBehaviour
             return;
         }
         //If there is a grabbed object
-        if (grabbed && !lookingAt)
+        if (grabbedObj && !lookingAt)
         {
             if (_interactAction.IsPressed())
             {
-                grabbed.InteractionStart();
+                grabbedObj.InteractionStart();
             }
             else
             {
-                grabbed.InteractionEnd();
+                grabbedObj.InteractionEnd();
+            }
+            return;
+        }
+        else if (grabbedPostIt && !lookingAt)
+        {
+            if (_interactAction.IsPressed())
+            {
+                grabbedPostIt.InteractionStart();
+            }
+            else
+            {
+                grabbedPostIt.InteractionEnd();
             }
             return;
         }
@@ -179,7 +193,14 @@ public class PlayerController : MonoBehaviour
                 {
                     return;
                 }
-                grabbed = lookingAt.GetComponent<Grabbable>();
+                if (lookingAt.TryGetComponent<PostIt>(out _) )
+                {
+                    grabbedPostIt = lookingAt.GetComponent<Grabbable>();
+                }
+                else
+                {
+                    grabbedObj = lookingAt.GetComponent<Grabbable>();
+                }
             }
             lookingAt.InteractionStart();
             return;
@@ -279,7 +300,7 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        if (grabbed && grabbed.TryGetComponent<PostIt>(out PostIt postIt))
+        if (grabbedPostIt && grabbedPostIt.TryGetComponent<PostIt>(out PostIt postIt))
         {
             bool isEditing = postIt.SelectText();
             if (!isEditing)
