@@ -1603,6 +1603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].HasSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
       propertyPath: OnTriedAnimations.Array.data[0].animator
       value: 
       objectReference: {fileID: 1289743572}
@@ -1618,6 +1623,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
       propertyPath: OnTriedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -1625,6 +1635,36 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTriedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.EventPosition
+      value: 
+      objectReference: {fileID: 1289743574}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Path
+      value: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BatteryLeverWrongPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data1
+      value: 1721453139
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data2
+      value: 1290434587
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data3
+      value: -790769278
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720219436287391673, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: OnTriedAnimations.Array.data[0].animationSounds.Array.data[0].FmodEvent.FmodReference.Guid.Data4
+      value: 434146351
       objectReference: {fileID: 0}
     - target: {fileID: 7743252076441766209, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
@@ -2165,6 +2205,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &656932056 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5108750415918728898, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5826207586050070762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &658572294 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6722590226489196940, guid: 7604999d62f23c64fb78583fa0a5933c,
@@ -2520,6 +2566,12 @@ MonoBehaviour:
 --- !u!95 &1289743572 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7882460054324486609, guid: 7604999d62f23c64fb78583fa0a5933c,
+    type: 3}
+  m_PrefabInstance: {fileID: 298130213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1289743574 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2610497403067533642, guid: 7604999d62f23c64fb78583fa0a5933c,
     type: 3}
   m_PrefabInstance: {fileID: 298130213}
   m_PrefabAsset: {fileID: 0}
@@ -4009,11 +4061,6 @@ PrefabInstance:
       propertyPath: CurrentEngineState
       value: 
       objectReference: {fileID: 706659098}
-    - target: {fileID: 6386107847046590346, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: MinGameTimeForMusicStart
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 8235324572824965133, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4069,11 +4116,6 @@ PrefabInstance:
       propertyPath: VirtualCamera
       value: 
       objectReference: {fileID: 361210905}
-    - target: {fileID: 9018141986689839497, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4882,6 +4924,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
+      propertyPath: EventsToTrigger.Array.data[1].FmodEvents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[2].FmodEvents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[1].FmodEvents.Array.data[0].EventPosition
+      value: 
+      objectReference: {fileID: 656932056}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[2].FmodEvents.Array.data[0].EventPosition
+      value: 
+      objectReference: {fileID: 656932056}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[1].FmodEvents.Array.data[0].FmodReference.Path
+      value: event:/AMB/AMB_EE_StormInterior
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[2].FmodEvents.Array.data[0].FmodReference.Path
+      value: event:/AMB/AMB_EE_StormEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
       propertyPath: EventsToTrigger.Array.data[0].OnTrigger.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4894,6 +4966,46 @@ PrefabInstance:
         type: 3}
       propertyPath: EventsToTrigger.Array.data[2].OnTrigger.m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[1].FmodEvents.Array.data[0].FmodReference.Guid.Data1
+      value: 1087231186
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[1].FmodEvents.Array.data[0].FmodReference.Guid.Data2
+      value: 1326507444
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[1].FmodEvents.Array.data[0].FmodReference.Guid.Data3
+      value: 2138011779
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[1].FmodEvents.Array.data[0].FmodReference.Guid.Data4
+      value: 1382701183
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[2].FmodEvents.Array.data[0].FmodReference.Guid.Data1
+      value: 371799441
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[2].FmodEvents.Array.data[0].FmodReference.Guid.Data2
+      value: 1320575993
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[2].FmodEvents.Array.data[0].FmodReference.Guid.Data3
+      value: -338811227
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: EventsToTrigger.Array.data[2].FmodEvents.Array.data[0].FmodReference.Guid.Data4
+      value: 909814789
       objectReference: {fileID: 0}
     - target: {fileID: 6376931670505558974, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
