@@ -12,6 +12,8 @@ namespace Decanautes.Interactable
         [TitleGroup("Components")]
         public TMP_InputField InputField;
         [TitleGroup("Components")]
+        public Renderer ScreenRenderer;
+        [TitleGroup("Components")]
         public List<Animation> ButtonsAnimations;
         [TitleGroup("Paramaters")]
         public bool DoStopMovementsWhenIsEditing;
@@ -19,9 +21,9 @@ namespace Decanautes.Interactable
         public string CodeNeeded;
         [HideInInspector]
         public bool IsEditing;
-        public Color NormalColor;
-        public Color InvalidColor;
-        public Color ValidColor;
+        public Material NormalColor;
+        public Material InvalidColor;
+        public Material ValidColor;
 
         [TitleGroup("Events")]
         public UnityEvent OnStartEditing;
@@ -78,6 +80,8 @@ namespace Decanautes.Interactable
             int lastLength = InputField.text.Length;
             InputField.onValueChanged.AddListener((string str) =>
             {
+                if (str == ">" || str == "<")
+                    return;
                 if (str.Length == 0 || lastLength > str.Length)
                 {
                     lastLength = str.Length;
@@ -122,23 +126,36 @@ namespace Decanautes.Interactable
                 StartCoroutine(CodeMatVisual(ValidColor));
                 return;
             }
-            InputField.text = "";
+            if (int.TryParse(InputField.text, out int res))
+            {
+                if (res < int.Parse(CodeNeeded))
+                {
+                    InputField.text = ">";
+                }
+                else if (res > int.Parse(CodeNeeded))
+                {
+                    InputField.text = "<";
+                }
+            }
             OnCodeInvalid?.Invoke();
             OnCodeInvalidAction?.Invoke(this);
             StartCoroutine(CodeMatVisual(InvalidColor));
         }
 
-        private IEnumerator CodeMatVisual(Color colorVisual)
+        private IEnumerator CodeMatVisual(Material colorVisual)
         {
             foreach (Animation anims in ButtonsAnimations)
             {
-                anims.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetColor("_Base_Color", colorVisual);
+                anims.transform.GetChild(0).GetComponent<MeshRenderer>().material = colorVisual;
             }
+            ScreenRenderer.material = colorVisual;
             yield return new WaitForSecondsRealtime(0.75f);
+            InputField.text = "";
             foreach (Animation anims in ButtonsAnimations)
             {
-                anims.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetColor("_Base_Color", NormalColor);
+                anims.transform.GetChild(0).GetComponent<MeshRenderer>().material = NormalColor;
             }
+            ScreenRenderer.material = NormalColor;
         }
 
     }
