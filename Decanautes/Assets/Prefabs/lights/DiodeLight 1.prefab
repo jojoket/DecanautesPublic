@@ -982,7 +982,6 @@ Transform:
   - {fileID: 1495695993293168372}
   - {fileID: 2631289699403521555}
   - {fileID: 8064366135807170894}
-  - {fileID: 6585853808926821062}
   m_Father: {fileID: 8497787489613806362}
   m_LocalEulerAnglesHint: {x: 96.096985, y: -51.940002, z: -53.608}
 --- !u!108 &3328625012615879773
@@ -1683,12 +1682,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2404443145352148176}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.15707581, y: -0.1925413, z: 0.01674149, w: 0.96849096}
-  m_LocalPosition: {x: 0.08, y: 0.25, z: 3.18}
+  m_LocalRotation: {x: 0.6029506, y: -0.10789296, z: -0.103519, w: 0.7836413}
+  m_LocalPosition: {x: -0.90143967, y: 5.8434744, z: -0.13257837}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8361294734869630951}
+  m_Father: {fileID: 8497787489613806362}
   m_LocalEulerAnglesHint: {x: -17.326, y: -23.34, z: 5.586}
 --- !u!108 &3454271627930624280
 Light:
@@ -1701,7 +1700,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 0.611645, b: 0, a: 1}
-  m_Intensity: 11936.62
+  m_Intensity: 7957.747
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1749,7 +1748,7 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 1.5
+  m_ShadowRadius: 2
   m_ShadowAngle: 0
 --- !u!114 &2416934109391229429
 MonoBehaviour:
@@ -1766,7 +1765,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 150000
+  m_Intensity: 100000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -1782,7 +1781,7 @@ MonoBehaviour:
   m_ShapeWidth: 0.5
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
-  m_ShapeRadius: 1.5
+  m_ShapeRadius: 2
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 30
@@ -2641,7 +2640,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 32168.848
+  m_Intensity: 80335.66
   m_Range: 5.3938665
   m_SpotAngle: 179
   m_InnerSpotAngle: 12.876125
@@ -2706,7 +2705,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 200359
+  m_Intensity: 500359
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -3104,6 +3103,7 @@ Transform:
   - {fileID: 8234454876724635277}
   - {fileID: 538933008969887038}
   - {fileID: 6062246456835380756}
+  - {fileID: 6585853808926821062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1672479363804641791
