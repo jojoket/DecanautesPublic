@@ -63,6 +63,12 @@ MonoBehaviour:
   ToDisableOnMalfunction: []
   ToEnableOnBreakDown: []
   ToDisableOnBreakDown: []
+  OnAllBroken:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAllGood:
+    m_PersistentCalls:
+      m_Calls: []
   OnStateGoodFmodEvents: []
   OnStateMalfunctionFmodEvents: []
   OnPowerDecreaseFmodEvent: []
@@ -304,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffa52407f5f7cc4390b80feb2f27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LastMinuteTime: 0.1
+  LastMinuteTime: 0.5
   LastMinuteDuration: 60
   LastDecaNoteTime: 50
   EngineState: {fileID: 6408890377518032855}
@@ -314,16 +320,28 @@ MonoBehaviour:
     CyclesBefore: 0
     Message: daymn
     MessageTimeInCycle: 0
-    MessageDuration: 60
+    MessageDuration: 100000
     MessageColor: {r: 0.00037701178, g: 0, b: 0.103773594, a: 1}
-    ScreenMaterial: {fileID: 0}
+    ScreenMaterial: {fileID: 2100000, guid: a45cb2d7fc7f16a40b779396524fa0a5, type: 2}
     FmodEvents: []
   OnLastMinute:
     m_PersistentCalls:
       m_Calls: []
   OnGameEnding:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9078386341402334869
 GameObject:
   m_ObjectHideFlags: 0

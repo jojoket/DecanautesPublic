@@ -50,6 +50,10 @@ public class ScriptedEvent : MonoBehaviour
 
     private void StartEvent()
     {
+        foreach (FmodEventInfo fmodEvent in EventToTrigger.OnEnableFmod)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         EventToTrigger.isActive = true;
         EnableEventVFX(EventToTrigger, true);
         EventToTrigger.OnEnable?.Invoke();
@@ -85,6 +89,10 @@ public class ScriptedEvent : MonoBehaviour
 
     public void EventBreak(Event eventBroken)
     {
+        foreach (FmodEventInfo fmodEvent in EventToTrigger.OnBreakFmod)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         eventBroken.OnBreak?.Invoke();
         eventBroken.isActive = false;
         eventBroken.InteractionsState.Clear();
@@ -207,6 +215,10 @@ public class ScriptedEvent : MonoBehaviour
         if (eventToClean.HasSecondaryInteractions)
         {
             eventToClean.CurrentInteractionFixSet = Mathf.Abs(eventToClean.CurrentInteractionFixSet - 1);
+        }
+        foreach (FmodEventInfo fmodEvent in EventToTrigger.OnFixFmod)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
         }
         foreach (Interactable item in _interactionsToFix)
         {

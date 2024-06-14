@@ -45,7 +45,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
-  m_Color: {r: 0.2784314, g: 0.9607843, b: 0.44705883, a: 1}
+  m_Color: {r: 1, g: 0.67145586, b: 0, a: 1}
   m_Intensity: 6422.2417
   m_Range: 3.0917232
   m_SpotAngle: 179
@@ -274,6 +274,7 @@ MonoBehaviour:
   Animations:
   - parent: {fileID: 0}
     animator: {fileID: 5662192310975903530}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 0
     HasSound: 0
@@ -287,6 +288,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 5662192310975903530}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 0
     HasSound: 0
@@ -447,7 +449,7 @@ MonoBehaviour:
     ParameterFloatValueStart: 0
     ParameterFloatValueEnd: 0
     ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueStart: {r: 0.2784314, g: 0.9607843, b: 0.44705883, a: 1}
+    ParameterColorValueStart: {r: 1, g: 0.8, b: 0, a: 1}
     ParameterColorValueEnd: {r: 0, g: 0, b: 0, a: 1}
     ParameterColorValueStartMult: 0
     ParameterColorValueEndMult: 0
@@ -526,7 +528,7 @@ MonoBehaviour:
     ParameterFloatValueEnd: 0
     ParameterColorValueInit: {r: 0, g: 0, b: 0, a: 0}
     ParameterColorValueStart: {r: 0, g: 0, b: 0, a: 0}
-    ParameterColorValueEnd: {r: 0.2784314, g: 0.9607844, b: 0.44705886, a: 1}
+    ParameterColorValueEnd: {r: 1, g: 0.8000001, b: 0, a: 1}
     ParameterColorValueStartMult: 0
     ParameterColorValueEndMult: 22
     ParameterVector3ValueInit: {x: 0, y: 0, z: 0}

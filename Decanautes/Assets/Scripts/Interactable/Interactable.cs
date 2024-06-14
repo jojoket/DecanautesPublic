@@ -95,6 +95,8 @@ namespace Decanautes.Interactable
             //ChangeMaterials(HoverMaterial);
             foreach (SelectionColor selectionColor in SelectionColors)
             {
+                if (selectionColor == null)
+                    continue;
                 selectionColor.selectionColor = HoverColor;
                 selectionColor.SetColor();
             }
@@ -106,6 +108,8 @@ namespace Decanautes.Interactable
             //ChangeMaterials(BaseMaterial);
             foreach (SelectionColor selectionColor in SelectionColors)
             {
+                if (selectionColor == null)
+                    continue;
                 selectionColor.selectionColor = new Color(0,0,0,0);
                 selectionColor.SetColor();
             }

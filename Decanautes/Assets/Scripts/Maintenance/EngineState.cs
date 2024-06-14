@@ -62,6 +62,10 @@ public class EngineState : MonoBehaviour
     [TabGroup("Visual")]
     public List<GameObject> ToDisableOnBreakDown = new List<GameObject>();
 
+    [TabGroup("Events")]
+    public UnityEvent OnAllBroken;
+    public UnityEvent OnAllGood;
+
     [TabGroup("FMOD")]
     public List<FmodEventInfo> OnStateGoodFmodEvents;
     [TabGroup("FMOD")]
@@ -208,6 +212,7 @@ public class EngineState : MonoBehaviour
             return;
         }
         //ChangeState(EngineStateEnum.BreakDown);
+        OnAllBroken?.Invoke();
     }
 
 
@@ -281,6 +286,7 @@ public class EngineState : MonoBehaviour
 
     public void GoodVfx()
     {
+        OnAllGood?.Invoke();
         foreach (FmodEventInfo fmodEvent in OnStateGoodFmodEvents)
         {
             RythmManager.Instance.StartFmodEvent(fmodEvent);
