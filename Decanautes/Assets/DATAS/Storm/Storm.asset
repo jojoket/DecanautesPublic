@@ -13,13 +13,20 @@ MonoBehaviour:
   m_Name: Storm
   m_EditorClassIdentifier: 
   CyclesBeforeEvent: 2
-  FirstGapCycleNum: 0
+  FirstGapCycleNum: 1
   CycleRandomGap: {x: 2, y: 5}
   interCycleMessages:
   - CyclesBefore: 1
-    Message: /!\ STORM IN 1 CYCLE BE CAREFUL /!\
+    Message: STORM IN 1 CYCLE BE CAREFUL
     MessageTimeInCycle: 0.15
-    MessageDuration: 20
+    MessageDuration: 30
     MessageColor: {r: 0, g: 0, b: 0, a: 1}
-    MessageBackgroundColor: {r: 1, g: 0, b: 0, a: 1}
+    ScreenMaterial: {fileID: 0}
+    FmodEvents: []
+  - CyclesBefore: 0
+    Message: ALERT
+    MessageTimeInCycle: 5
+    MessageDuration: 30
+    MessageColor: {r: 0, g: 0, b: 0, a: 0}
+    ScreenMaterial: {fileID: 0}
     FmodEvents: []
