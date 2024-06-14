@@ -53,7 +53,7 @@ public class PlayerPreferencesManager : MonoBehaviour
 
         //Contrast
         //Quadrichromic
-        Quadrichromic.SetFloat("Opacity", PlayerPreferencesData.QuadrichromicMode ? 1 : 0);
+        Quadrichromic.SetFloat("_Opacity", PlayerPreferencesData.QuadrichromicMode ? 1 : 0);
 
         //Sounds
         MusicVcaController.setVolume(PlayerPreferencesData.MusicVolume);

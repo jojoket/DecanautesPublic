@@ -1479,6 +1479,7 @@ MonoBehaviour:
   Animations:
   - parent: {fileID: 0}
     animator: {fileID: 0}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 1
     HasSound: 0
@@ -1492,6 +1493,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 0}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 1
     HasSound: 0
@@ -1505,6 +1507,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 6273778700357165783}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 1
     HasSound: 0
@@ -1518,6 +1521,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 6273778700357165783}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 1
     HasSound: 0
@@ -3246,6 +3250,7 @@ MonoBehaviour:
   isActivated: 0
   isPressed: 0
   InputField: {fileID: 3181845162142957530}
+  ScreenRenderer: {fileID: 7433912793068779510}
   ButtonsAnimations:
   - {fileID: 0}
   - {fileID: 1661558038270654810}
@@ -3260,9 +3265,9 @@ MonoBehaviour:
   DoStopMovementsWhenIsEditing: 1
   CodeNeeded: 
   IsEditing: 0
-  NormalColor: {r: 1, g: 0.9137255, b: 0.84313726, a: 1}
-  InvalidColor: {r: 1, g: 0, b: 0, a: 1}
-  ValidColor: {r: 0.19723403, g: 1, b: 0, a: 1}
+  NormalColor: {fileID: 0}
+  InvalidColor: {fileID: 0}
+  ValidColor: {fileID: 0}
   OnStartEditing:
     m_PersistentCalls:
       m_Calls: []

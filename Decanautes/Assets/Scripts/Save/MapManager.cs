@@ -68,7 +68,7 @@ public class MapManager : MonoBehaviour
         
         foreach (SavedObject obj in toSaveObjects)
         {
-            if (obj.GetComponentInParent<Spawner>() != null || (obj.transform.parent && obj.transform.parent.name == "GrabPoint"))
+            if (obj.GetComponentInParent<Spawner>() != null || (obj.transform.parent && obj.transform.parent.name == "PostItGrabPoint"))
             {
                 continue;
             }

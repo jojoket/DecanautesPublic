@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107574339451760140}
   m_Layer: 3
-  m_Name: GrabPoint
+  m_Name: PostItGrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,6 +61,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 564402586463953216}
+  m_Father: {fileID: 4581235665711629189}
+  m_LocalEulerAnglesHint: {x: -19.728, y: -146.103, z: 0}
+--- !u!1 &3015201951488972731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3371726905781054082}
+  m_Layer: 3
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3371726905781054082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015201951488972731}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.04993721, y: -0.9424268, z: -0.16386709, w: 0.2872033}
+  m_LocalPosition: {x: 0.296, y: -0.357, z: 0.705}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 4581235665711629189}
   m_LocalEulerAnglesHint: {x: -19.728, y: -146.103, z: 0}
 --- !u!1 &5464884778237742366
@@ -150,7 +181,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lookingAt: {fileID: 0}
-  grabbed: {fileID: 0}
+  grabbedPostIt: {fileID: 0}
+  grabbedObj: {fileID: 0}
   PostItEditing: {fileID: 0}
   PostItEditingLastPos: {x: 0, y: 0, z: 0}
   PostItEditingLastRot: {x: 0, y: 0, z: 0}
@@ -379,6 +411,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 107574339451760140}
+  - {fileID: 3371726905781054082}
   m_Father: {fileID: 2185170539282178000}
   m_LocalEulerAnglesHint: {x: 0, y: -83.746, z: 0}
 --- !u!20 &6935268579587276832
