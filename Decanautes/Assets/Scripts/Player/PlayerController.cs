@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
     public void UIScreenBlock(bool isBlocked)
     {
         IsUiScreenBlock = isBlocked;
+        Time.timeScale = isBlocked ? 0:1;
         if (!isBlocked && IsUiPostItBlock)
         {
             return;
@@ -150,6 +151,10 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
+        if (!CanInteract)
+        {
+            return;
+        }
         EnterPostItView();
         if (PostItEditing != null)
         {

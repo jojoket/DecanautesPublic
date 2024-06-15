@@ -390,7 +390,7 @@ public class EngineState : MonoBehaviour
 
     private IEnumerator ResetMessageAfter(float time)
     {
-        yield return new WaitForSecondsRealtime(time);
+        yield return new WaitForSeconds(time);
         PowerLevelText.transform.parent.gameObject.SetActive(true);
         DistanceText.transform.parent.gameObject.SetActive(true);
         SpeedText.transform.parent.gameObject.SetActive(true);

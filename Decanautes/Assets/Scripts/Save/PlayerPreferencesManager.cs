@@ -33,15 +33,16 @@ public class PlayerPreferencesManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        MusicVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + MusicVcaName);
+        AmbianceVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + AmbianceVcaName);
+        VFXVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + VFXVcaName);
+        GlobalVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + GlobalVcaName);
         ApplyPreferences();
     }
 
     private void Start()
     {
-        MusicVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + MusicVcaName);
-        AmbianceVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + AmbianceVcaName);
-        VFXVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + VFXVcaName);
-        GlobalVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + GlobalVcaName);
+        
     }
 
     public void ApplyPreferences()
@@ -65,7 +66,7 @@ public class PlayerPreferencesManager : MonoBehaviour
         AmbianceVcaController.setVolume(PlayerPreferencesData.AmbianceVolume);
         VFXVcaController.setVolume(PlayerPreferencesData.VFXVolume);
         GlobalVcaController.setVolume(PlayerPreferencesData.GlobalVolume);
-    }    
+    }
 
     public void ChangeSensibility(float newSensibility)
     {

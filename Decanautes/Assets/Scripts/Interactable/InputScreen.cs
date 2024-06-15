@@ -149,7 +149,7 @@ namespace Decanautes.Interactable
                 anims.transform.GetChild(0).GetComponent<MeshRenderer>().material = colorVisual;
             }
             ScreenRenderer.material = colorVisual;
-            yield return new WaitForSecondsRealtime(0.75f);
+            yield return new WaitForSeconds(0.75f);
             InputField.text = "";
             foreach (Animation anims in ButtonsAnimations)
             {
