@@ -21,6 +21,10 @@ namespace Decanautes.Interactable
         [TitleGroup("Parameters")]
         public bool IsToggle = false;
         public bool CanInteract = true;
+        [ShowIf("IsToggle")]
+        public bool CanOnlyOn = false;
+        [ShowIf("IsToggle")]
+        public bool CanOnlyOff = false;
         public bool NeedLookToKeepInteraction = true;
         [Tooltip("It will wait for the first animation trigerrer's next animation end.")]
         public bool DoApplyStateAfterAnimation = true;
@@ -127,6 +131,13 @@ namespace Decanautes.Interactable
                 OnTriedEvent?.Invoke();
                 return;
             }
+            if (IsToggle)
+            {
+                if (CanOnlyOff && !isActivated)
+                    return;
+                if (CanOnlyOn && isActivated)
+                    return;
+            }
             if (!IsToggle)
             {
                 InvokeInteractStart();
@@ -169,6 +180,15 @@ namespace Decanautes.Interactable
             CanInteract = canInteract;
         }
 
+        public void SetCanOnlyOff(bool value)
+        {
+            CanOnlyOff = value;
+        }
+        public void SetCanOnlyOn(bool value)
+        {
+            CanOnlyOn = value;
+        }
+
         protected virtual void InvokeInteractStart()
         {
             foreach (AnimatorTriggerer anim in OnInteractStartedAnimations)
@@ -195,6 +215,7 @@ namespace Decanautes.Interactable
             {
                 anim.TriggerAnimation();
             }
+            OnClickedEvent?.Invoke();
             if (DoApplyStateAfterAnimation && OnInteractEndedAnimations.Count > 0)
             {
                 OnInteractEndedAnimations[0].OnAnimationFirstLooped.AddListener(() =>
