@@ -20,8 +20,8 @@ public class PlayerPreferences : ScriptableObject
     public bool QuadrichromicMode;
 
     //sounds
+    public float GlobalVolume;
     public float MusicVolume;
     public float AmbianceVolume;
     public float VFXVolume;
-    public float UIVolume;
 }

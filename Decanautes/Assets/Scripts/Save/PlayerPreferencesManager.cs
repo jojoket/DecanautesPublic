@@ -20,8 +20,8 @@ public class PlayerPreferencesManager : MonoBehaviour
     public string AmbianceVcaName;
     private FMOD.Studio.VCA VFXVcaController;
     public string VFXVcaName;
-    private FMOD.Studio.VCA UIVcaController;
-    public string UIVcaName;
+    private FMOD.Studio.VCA GlobalVcaController;
+    public string GlobalVcaName;
 
 
 
@@ -36,7 +36,7 @@ public class PlayerPreferencesManager : MonoBehaviour
         MusicVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + MusicVcaName);
         AmbianceVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + AmbianceVcaName);
         VFXVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + VFXVcaName);
-        UIVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + UIVcaName);
+        GlobalVcaController = FMODUnity.RuntimeManager.GetVCA("vca:/" + GlobalVcaName);
     }
 
     public void ApplyPreferences()
@@ -59,7 +59,7 @@ public class PlayerPreferencesManager : MonoBehaviour
         MusicVcaController.setVolume(PlayerPreferencesData.MusicVolume);
         AmbianceVcaController.setVolume(PlayerPreferencesData.AmbianceVolume);
         VFXVcaController.setVolume(PlayerPreferencesData.VFXVolume);
-        UIVcaController.setVolume(PlayerPreferencesData.UIVolume);
+        GlobalVcaController.setVolume(PlayerPreferencesData.GlobalVolume);
     }    
 
     public void ChangeSensibility(float newSensibility)
@@ -140,9 +140,9 @@ public class PlayerPreferencesManager : MonoBehaviour
         ApplyPreferences();
     }
 
-    public void ChangeUIVolume(float newUIVolume)
+    public void ChangeGlobalVolume(float newGlobalVolume)
     {
-        PlayerPreferencesData.UIVolume = newUIVolume;
+        PlayerPreferencesData.GlobalVolume = newGlobalVolume;
         ApplyPreferences();
     }
 

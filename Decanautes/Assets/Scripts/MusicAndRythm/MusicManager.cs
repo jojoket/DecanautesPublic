@@ -50,19 +50,19 @@ public class MusicManager : MonoBehaviour
         if (CurrentMusicState == MusicState.AllGood && TimeUntilNextEvent <= 0)
         {
             CurrentMusicState = MusicState.Broken;
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(MusicChangeState, 1);
+            RythmManager.Instance.ChangeFmodParameter(MusicChangeState, 1);
             //Commencer Boucle Broken
         }
         if (CurrentMusicState == MusicState.Broken && CurrentEngineState.malfunctionsNumber <= 0)
         {
             CurrentMusicState = MusicState.Repaired;
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(MusicChangeState, 2);
+            RythmManager.Instance.ChangeFmodParameter(MusicChangeState, 2);
             //Commencer Boucle Repaired
         }
         if (CurrentMusicState == MusicState.Repaired && CurrentEngineState.malfunctionsNumber > 0)
         {
             CurrentMusicState = MusicState.Ending;
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(MusicChangeState, 3);
+            RythmManager.Instance.ChangeFmodParameter(MusicChangeState, 3);
             //Commencer fin de musique
             StartCoroutine(ChangeToSilent());
         }
