@@ -2621,6 +2621,18 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 298130213}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &448661810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8088875578005059276, guid: 20ac700e2ccf4874fb014f698890fcca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1740692482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6183f881e362245afbe4a8753f5f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &524453908 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9126418038457896671, guid: 7604999d62f23c64fb78583fa0a5933c,
@@ -3588,6 +3600,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 8504437597724957624, guid: 20ac700e2ccf4874fb014f698890fcca,
+        type: 3}
+      propertyPath: ScreenEscape
+      value: 
+      objectReference: {fileID: 448661810}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
