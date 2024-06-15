@@ -233,6 +233,7 @@ public class EngineState : MonoBehaviour
             else
             {
                 GeneralText.color = _GeneralTextBaseColor;
+                GeneralText.text ="";
                 /*GeneralText.text = "Engine state : " + CurrentState.ToString() + "\n";
                 GeneralText.text += " Power : " + (1 - MalfunctionsInfluence * malfunctionsNumber)*100 + "% \n";
                 GeneralText.text += " dist : " + KilometerData.CurrentKm + "km \n";
