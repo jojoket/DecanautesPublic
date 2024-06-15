@@ -6,6 +6,8 @@ using TMPro;
 using Decanautes.Interactable;
 using UnityEngine.Events;
 using System;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PostIt : MonoBehaviour
 {
@@ -225,6 +227,7 @@ public class PostIt : MonoBehaviour
     }
     public void ExitPostItView()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         isViewing = false;
         if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
         {
@@ -240,6 +243,7 @@ public class PostIt : MonoBehaviour
     }
     public void ExitPostItEdit()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         OnExitEdit?.Invoke();
     }
 

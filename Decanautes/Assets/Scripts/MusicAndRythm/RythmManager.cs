@@ -7,6 +7,7 @@ using FMODUnity;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine.Serialization;
+using UnityEngine.Rendering;
 
 [Serializable]
 public class FmodEventInfo
@@ -35,6 +36,7 @@ public class RythmManager : MonoBehaviour
     public int lastBeat = 0;
 
     private List<FmodEventInfo> FMODEvents = new List<FmodEventInfo>();
+    private Dictionary<string, int> FMODParameters = new Dictionary<string, int>();
 
 
     //From FMOD
@@ -114,12 +116,23 @@ public class RythmManager : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot(fmodEventAdded.FmodReference, fmodEventAdded.EventPosition.position);
         }
     }
+    public void ChangeFmodParameter(string FmodParameter, int param)
+    {
+        if(FMODParameters.ContainsKey(FmodParameter))
+            FMODParameters.Add(FmodParameter, param);
+        else
+            FMODParameters[FmodParameter] = param;
+    }
 
     private void PlayAndRelieveBuffer()
     {
         foreach (FmodEventInfo fmodEvent in FMODEvents)
         {
             FMODUnity.RuntimeManager.PlayOneShot(fmodEvent.FmodReference, fmodEvent.EventPosition.position);
+        }
+        foreach (KeyValuePair<string,int>  FmodParameter in FMODParameters)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(FmodParameter.Key, FmodParameter.Value);
         }
         FMODEvents.Clear();
     }

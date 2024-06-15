@@ -970,6 +970,7 @@ MonoBehaviour:
   Animations:
   - parent: {fileID: 0}
     animator: {fileID: 9101433952206806116}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 1
     HasSound: 0
@@ -983,6 +984,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 9101433952206806116}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 1
     HasSound: 0
@@ -1242,6 +1244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Radiator
+      objectReference: {fileID: 0}
+    - target: {fileID: 452375632368483833, guid: 055c18fc87ce16c4eb184c72dcf6b6c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 707671116382008735, guid: 055c18fc87ce16c4eb184c72dcf6b6c6,
         type: 3}
@@ -2128,6 +2135,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 4225154142666506778, guid: 905f3425a4b022a49a7019a27c49ce2b,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 3183.0989
+      objectReference: {fileID: 0}
     - target: {fileID: 4353843703087751534, guid: 905f3425a4b022a49a7019a27c49ce2b,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2177,6 +2189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.15299514
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879979096912274292, guid: 905f3425a4b022a49a7019a27c49ce2b,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 3183.0989
       objectReference: {fileID: 0}
     - target: {fileID: 7159721719535640439, guid: 905f3425a4b022a49a7019a27c49ce2b,
         type: 3}
@@ -2456,6 +2473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ScreenBool (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 452375632368483833, guid: 055c18fc87ce16c4eb184c72dcf6b6c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 707671116382008735, guid: 055c18fc87ce16c4eb184c72dcf6b6c6,
         type: 3}
@@ -3025,6 +3047,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenBool (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 452375632368483833, guid: 055c18fc87ce16c4eb184c72dcf6b6c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 707671116382008735, guid: 055c18fc87ce16c4eb184c72dcf6b6c6,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -3352,6 +3379,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ScreenBool
+      objectReference: {fileID: 0}
+    - target: {fileID: 452375632368483833, guid: 055c18fc87ce16c4eb184c72dcf6b6c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 707671116382008735, guid: 055c18fc87ce16c4eb184c72dcf6b6c6,
         type: 3}
@@ -3994,6 +4026,7 @@ MonoBehaviour:
   Animations:
   - parent: {fileID: 0}
     animator: {fileID: 3070531386976070614}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 1
     HasSound: 0
@@ -4007,6 +4040,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 3070531386976070614}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 1
     HasSound: 0

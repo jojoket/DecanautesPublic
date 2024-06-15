@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using Decanautes.Interactable;
+using Mono.Cecil;
 
 
 
@@ -172,6 +173,10 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isOverThreshold = false;
         maintain.OnUnderThreshold?.Invoke();
+        foreach (FmodEventInfo fmodEvent in maintain.OnUnderThresholdFmod)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         foreach (GameObject item in maintain.ToDisableOnUnderThreshold)
         {
             item.SetActive(false);
@@ -185,6 +190,10 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isOverThreshold = true;
         maintain.OnOverThreshold?.Invoke();
+        foreach (FmodEventInfo fmodEvent in maintain.OnOverThresholdFmod)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         foreach (GameObject item in maintain.ToDisableOnUnderThreshold)
         {
             item.SetActive(true);
@@ -199,6 +208,10 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isZero = true;
         maintain.OnZero?.Invoke();
+        foreach (FmodEventInfo fmodEvent in maintain.OnZeroFmod)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         foreach (GameObject item in maintain.ToDisableOnZero)
         {
             item.SetActive(false);
@@ -213,6 +226,10 @@ public class CareSystem : MonoBehaviour
     {
         maintain.isZero = false;
         maintain.OnOverZero?.Invoke();
+        foreach (FmodEventInfo fmodEvent in maintain.OnOverZeroFmod)
+        {
+            RythmManager.Instance.StartFmodEvent(fmodEvent);
+        }
         foreach (GameObject item in maintain.ToDisableOnZero)
         {
             item.SetActive(true);

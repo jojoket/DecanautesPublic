@@ -37,7 +37,7 @@ public class UIParameter : MonoBehaviour
         MusicVolume,
         AmbianceVolume,
         VFXVolume,
-        UIVolume,
+        GlobalVolume,
     }
 
     public ParameterType UiParameterType;
@@ -193,8 +193,8 @@ public class UIParameter : MonoBehaviour
                 Slider.value = SliderValue;
                 ChangeSliderParameter(SliderValue);
                 break;
-            case PlayerPreferencesType.UIVolume:
-                SliderValue = PlayerPreferencesManager.Instance.PlayerPreferencesData.UIVolume;
+            case PlayerPreferencesType.GlobalVolume:
+                SliderValue = PlayerPreferencesManager.Instance.PlayerPreferencesData.GlobalVolume;
                 Slider.value = SliderValue;
                 ChangeSliderParameter(SliderValue);
                 break;
@@ -271,8 +271,8 @@ public class UIParameter : MonoBehaviour
             PlayerPreferencesManager.Instance.ChangeAmbianceVolume(SliderValue);
         if (PlayerPreferencetype == PlayerPreferencesType.MusicVolume)
             PlayerPreferencesManager.Instance.ChangeMusicVolume(SliderValue);
-        if (PlayerPreferencetype == PlayerPreferencesType.UIVolume)
-            PlayerPreferencesManager.Instance.ChangeUIVolume(SliderValue);
+        if (PlayerPreferencetype == PlayerPreferencesType.GlobalVolume)
+            PlayerPreferencesManager.Instance.ChangeGlobalVolume(SliderValue);
 
     }
 
