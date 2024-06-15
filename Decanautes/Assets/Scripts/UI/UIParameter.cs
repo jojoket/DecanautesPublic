@@ -50,7 +50,8 @@ public class UIParameter : MonoBehaviour
     [ShowIf("UiParameterType", ParameterType.Bool)]
     public Button BoolFalseButton;
     [ShowIf("UiParameterType", ParameterType.Bool)]
-    public UnityEvent<bool> OnBoolValueCange;
+    public UnityEvent OnBoolValueTrue;
+    public UnityEvent OnBoolValueFalse;
 
     [ShowIf("UiParameterType", ParameterType.Color)]
     public Color ColorValue;
@@ -207,7 +208,10 @@ public class UIParameter : MonoBehaviour
         BoolValue = value;
         BoolFalseButton.GetComponent<Image>().enabled = !BoolValue;
         BoolTrueButton.GetComponent<Image>().enabled = BoolValue;
-        OnBoolValueCange?.Invoke(BoolValue);
+        if (value)
+            OnBoolValueTrue?.Invoke();
+        else
+            OnBoolValueFalse?.Invoke();
         if (PlayerPreferencetype == PlayerPreferencesType.ContrastMode)
         {
             PlayerPreferencesManager.Instance.ChangeContrastMode(BoolValue);
