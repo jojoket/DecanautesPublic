@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerData PlayerData;
     public LayerMask InteractionLayer;
+    public LayerMask PostItLayer;
 
     [SerializeField, Sirenix.OdinInspector.ReadOnly]
     private Interactable lookingAt;
@@ -246,10 +247,14 @@ public class PlayerController : MonoBehaviour
         if (PostItEditing)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000, PostItLayer))
             {
                 if (hit.transform.gameObject == PostItEditing.gameObject)
                 {
+                    if (PostItEditing.isEditing)
+                    {
+                        PostItEditing.InputText.Select();
+                    }
                     return;
                 }
             }
