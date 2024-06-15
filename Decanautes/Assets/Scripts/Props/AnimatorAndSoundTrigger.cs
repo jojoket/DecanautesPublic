@@ -41,7 +41,7 @@ public class AnimatorTriggerer
 
     public IEnumerator TriggerAnimationAfterSeconds(float seconds)
     {   
-        yield return new WaitForSecondsRealtime(seconds);
+        yield return new WaitForSeconds(seconds);
 
         if (HasSound)
         {
@@ -148,7 +148,7 @@ public class AnimatorTriggerer
                 callBack();
                 break;
             }
-            yield return new WaitForSecondsRealtime(0.02f);
+            yield return new WaitForSeconds(0.02f);
         }
     }
 

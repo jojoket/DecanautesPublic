@@ -158,11 +158,7 @@ public class PostIt : MonoBehaviour
 
     public bool CanHover()
     {
-        if (ModifLeft > 0)
-        {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     public void LockPostIt()
