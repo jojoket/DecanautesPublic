@@ -70,13 +70,13 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator ChangeToAllGood()
     {
-        yield return new WaitForSecondsRealtime(CreshendoTime);
+        yield return new WaitForSeconds(CreshendoTime);
         CurrentMusicState = MusicState.AllGood;
     }
 
     private IEnumerator ChangeToSilent()
     {
-        yield return new WaitForSecondsRealtime(EndingTime);
+        yield return new WaitForSeconds(EndingTime);
         CurrentMusicState = MusicState.Silent;
     }
 

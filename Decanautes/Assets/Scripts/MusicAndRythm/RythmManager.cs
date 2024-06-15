@@ -118,7 +118,7 @@ public class RythmManager : MonoBehaviour
     }
     public void ChangeFmodParameter(string FmodParameter, int param)
     {
-        if(FMODParameters.ContainsKey(FmodParameter))
+        if(!FMODParameters.ContainsKey(FmodParameter))
             FMODParameters.Add(FmodParameter, param);
         else
             FMODParameters[FmodParameter] = param;

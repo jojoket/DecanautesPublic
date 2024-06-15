@@ -55,6 +55,7 @@ namespace Decanautes.Interactable
 
         void Start()
         {
+            HoverColor = PlayerPreferencesManager.Instance.PlayerPreferencesData.OutlineColor;
             foreach (AnimatorTriggerer animatorTriggerer in OnInteractStartedAnimations)
             {
                 animatorTriggerer.parent = this;

@@ -31,6 +31,7 @@ namespace Decanautes.Interactable
         // Start is called before the first frame update
         void Start()
         {
+            HoverColor = PlayerPreferencesManager.Instance.PlayerPreferencesData.OutlineColor;
             foreach (AnimatorTriggerer animatorTriggerer in OnInteractStartedAnimations)
             {
                 animatorTriggerer.parent = this;

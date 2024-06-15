@@ -77,7 +77,7 @@ public class InterCycleEvent : MonoBehaviour
 
     private IEnumerator WaitBeforeMessage(InterCycleMessage message)
     {
-        yield return new WaitForSecondsRealtime(message.MessageTimeInCycle * 60);
+        yield return new WaitForSeconds(message.MessageTimeInCycle * 60);
         LinkedEngineState.DisplayMessage(message);
         foreach (FmodEventInfo FmodEvent in message.FmodEvents)
         {
@@ -87,7 +87,7 @@ public class InterCycleEvent : MonoBehaviour
 
     private IEnumerator WaitBeforeEvent(InterEventInCycleEvent EventWaiting)
     {
-        yield return new WaitForSecondsRealtime(EventWaiting.TriggerTime * 60);
+        yield return new WaitForSeconds(EventWaiting.TriggerTime * 60);
 
         EventWaiting.OnTrigger?.Invoke();
         foreach (FmodEventInfo FmodEvent in EventWaiting.FmodEvents)
@@ -98,7 +98,7 @@ public class InterCycleEvent : MonoBehaviour
 
     private IEnumerator WaitBeforeEventBreak(InterEventInCycleEvent EventWaiting)
     {
-        yield return new WaitForSecondsRealtime(EventWaiting.TriggerTime * 60);
+        yield return new WaitForSeconds(EventWaiting.TriggerTime * 60);
         bool isBroken = false;
         foreach (Interactable interactable in ToPreventBreakDown)
         {
