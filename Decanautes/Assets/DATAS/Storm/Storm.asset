@@ -18,15 +18,15 @@ MonoBehaviour:
   interCycleMessages:
   - CyclesBefore: 1
     Message: STORM IN 1 CYCLE BE CAREFUL
-    MessageTimeInCycle: 0.15
+    MessageTimeInCycle: 3
     MessageDuration: 30
-    MessageColor: {r: 0, g: 0, b: 0, a: 1}
-    ScreenMaterial: {fileID: 0}
+    MessageColor: {r: 0.09411765, g: 0.007843138, b: 0.007843138, a: 1}
+    ScreenMaterial: {fileID: 2100000, guid: 6d44cb9b28a65c04aae9012cf1369f50, type: 2}
     FmodEvents: []
   - CyclesBefore: 0
     Message: ALERT
     MessageTimeInCycle: 5
     MessageDuration: 30
-    MessageColor: {r: 0, g: 0, b: 0, a: 0}
-    ScreenMaterial: {fileID: 0}
+    MessageColor: {r: 0.09411765, g: 0.007843138, b: 0.007843138, a: 0}
+    ScreenMaterial: {fileID: 2100000, guid: 6d44cb9b28a65c04aae9012cf1369f50, type: 2}
     FmodEvents: []
