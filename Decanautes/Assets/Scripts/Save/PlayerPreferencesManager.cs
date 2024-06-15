@@ -1,5 +1,6 @@
 using Cinemachine;
 using Decanautes.Interactable;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,12 +16,16 @@ public class PlayerPreferencesManager : MonoBehaviour
     public Material Quadrichromic;
 
     private FMOD.Studio.VCA MusicVcaController;
+    [ParamRef]
     public string MusicVcaName;
     private FMOD.Studio.VCA AmbianceVcaController;
+    [ParamRef]
     public string AmbianceVcaName;
     private FMOD.Studio.VCA VFXVcaController;
+    [ParamRef]
     public string VFXVcaName;
     private FMOD.Studio.VCA GlobalVcaController;
+    [ParamRef]
     public string GlobalVcaName;
 
 
