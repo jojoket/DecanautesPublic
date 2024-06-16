@@ -57,12 +57,15 @@ MonoBehaviour:
   KilometerData: {fileID: 11400000, guid: 79ab2f3be45161c42bbf224dd76e3035, type: 2}
   GeneralTextRenderer: {fileID: 0}
   MalfunctionsInfluence: 0.25
-  ToEnableOnGood: []
+  ToEnableOnGood:
+  - {fileID: 0}
   ToDisableOnGood: []
   ToEnableOnMalfunction: []
-  ToDisableOnMalfunction: []
+  ToDisableOnMalfunction:
+  - {fileID: 0}
   ToEnableOnBreakDown: []
-  ToDisableOnBreakDown: []
+  ToDisableOnBreakDown:
+  - {fileID: 0}
   OnAllBroken:
     m_PersistentCalls:
       m_Calls: []
@@ -74,7 +77,7 @@ MonoBehaviour:
   OnPowerDecreaseFmodEvent: []
   OnPowerIncreaseFmodEvent: []
   OnStateBreakdownFmodEvents: []
-  DoDisableInfoTextsOnMessage: 0
+  DoDisableInfoTextsOnMessage: 1
   StateMessages:
   - SO GOOD
   - FIXIT
@@ -93,17 +96,17 @@ MonoBehaviour:
       type: 2}
   - Text: {fileID: 0}
     StateImage: {fileID: 0}
+    linkedEvent: {fileID: 0}
+    linkedMaintainable: {fileID: 11400000, guid: 3696fee75bb114140b5b22ee7c63b79b,
+      type: 2}
+  - Text: {fileID: 0}
+    StateImage: {fileID: 0}
     linkedEvent: {fileID: 3035480369546437588}
     linkedMaintainable: {fileID: 0}
   - Text: {fileID: 0}
     StateImage: {fileID: 0}
     linkedEvent: {fileID: 2844069770610891767}
     linkedMaintainable: {fileID: 0}
-  - Text: {fileID: 0}
-    StateImage: {fileID: 0}
-    linkedEvent: {fileID: 0}
-    linkedMaintainable: {fileID: 11400000, guid: 3696fee75bb114140b5b22ee7c63b79b,
-      type: 2}
   CurrentState: 0
   malfunctionsNumber: 0
   CurrentMessage:
@@ -162,14 +165,14 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 6ca78c963dca7c148aafc34cfdc14dba, type: 2}
   LinkedEngineState: {fileID: 6408890377518032855}
   EventsToTrigger:
-  - TriggerTime: 0.25
+  - TriggerTime: 5
     OnTrigger:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
-          m_MethodName: SetCanInteract
-          m_Mode: 6
+          m_TargetAssemblyTypeName: PropAnimation, Assembly-CSharp
+          m_MethodName: TriggerIndexAnim
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -179,13 +182,65 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     FmodEvents: []
-  - TriggerTime: 2
+  - TriggerTime: 5.5
+    OnTrigger:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: PropAnimation, Assembly-CSharp
+          m_MethodName: TriggerIndexAnim
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    FmodEvents:
+    - IsInRythm: 0
+      EventPosition: {fileID: 5108750415918728898}
+      FmodReference:
+        Guid:
+          Data1: 1087231186
+          Data2: 1326507444
+          Data3: 2138011779
+          Data4: 1382701183
+        Path: event:/AMB/AMB_EE_StormInterior
+  - TriggerTime: 6.5
+    OnTrigger:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: PropAnimation, Assembly-CSharp
+          m_MethodName: TriggerIndexAnim
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    FmodEvents:
+    - IsInRythm: 0
+      EventPosition: {fileID: 5108750415918728898}
+      FmodReference:
+        Guid:
+          Data1: 371799441
+          Data2: 1320575993
+          Data3: -338811227
+          Data4: 909814789
+        Path: event:/AMB/AMB_EE_StormEnd
+  - TriggerTime: 0
     OnTrigger:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
-          m_MethodName: SetCanInteract
+          m_MethodName: SetCanOnlyOn
           m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -196,15 +251,14 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
     FmodEvents: []
-  EventsToTriggerOnBreak:
-  - TriggerTime: 0.5
+  - TriggerTime: 1
     OnTrigger:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6408890377518032855}
-          m_TargetAssemblyTypeName: EngineState, Assembly-CSharp
-          m_MethodName: ForceBreakAll
-          m_Mode: 1
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
+          m_MethodName: SetCanOnlyOn
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -213,10 +267,16 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
-          m_MethodName: SetCanInteract
-          m_Mode: 6
+    FmodEvents: []
+  EventsToTriggerOnBreak:
+  - TriggerTime: 5.55
+    OnTrigger:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6408890377518032855}
+          m_TargetAssemblyTypeName: EngineState, Assembly-CSharp
+          m_MethodName: ForceBreakAll
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -310,9 +370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffa52407f5f7cc4390b80feb2f27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LastMinuteTime: 0.5
+  LastMinuteTime: 9
   LastMinuteDuration: 60
-  LastDecaNoteTime: 50
+  LastDecaNoteTime: 10
   EngineState: {fileID: 6408890377518032855}
   IsLastMinute: 0
   IsLastDecaNote: 0
@@ -326,7 +386,91 @@ MonoBehaviour:
     FmodEvents: []
   OnLastMinute:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
+        m_MethodName: SetCanInteract
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnGameEnding:
     m_PersistentCalls:
       m_Calls:
@@ -421,6 +565,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
+          m_MethodName: SetCanInteract
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     OnOverThreshold:
       m_PersistentCalls:
         m_Calls:
@@ -432,6 +600,30 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
+          m_MethodName: SetCanInteract
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -504,6 +696,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
+          m_MethodName: SetCanInteract
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     OnOverThreshold:
       m_PersistentCalls:
         m_Calls:
@@ -515,6 +731,30 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Decanautes.Interactable.Interactable, Assembly-CSharp
+          m_MethodName: SetCanInteract
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -566,6 +806,76 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EventPressu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: Name
+      value: Pressure
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
+        type: 3}
+      propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2846246284779708716, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -662,7 +972,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: Name
-      value: Hourglass
+      value: Temporality
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -692,7 +1002,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -707,7 +1017,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -762,7 +1072,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -787,7 +1097,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -867,7 +1177,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
-      value: TriggerIndexAnim
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -927,7 +1237,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: TriggerIndexAnim
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -962,7 +1272,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
-      value: PropAnimation, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -972,7 +1282,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnFix.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_IntArgument
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -1007,7 +1317,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: PropAnimation, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
@@ -1032,7 +1342,7 @@ PrefabInstance:
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
       propertyPath: OnEnable.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2781084374471777043, guid: 9869408bf9d6dca4381e01ea1a3474a2,
         type: 3}
