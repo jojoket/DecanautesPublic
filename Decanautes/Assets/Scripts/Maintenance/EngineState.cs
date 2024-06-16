@@ -64,6 +64,7 @@ public class EngineState : MonoBehaviour
 
     [TabGroup("Events")]
     public UnityEvent OnAllBroken;
+    [TabGroup("Events")]
     public UnityEvent OnAllGood;
 
     [TabGroup("FMOD")]
