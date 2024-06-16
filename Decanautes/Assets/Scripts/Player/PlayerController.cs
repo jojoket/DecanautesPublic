@@ -233,6 +233,12 @@ public class PlayerController : MonoBehaviour
 
     private void Escape()
     {
+        if (CanInteract && PostItEditing)
+        {
+            ManagePostItInteraction();
+            return;
+        }
+
         if (UIManager.Instance)
         {
             UIManager.Instance.Escape();
