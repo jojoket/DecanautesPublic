@@ -65,6 +65,8 @@ public class EngineState : MonoBehaviour
     [TabGroup("Events")]
     public UnityEvent OnAllBroken;
     [TabGroup("Events")]
+    public UnityEvent OnNotAllBroken;
+    [TabGroup("Events")]
     public UnityEvent OnAllGood;
 
     [TabGroup("FMOD")]
@@ -169,6 +171,8 @@ public class EngineState : MonoBehaviour
     public void CheckForLinkedEventsAndMaintainables()
     {
         int lastMalfunctionNum = malfunctionsNumber;
+        int possibleMalfunctionsNum = LinkedEvents.Count + LinkedMaintainables.Count;
+
         malfunctionsNumber = 0;
         foreach(Event linkedEvent in LinkedEvents)
         {
@@ -186,20 +190,25 @@ public class EngineState : MonoBehaviour
         }
 
         //sound
-        if (malfunctionsNumber < lastMalfunctionNum)
+        if (malfunctionsNumber > lastMalfunctionNum)
         {
             foreach (FmodEventInfo fmodEvent in OnPowerDecreaseFmodEvent)
             {
                 RythmManager.Instance.StartFmodEvent(fmodEvent);
             }
         }
-        if (malfunctionsNumber > lastMalfunctionNum)
+        if (malfunctionsNumber < lastMalfunctionNum)
         {
             foreach (FmodEventInfo fmodEvent in OnPowerIncreaseFmodEvent)
             {
                 RythmManager.Instance.StartFmodEvent(fmodEvent);
             }
         }
+        if (malfunctionsNumber < lastMalfunctionNum && lastMalfunctionNum == possibleMalfunctionsNum)
+        {
+            OnNotAllBroken?.Invoke();
+        }
+
 
         UpdateMachinesText();
         if (malfunctionsNumber == 0)
