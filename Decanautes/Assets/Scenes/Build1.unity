@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 136.9044, g: 806.6283, b: 8163.6006, a: 1}
+  m_IndirectSpecularColor: {r: 113.82236, g: 855.1703, b: 8696.917, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3122,6 +3122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1585631908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6169071041195303124, guid: 7604999d62f23c64fb78583fa0a5933c,
+    type: 3}
+  m_PrefabInstance: {fileID: 298130213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1649715572 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5954404001122731686, guid: 7604999d62f23c64fb78583fa0a5933c,
@@ -5177,6 +5183,21 @@ PrefabInstance:
       propertyPath: DoDisableInfoTextsOnMessage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6408890377518032855, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: 'ToEnableOnGood.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1585631908}
+    - target: {fileID: 6408890377518032855, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: 'ToDisableOnBreakDown.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1585631908}
+    - target: {fileID: 6408890377518032855, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: 'ToDisableOnMalfunction.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1585631908}
     - target: {fileID: 6408890377518032855, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
       propertyPath: LinkedMachinesTexts.Array.data[0].Text
