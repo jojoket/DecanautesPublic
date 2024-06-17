@@ -50,6 +50,7 @@ namespace Decanautes.Interactable
         public bool isActivated = false;
         [ReadOnly]
         public bool isPressed;
+        public bool doResetPressedOnCannotInteract;
 
 
 
@@ -174,9 +175,13 @@ namespace Decanautes.Interactable
 
         public void SetCanInteract(bool canInteract)
         {
-            if (isPressed)
+            if (isPressed && !doResetPressedOnCannotInteract)
             {
                 InteractionEnd();
+            }
+            else if (doResetPressedOnCannotInteract)
+            {
+                isPressed = false;
             }
             CanInteract = canInteract;
         }

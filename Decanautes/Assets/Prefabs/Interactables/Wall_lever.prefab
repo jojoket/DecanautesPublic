@@ -79,11 +79,14 @@ MonoBehaviour:
   ActiveColor: {r: 0.34229445, g: 1, b: 0, a: 1}
   IsToggle: 0
   CanInteract: 1
+  CanOnlyOn: 0
+  CanOnlyOff: 0
   NeedLookToKeepInteraction: 1
   DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations:
   - parent: {fileID: 0}
     animator: {fileID: 6756994312200336201}
+    Countdown: 0
     triggerType: 0
     IsInRythm: 0
     HasSound: 0
@@ -104,6 +107,7 @@ MonoBehaviour:
   OnInteractEndedAnimations:
   - parent: {fileID: 0}
     animator: {fileID: 6756994312200336201}
+    Countdown: 0
     triggerType: 0
     IsInRythm: 0
     HasSound: 0
@@ -152,6 +156,7 @@ MonoBehaviour:
     isZero: 0
   isActivated: 0
   isPressed: 0
+  doResetPressedOnCannotInteract: 1
 --- !u!114 &6388110051133469490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +172,7 @@ MonoBehaviour:
   Animations:
   - parent: {fileID: 0}
     animator: {fileID: 6756994312200336201}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 0
     HasSound: 0
@@ -180,6 +186,7 @@ MonoBehaviour:
         m_Calls: []
   - parent: {fileID: 0}
     animator: {fileID: 6756994312200336201}
+    Countdown: 0
     triggerType: 1
     IsInRythm: 0
     HasSound: 0

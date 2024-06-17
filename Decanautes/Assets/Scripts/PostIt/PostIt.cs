@@ -37,6 +37,7 @@ public class PostIt : MonoBehaviour
     public FmodEventInfo PostItReleaseViewFmod;
     public FmodEventInfo PutPostItFmod;
     public FmodEventInfo DeletePostItFmod;
+    public FmodEventInfo ConfirmPostItFmod;
 
     [TitleGroup("Debug")]
     [ReadOnly]
@@ -220,7 +221,9 @@ public class PostIt : MonoBehaviour
 
     public void EnterPostItView()
     {
-        RythmManager.Instance.StartFmodEvent(PostItViewFmod);
+        UIManager.Instance.HideHUD(true);
+        if (PostItReleaseViewFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(PostItViewFmod);
         isViewing = true;
         if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
         {
@@ -231,7 +234,9 @@ public class PostIt : MonoBehaviour
     }
     public void ExitPostItView()
     {
-        RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
+        UIManager.Instance.HideHUD(false);
+        if (PostItReleaseViewFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
         EventSystem.current.SetSelectedGameObject(null);
         isViewing = false;
         if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
@@ -244,22 +249,30 @@ public class PostIt : MonoBehaviour
 
     public void EnterPostItEdit()
     {
+        UIManager.Instance.HideHUD(true);
+        if (PostItReleaseViewFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(PostItViewFmod);
         OnEnterEdit?.Invoke();
     }
     public void ExitPostItEdit()
     {
+        UIManager.Instance.HideHUD(false);
+        if (PostItReleaseViewFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
         EventSystem.current.SetSelectedGameObject(null);
         OnExitEdit?.Invoke();
     }
 
     public void DeletePostIt()
     {
-        RythmManager.Instance.StartFmodEvent(DeletePostItFmod);
+        if (DeletePostItFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(DeletePostItFmod);
         Destroy(gameObject);
         GameObject.FindFirstObjectByType<PlayerController>().UIPostItBlock(false);
     }
     public void ConfirmPostIt()
     {
+        RythmManager.Instance.StartFmodEvent(ConfirmPostItFmod);
         GameObject.FindFirstObjectByType<PlayerController>().ManagePostItInteraction();
     }
 

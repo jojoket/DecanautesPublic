@@ -43,7 +43,8 @@ public class MusicManager : MonoBehaviour
         if (CurrentMusicState == MusicState.Silent && TimeUntilNextEvent > MinTimeForMusicStart && Time.time >= MinGameTimeForMusicStart)
         {
             MusicStartTimeStamp = Time.time;
-            RythmManager.Instance.StartFmodEvent(MusicFmodEvent);
+            if (MusicFmodEvent.EventPosition)
+                RythmManager.Instance.StartFmodEvent(MusicFmodEvent);
             CurrentMusicState = MusicState.Creshendo;
             StartCoroutine(ChangeToAllGood());
         }

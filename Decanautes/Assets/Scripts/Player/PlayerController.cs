@@ -81,7 +81,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_rigidbody.velocity.magnitude >= 0.1f && !IsOnFootStepsCoolDown)
         {
-            RythmManager.Instance.StartFmodEvent(FootStep);
+            if (FootStep.EventPosition)
+                RythmManager.Instance.StartFmodEvent(FootStep);
             StartCoroutine(FootStepsCoolDown());
         }
         Vector3 dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized * _moveDirection.y + Camera.main.transform.right * _moveDirection.x;
@@ -321,8 +322,12 @@ public class PlayerController : MonoBehaviour
             if (PostItEditing.isEditing)
             {
                 PostItEditing.DeselectText();
+
                 if (!PostItEditing.IsPosted)
+                {
+                    RythmManager.Instance.StartFmodEvent(PostItEditing.ConfirmPostItFmod);
                     ResetPostItPos(PostItEditing);
+                }
                 else
                     MovePostItTo(PostItEditing, PostItEditingLastPos, PostItEditingLastRot);
                 PostItEditing = null;
