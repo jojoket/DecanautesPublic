@@ -32,6 +32,12 @@ public class PostIt : MonoBehaviour
     public int Voted;
     public int VoteTresholdDelete;
 
+    [TitleGroup("FmodEvent")]
+    public FmodEventInfo PostItViewFmod;
+    public FmodEventInfo PostItReleaseViewFmod;
+    public FmodEventInfo PutPostItFmod;
+    public FmodEventInfo DeletePostItFmod;
+
     [TitleGroup("Debug")]
     [ReadOnly]
     public int CycleNum;
@@ -145,6 +151,7 @@ public class PostIt : MonoBehaviour
 
     public void Post()
     {
+        RythmManager.Instance.StartFmodEvent(PutPostItFmod);
         transform.position = _validPosition;
         transform.rotation = _validRotation;
         GetComponent<Grabbable>().SpawnerReset();
@@ -213,6 +220,7 @@ public class PostIt : MonoBehaviour
 
     public void EnterPostItView()
     {
+        RythmManager.Instance.StartFmodEvent(PostItViewFmod);
         isViewing = true;
         if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
         {
@@ -223,6 +231,7 @@ public class PostIt : MonoBehaviour
     }
     public void ExitPostItView()
     {
+        RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
         EventSystem.current.SetSelectedGameObject(null);
         isViewing = false;
         if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
@@ -245,6 +254,7 @@ public class PostIt : MonoBehaviour
 
     public void DeletePostIt()
     {
+        RythmManager.Instance.StartFmodEvent(DeletePostItFmod);
         Destroy(gameObject);
         GameObject.FindFirstObjectByType<PlayerController>().UIPostItBlock(false);
     }

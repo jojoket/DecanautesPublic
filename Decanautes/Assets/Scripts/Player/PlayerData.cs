@@ -12,4 +12,8 @@ public class PlayerData : ScriptableObject
     [MinValue(1f)]
     public float Drag;
     public float InteractionMaxDist;
+    [MinMaxSlider(0,2)]
+    public Vector2 FootStepsCycle;
+
+    
 }

@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9051144386517030823}
   - component: {fileID: 355378207951416695}
+  - component: {fileID: 4722094602331079740}
   m_Layer: 5
   m_Name: SliderParam
   m_TagString: Untagged
@@ -272,7 +273,10 @@ MonoBehaviour:
   BoolValue: 0
   BoolTrueButton: {fileID: 0}
   BoolFalseButton: {fileID: 0}
-  OnBoolValueCange:
+  OnBoolValueTrue:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBoolValueFalse:
     m_PersistentCalls:
       m_Calls: []
   ColorValue: {r: 0, g: 0, b: 0, a: 0}
@@ -288,7 +292,50 @@ MonoBehaviour:
   SliderText: {fileID: 7683194353821306206}
   OnSliderValueChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4722094602331079740}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4722094602331079740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106745330429737752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1600414578
+      Data2: 1312983976
+      Data3: 766193588
+      Data4: -929579442
+    Path: event:/UI/UI_InGameMenu/UI_IG_Slider
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1297680064759430491
 GameObject:
   m_ObjectHideFlags: 0
