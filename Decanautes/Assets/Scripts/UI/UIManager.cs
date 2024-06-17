@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -53,7 +54,8 @@ public class UIManager : MonoBehaviour
 
     public void ChangeScene(int sceneIndex)
     {
-        FadingScreen.DOFade(1,2);
+        Time.timeScale = 1;
+        FadingScreen.DOFade(1, 2);
         if (RythmManager.Instance)
         {
             RythmManager.Instance.StartFmodEvent(OnChangeSceneFading);
@@ -64,6 +66,7 @@ public class UIManager : MonoBehaviour
         });
     }
 
+    [Button]
     private void FadeIn()
     {
         FadingScreen.color = new Color(FadingScreen.color.r, FadingScreen.color.g, FadingScreen.color.b, 1);
