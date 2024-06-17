@@ -322,8 +322,12 @@ public class PlayerController : MonoBehaviour
             if (PostItEditing.isEditing)
             {
                 PostItEditing.DeselectText();
+
                 if (!PostItEditing.IsPosted)
+                {
+                    RythmManager.Instance.StartFmodEvent(PostItEditing.ConfirmPostItFmod);
                     ResetPostItPos(PostItEditing);
+                }
                 else
                     MovePostItTo(PostItEditing, PostItEditingLastPos, PostItEditingLastRot);
                 PostItEditing = null;

@@ -8,11 +8,15 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine.Serialization;
 using UnityEngine.Rendering;
+using FMOD.Studio;
 
 [Serializable]
 public class FmodEventInfo
 {
     public bool IsInRythm;
+    public bool isBeatSpecific = false;
+    [ShowIf("isBeatSpecific")]
+    public int BeatStart;
     public Transform EventPosition;
     public EventReference FmodReference;
 }
@@ -29,6 +33,7 @@ public class RythmManager : MonoBehaviour
 
     //Singleton
     public static RythmManager Instance;
+    public Bank bank;
 
     public UnityEvent OnBeatTrigger;
 
@@ -70,7 +75,11 @@ public class RythmManager : MonoBehaviour
 
     private void Start()
     {
-        if(!Base.FmodReference.IsNull)
+        FMODUnity.RuntimeManager.StudioSystem.getBankList(out Bank[] bankList);
+        bank = bankList[0];
+        bank.loadSampleData();
+
+        if (!Base.FmodReference.IsNull)
         {
             timelineInfo = new TimelineInfo();
             _beatCallBack = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
@@ -126,15 +135,25 @@ public class RythmManager : MonoBehaviour
 
     private void PlayAndRelieveBuffer()
     {
+        List<FmodEventInfo> fmodEventToDelete = new List<FmodEventInfo>();
         foreach (FmodEventInfo fmodEvent in FMODEvents)
         {
+            if (fmodEvent.isBeatSpecific && fmodEvent.BeatStart != timelineInfo.currentBeat)
+            {
+                continue;
+            }
             FMODUnity.RuntimeManager.PlayOneShot(fmodEvent.FmodReference, fmodEvent.EventPosition.position);
+            fmodEventToDelete.Add(fmodEvent);
         }
         foreach (KeyValuePair<string,int>  FmodParameter in FMODParameters)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName(FmodParameter.Key, FmodParameter.Value);
         }
-        FMODEvents.Clear();
+        foreach (FmodEventInfo fmodEvent in fmodEventToDelete)
+        {
+            FMODEvents.Remove(fmodEvent);
+        }
+        FMODParameters.Clear();
     }
 
 

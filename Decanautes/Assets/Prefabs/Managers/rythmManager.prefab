@@ -51,6 +51,8 @@ MonoBehaviour:
   lastBeat: 0
   Base:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 0}
     FmodReference:
       Guid:
@@ -60,7 +62,9 @@ MonoBehaviour:
         Data4: 1943452289
       Path: event:/MX/MX_RythmMain
   EventsOnStart:
-  - IsInRythm: 0
+  - IsInRythm: 1
+    isBeatSpecific: 1
+    BeatStart: 1
     EventPosition: {fileID: 0}
     FmodReference:
       Guid:
@@ -69,7 +73,9 @@ MonoBehaviour:
         Data3: -1271335805
         Data4: -209553049
       Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BatteryWork
-  - IsInRythm: 0
+  - IsInRythm: 1
+    isBeatSpecific: 1
+    BeatStart: 1
     EventPosition: {fileID: 0}
     FmodReference:
       Guid:
@@ -78,7 +84,9 @@ MonoBehaviour:
         Data3: 339579266
         Data4: -1796020044
       Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_BigRadiatorWork
-  - IsInRythm: 0
+  - IsInRythm: 1
+    isBeatSpecific: 1
+    BeatStart: 1
     EventPosition: {fileID: 0}
     FmodReference:
       Guid:
@@ -87,7 +95,9 @@ MonoBehaviour:
         Data3: 1450650293
         Data4: -759200258
       Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_HourGlassWork
-  - IsInRythm: 0
+  - IsInRythm: 1
+    isBeatSpecific: 1
+    BeatStart: 1
     EventPosition: {fileID: 0}
     FmodReference:
       Guid:
@@ -96,6 +106,18 @@ MonoBehaviour:
         Data3: -838587461
         Data4: -741535134
       Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_PressirizerWork
+  - IsInRythm: 1
+    isBeatSpecific: 1
+    BeatStart: 1
+    EventPosition: {fileID: 2042268679304362058, guid: 89c8484155b0a7946a8a2c9b9004cbac,
+      type: 3}
+    FmodReference:
+      Guid:
+        Data1: -1642988971
+        Data2: 1093694840
+        Data3: -1188811136
+        Data4: 1935307119
+      Path: event:/MX/MX_BoxMusic
 --- !u!114 &1261153846641071984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +137,8 @@ MonoBehaviour:
   EndingTime: 15
   MusicFmodEvent:
     IsInRythm: 1
+    isBeatSpecific: 1
+    BeatStart: 1
     EventPosition: {fileID: 4489585891853868667}
     FmodReference:
       Guid:

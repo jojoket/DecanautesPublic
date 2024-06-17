@@ -13,6 +13,7 @@ public class MapManager : MonoBehaviour
 
     public MapData MapData;
     public GameObject savedFile;
+    public PostItBanWords BanWords;
 
 
     private void Awake()
@@ -168,6 +169,10 @@ public class MapManager : MonoBehaviour
                 }
                 if (objSpn.TryGetComponent<Interactable>(out Interactable interactable))
                     interactable.isActivated = obj.IsActivated;
+                if (postIt && !VerifyIntegrety(postIt.InputText.text))
+                {
+                    Destroy(postIt.gameObject);
+                }
             }
         }
 
@@ -179,6 +184,21 @@ public class MapManager : MonoBehaviour
     {
         MapData.CurrentCycle = 0;
         MapData.SavedObjects = new List<ObjectSave>();
+    }
+
+
+    private bool VerifyIntegrety(string text)
+    {
+
+        bool isValid = true;
+        foreach (string banWord in BanWords.banWords)
+        {
+            if (text.Contains(banWord))
+            {
+                isValid = false;
+            }
+        }
+        return isValid;
     }
 
 }
