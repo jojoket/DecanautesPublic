@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     public void ChangeScene(int sceneIndex)
     {
+        MapManager.Instance.SaveMap();
         Time.timeScale = 1;
         FadingScreen.DOFade(1, 2);
         if (RythmManager.Instance)
