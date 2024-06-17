@@ -246,10 +246,14 @@ public class PostIt : MonoBehaviour
 
     public void EnterPostItEdit()
     {
+        if (PostItReleaseViewFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(PostItViewFmod);
         OnEnterEdit?.Invoke();
     }
     public void ExitPostItEdit()
     {
+        if (PostItReleaseViewFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
         EventSystem.current.SetSelectedGameObject(null);
         OnExitEdit?.Invoke();
     }
