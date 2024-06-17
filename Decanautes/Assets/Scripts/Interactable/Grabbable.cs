@@ -134,7 +134,8 @@ namespace Decanautes.Interactable
             }
             else
             {
-                RythmManager.Instance.StartFmodEvent(GrabFmod);
+                if (GrabFmod.EventPosition)
+                    RythmManager.Instance.StartFmodEvent(GrabFmod);
             }
             if (DoRespawnFromGrab)
             {
@@ -221,7 +222,8 @@ namespace Decanautes.Interactable
             }
             else
             {
-                RythmManager.Instance.StartFmodEvent(StopGrabFmod);
+                if (StopGrabFmod.EventPosition)
+                    RythmManager.Instance.StartFmodEvent(StopGrabFmod);
                 _playerController.grabbedObj = null;
             }
             if (GrabbableData.isSimulated && _rigidbody.velocity.magnitude<= 0.5f)

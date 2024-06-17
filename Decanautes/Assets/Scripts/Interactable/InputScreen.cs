@@ -124,7 +124,8 @@ namespace Decanautes.Interactable
             {
                 InputField.text = "";
                 OnCodeValid?.Invoke();
-                RythmManager.Instance.StartFmodEvent(OnCodeValidFmod);
+                if (OnCodeValidFmod.EventPosition)
+                    RythmManager.Instance.StartFmodEvent(OnCodeValidFmod);
                 OnCodeValidAction?.Invoke(this);
                 StartCoroutine(CodeMatVisual(ValidColor));
                 return;

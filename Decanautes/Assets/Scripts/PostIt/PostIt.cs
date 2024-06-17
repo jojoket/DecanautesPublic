@@ -220,7 +220,8 @@ public class PostIt : MonoBehaviour
 
     public void EnterPostItView()
     {
-        RythmManager.Instance.StartFmodEvent(PostItViewFmod);
+        if (PostItReleaseViewFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(PostItViewFmod);
         isViewing = true;
         if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
         {
@@ -231,7 +232,8 @@ public class PostIt : MonoBehaviour
     }
     public void ExitPostItView()
     {
-        RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
+        if (PostItReleaseViewFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
         EventSystem.current.SetSelectedGameObject(null);
         isViewing = false;
         if (CycleNum == MapManager.Instance.MapData.CurrentCycle)
@@ -254,7 +256,8 @@ public class PostIt : MonoBehaviour
 
     public void DeletePostIt()
     {
-        RythmManager.Instance.StartFmodEvent(DeletePostItFmod);
+        if (DeletePostItFmod.EventPosition)
+            RythmManager.Instance.StartFmodEvent(DeletePostItFmod);
         Destroy(gameObject);
         GameObject.FindFirstObjectByType<PlayerController>().UIPostItBlock(false);
     }
