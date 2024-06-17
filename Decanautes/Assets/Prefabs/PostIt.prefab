@@ -1279,6 +1279,46 @@ MonoBehaviour:
   Vote: 0
   Voted: 0
   VoteTresholdDelete: -5
+  PostItViewFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 6226210876874019490}
+    FmodReference:
+      Guid:
+        Data1: 129200186
+        Data2: 1244457613
+        Data3: 716194709
+        Data4: 76156213
+      Path: event:/SFX/SFX_Player/SFX_P_GrabPostIt
+  PostItReleaseViewFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 6226210876874019490}
+    FmodReference:
+      Guid:
+        Data1: 129200186
+        Data2: 1244457613
+        Data3: 716194709
+        Data4: 76156213
+      Path: event:/SFX/SFX_Player/SFX_P_GrabPostIt
+  PutPostItFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 6226210876874019490}
+    FmodReference:
+      Guid:
+        Data1: -177618294
+        Data2: 1079755021
+        Data3: -1377160573
+        Data4: 770060360
+      Path: event:/SFX/SFX_Player/SFX_P_PutPostIt
+  DeletePostItFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 6226210876874019490}
+    FmodReference:
+      Guid:
+        Data1: -635603877
+        Data2: 1075589116
+        Data3: 1222872713
+        Data4: 617936194
+      Path: event:/SFX/SFX_Player/SFX_P_DeletePostIt
   CycleNum: 0
   _isPosting: 0
   IsPosted: 0
@@ -1313,6 +1353,8 @@ MonoBehaviour:
   ActiveColor: {r: 0.06587124, g: 1, b: 0, a: 1}
   IsToggle: 1
   CanInteract: 1
+  CanOnlyOn: 0
+  CanOnlyOff: 0
   NeedLookToKeepInteraction: 0
   DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations: []
@@ -1362,6 +1404,36 @@ MonoBehaviour:
   isPressed: 0
   GrabbableData: {fileID: 11400000, guid: f114c832f4d222b48856a1fa354ef683, type: 2}
   Spawner: {fileID: 0}
+  GrabFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+  StopGrabFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+  PostPostItFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   _isGrabbed: 0
   _isTransformBased: 0
   _grabTransform: {fileID: 0}

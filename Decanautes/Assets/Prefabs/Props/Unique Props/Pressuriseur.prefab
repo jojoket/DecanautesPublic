@@ -3198,12 +3198,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers:
   - {fileID: 7433912793068779510}
-  SelectionColors: []
+  SelectionColors:
+  - {fileID: 0}
   BaseMaterial: {fileID: 2100000, guid: 0b81bc86871c38c47b69460962af4981, type: 2}
   HoverColor: {r: 1, g: 0.523595, b: 0, a: 1}
   ActiveColor: {r: 0.062288046, g: 1, b: 0, a: 1}
   IsToggle: 0
   CanInteract: 1
+  CanOnlyOn: 0
+  CanOnlyOff: 0
   NeedLookToKeepInteraction: 1
   DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations: []
@@ -3267,9 +3270,9 @@ MonoBehaviour:
   DoStopMovementsWhenIsEditing: 1
   CodeNeeded: 
   IsEditing: 0
-  NormalColor: {fileID: 0}
-  InvalidColor: {fileID: 0}
-  ValidColor: {fileID: 0}
+  NormalColor: {fileID: 2100000, guid: b19d3580440ba934496acbaa1032f2fb, type: 2}
+  InvalidColor: {fileID: 2100000, guid: 449aed203a54afd45abbafc67c21eb68, type: 2}
+  ValidColor: {fileID: 2100000, guid: de509cd9dc28cb34da66125bc7ace8f8, type: 2}
   OnStartEditing:
     m_PersistentCalls:
       m_Calls: []
@@ -3279,6 +3282,16 @@ MonoBehaviour:
   OnCodeValid:
     m_PersistentCalls:
       m_Calls: []
+  OnCodeValidFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 6476513296166998657}
+    FmodReference:
+      Guid:
+        Data1: -657154284
+        Data2: 1110380808
+        Data3: 492151696
+        Data4: -1967294142
+      Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_PressirizerButtonWrong
   OnCodeInvalid:
     m_PersistentCalls:
       m_Calls: []

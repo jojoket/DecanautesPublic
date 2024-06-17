@@ -9,6 +9,7 @@ using Decanautes.Interactable;
 using Cinemachine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.EventSystems;
 
 
 public class PlayerController : MonoBehaviour
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public Transform GrabPoint;
     public CinemachineVirtualCamera VirtualCamera;
 
+    [TitleGroup("Fmod")]
+    public FmodEventInfo FootStep;
+
     //Variable
     private Vector2 _moveDirection = Vector2.zero;
     [Sirenix.OdinInspector.ReadOnly]
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public bool CanInteract = true;
     private bool IsUiPostItBlock = false;
     private bool IsUiScreenBlock = false;
+    private bool IsOnFootStepsCoolDown = false;
 
     public PlayerData PlayerData;
     public LayerMask InteractionLayer;
@@ -74,10 +79,23 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_rigidbody.velocity.magnitude >= 0.1f && !IsOnFootStepsCoolDown)
+        {
+            RythmManager.Instance.StartFmodEvent(FootStep);
+            StartCoroutine(FootStepsCoolDown());
+        }
         Vector3 dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized * _moveDirection.y + Camera.main.transform.right * _moveDirection.x;
         _rigidbody.AddForce(dir * PlayerData.MoveSpeed);
         Vector3 currentVelocity = _rigidbody.velocity;
         _rigidbody.velocity = new Vector3(currentVelocity.x / (PlayerData.Drag * Time.fixedDeltaTime*100), currentVelocity.y, currentVelocity.z / (PlayerData.Drag * Time.fixedDeltaTime * 100));
+    }
+
+    private IEnumerator FootStepsCoolDown()
+    {
+        IsOnFootStepsCoolDown = true;
+        float randomTime = Random.Range(PlayerData.FootStepsCycle.x, PlayerData.FootStepsCycle.y);
+        yield return new WaitForSeconds(randomTime);
+        IsOnFootStepsCoolDown = false;
     }
 
     #region Inputs

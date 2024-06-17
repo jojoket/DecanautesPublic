@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     public bool isBlocked;
 
+    public FmodEventInfo EscapeFmod;
 
 
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     public void Escape()
     {
+        RythmManager.Instance.StartFmodEvent(EscapeFmod);
         CurrentUIScreen.gameObject.SetActive(false);
         if (CurrentUIScreen.ScreenEscape)
         {

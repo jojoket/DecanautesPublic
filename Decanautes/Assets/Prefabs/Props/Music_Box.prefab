@@ -55,6 +55,8 @@ MonoBehaviour:
   ActiveColor: {r: 0, g: 1, b: 0.05124998, a: 1}
   IsToggle: 0
   CanInteract: 1
+  CanOnlyOn: 0
+  CanOnlyOff: 0
   NeedLookToKeepInteraction: 1
   DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations: []
@@ -368,8 +370,19 @@ MonoBehaviour:
     Countdown: 0
     triggerType: 1
     IsInRythm: 0
-    HasSound: 0
-    animationSounds: []
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 8719308691855781302}
+        FmodReference:
+          Guid:
+            Data1: -1142696934
+            Data2: 1334063222
+            Data3: 896659102
+            Data4: -382280541
+          Path: event:/MX/MX_BoxMusicStart
     parameterName: Playing
     StateToApply: 1
     FloatToApply: 0
@@ -382,8 +395,19 @@ MonoBehaviour:
     Countdown: 1
     triggerType: 1
     IsInRythm: 0
-    HasSound: 0
-    animationSounds: []
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 0
+        EventPosition: {fileID: 8719308691855781302}
+        FmodReference:
+          Guid:
+            Data1: -661368709
+            Data2: 1125516508
+            Data3: -1112306798
+            Data4: -235789953
+          Path: event:/MX/MX_BoxMusicStop
     parameterName: Playing
     StateToApply: 0
     FloatToApply: 0

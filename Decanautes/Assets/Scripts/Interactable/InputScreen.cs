@@ -32,6 +32,8 @@ namespace Decanautes.Interactable
         [TitleGroup("Events")]
         public UnityEvent OnCodeValid;
         [TitleGroup("Events")]
+        public FmodEventInfo OnCodeValidFmod;
+        [TitleGroup("Events")]
         public UnityAction<Interactable> OnCodeValidAction;
         [TitleGroup("Events")]
         public UnityEvent OnCodeInvalid;
@@ -122,6 +124,7 @@ namespace Decanautes.Interactable
             {
                 InputField.text = "";
                 OnCodeValid?.Invoke();
+                RythmManager.Instance.StartFmodEvent(OnCodeValidFmod);
                 OnCodeValidAction?.Invoke(this);
                 StartCoroutine(CodeMatVisual(ValidColor));
                 return;
