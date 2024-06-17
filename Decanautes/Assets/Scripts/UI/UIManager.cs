@@ -1,7 +1,10 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,12 +18,15 @@ public class UIManager : MonoBehaviour
 
     public FmodEventInfo EscapeFmod;
     public FmodEventInfo EscapeBlockingFmod;
+    public FmodEventInfo OnChangeSceneFading;
 
+    public Image FadingScreen;
 
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
+        FadeIn();
     }
 
 
@@ -43,7 +49,21 @@ public class UIManager : MonoBehaviour
 
     public void ChangeScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        FadingScreen.DOFade(1,2);
+        if (RythmManager.Instance)
+        {
+            RythmManager.Instance.StartFmodEvent(OnChangeSceneFading);
+        }
+        DOVirtual.DelayedCall(2, () =>
+        {
+            SceneManager.LoadScene(sceneIndex);
+        });
+    }
+
+    private void FadeIn()
+    {
+        FadingScreen.color = new Color(FadingScreen.color.r, FadingScreen.color.g, FadingScreen.color.b, 1);
+        FadingScreen.DOFade(0, 2);
     }
 
     public void HideHUD(bool doHide)
