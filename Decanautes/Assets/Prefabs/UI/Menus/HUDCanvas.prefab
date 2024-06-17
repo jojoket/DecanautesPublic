@@ -35,6 +35,7 @@ RectTransform:
   - {fileID: 6075209855526241760}
   - {fileID: 6314702217174498032}
   - {fileID: 7825929100437111837}
+  - {fileID: 6433623291121189075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -118,10 +119,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  HUD: {fileID: 0}
   CurrentUIScreen: {fileID: 2479994833955360412}
   isBlocked: 0
   EscapeFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 5076494575808945534}
     FmodReference:
       Guid:
@@ -130,6 +134,106 @@ MonoBehaviour:
         Data3: -772907078
         Data4: -1703253388
       Path: event:/UI/UI_InGameMenu/UI_IG_CloseMenu
+  EscapeBlockingFmod:
+    IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
+    EventPosition: {fileID: 5076494575808945534}
+    FmodReference:
+      Guid:
+        Data1: -1474726004
+        Data2: 1159893462
+        Data3: -1799064938
+        Data4: 263993173
+      Path: event:/SFX/SFX_Player/SFX_P_Begin
+  OnChangeSceneFading:
+    IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
+    EventPosition: {fileID: 5076494575808945534}
+    FmodReference:
+      Guid:
+        Data1: -1433355611
+        Data2: 1260115382
+        Data3: -202660474
+        Data4: 1586391908
+      Path: event:/SFX/SFX_Player/SFX_P_End
+  FadingScreen: {fileID: 758690147045425904}
+--- !u!1 &8054094989336723848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6433623291121189075}
+  - component: {fileID: 2690224515790809810}
+  - component: {fileID: 758690147045425904}
+  m_Layer: 5
+  m_Name: Fading screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6433623291121189075
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054094989336723848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5076494575808945534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2690224515790809810
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054094989336723848}
+  m_CullTransparentMesh: 1
+--- !u!114 &758690147045425904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054094989336723848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &3356794206062033289
 PrefabInstance:
   m_ObjectHideFlags: 0

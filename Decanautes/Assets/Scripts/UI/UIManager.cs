@@ -1,7 +1,10 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,19 +17,30 @@ public class UIManager : MonoBehaviour
     public bool isBlocked;
 
     public FmodEventInfo EscapeFmod;
+    public FmodEventInfo EscapeBlockingFmod;
+    public FmodEventInfo OnChangeSceneFading;
 
+    public Image FadingScreen;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (isBlocked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
         Instance = this;
+        FadeIn();
     }
 
 
 
     public void Escape()
     {
-        RythmManager.Instance.StartFmodEvent(EscapeFmod);
+        if (!isBlocked && CurrentUIScreen.ScreenEscape.IsBlocking)
+            RythmManager.Instance.StartFmodEvent(EscapeBlockingFmod);
+        else
+            RythmManager.Instance.StartFmodEvent(EscapeFmod);
         CurrentUIScreen.gameObject.SetActive(false);
         if (CurrentUIScreen.ScreenEscape)
         {
@@ -39,7 +53,21 @@ public class UIManager : MonoBehaviour
 
     public void ChangeScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        FadingScreen.DOFade(1,2);
+        if (RythmManager.Instance)
+        {
+            RythmManager.Instance.StartFmodEvent(OnChangeSceneFading);
+        }
+        DOVirtual.DelayedCall(2, () =>
+        {
+            SceneManager.LoadScene(sceneIndex);
+        });
+    }
+
+    private void FadeIn()
+    {
+        FadingScreen.color = new Color(FadingScreen.color.r, FadingScreen.color.g, FadingScreen.color.b, 1);
+        FadingScreen.DOFade(0, 2);
     }
 
     public void HideHUD(bool doHide)

@@ -56,6 +56,8 @@ MonoBehaviour:
   ActiveColor: {r: 1, g: 0.91147983, b: 0, a: 1}
   IsToggle: 1
   CanInteract: 1
+  CanOnlyOn: 0
+  CanOnlyOff: 0
   NeedLookToKeepInteraction: 0
   DoApplyStateAfterAnimation: 1
   OnInteractStartedAnimations: []
@@ -103,8 +105,45 @@ MonoBehaviour:
     isZero: 0
   isActivated: 0
   isPressed: 0
+  doResetPressedOnCannotInteract: 0
   GrabbableData: {fileID: 11400000, guid: c6620c680e6cab14abb03644bdea07bc, type: 2}
   Spawner: {fileID: 0}
+  GrabFmod:
+    IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
+    EventPosition: {fileID: 4265054276842445835}
+    FmodReference:
+      Guid:
+        Data1: -216364464
+        Data2: 1180854358
+        Data3: 1971116930
+        Data4: -993212824
+      Path: event:/SFX/SFX_Player/SFX_P_GrabProps
+  StopGrabFmod:
+    IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
+    EventPosition: {fileID: 4265054276842445835}
+    FmodReference:
+      Guid:
+        Data1: 1991016722
+        Data2: 1315799519
+        Data3: 1575721609
+        Data4: -1874506879
+      Path: event:/SFX/SFX_Player/SFX_P_ThrowProps
+  PostPostItFmod:
+    IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
+    EventPosition: {fileID: 0}
+    FmodReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   _isGrabbed: 0
   _isTransformBased: 0
   _grabTransform: {fileID: 0}
