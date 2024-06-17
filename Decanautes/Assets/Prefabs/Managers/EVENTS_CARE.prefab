@@ -69,6 +69,9 @@ MonoBehaviour:
   OnAllBroken:
     m_PersistentCalls:
       m_Calls: []
+  OnNotAllBroken:
+    m_PersistentCalls:
+      m_Calls: []
   OnAllGood:
     m_PersistentCalls:
       m_Calls: []
@@ -200,6 +203,8 @@ MonoBehaviour:
           m_CallState: 2
     FmodEvents:
     - IsInRythm: 0
+      isBeatSpecific: 0
+      BeatStart: 0
       EventPosition: {fileID: 5108750415918728898}
       FmodReference:
         Guid:
@@ -226,6 +231,8 @@ MonoBehaviour:
           m_CallState: 2
     FmodEvents:
     - IsInRythm: 0
+      isBeatSpecific: 0
+      BeatStart: 0
       EventPosition: {fileID: 5108750415918728898}
       FmodReference:
         Guid:
@@ -650,6 +657,8 @@ MonoBehaviour:
         m_Calls: []
     OnUnderThresholdFmod:
     - IsInRythm: 1
+      isBeatSpecific: 0
+      BeatStart: 0
       EventPosition: {fileID: 0}
       FmodReference:
         Guid:
@@ -781,6 +790,8 @@ MonoBehaviour:
         m_Calls: []
     OnUnderThresholdFmod:
     - IsInRythm: 1
+      isBeatSpecific: 0
+      BeatStart: 0
       EventPosition: {fileID: 0}
       FmodReference:
         Guid:

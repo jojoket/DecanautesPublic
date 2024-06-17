@@ -1370,7 +1370,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnInteractEndedEvent.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
-      objectReference: {fileID: 1560385418}
+      objectReference: {fileID: 0}
     - target: {fileID: 7636640329598260633, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
       propertyPath: OnInteractEndedEvent.m_PersistentCalls.m_Calls.Array.data[6].m_Target
@@ -1495,7 +1495,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnInteractStartedEvent.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 1560385418}
+      objectReference: {fileID: 0}
     - target: {fileID: 7636640329598260633, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
       propertyPath: OnInteractStartedEvent.m_PersistentCalls.m_Calls.Array.data[7].m_Target
@@ -3298,18 +3298,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 298130213}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1560385418 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 770807910142840808, guid: 7604999d62f23c64fb78583fa0a5933c,
-    type: 3}
-  m_PrefabInstance: {fileID: 298130213}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdaca30723f091448993b000f6dc8656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1585631908 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6169071041195303124, guid: 7604999d62f23c64fb78583fa0a5933c,
@@ -4183,11 +4171,6 @@ PrefabInstance:
       propertyPath: 'animators.Array.data[1]'
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2106539190936241019, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2844069770610891767, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
       propertyPath: Name
@@ -4521,7 +4504,7 @@ PrefabInstance:
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
       propertyPath: LastMinuteTime
-      value: 0.1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
@@ -4531,7 +4514,7 @@ PrefabInstance:
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
       propertyPath: LastMinuteDuration
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}

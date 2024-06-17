@@ -43,7 +43,7 @@ public class MapManager : MonoBehaviour
         
     }
 
-    private void OnApplicationQuit()
+    private void OnDestroy()
     {
         SaveMap();
     }
