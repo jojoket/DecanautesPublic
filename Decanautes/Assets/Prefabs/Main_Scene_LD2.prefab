@@ -12856,6 +12856,7 @@ MonoBehaviour:
     Renderer: {fileID: 0}
     MaterialIndex: 0
     Material: {fileID: 2100000, guid: 1253bc7ab662a0a499fbe24288efc73d, type: 2}
+    SupplementaryMaterials: []
     CurrentDelta: 0
     LerpDuration: 0
     ParameterName: _Scroll_Speed
@@ -12882,6 +12883,7 @@ MonoBehaviour:
     Renderer: {fileID: 0}
     MaterialIndex: 0
     Material: {fileID: 2100000, guid: 1253bc7ab662a0a499fbe24288efc73d, type: 2}
+    SupplementaryMaterials: []
     CurrentDelta: 0
     LerpDuration: 0
     ParameterName: _Scroll_Speed
@@ -29915,6 +29917,11 @@ PrefabInstance:
     - target: {fileID: 8649564342661483020, guid: d24494c9ecd930548993fb039bedf3db,
         type: 3}
       propertyPath: OnTriedAnimations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649564342661483020, guid: d24494c9ecd930548993fb039bedf3db,
+        type: 3}
+      propertyPath: doResetPressedOnCannotInteract
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8649564342661483020, guid: d24494c9ecd930548993fb039bedf3db,

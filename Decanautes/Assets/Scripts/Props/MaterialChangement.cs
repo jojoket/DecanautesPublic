@@ -35,6 +35,8 @@ public class MaterialChangement
     public int MaterialIndex;
     [HideIf("IsMaterialInstance")]
     public Material Material;
+    [HideIf("IsMaterialInstance")]
+    public List<Material> SupplementaryMaterials;
 
     [HideIf("IsAnim"), PropertyRange(0, 1)]
     public float CurrentDelta;
@@ -81,6 +83,10 @@ public class MaterialChangement
                 float lerpedFloat = Mathf.Lerp(ParameterColorValueStartMult, ParameterColorValueEndMult, delta);
                 lerpedColor = lerpedColor.NormalizeRGB() * lerpedFloat;
                 Material.SetColor(ParameterName, lerpedColor);
+                foreach (Material material in SupplementaryMaterials)
+                {
+                    material.SetColor(ParameterName, lerpedColor);
+                }
                 break;
             }
             case MaterialChangement.MaterialParameterType.Float:
@@ -88,6 +94,10 @@ public class MaterialChangement
                 float lerpedFloat = Mathf.Lerp(ParameterFloatValueStart, ParameterFloatValueEnd, delta);
 
                 Material.SetFloat(ParameterName, lerpedFloat);
+                foreach (Material material in SupplementaryMaterials)
+                {
+                    material.SetFloat(ParameterName, lerpedFloat);
+                }
                 break;
             }
             case MaterialChangement.MaterialParameterType.Vector3:
@@ -95,6 +105,10 @@ public class MaterialChangement
                 Vector3 lerpedVector = Vector3.Lerp(ParameterVector3ValueStart, ParameterVector3ValueEnd, delta);
 
                 Material.SetVector(ParameterName, lerpedVector);
+                foreach (Material material in SupplementaryMaterials)
+                {
+                    material.SetVector(ParameterName, lerpedVector);
+                }
                 break;
             }
         }
@@ -108,6 +122,10 @@ public class MaterialChangement
             {
                 Color lerpedColor = Color.Lerp(ParameterColorValueStart, ParameterColorValueEnd, CurrentDelta);
                 Material.SetColor(ParameterName, lerpedColor);
+                foreach (Material material in SupplementaryMaterials)
+                {
+                    material.SetColor(ParameterName, lerpedColor);
+                }
                 break;
             }
             case MaterialChangement.MaterialParameterType.Float:
@@ -115,6 +133,10 @@ public class MaterialChangement
                 float lerpedFloat = Mathf.Lerp(ParameterFloatValueStart, ParameterFloatValueEnd, CurrentDelta);
 
                 Material.SetFloat(ParameterName, lerpedFloat);
+                foreach (Material material in SupplementaryMaterials)
+                {
+                    material.SetFloat(ParameterName, lerpedFloat);
+                }
                 break;
             }
             case MaterialChangement.MaterialParameterType.Vector3:
@@ -122,6 +144,10 @@ public class MaterialChangement
                 Vector3 lerpedVector = Vector3.Lerp(ParameterVector3ValueStart, ParameterVector3ValueEnd, CurrentDelta);
 
                 Material.SetVector(ParameterName, lerpedVector);
+                foreach (Material material in SupplementaryMaterials)
+                {
+                    material.SetVector(ParameterName, lerpedVector);
+                }
                 break;
             }
         }
@@ -135,16 +161,28 @@ public class MaterialChangement
             case MaterialChangement.MaterialParameterType.Color:
                 {
                     Material.SetColor(ParameterName, ParameterColorValueInit);
+                    foreach (Material material in SupplementaryMaterials)
+                    {
+                        material.SetColor(ParameterName, ParameterColorValueInit);
+                    }
                     break;
                 }
             case MaterialChangement.MaterialParameterType.Float:
                 {
                     Material.SetFloat(ParameterName, ParameterFloatValueInit);
+                    foreach (Material material in SupplementaryMaterials)
+                    {
+                        material.SetFloat(ParameterName, ParameterFloatValueInit);
+                    }
                     break;
                 }
             case MaterialChangement.MaterialParameterType.Vector3:
                 {
                     Material.SetVector(ParameterName, ParameterVector3ValueInit);
+                    foreach (Material material in SupplementaryMaterials)
+                    {
+                        material.SetVector(ParameterName, ParameterVector3ValueInit);
+                    }
                     break;
                 }
         }
