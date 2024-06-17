@@ -128,6 +128,7 @@ MonoBehaviour:
     isZero: 0
   isActivated: 0
   isPressed: 0
+  doResetPressedOnCannotInteract: 0
 --- !u!65 &3526077513595539310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -369,13 +370,15 @@ MonoBehaviour:
     animator: {fileID: 4809248349469638852}
     Countdown: 0
     triggerType: 1
-    IsInRythm: 0
+    IsInRythm: 1
     HasSound: 1
     animationSounds:
     - DoLaunchSoundAfterAnimation: 0
       FmodEvent:
-        IsInRythm: 0
-        EventPosition: {fileID: 8719308691855781302}
+        IsInRythm: 1
+        isBeatSpecific: 0
+        BeatStart: 0
+        EventPosition: {fileID: 2042268679304362058}
         FmodReference:
           Guid:
             Data1: -1142696934
@@ -394,13 +397,15 @@ MonoBehaviour:
     animator: {fileID: 4809248349469638852}
     Countdown: 1
     triggerType: 1
-    IsInRythm: 0
+    IsInRythm: 1
     HasSound: 1
     animationSounds:
     - DoLaunchSoundAfterAnimation: 0
       FmodEvent:
-        IsInRythm: 0
-        EventPosition: {fileID: 8719308691855781302}
+        IsInRythm: 1
+        isBeatSpecific: 0
+        BeatStart: 0
+        EventPosition: {fileID: 2042268679304362058}
         FmodReference:
           Guid:
             Data1: -661368709
