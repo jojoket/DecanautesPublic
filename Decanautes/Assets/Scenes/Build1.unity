@@ -357,6 +357,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1948950945146108400, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[0].IsInRythm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948950945146108400, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[1].IsInRythm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948950945146108400, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.IsInRythm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948950945146108400, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.IsInRythm
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2053484320420049380, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
       propertyPath: m_Layer
@@ -2361,6 +2381,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8999189515278502346, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b81bc86871c38c47b69460962af4981, type: 2}
+    - target: {fileID: 8999189515278502346, guid: 7604999d62f23c64fb78583fa0a5933c,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b81bc86871c38c47b69460962af4981, type: 2}
     - target: {fileID: 9069334608875854543, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
       propertyPath: m_fontSize
@@ -3915,67 +3945,6 @@ PrefabInstance:
       propertyPath: savedFile
       value: 
       objectReference: {fileID: 1948993229}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[0].IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[1].IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[2].IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[3].IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[4].IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[4].EventPosition
-      value: 
-      objectReference: {fileID: 2042268679304362058, guid: 89c8484155b0a7946a8a2c9b9004cbac,
-        type: 3}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[4].FmodReference.Path
-      value: event:/MX/MX_BoxMusic
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[4].FmodReference.Guid.Data1
-      value: -1642988971
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[4].FmodReference.Guid.Data2
-      value: 1093694840
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[4].FmodReference.Guid.Data3
-      value: -1188811136
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
-        type: 3}
-      propertyPath: EventsOnStart.Array.data[4].FmodReference.Guid.Data4
-      value: 1935307119
-      objectReference: {fileID: 0}
     - target: {fileID: 6075534060733130482, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
         type: 3}
       propertyPath: m_Name

@@ -14,6 +14,9 @@ using FMOD.Studio;
 public class FmodEventInfo
 {
     public bool IsInRythm;
+    public bool isBeatSpecific = false;
+    [ShowIf("isBeatSpecific")]
+    public int BeatStart;
     public Transform EventPosition;
     public EventReference FmodReference;
 }
@@ -132,15 +135,25 @@ public class RythmManager : MonoBehaviour
 
     private void PlayAndRelieveBuffer()
     {
+        List<FmodEventInfo> fmodEventToDelete = new List<FmodEventInfo>();
         foreach (FmodEventInfo fmodEvent in FMODEvents)
         {
+            if (fmodEvent.isBeatSpecific && fmodEvent.BeatStart != timelineInfo.currentBeat)
+            {
+                continue;
+            }
             FMODUnity.RuntimeManager.PlayOneShot(fmodEvent.FmodReference, fmodEvent.EventPosition.position);
+            fmodEventToDelete.Add(fmodEvent);
         }
         foreach (KeyValuePair<string,int>  FmodParameter in FMODParameters)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName(FmodParameter.Key, FmodParameter.Value);
         }
-        FMODEvents.Clear();
+        foreach (FmodEventInfo fmodEvent in fmodEventToDelete)
+        {
+            FMODEvents.Remove(fmodEvent);
+        }
+        FMODParameters.Clear();
     }
 
 
