@@ -357,26 +357,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1948950945146108400, guid: 7604999d62f23c64fb78583fa0a5933c,
-        type: 3}
-      propertyPath: Animations.Array.data[0].IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948950945146108400, guid: 7604999d62f23c64fb78583fa0a5933c,
-        type: 3}
-      propertyPath: Animations.Array.data[1].IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948950945146108400, guid: 7604999d62f23c64fb78583fa0a5933c,
-        type: 3}
-      propertyPath: Animations.Array.data[0].animationSounds.Array.data[0].FmodEvent.IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948950945146108400, guid: 7604999d62f23c64fb78583fa0a5933c,
-        type: 3}
-      propertyPath: Animations.Array.data[1].animationSounds.Array.data[0].FmodEvent.IsInRythm
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2053484320420049380, guid: 7604999d62f23c64fb78583fa0a5933c,
         type: 3}
       propertyPath: m_Layer
@@ -3354,6 +3334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1687143857 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1140845866227751315, guid: 7604999d62f23c64fb78583fa0a5933c,
+    type: 3}
+  m_PrefabInstance: {fileID: 298130213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1735987766 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6441555549678009594, guid: 7604999d62f23c64fb78583fa0a5933c,
@@ -3945,6 +3931,11 @@ PrefabInstance:
       propertyPath: savedFile
       value: 
       objectReference: {fileID: 1948993229}
+    - target: {fileID: 1999451199134129058, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
+        type: 3}
+      propertyPath: EventsOnStart.Array.data[4].EventPosition
+      value: 
+      objectReference: {fileID: 1687143857}
     - target: {fileID: 6075534060733130482, guid: 36981c3b27a9ce14fa19a4b3c8e59d80,
         type: 3}
       propertyPath: m_Name
