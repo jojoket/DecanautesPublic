@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: delete
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 923086daf8ab15b48ad3e0b7fb1f1281, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5f64d1259eb91754db4009a2f8cb77b2, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -266,10 +266,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0.565171}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &654963771691870391
@@ -447,8 +447,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 923086daf8ab15b48ad3e0b7fb1f1281, type: 2}
-  m_sharedMaterial: {fileID: 7512681787549572443, guid: 923086daf8ab15b48ad3e0b7fb1f1281,
+  m_fontAsset: {fileID: 11400000, guid: 5f64d1259eb91754db4009a2f8cb77b2, type: 2}
+  m_sharedMaterial: {fileID: 7512681787549572443, guid: 5f64d1259eb91754db4009a2f8cb77b2,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -687,7 +687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.23929787, y: 0.22059752}
+  m_AnchoredPosition: {x: 0.2642, y: 0.2398}
   m_SizeDelta: {x: 5.652, y: 5.652}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6845979113351718987
@@ -772,19 +772,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6557834654165057280}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2436190397813254472}
-        m_TargetAssemblyTypeName: PostIt, Assembly-CSharp
-        m_MethodName: ExitPostItView
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1552873728714244190
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +958,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1807822620864710281
@@ -1402,6 +1390,7 @@ MonoBehaviour:
     isZero: 0
   isActivated: 0
   isPressed: 0
+  doResetPressedOnCannotInteract: 0
   GrabbableData: {fileID: 11400000, guid: f114c832f4d222b48856a1fa354ef683, type: 2}
   Spawner: {fileID: 0}
   GrabFmod:
@@ -1711,7 +1700,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3737691393717035921
@@ -1916,8 +1905,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"Enter" to write a deca-note'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 923086daf8ab15b48ad3e0b7fb1f1281, type: 2}
-  m_sharedMaterial: {fileID: 7512681787549572443, guid: 923086daf8ab15b48ad3e0b7fb1f1281,
+  m_fontAsset: {fileID: 11400000, guid: 5f64d1259eb91754db4009a2f8cb77b2, type: 2}
+  m_sharedMaterial: {fileID: 7512681787549572443, guid: 5f64d1259eb91754db4009a2f8cb77b2,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2145,8 +2134,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 923086daf8ab15b48ad3e0b7fb1f1281, type: 2}
-  m_sharedMaterial: {fileID: 7512681787549572443, guid: 923086daf8ab15b48ad3e0b7fb1f1281,
+  m_fontAsset: {fileID: 11400000, guid: 5f64d1259eb91754db4009a2f8cb77b2, type: 2}
+  m_sharedMaterial: {fileID: 7512681787549572443, guid: 5f64d1259eb91754db4009a2f8cb77b2,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2348,7 +2337,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5822471565650881876
@@ -2564,8 +2553,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Cycle : 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 923086daf8ab15b48ad3e0b7fb1f1281, type: 2}
-  m_sharedMaterial: {fileID: 7512681787549572443, guid: 923086daf8ab15b48ad3e0b7fb1f1281,
+  m_fontAsset: {fileID: 11400000, guid: 5f64d1259eb91754db4009a2f8cb77b2, type: 2}
+  m_sharedMaterial: {fileID: 7512681787549572443, guid: 5f64d1259eb91754db4009a2f8cb77b2,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2767,7 +2756,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6412312887268774051
@@ -2806,7 +2795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.23929787, y: 0.22059752}
+  m_AnchoredPosition: {x: 0.2642, y: 0.2398}
   m_SizeDelta: {x: 5.652, y: 5.652}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5438244709610017412
@@ -2891,19 +2880,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8325160273544445194}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2436190397813254472}
-        m_TargetAssemblyTypeName: PostIt, Assembly-CSharp
-        m_MethodName: ExitPostItView
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7165078674187496178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3305,7 +3282,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7645877662340481133

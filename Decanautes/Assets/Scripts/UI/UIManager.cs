@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public PlayerController playerController;
+    public GameObject HUD;
 
     public UIScreen CurrentUIScreen;
 
@@ -39,6 +40,11 @@ public class UIManager : MonoBehaviour
     public void ChangeScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void HideHUD(bool doHide)
+    {
+        HUD.SetActive(!doHide);
     }
 
 }

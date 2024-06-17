@@ -220,6 +220,7 @@ public class PostIt : MonoBehaviour
 
     public void EnterPostItView()
     {
+        UIManager.Instance.HideHUD(true);
         if (PostItReleaseViewFmod.EventPosition)
             RythmManager.Instance.StartFmodEvent(PostItViewFmod);
         isViewing = true;
@@ -232,6 +233,7 @@ public class PostIt : MonoBehaviour
     }
     public void ExitPostItView()
     {
+        UIManager.Instance.HideHUD(false);
         if (PostItReleaseViewFmod.EventPosition)
             RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
         EventSystem.current.SetSelectedGameObject(null);
@@ -246,12 +248,14 @@ public class PostIt : MonoBehaviour
 
     public void EnterPostItEdit()
     {
+        UIManager.Instance.HideHUD(true);
         if (PostItReleaseViewFmod.EventPosition)
             RythmManager.Instance.StartFmodEvent(PostItViewFmod);
         OnEnterEdit?.Invoke();
     }
     public void ExitPostItEdit()
     {
+        UIManager.Instance.HideHUD(false);
         if (PostItReleaseViewFmod.EventPosition)
             RythmManager.Instance.StartFmodEvent(PostItReleaseViewFmod);
         EventSystem.current.SetSelectedGameObject(null);

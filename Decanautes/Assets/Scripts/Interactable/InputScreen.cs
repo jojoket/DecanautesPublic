@@ -1,7 +1,9 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +23,8 @@ namespace Decanautes.Interactable
         public string CodeNeeded;
         [HideInInspector]
         public bool IsEditing;
+        public List<Material> BaseMaterials;
+        public List<Material> CurrentMaterials;
         public Material NormalColor;
         public Material InvalidColor;
         public Material ValidColor;
@@ -44,7 +48,8 @@ namespace Decanautes.Interactable
         // Start is called before the first frame update
         void Start()
         {
-
+            ScreenRenderer.GetMaterials(BaseMaterials);
+            CurrentMaterials = BaseMaterials.ToList();
         }
 
         // Update is called once per frame
@@ -152,14 +157,15 @@ namespace Decanautes.Interactable
             {
                 anims.transform.GetChild(0).GetComponent<MeshRenderer>().material = colorVisual;
             }
-            ScreenRenderer.material = colorVisual;
+            CurrentMaterials[1] = colorVisual;
+            ScreenRenderer.SetMaterials(CurrentMaterials);
             yield return new WaitForSeconds(0.75f);
             InputField.text = "";
             foreach (Animation anims in ButtonsAnimations)
             {
                 anims.transform.GetChild(0).GetComponent<MeshRenderer>().material = NormalColor;
             }
-            ScreenRenderer.material = NormalColor;
+            ScreenRenderer.SetMaterials(BaseMaterials);
         }
 
     }
