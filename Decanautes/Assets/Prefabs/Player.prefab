@@ -172,14 +172,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 5947630330340799665}
+  PostItGrabPoint: {fileID: 0}
   GrabPoint: {fileID: 107574339451760140}
   VirtualCamera: {fileID: 4495261938294493002}
+  FootStep:
+    IsInRythm: 0
+    EventPosition: {fileID: 2185170539282178000}
+    FmodReference:
+      Guid:
+        Data1: 321762730
+        Data2: 1325006002
+        Data3: 709914521
+        Data4: 1346645342
+      Path: event:/SFX/SFX_Player/Footsteps
   CanMove: 1
   CanInteract: 1
   PlayerData: {fileID: 11400000, guid: 7588c2c3e85c1d841967976e93ee0e11, type: 2}
   InteractionLayer:
     serializedVersion: 2
     m_Bits: 64
+  PostItLayer:
+    serializedVersion: 2
+    m_Bits: 0
   lookingAt: {fileID: 0}
   grabbedPostIt: {fileID: 0}
   grabbedObj: {fileID: 0}

@@ -266,11 +266,11 @@ public class EngineState : MonoBehaviour
         }
         if (DistanceText)
         {
-            DistanceText.text = KilometerData.CurrentKm + "km";
+            DistanceText.text = Math.Round(KilometerData.CurrentKm, 0) + "km";
         }
         if (SpeedText)
         {
-            SpeedText.text = KilometerData.CurrentSpeed + "km/s";
+            SpeedText.text = KilometerData.CurrentSpeed + "km/h";
         }
     }
     public void UpdateMachinesText()

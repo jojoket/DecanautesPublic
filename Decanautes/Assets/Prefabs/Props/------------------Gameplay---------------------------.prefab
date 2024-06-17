@@ -4029,8 +4029,19 @@ MonoBehaviour:
     Countdown: 0
     triggerType: 1
     IsInRythm: 1
-    HasSound: 0
-    animationSounds: []
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 1
+        EventPosition: {fileID: 8122527714584830529}
+        FmodReference:
+          Guid:
+            Data1: -1635043962
+            Data2: 1082436927
+            Data3: -182297189
+            Data4: -2052860458
+          Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_HourGlassBoxOpen
     parameterName: IsReady
     StateToApply: 1
     FloatToApply: 0
@@ -4043,8 +4054,19 @@ MonoBehaviour:
     Countdown: 0
     triggerType: 1
     IsInRythm: 1
-    HasSound: 0
-    animationSounds: []
+    HasSound: 1
+    animationSounds:
+    - DoLaunchSoundAfterAnimation: 0
+      FmodEvent:
+        IsInRythm: 1
+        EventPosition: {fileID: 8122527714584830529}
+        FmodReference:
+          Guid:
+            Data1: 1938784048
+            Data2: 1291580509
+            Data3: -1594886490
+            Data4: 721045376
+          Path: event:/SFX/SFX_MachinesInteractibles/SFX_MhI_HourGlassBoxClose
     parameterName: IsReady
     StateToApply: 0
     FloatToApply: 0

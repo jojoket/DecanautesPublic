@@ -40,7 +40,7 @@ public class Kilometer : MonoBehaviour
                 break;
         }
 
-        data.CurrentKm += data.CurrentSpeed * Time.deltaTime;
+        data.CurrentKm += data.CurrentSpeed/3600 * Time.deltaTime;
         /*if (Mathf.RoundToInt(data.CurrentKm) != Mathf.RoundToInt(lastKilometer))
         {
             animators[0].SetFloat("TurnSpeed", data.CurrentSpeed);

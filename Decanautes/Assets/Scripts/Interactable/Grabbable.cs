@@ -14,6 +14,11 @@ namespace Decanautes.Interactable
         [HideInInspector]
         public Spawner Spawner;
 
+        [TitleGroup("FMod Event")]
+        public FmodEventInfo GrabFmod;
+        public FmodEventInfo StopGrabFmod;
+        public FmodEventInfo PostPostItFmod;
+
         [TitleGroup("Debug")]
         [SerializeField,ReadOnly]
         private bool _isGrabbed;
@@ -127,6 +132,10 @@ namespace Decanautes.Interactable
                     post.UsesLeft--;
                 }
             }
+            else
+            {
+                RythmManager.Instance.StartFmodEvent(GrabFmod);
+            }
             if (DoRespawnFromGrab)
             {
                 SpawnerReset();
@@ -212,6 +221,7 @@ namespace Decanautes.Interactable
             }
             else
             {
+                RythmManager.Instance.StartFmodEvent(StopGrabFmod);
                 _playerController.grabbedObj = null;
             }
             if (GrabbableData.isSimulated && _rigidbody.velocity.magnitude<= 0.5f)
