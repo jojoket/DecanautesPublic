@@ -25,6 +25,10 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (isBlocked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
         Instance = this;
         FadeIn();
     }

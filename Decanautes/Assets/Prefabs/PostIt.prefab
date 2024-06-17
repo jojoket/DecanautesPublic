@@ -68,7 +68,8 @@ MonoBehaviour:
   m_text: delete
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f64d1259eb91754db4009a2f8cb77b2, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 7512681787549572443, guid: 5f64d1259eb91754db4009a2f8cb77b2,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.05
+  m_fontSize: 2.15
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4.35
+  m_fontSize: 4.85
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -529,6 +530,7 @@ GameObject:
   - component: {fileID: 1170483007634501015}
   - component: {fileID: 1304924092510611391}
   - component: {fileID: 255598097071671086}
+  - component: {fileID: 5830044166294799642}
   m_Layer: 10
   m_Name: less
   m_TagString: Untagged
@@ -651,6 +653,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5830044166294799642}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5830044166294799642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454551663769612191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -635603877
+      Data2: 1075589116
+      Data3: 1222872713
+      Data4: 617936194
+    Path: event:/SFX/SFX_Player/SFX_P_DeletePostIt
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1486120998339476933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1314,8 @@ MonoBehaviour:
   VoteTresholdDelete: -5
   PostItViewFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 6226210876874019490}
     FmodReference:
       Guid:
@@ -1279,6 +1326,8 @@ MonoBehaviour:
       Path: event:/SFX/SFX_Player/SFX_P_GrabPostIt
   PostItReleaseViewFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 6226210876874019490}
     FmodReference:
       Guid:
@@ -1289,6 +1338,8 @@ MonoBehaviour:
       Path: event:/SFX/SFX_Player/SFX_P_GrabPostIt
   PutPostItFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 6226210876874019490}
     FmodReference:
       Guid:
@@ -1299,6 +1350,8 @@ MonoBehaviour:
       Path: event:/SFX/SFX_Player/SFX_P_PutPostIt
   DeletePostItFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 6226210876874019490}
     FmodReference:
       Guid:
@@ -1309,6 +1362,8 @@ MonoBehaviour:
       Path: event:/SFX/SFX_Player/SFX_P_DeletePostIt
   ConfirmPostItFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 6226210876874019490}
     FmodReference:
       Guid:
@@ -1405,6 +1460,8 @@ MonoBehaviour:
   Spawner: {fileID: 0}
   GrabFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 0}
     FmodReference:
       Guid:
@@ -1415,6 +1472,8 @@ MonoBehaviour:
       Path: 
   StopGrabFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 0}
     FmodReference:
       Guid:
@@ -1425,6 +1484,8 @@ MonoBehaviour:
       Path: 
   PostPostItFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 0}
     FmodReference:
       Guid:
@@ -1725,6 +1786,7 @@ GameObject:
   - component: {fileID: 6536233128738273482}
   - component: {fileID: 2347730441749407358}
   - component: {fileID: 1222174718311243858}
+  - component: {fileID: 5050947079240892487}
   m_Layer: 10
   m_Name: plus
   m_TagString: Untagged
@@ -1847,6 +1909,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5050947079240892487}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5050947079240892487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737691393717035921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -12289544
+      Data2: 1315328742
+      Data3: 465937552
+      Data4: -1796087826
+    Path: event:/SFX/SFX_Player/SFX_P_ValidPostIt
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3773047586557591029
 GameObject:
   m_ObjectHideFlags: 0

@@ -138,26 +138,26 @@ MonoBehaviour:
     IsInRythm: 0
     isBeatSpecific: 0
     BeatStart: 0
-    EventPosition: {fileID: 0}
+    EventPosition: {fileID: 5076494575808945534}
     FmodReference:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1474726004
+        Data2: 1159893462
+        Data3: -1799064938
+        Data4: 263993173
+      Path: event:/SFX/SFX_Player/SFX_P_Begin
   OnChangeSceneFading:
     IsInRythm: 0
     isBeatSpecific: 0
     BeatStart: 0
-    EventPosition: {fileID: 0}
+    EventPosition: {fileID: 5076494575808945534}
     FmodReference:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1433355611
+        Data2: 1260115382
+        Data3: -202660474
+        Data4: 1586391908
+      Path: event:/SFX/SFX_Player/SFX_P_End
   FadingScreen: {fileID: 758690147045425904}
 --- !u!1 &8054094989336723848
 GameObject:
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
