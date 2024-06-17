@@ -62,10 +62,10 @@ public class PlayerPreferencesManager : MonoBehaviour
         Quadrichromic.SetFloat("_Opacity", PlayerPreferencesData.QuadrichromicMode ? 1 : 0);
 
         //Sounds
-        MusicVcaController.setVolume(PlayerPreferencesData.MusicVolume);
-        AmbianceVcaController.setVolume(PlayerPreferencesData.AmbianceVolume);
-        VFXVcaController.setVolume(PlayerPreferencesData.VFXVolume);
-        GlobalVcaController.setVolume(PlayerPreferencesData.GlobalVolume);
+        MusicVcaController.setVolume(PlayerPreferencesData.MusicVolume/5);
+        AmbianceVcaController.setVolume(PlayerPreferencesData.AmbianceVolume/5);
+        VFXVcaController.setVolume(PlayerPreferencesData.VFXVolume/5);
+        GlobalVcaController.setVolume(PlayerPreferencesData.GlobalVolume/5);
     }
 
     public void ChangeSensibility(float newSensibility)
