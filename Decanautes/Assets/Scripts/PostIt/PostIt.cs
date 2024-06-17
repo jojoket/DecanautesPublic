@@ -37,6 +37,7 @@ public class PostIt : MonoBehaviour
     public FmodEventInfo PostItReleaseViewFmod;
     public FmodEventInfo PutPostItFmod;
     public FmodEventInfo DeletePostItFmod;
+    public FmodEventInfo ConfirmPostItFmod;
 
     [TitleGroup("Debug")]
     [ReadOnly]
@@ -271,6 +272,7 @@ public class PostIt : MonoBehaviour
     }
     public void ConfirmPostIt()
     {
+        RythmManager.Instance.StartFmodEvent(ConfirmPostItFmod);
         GameObject.FindFirstObjectByType<PlayerController>().ManagePostItInteraction();
     }
 

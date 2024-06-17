@@ -958,7 +958,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1807822620864710281
@@ -1307,6 +1307,16 @@ MonoBehaviour:
         Data3: 1222872713
         Data4: 617936194
       Path: event:/SFX/SFX_Player/SFX_P_DeletePostIt
+  ConfirmPostItFmod:
+    IsInRythm: 0
+    EventPosition: {fileID: 6226210876874019490}
+    FmodReference:
+      Guid:
+        Data1: -12289544
+        Data2: 1315328742
+        Data3: 465937552
+        Data4: -1796087826
+      Path: event:/SFX/SFX_Player/SFX_P_ValidPostIt
   CycleNum: 0
   _isPosting: 0
   IsPosted: 0
@@ -2337,7 +2347,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5822471565650881876

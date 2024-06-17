@@ -8,6 +8,7 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine.Serialization;
 using UnityEngine.Rendering;
+using FMOD.Studio;
 
 [Serializable]
 public class FmodEventInfo
@@ -29,6 +30,7 @@ public class RythmManager : MonoBehaviour
 
     //Singleton
     public static RythmManager Instance;
+    public Bank bank;
 
     public UnityEvent OnBeatTrigger;
 
@@ -70,7 +72,11 @@ public class RythmManager : MonoBehaviour
 
     private void Start()
     {
-        if(!Base.FmodReference.IsNull)
+        FMODUnity.RuntimeManager.StudioSystem.getBankList(out Bank[] bankList);
+        bank = bankList[0];
+        bank.loadSampleData();
+
+        if (!Base.FmodReference.IsNull)
         {
             timelineInfo = new TimelineInfo();
             _beatCallBack = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
