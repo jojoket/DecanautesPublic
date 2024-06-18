@@ -38,21 +38,21 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: mat_VFX_Sand 1
-  m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ALPHABLEND_ON
-  - _FADING_ON
-  m_InvalidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _ENABLE_FOG_ON_TRANSPARENT
   - _NORMALMAP_TANGENT_SPACE
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  - _FADING_ON
   - _NORMALMAP_TANGENT_SPACE0
   - _NORMALMAP_TANGENT_SPACE1
   - _NORMALMAP_TANGENT_SPACE2
   - _NORMALMAP_TANGENT_SPACE3
-  - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -62,7 +62,10 @@ Material:
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
-  - GRABPASS
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -220,7 +223,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b8d5c6f9fb0564d41af4fa20f6d4f1a4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0c9c1245513879042baf73bb021c3524, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -408,7 +411,7 @@ Material:
     - _AlphaCutoffPrepass: 0.5
     - _AlphaCutoffShadow: 0.5
     - _AlphaDstBlend: 10
-    - _AlphaRemapMax: 0.26728246
+    - _AlphaRemapMax: 0.6358193
     - _AlphaRemapMax0: 1
     - _AlphaRemapMax1: 1
     - _AlphaRemapMax2: 1
@@ -484,7 +487,7 @@ Material:
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1
-    - _DstBlend: 1
+    - _DstBlend: 10
     - _DstBlend2: 10
     - _EmissionEnabled: 0
     - _EmissiveColorMode: 1
@@ -641,17 +644,17 @@ Material:
     - _SpecularAAThreshold: 0.2
     - _SpecularHighlights: 1
     - _SpecularOcclusionMode: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 1
+    - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
     - _StencilRefGBuffer: 2
-    - _StencilRefMV: 33
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 15
-    - _StencilWriteMaskMV: 43
+    - _StencilWriteMaskMV: 41
     - _SubsurfaceMask: 1
     - _SubsurfaceMask0: 1
     - _SubsurfaceMask1: 1
