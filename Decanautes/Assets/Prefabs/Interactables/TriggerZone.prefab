@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 427306337922360515}
   - component: {fileID: 1479200930331306140}
   - component: {fileID: 5048190965914629713}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TriggerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,6 +69,7 @@ MonoBehaviour:
   LayerToDetect:
     serializedVersion: 2
     m_Bits: 8
+  DoExitOnDisable: 1
   OnEnterZone:
     m_PersistentCalls:
       m_Calls:
