@@ -15,6 +15,7 @@ public class LastMinute : MonoBehaviour
     [Unit(Units.Second)]
     public float LastDecaNoteTime;
     public EngineState EngineState;
+    private float _CycleStartTime;
 
     [ReadOnly]
     public bool IsLastMinute;
@@ -33,6 +34,7 @@ public class LastMinute : MonoBehaviour
             return;
         }
         Instance = this;
+        _CycleStartTime = Time.time;
         IsLastMinute = false;
         IsLastDecaNote = false;
         StartCoroutine(WaitForLastMinute());
@@ -42,7 +44,7 @@ public class LastMinute : MonoBehaviour
     {
         if (IsLastMinute)
         {
-            float secLeft = Mathf.Max(LastMinuteDuration - (Time.time - (LastMinuteTime*60)), 0);
+            float secLeft = Mathf.Max(LastMinuteDuration - ((Time.time - _CycleStartTime) - (LastMinuteTime*60)), 0);
             LastMinuteMessage.Message = "Your cycle ends...\n" + Mathf.Floor(secLeft / 60) + ":" +  Math.Floor(secLeft % 60);
             if (secLeft <= LastDecaNoteTime)
             {

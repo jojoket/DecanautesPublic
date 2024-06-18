@@ -3135,6 +3135,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c075878d17d7553429371fe506f23a89, type: 3}
+--- !u!4 &1074805394 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1653776017801945476, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5826207586050070762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1191729954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6480941554875847528, guid: 7604999d62f23c64fb78583fa0a5933c,
@@ -4449,7 +4455,7 @@ PrefabInstance:
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
       propertyPath: LastMinuteTime
-      value: 9
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
@@ -4459,7 +4465,7 @@ PrefabInstance:
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
       propertyPath: LastMinuteDuration
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
@@ -4486,6 +4492,11 @@ PrefabInstance:
       propertyPath: OnLastMinute.m_PersistentCalls.m_Calls.Array.size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
+        type: 3}
+      propertyPath: LastMinuteMessage.FmodEvents.Array.data[0].EventPosition
+      value: 
+      objectReference: {fileID: 1074805394}
     - target: {fileID: 4941771511336787414, guid: 73faa2188eeaa4e42b2d8ec661ff1ef1,
         type: 3}
       propertyPath: OnGameEnding.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
