@@ -168,6 +168,22 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 6ca78c963dca7c148aafc34cfdc14dba, type: 2}
   LinkedEngineState: {fileID: 6408890377518032855}
   EventsToTrigger:
+  - TriggerTime: 5.2
+    OnTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+    FmodEvents:
+    - IsInRythm: 0
+      isBeatSpecific: 0
+      BeatStart: 0
+      EventPosition: {fileID: 5108750415918728898}
+      FmodReference:
+        Guid:
+          Data1: 15882586
+          Data2: 1092052519
+          Data3: 101369737
+          Data4: 1099809429
+        Path: event:/SFX/SFX_EnviroEvent/SFX_EE_StormAlarm
   - TriggerTime: 5
     OnTrigger:
       m_PersistentCalls:
@@ -241,7 +257,7 @@ MonoBehaviour:
           Data3: -338811227
           Data4: 909814789
         Path: event:/AMB/AMB_EE_StormEnd
-  - TriggerTime: 0
+  - TriggerTime: 5.5
     OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -258,7 +274,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
     FmodEvents: []
-  - TriggerTime: 1
+  - TriggerTime: 6.5
     OnTrigger:
       m_PersistentCalls:
         m_Calls:

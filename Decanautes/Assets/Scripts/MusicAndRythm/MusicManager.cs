@@ -1,4 +1,5 @@
 using FMODUnity;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,10 @@ public class MusicManager : MonoBehaviour
     public float MinGameTimeForMusicStart;
     public float CreshendoTime;
     public float EndingTime;
+    public float MusicCoolDown;
     private float MusicStartTimeStamp;
+    [SerializeField, ReadOnly]
+    private bool _isMusicOnCd;
     public FmodEventInfo MusicFmodEvent;
     public EngineState CurrentEngineState;
 
@@ -33,6 +37,7 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         CurrentMusicState = MusicState.Silent;
+        _isMusicOnCd = false;
     }
 
     // Update is called once per frame
@@ -40,8 +45,9 @@ public class MusicManager : MonoBehaviour
     {
         TimeUntilNextEvent = GetTimeUntilNextEvent();
 
-        if (CurrentMusicState == MusicState.Silent && TimeUntilNextEvent > MinTimeForMusicStart && Time.time >= MinGameTimeForMusicStart)
+        if (!_isMusicOnCd && CurrentMusicState == MusicState.Silent && TimeUntilNextEvent > MinTimeForMusicStart && Time.time >= MinGameTimeForMusicStart)
         {
+            _isMusicOnCd = true;
             MusicStartTimeStamp = Time.time;
             if (MusicFmodEvent.EventPosition)
                 RythmManager.Instance.StartFmodEvent(MusicFmodEvent);
@@ -78,7 +84,14 @@ public class MusicManager : MonoBehaviour
     private IEnumerator ChangeToSilent()
     {
         yield return new WaitForSeconds(EndingTime);
+        StartCoroutine(WaitForMusicCoolDown());
         CurrentMusicState = MusicState.Silent;
+    }
+
+    private IEnumerator WaitForMusicCoolDown()
+    {
+        yield return new WaitForSeconds(MusicCoolDown);
+        _isMusicOnCd = false;
     }
 
     private float GetTimeUntilNextEvent()

@@ -55,14 +55,19 @@ public class UIManager : MonoBehaviour
     public void ChangeScene(int sceneIndex)
     {
         if (MapManager.Instance)
-            MapManager.Instance.SaveMap();
+        {
+            DOVirtual.DelayedCall(1, () =>
+            {
+                MapManager.Instance.SaveMap();
+            });
+        }
         Time.timeScale = 1;
         FadingScreen.DOFade(1, 2);
         if (RythmManager.Instance)
         {
             RythmManager.Instance.StartFmodEvent(OnChangeSceneFading);
         }
-        DOVirtual.DelayedCall(2, () =>
+        DOVirtual.DelayedCall(3, () =>
         {
             SceneManager.LoadScene(sceneIndex);
         });
