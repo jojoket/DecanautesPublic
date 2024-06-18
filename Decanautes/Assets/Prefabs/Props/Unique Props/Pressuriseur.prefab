@@ -2963,6 +2963,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Pressuriseur
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acf06ebe40e195a48a6c07d7854a81fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1067249639722116942, guid: acf06ebe40e195a48a6c07d7854a81fd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3271,6 +3276,8 @@ MonoBehaviour:
   DoStopMovementsWhenIsEditing: 1
   CodeNeeded: 
   IsEditing: 0
+  BaseMaterials: []
+  CurrentMaterials: []
   NormalColor: {fileID: 2100000, guid: b19d3580440ba934496acbaa1032f2fb, type: 2}
   InvalidColor: {fileID: 2100000, guid: 449aed203a54afd45abbafc67c21eb68, type: 2}
   ValidColor: {fileID: 2100000, guid: de509cd9dc28cb34da66125bc7ace8f8, type: 2}
@@ -3285,6 +3292,8 @@ MonoBehaviour:
       m_Calls: []
   OnCodeValidFmod:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 6476513296166998657}
     FmodReference:
       Guid:
@@ -3348,8 +3357,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1805089, y: 2.6958046, z: 1.598403}
-  m_Center: {x: -0.07658708, y: 0.5704775, z: -0.30543843}
+  m_Size: {x: 1.3954159, y: 2.6958046, z: 0.9229844}
+  m_Center: {x: 0.15996787, y: 0.5704774, z: 0.032272402}
 --- !u!1 &5281220465818658225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8821623529969584324, guid: acf06ebe40e195a48a6c07d7854a81fd,
