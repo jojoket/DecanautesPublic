@@ -22,6 +22,7 @@ public class MusicManager : MonoBehaviour
     public float CreshendoTime;
     public float EndingTime;
     public float MusicCoolDown;
+    private float StartTime;
     private float MusicStartTimeStamp;
     [SerializeField, ReadOnly]
     private bool _isMusicOnCd;
@@ -36,6 +37,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartTime = Time.time;
         CurrentMusicState = MusicState.Silent;
         _isMusicOnCd = false;
     }
@@ -45,7 +47,7 @@ public class MusicManager : MonoBehaviour
     {
         TimeUntilNextEvent = GetTimeUntilNextEvent();
 
-        if (!_isMusicOnCd && CurrentMusicState == MusicState.Silent && TimeUntilNextEvent > MinTimeForMusicStart && Time.time >= MinGameTimeForMusicStart)
+        if (!_isMusicOnCd && CurrentMusicState == MusicState.Silent && TimeUntilNextEvent > MinTimeForMusicStart && (Time.time- StartTime) >= MinGameTimeForMusicStart)
         {
             _isMusicOnCd = true;
             MusicStartTimeStamp = Time.time;
