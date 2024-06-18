@@ -177,6 +177,8 @@ MonoBehaviour:
   VirtualCamera: {fileID: 4495261938294493002}
   FootStep:
     IsInRythm: 0
+    isBeatSpecific: 0
+    BeatStart: 0
     EventPosition: {fileID: 2185170539282178000}
     FmodReference:
       Guid:
@@ -848,7 +850,7 @@ MonoBehaviour:
     FieldOfView: 60.000004
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 1000
+    FarClipPlane: 8000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}

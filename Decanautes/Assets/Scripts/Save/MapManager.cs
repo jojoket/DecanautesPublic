@@ -33,17 +33,21 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnDestroy()
+    private void OnDisable()
+    {
+
+    }
+    private void OnApplicationQuit()
     {
         SaveMap();
     }
@@ -51,7 +55,7 @@ public class MapManager : MonoBehaviour
 
     public void SaveMap()
     {
-        SavedObject[] toSaveObjects= GameObject.FindObjectsByType<SavedObject>(FindObjectsSortMode.None);
+        SavedObject[] toSaveObjects = GameObject.FindObjectsByType<SavedObject>(FindObjectsSortMode.None);
         List<ObjectSave> toDelete = new List<ObjectSave>();
         //Check for Deleted objects (to be removed)
         foreach (ObjectSave objectSave in MapData.SavedObjects)
