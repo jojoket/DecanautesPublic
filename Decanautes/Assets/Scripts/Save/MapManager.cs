@@ -97,16 +97,15 @@ public class MapManager : MonoBehaviour
                     objectSave.EventInteractionsToBreak.Add(item.gameObject.name);
                 }
             }
+            if (post && (!post.IsPosted || post.isEditing || post.isViewing))
+            {
+                //Don't save changes on posted post its if they're in hand or in edition
+                continue;
+            }
             int index = MapData.SavedObjects.FindIndex(x => x.Name == objectSave.Name);
             if (index != -1)
             {
                 objectSave.CycleNum = MapData.SavedObjects[index].CycleNum;
-                
-                if (post && (!post.IsPosted || post.isEditing || post.isViewing))
-                {
-                    //Don't save changes on posted post its if they're in hand or in edition
-                    continue;
-                }
                 MapData.SavedObjects[index] = objectSave;
                 continue;
             }

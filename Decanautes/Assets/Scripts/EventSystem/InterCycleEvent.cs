@@ -81,6 +81,7 @@ public class InterCycleEvent : MonoBehaviour
         LinkedEngineState.DisplayMessage(message);
         foreach (FmodEventInfo FmodEvent in message.FmodEvents)
         {
+            FmodEvent.EventPosition = transform;
             RythmManager.Instance.StartFmodEvent(FmodEvent);
         }
     }

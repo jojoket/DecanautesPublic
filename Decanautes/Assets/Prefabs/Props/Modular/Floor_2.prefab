@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &579096009090152844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 944677217904887678}
+  - component: {fileID: 8254432872357860210}
+  m_Layer: 0
+  m_Name: FloorCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &944677217904887678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579096009090152844}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.6900003, y: -3.6824708, z: -7.590001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4392830756458887736}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8254432872357860210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579096009090152844}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 18.573662, y: 1.8648176, z: 18.128716}
+  m_Center: {x: -7.3804955e-14, y: -0.12057719, z: -0.0000004768371}
 --- !u!1 &4019071315027545644
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +83,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8354451750254666712}
+  - {fileID: 944677217904887678}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8393092216937808947
@@ -90,6 +144,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -820918370825893277, guid: 32148658d4dcfde4d99067c659cb7b57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 32148658d4dcfde4d99067c659cb7b57,
         type: 3}
       propertyPath: m_Name
@@ -102,7 +161,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -820918370825893277, guid: 32148658d4dcfde4d99067c659cb7b57,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1084659134880083265}
+      addedObject: {fileID: 5600526599451168028}
   m_SourcePrefab: {fileID: 100100000, guid: 32148658d4dcfde4d99067c659cb7b57, type: 3}
 --- !u!1 &63547306543681104 stripped
 GameObject:
@@ -110,8 +169,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8393092216937808947}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1084659134880083265
-BoxCollider:
+--- !u!64 &5600526599451168028
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,9 +187,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 10.392304, y: 1.8648176, z: 11.972073}
-  m_Center: {x: -1.2011534e-14, y: -0.120577216, z: -0.00000047683716}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3746643514349516644, guid: 32148658d4dcfde4d99067c659cb7b57, type: 3}
 --- !u!4 &8354451750254666712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 32148658d4dcfde4d99067c659cb7b57,
