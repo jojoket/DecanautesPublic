@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 using Decanautes.Interactable;
 using System;
 using FMODUnityResonance;
+using DG.Tweening;
 
 [Serializable]
 public struct EngineLinkedMachineText
@@ -116,7 +117,10 @@ public class EngineState : MonoBehaviour
     {
         SetupLinkedEventsAndMaintainables();
         ChangeState(EngineStateEnum.Good);
-        UpdateMachinesText();
+        DOVirtual.DelayedCall(0.3f, () =>
+        {
+            UpdateMachinesText();
+        });
         _GeneralTextBaseMaterial = GeneralTextRenderer.material;
         _GeneralTextBaseColor = GeneralText.color;
     }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2171173388558356910}
   - component: {fileID: 4074382254894178694}
-  - component: {fileID: 8393228624223068334}
   m_Layer: 0
   m_Name: Kilometer
   m_TagString: Untagged
@@ -46,16 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 79ab2f3be45161c42bbf224dd76e3035, type: 2}
---- !u!114 &8393228624223068334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6933935717932564772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c5d54d26aeaf364b9a9370331e12df4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalPrefabPath: 
+  animators: []
