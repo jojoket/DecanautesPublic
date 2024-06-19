@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,14 @@ using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering.LookDev;
 
 public class script_Day_Night : MonoBehaviour
-{       
+{
 
-   //public float colorA = 1;
-   //public float colorB = 0; 
+    //public float colorA = 1;
+    //public float colorB = 0; 
+
+    public bool DoDaySync;
+    [ShowIf("DoDaySync")]
+    public script_Light_Day_Night dayNight;
 
     [ColorUsageAttribute(true,true,0f,8f,0.125f,3f)]
 
@@ -77,6 +82,11 @@ public class script_Day_Night : MonoBehaviour
     void Update()
     {
           
+        if (DoDaySync)
+        {
+            lerpDuration = 1;
+            timeElapsed = dayNight.currentSunT;
+        }
         
 
             
@@ -95,6 +105,7 @@ public class script_Day_Night : MonoBehaviour
                 currentColorBottom = Color.Lerp(middleColorBottom, finalColorBottom, (timeElapsed - lerpDuration2) / lerpDuration3);
 
             }
+
 
 
 
