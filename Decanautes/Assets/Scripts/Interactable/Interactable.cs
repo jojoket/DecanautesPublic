@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using FMODUnity;
+using DG.Tweening;
 
 namespace Decanautes.Interactable
 {
@@ -29,6 +30,7 @@ namespace Decanautes.Interactable
         [Tooltip("It will wait for the first animation trigerrer's next animation end.")]
         public bool DoApplyStateAfterAnimation = true;
 
+        public float ResetAfter = -1;
 
         //--------Events
         [TitleGroup("Events")]
@@ -150,6 +152,14 @@ namespace Decanautes.Interactable
                 if (isActivated)
                 {
                     InvokeInteractStart();
+                    if (ResetAfter > 0 && !CanOnlyOn)
+                    {
+                        DOVirtual.DelayedCall(ResetAfter, () =>
+                        {
+                            if (isActivated)
+                                InteractionStart();
+                        });
+                    }
                 }
                 else
                 {

@@ -98,6 +98,8 @@ public class EngineState : MonoBehaviour
     [TabGroup("Texts")]
     public TMP_Text SpeedText;
     [TabGroup("Texts")]
+    public TMP_Text TimerText;
+    [TabGroup("Texts")]
     public List<EngineLinkedMachineText> LinkedMachinesTexts = new List<EngineLinkedMachineText>();
 
 
@@ -111,10 +113,12 @@ public class EngineState : MonoBehaviour
     public bool hasMessage = false;
     private Material _GeneralTextBaseMaterial;
     private Color _GeneralTextBaseColor;
+    private float _CycleStartTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        _CycleStartTime = Time.time;
         SetupLinkedEventsAndMaintainables();
         ChangeState(EngineStateEnum.Good);
         DOVirtual.DelayedCall(0.3f, () =>
@@ -242,11 +246,13 @@ public class EngineState : MonoBehaviour
             if (hasMessage)
             {
                 GeneralText.color = CurrentMessage.MessageColor;
+                GeneralText.color = new Color(GeneralText.color.r, GeneralText.color.g, GeneralText.color.b, 1);
                 GeneralText.text = CurrentMessage.Message;
             }
             else
             {
                 GeneralText.color = _GeneralTextBaseColor;
+                GeneralText.color = new Color(GeneralText.color.r, GeneralText.color.g, GeneralText.color.b, 1);
                 GeneralText.text ="";
                 /*GeneralText.text = "Engine state : " + CurrentState.ToString() + "\n";
                 GeneralText.text += " Power : " + (1 - MalfunctionsInfluence * malfunctionsNumber)*100 + "% \n";
@@ -275,6 +281,12 @@ public class EngineState : MonoBehaviour
         if (SpeedText)
         {
             SpeedText.text = KilometerData.CurrentSpeed + "km/h";
+        }
+
+        if (TimerText)
+        {
+            float secLeft = Mathf.Max(10*60 - (Time.time - _CycleStartTime), 0);
+            TimerText.text = Mathf.Floor(secLeft / 60) + ":" + Math.Floor(secLeft % 60);
         }
     }
     public void UpdateMachinesText()
@@ -394,6 +406,7 @@ public class EngineState : MonoBehaviour
             PowerLevelText.transform.parent.gameObject.SetActive(false);
             DistanceText.transform.parent.gameObject.SetActive(false);
             SpeedText.transform.parent.gameObject.SetActive(false);
+            TimerText.transform.parent.gameObject.SetActive(false);
         }
         hasMessage = true;
         CurrentMessage = message;
@@ -408,6 +421,7 @@ public class EngineState : MonoBehaviour
         PowerLevelText.transform.parent.gameObject.SetActive(true);
         DistanceText.transform.parent.gameObject.SetActive(true);
         SpeedText.transform.parent.gameObject.SetActive(true);
+        TimerText.transform.parent.gameObject.SetActive(true);
         hasMessage = false;
         GeneralText.alignment = TextAlignmentOptions.TopLeft;
         GeneralTextRenderer.material = _GeneralTextBaseMaterial;

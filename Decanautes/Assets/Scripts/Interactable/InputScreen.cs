@@ -135,15 +135,16 @@ namespace Decanautes.Interactable
                 StartCoroutine(CodeMatVisual(ValidColor));
                 return;
             }
+            InputField.text = "";
             if (int.TryParse(InputField.text, out int res))
             {
                 if (res < int.Parse(CodeNeeded))
                 {
-                    InputField.text = ">";
+                    InputField.placeholder.GetComponent<TMP_Text>().text = "too low";
                 }
                 else if (res > int.Parse(CodeNeeded))
                 {
-                    InputField.text = "<";
+                    InputField.placeholder.GetComponent<TMP_Text>().text = "too high";
                 }
             }
             OnCodeInvalid?.Invoke();
@@ -161,6 +162,7 @@ namespace Decanautes.Interactable
             ScreenRenderer.SetMaterials(CurrentMaterials);
             yield return new WaitForSeconds(0.75f);
             InputField.text = "";
+            InputField.placeholder.GetComponent<TMP_Text>().text = "type numbers";
             foreach (Animation anims in ButtonsAnimations)
             {
                 anims.transform.GetChild(0).GetComponent<MeshRenderer>().material = NormalColor;
