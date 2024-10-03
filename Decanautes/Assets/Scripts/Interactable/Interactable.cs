@@ -124,6 +124,7 @@ namespace Decanautes.Interactable
         }
 
 
+        [Button]
         public virtual void InteractionStart()
         {
             if (!CanInteract)
@@ -170,6 +171,7 @@ namespace Decanautes.Interactable
             isPressed = true;
         }
 
+        [Button]
         public virtual void InteractionEnd()
         {
             if (!CanInteract)
